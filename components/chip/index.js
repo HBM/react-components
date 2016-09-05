@@ -199,6 +199,7 @@ class Element extends React.Component {
         onBlur={onBlur}
         onKeyDown={(event) => {
           if (event.which === keyBackspace || event.which === keyDelete) {
+            event.preventDefault()
             return onDelete(index)
           }
           if (event.which === keyArrowLeft) {
