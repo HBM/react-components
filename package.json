@@ -6,7 +6,14 @@
   "scripts": {
     "test": "make test",
     "selenium": "mocha --timeout 60000 test/e2e/selenium.js",
-    "examples": "rimraf examples/js/script.min.js examples/css/styles.min.css && standard && node-sass examples/css/styles.scss examples/css/styles.min.css && browserify examples/js/script.js --outfile examples/js/script.min.js --transform [ babelify --presets [ es2015 react stage-0 ] ] "
+    "build:examples:all": "npm run build:examples:clear && npm run build:examples:style && npm run build:examples:js",
+    "build:examples:clear": "rimraf examples/js/script.min.js examples/css/styles.min.css",
+    "build:examples:js": "standard && browserify examples/js/script.js --outfile examples/js/script.min.js --transform [ babelify --presets [ es2015 react stage-0 ] ]",
+    "build:examples:style": "node-sass examples/css/styles.scss examples/css/styles.min.css",
+    "server:examples": "http-server -p 5000 ./examples",
+    "watch:examples:all": "npm run watch:examples:js & npm run watch:examples:style",
+    "watch:examples:js": "npm run build:examples:js && watchify examples/js/script.js -o examples/js/script.min.js -d -v --transform [ babelify --presets [ es2015 react stage-0 react-hmre ] ] --plugin browserify-hmr",
+    "watch:examples:style": "npm run build:examples:style && npm run build:examples:style -- -w"
   },
   "repository": {
     "type": "git",
@@ -46,6 +53,7 @@
     "eslint-plugin-react": "^6.0.0",
     "glob": "^7.0.5",
     "history": "^1.12.6",
+    "http-server": "^0.9.0",
     "istanbul": "^1.1.0-alpha.1",
     "jasmine-core": "^2.3.4",
     "mocha": "^3.0.2",

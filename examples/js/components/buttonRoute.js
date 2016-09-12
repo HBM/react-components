@@ -19,7 +19,7 @@ const buttonDisabled =
 </Button>`
 
 const buttonRaised =
-`<Button onClick={this.onClick} raised>
+`<Button onClick={(event) => {console.log(event)} raised>
   Raised
 </Button>`
 
