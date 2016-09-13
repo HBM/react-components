@@ -1,9 +1,11 @@
 
 import React from 'react'
+import ReactDOM from 'react-dom'
+import Playground from 'component-playground'
 import {Sparkline} from '../../../'
 
-export default class SparklineRoute extends React.Component {
-
+const sparklineComponent =
+`class App extends React.Component {
   state = {
     data: new Uint8Array(250)
   }
@@ -34,9 +36,25 @@ export default class SparklineRoute extends React.Component {
 
   render () {
     return (
+      <Sparkline data={this.state.data} />
+    )
+  }
+}
+
+ReactDOM.render(<App />, mountNode)`
+
+export default class SparklineRoute extends React.Component {
+
+  render () {
+    return (
       <section>
         <h2>Sparkline</h2>
-        <Sparkline data={this.state.data} />
+        <Playground
+          docClass={Sparkline}
+          noRender={false}
+          codeText={sparklineComponent}
+          scope={{React, ReactDOM, Sparkline}}
+        />
       </section>
     )
   }
