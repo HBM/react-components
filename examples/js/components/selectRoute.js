@@ -1,6 +1,97 @@
 
 import React from 'react'
+import ReactDOM from 'react-dom'
+import Playground from 'component-playground'
 import {Select} from '../../../'
+
+const defaultSelect =
+`<select>
+  <option>one</option>
+  <option>two</option>
+  <option>three</option>
+</select>`
+
+const _select =
+`class App extends React.Component {
+  state = {
+    selected: -1,
+  }
+
+  onChange = (index) => {
+    this.setState({
+      selected: index
+    })
+  }
+
+  render () {
+    return (
+      <div>
+      <Select
+        onChange={this.onChange}
+        items={['Blue', 'Red', 'Green']}
+        selectedIndex={this.state.selected}
+      />
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<App />, mountNode)`
+
+const selectWithScrolling =
+`class App extends React.Component {
+  state = {
+    selected: -1,
+  }
+
+  onChange = (index) => {
+    this.setState({
+      selected: index
+    })
+  }
+
+  render () {
+    return (
+      <div>
+      <Select
+        onChange={this.onChange}
+        items={['Blue', 'Red', 'Green', 'Yellow', 'Orange', 'Black', 'White']}
+        selectedIndex={this.state.selected}
+      />
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<App />, mountNode)`
+
+const selectWithLabel =
+`class App extends React.Component {
+  state = {
+    selected: -1,
+  }
+
+  onChange = (index) => {
+    this.setState({
+      selected: index
+    })
+  }
+
+  render () {
+    return (
+      <div>
+      <Select
+        label='Some label'
+        onChange={this.onChange}
+        items={['Blue', 'Red', 'Green']}
+        selectedIndex={this.state.selected}
+      />
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<App />, mountNode)`
 
 export default class SelectRoute extends React.Component {
 
@@ -22,53 +113,40 @@ export default class SelectRoute extends React.Component {
   }
 
   render () {
-    let items = [
-      'Blue',
-      'Red',
-      'Green'
-    ]
-    let itemsWithScrolling = [
-      'Blue',
-      'Red',
-      'Green',
-      'Yellow',
-      'Orange',
-      'Black',
-      'White'
-    ]
     return (
       <div>
         <section>
           <h2>Default select</h2>
-          <select>
-            <option>one</option>
-            <option>two</option>
-            <option>three</option>
-          </select>
+          <Playground
+            codeText={defaultSelect}
+            scope={{React}}
+          />
         </section>
         <section>
           <h2>Select</h2>
-          <Select
-            onChange={this.onChange}
-            items={items}
-            selectedIndex={this.state.selected}
+          <Playground
+            docClass={Select}
+            noRender={false}
+            codeText={_select}
+            scope={{React, ReactDOM, Select}}
           />
         </section>
         <section>
           <h2>Select with scrolling</h2>
-          <Select
-            onChange={this.onChangeWithScrolling}
-            items={itemsWithScrolling}
-            selectedIndex={this.state.selectedWithScrolling}
+          <Playground
+            docClass={Select}
+            noRender={false}
+            codeText={selectWithScrolling}
+            scope={{React, ReactDOM, Select}}
           />
         </section>
         <section>
           <h2>Select with label</h2>
-          <Select
-            label='Some label'
-            onChange={this.onChange}
-            items={items}
-            selectedIndex={this.state.selected}
+          <Playground
+            docClass={Select}
+            noRender={false}
+            codeText={selectWithLabel}
+            scope={{React, ReactDOM, Select}}
           />
         </section>
       </div>
