@@ -138,31 +138,35 @@ export default class TooltipRoute extends React.Component {
           <Playground
             codeText={tooltipDefault}
             scope={{React}}
+            collapsableCode
           />
         </section>
         <section>
           <h2>Tooltip</h2>
           <Playground
             docClass={Tooltip}
-            noRender={false}
             codeText={tooltipComponent}
             scope={{React, ReactDOM, Tooltip}}
+            noRender={false}
+            collapsableCode
           />
         </section>
         <section>
           <h2>Icon Tooltip</h2>
           <Playground
-            noRender={false}
             codeText={tooltipIcon}
             scope={{React, ReactDOM, Tooltip, Icon}}
+            noRender={false}
+            collapsableCode
           />
         </section>
         <section>
           <h2>Button Tooltip</h2>
           <Playground
-            noRender={false}
             codeText={tooltipButton}
             scope={{React, ReactDOM, Tooltip, Icon, Button}}
+            noRender={false}
+            collapsableCode
           />
         </section>
         <section>

@@ -69,17 +69,19 @@ export default class ProgressRoute extends React.Component {
           <h2>Linear progress</h2>
           <Playground
             docClass={Progress.Linear}
-            noRender={false}
             codeText={linearProgress}
             scope={{React, ReactDOM, Progress}}
+            noRender={false}
+            collapsableCode
           />
         </section>
         <section>
           <h2>Circular progress</h2>
           <Playground
-            noRender={false}
             codeText={circularProgress}
             scope={{React, ReactDOM, Progress}}
+            noRender={false}
+            collapsableCode
           />
         </section>
         <section>

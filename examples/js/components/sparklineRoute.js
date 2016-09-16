@@ -50,9 +50,10 @@ export default class SparklineRoute extends React.Component {
         <h2>Sparkline</h2>
         <Playground
           docClass={Sparkline}
-          noRender={false}
           codeText={sparklineComponent}
           scope={{React, ReactDOM, Sparkline}}
+          noRender={false}
+          collapsableCode
         />
       </section>
     )

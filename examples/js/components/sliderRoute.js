@@ -35,6 +35,7 @@ export default class SliderRoute extends React.Component {
           <Playground
             codeText={defaultSliderComponent}
             scope={{React}}
+            collapsableCode
           />
         </section>
         <section>
@@ -42,6 +43,7 @@ export default class SliderRoute extends React.Component {
           <Playground
             codeText={defaultSliderWithStepsComponent}
             scope={{React}}
+            collapsableCode
           />
         </section>
         <section>
@@ -50,6 +52,7 @@ export default class SliderRoute extends React.Component {
             docClass={Slider}
             codeText={sliderComponent}
             scope={{React, Slider}}
+            collapsableCode
           />
         </section>
         <section>
@@ -57,6 +60,7 @@ export default class SliderRoute extends React.Component {
           <Playground
             codeText={sliderWithStepsComponent}
             scope={{React, Slider}}
+            collapsableCode
           />
         </section>
         <section>

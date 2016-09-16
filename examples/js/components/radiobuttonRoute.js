@@ -71,15 +71,17 @@ export default class RadiobuttonRoute extends React.Component {
           <Playground
             codeText={defaultRadiobutton}
             scope={{React}}
+            collapsableCode
           />
         </section>
         <section>
           <h2>Radiobutton</h2>
           <Playground
             docClass={Radiobutton}
-            noRender={false}
             codeText={radiobuttonComponent}
             scope={{React, ReactDOM, Radiobutton}}
+            noRender={false}
+            collapsableCode
           />
         </section>
         <section>

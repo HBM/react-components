@@ -207,32 +207,36 @@ export default class MenuRoute extends React.Component {
           <Playground
             docClass={Menu}
             codeText={menuTopRight}
-            noRender={false}
             scope={{React, ReactDOM, Menu, Icon, Divider}}
+            noRender={false}
+            collapsableCode
           />
         </section>
         <section>
           <h2>Menu - top, left</h2>
           <Playground
             codeText={menuTopLeft}
-            noRender={false}
             scope={{React, ReactDOM, Menu, Icon, Divider}}
+            noRender={false}
+            collapsableCode
           />
         </section>
         <section>
           <h2>Menu - bottom, right</h2>
           <Playground
             codeText={menuBottomRight}
-            noRender={false}
             scope={{React, ReactDOM, Menu, Icon, Divider}}
+            noRender={false}
+            collapsableCode
           />
         </section>
         <section>
           <h2>Menu - bottom, left</h2>
           <Playground
             codeText={menuBottomLeft}
-            noRender={false}
             scope={{React, ReactDOM, Menu, Icon, Divider}}
+            noRender={false}
+            collapsableCode
           />
         </section>
         <section>
