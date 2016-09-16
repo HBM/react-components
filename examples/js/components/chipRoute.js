@@ -233,32 +233,36 @@ export default class ChipRoute extends React.Component {
           <Playground
             docClass={Chip}
             codeText={chipComponent}
-            noRender={false}
             scope={{React, ReactDOM, Chip, classnames}}
+            noRender={false}
+            collapsableCode
           />
         </section>
         <section>
           <h2>Chip with initial values</h2>
           <Playground
             codeText={chipInitialValues}
-            noRender={false}
             scope={{React, ReactDOM, Chip, classnames}}
+            noRender={false}
+            collapsableCode
           />
         </section>
         <section>
           <h2>Chip with custom delimiters (e.g. space)</h2>
           <Playground
             codeText={chipCustomDelimiters}
-            noRender={false}
             scope={{React, ReactDOM, Chip, classnames}}
+            noRender={false}
+            collapsableCode
           />
         </section>
         <section>
           <h2>Chip with icons</h2>
           <Playground
             codeText={chipIcons}
-            noRender={false}
             scope={{React, ReactDOM, Chip, classnames}}
+            noRender={false}
+            collapsableCode
           />
         </section>
         <section>

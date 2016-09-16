@@ -33,17 +33,19 @@ export default class ButtonRoute extends React.Component {
           <Playground
             codeText={defaultButton}
             scope={{React, Button}}
+            collapsableCode
           />
         </section>
         <section>
           <h2>Button Component</h2>
           <Playground
             docClass={Button}
+            codeText={buttonComponent}
             propDescriptionMap={{
               type: 'submit || reset || button'
             }}
-            codeText={buttonComponent}
             scope={{React, Button}}
+            collapsableCode
           />
         </section>
         <section>
@@ -51,6 +53,7 @@ export default class ButtonRoute extends React.Component {
           <Playground
             codeText={buttonDisabled}
             scope={{React, Button}}
+            collapsableCode
           />
         </section>
         <section>
@@ -58,6 +61,7 @@ export default class ButtonRoute extends React.Component {
           <Playground
             codeText={buttonRaised}
             scope={{React, Button}}
+            collapsableCode
           />
         </section>
         <section>
