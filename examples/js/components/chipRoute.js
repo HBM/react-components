@@ -348,7 +348,7 @@ export default class ChipRoute extends React.Component {
         </section>
         <section>
           <h2>Specification</h2>
-          <a href='https://material.google.com/components/chips.html'>
+          <a className='examplesLink' href='https://material.google.com/components/chips.html'>
             https://material.google.com/components/chips.html
           </a>
         </section>

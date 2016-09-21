@@ -65,7 +65,7 @@ export default class SliderRoute extends React.Component {
         </section>
         <section>
           <h2>Specification</h2>
-          <a href='https://material.google.com/components/sliders.html'>
+          <a className='examplesLink' href='https://material.google.com/components/sliders.html'>
             https://material.google.com/components/sliders.html
           </a>
         </section>

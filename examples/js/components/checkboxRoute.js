@@ -81,7 +81,7 @@ export default class CheckboxRoute extends React.Component {
         </section>
         <section>
           <h2>Specification</h2>
-          <a href='https://material.google.com/components/selection-controls.html#selection-controls-checkbox'>
+          <a className='examplesLink' href='https://material.google.com/components/selection-controls.html#selection-controls-checkbox'>
             https://material.google.com/components/selection-controls.html#selection-controls-checkbox
           </a>
         </section>

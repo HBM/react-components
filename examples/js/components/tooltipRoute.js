@@ -171,7 +171,7 @@ export default class TooltipRoute extends React.Component {
         </section>
         <section>
           <h2>Specification</h2>
-          <a href='https://material.google.com/components/tooltips.html'>
+          <a className='examplesLink' href='https://material.google.com/components/tooltips.html'>
             https://material.google.com/components/tooltips.html
           </a>
         </section>

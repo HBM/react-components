@@ -86,7 +86,7 @@ export default class ModalRoute extends React.Component {
         </section>
         <section>
           <h2>Specification</h2>
-          <a href='https://material.google.com/components/dialogs.html'>
+          <a className='examplesLink' href='https://material.google.com/components/dialogs.html'>
             https://material.google.com/components/dialogs.html
           </a>
         </section>

@@ -24,13 +24,6 @@ section {
   margin-bottom: 50px;
 }
 
-main h2 {
-  font-size: 3rem;
-  line-height: 110%;
-  margin: 1.5rem 0 1.2rem 0;
-  color: #1b325f;
-}
-
 .Chip-example1 {
   border-bottom: 2px solid #ddd;
 }
@@ -55,9 +48,12 @@ main h2 {
   padding: 0;
 }
 
-.playground>div>ul>li {
-  padding-top: 15px;
+.playground>div>ul {
   padding-left: 10px;
+}
+
+.playground>div>ul>li {
+  padding-top: 20px;
 }
 
 .playground>div>ul>li>b:first-child {
@@ -103,7 +99,6 @@ main h2 {
 
 .playgroundToggleCodeLink, .playgroundToggleCodeLink::before {
   cursor: pointer;
-  font-family: monospace;
   position: relative;
   right: 0;
   display: inline-block;
@@ -112,7 +107,7 @@ main h2 {
   padding: 5px 5px 5px 0px;
 }
 .playgroundToggleCodeLink {
-  padding: 5px 10px 5px 5px;
+  padding: 5px 10px 5px 0px;
 }
 .playgroundToggleCodeLink::before {
   content: '<live edit>';
@@ -133,4 +128,9 @@ main h2 {
   font-size: 12px;
   color: white;
   background: #F2777A;
+}
+
+.examplesLink {
+  color: rgb(255,64,129);
+  font-weight: 500;
 }

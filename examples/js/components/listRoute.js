@@ -291,7 +291,7 @@ export default class ListRoute extends React.Component {
         </section>
         <section>
           <h2>Specification</h2>
-          <a href='https://material.google.com/components/lists.html'>
+          <a className='examplesLink' href='https://material.google.com/components/lists.html'>
             https://material.google.com/components/lists.html
           </a>
         </section>

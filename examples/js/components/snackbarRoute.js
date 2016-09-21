@@ -52,7 +52,7 @@ export default class SnackbarRoute extends React.Component {
         </section>
         <section>
           <h2>Specification</h2>
-          <a href='https://material.google.com/components/snackbars-toasts.html'>
+          <a className='examplesLink' href='https://material.google.com/components/snackbars-toasts.html'>
             https://material.google.com/components/snackbars-toasts.html
           </a>
         </section>

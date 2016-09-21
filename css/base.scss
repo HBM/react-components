@@ -5,10 +5,8 @@
 @import "normalize";
 @import "mixins";
 
-
-
 /**
- * Fonts
+ * Typography
  */
 @font-face {
   font-family: 'Roboto';
@@ -23,7 +21,6 @@
   font-style: normal;
   font-weight: 300;
 }
-
 
 @font-face {
   font-family: 'Roboto';
@@ -45,8 +42,18 @@
   font-style: normal;
   font-weight: 700;
 }
+$typo-display-4-font-size-base: 11.2rem;
+$typo-display-3-font-size-base: 5.6rem;
+$typo-display-2-font-size-base: 4.5rem;
+$typo-display-1-font-size-base: 3.4rem;
+$typo-headline-font-size-base:  2.4rem;
+$typo-title-font-size-base:     2.0rem;
+$typo-subhead-font-size-base:   1.6rem;
 
+$typo-body-font-size-base:      1.4rem;
+$typo-caption-font-size-base:   1.2rem;
 
+$typo-font-Family: 'Roboto', sans-serif;
 
 /**
  * Variables
@@ -66,7 +73,112 @@ $tabs-transition-function: cubic-bezier(0.35, 0, 0.25, 1);
 
 $navigation-width: 240px;
 
+@mixin typo-display-4($colorContrast: false) {
+  font-family: $typo-font-Family;
+  font-size: $typo-display-4-font-size-base;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.04em;
 
+  @if $colorContrast {
+    opacity: 0.54;
+  }
+}
+
+@mixin typo-display-3($colorContrast: false) {
+  font-family: $typo-font-Family;
+  font-size: $typo-display-3-font-size-base;
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+
+  @if $colorContrast {
+    opacity: 0.54;
+  }
+}
+
+@mixin typo-display-2($colorContrast: false) {
+  font-family: $typo-font-Family;
+  font-size: $typo-display-2-font-size-base;
+  font-weight: 400;
+  line-height: 48px;
+
+  @if $colorContrast {
+    opacity: 0.54;
+  }
+}
+
+@mixin typo-display-1($colorContrast: false) {
+  font-family: $typo-font-Family;
+  font-size: $typo-display-1-font-size-base;
+  font-weight: 400;
+  line-height: 40px;
+
+  @if $colorContrast {
+    opacity: 0.54;
+  }
+}
+
+@mixin typo-headline($colorContrast: false) {
+  font-family: $typo-font-Family;
+  font-size: $typo-headline-font-size-base;
+  font-weight: 400;
+  line-height: 32px;
+  -moz-osx-font-smoothing: grayscale;
+
+  @if $colorContrast {
+    opacity: 0.87;
+  }
+}
+
+@mixin typo-title($colorContrast: false) {
+  font-family: $typo-font-Family;
+  font-size: $typo-title-font-size-base;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.02em;
+
+  @if $colorContrast {
+    opacity: 0.87;
+  }
+}
+
+@mixin typo-subhead($colorContrast: false) {
+  font-family: $typo-font-Family;
+  font-size: $typo-subhead-font-size-base;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.04em;
+
+  @if $colorContrast {
+    opacity: 0.87;
+  }
+}
+
+@mixin typo-blockquote($colorContrast: false) {
+  font-family: $typo-font-Family;
+  position: relative;
+  font-size: $typo-headline-font-size-base;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.35;
+  letter-spacing: 0.08em;
+
+  &:before {
+    position: absolute;
+    left: -0.5em;
+    content: '“';
+  }
+
+  &:after {
+    content: '”';
+    margin-left: -0.05em;
+  }
+
+  @if $colorContrast {
+    opacity: 0.54;
+  }
+}
 
 /**
  * Scaffolding
@@ -90,12 +202,17 @@ html {
   // font-size: $font-size-root;
   // Changes the default tap highlight to be completely transparent in iOS.
   -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-touch-callout: none;
+
+  // Fonts on OSX will look more consistent with other systems that do not
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 10px;
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
-  font-size: 1em;
-  line-height: 1em;
+  font-family: $typo-font-Family;
+  font-size: 10px;
   background: #f9f9f9;
   color: #333;
   -webkit-font-smoothing: antialiased;
@@ -137,4 +254,56 @@ main {
     padding-left: $navigation-width;
     width: $wrapper-xlarge;
   }
+}
+
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
+  @include typo-display-3($colorContrast: true);
+
+  font-size: 0.6em;
+}
+
+h1 {
+  @include typo-display-3;
+
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+h2 {
+  @include typo-display-2;
+
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+h3 {
+  @include typo-display-1;
+
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+h4 {
+  @include typo-headline;
+
+  margin-top: 24px;
+  margin-bottom: 16px;
+}
+
+h5 {
+  @include typo-title;
+
+  margin-top: 24px;
+  margin-bottom: 16px;
+}
+
+h6 {
+  @include typo-subhead;
+
+  margin-top: 24px;
+  margin-bottom: 16px;
+}
+
+blockquote {
+  @include typo-blockquote;
 }

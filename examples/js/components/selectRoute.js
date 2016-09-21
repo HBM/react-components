@@ -132,7 +132,7 @@ export default class SelectRoute extends React.Component {
         </section>
         <section>
           <h2>Specification</h2>
-          <a href='https://material.google.com/components/menus.html'>
+          <a className='examplesLink' href='https://material.google.com/components/menus.html'>
             https://material.google.com/components/menus.html
           </a>
         </section>
