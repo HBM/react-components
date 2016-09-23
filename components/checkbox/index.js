@@ -34,7 +34,6 @@ const Checkbox = ({checked, disabled, label, onChange, name, defaultChecked}) =>
       onChange={onChange}
       type='checkbox'
     />
-    <div className='Checkbox-focus' />
     <div className='Checkbox-icon'>
       {checked || defaultChecked
         ? <IconCheckbox />
