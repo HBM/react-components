@@ -77,7 +77,8 @@ class Navigation extends React.Component {
   /**
    * Hide overlay
    */
-  close = () => {
+  close = (event) => {
+    event.preventDefault()
     this.setState({
       visible: false
     })
