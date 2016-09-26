@@ -1,5 +1,6 @@
 
 import React from 'react'
+import classnames from 'classnames'
 
 /**
  * Check box - ic_check_box_24px.svg
@@ -23,28 +24,54 @@ const IconCheckboxOutline = () => (
   </svg>
 )
 
-const Checkbox = ({checked, disabled, label, onChange, name, defaultChecked}) => (
-  <label className='Checkbox' title={label}>
-    <input
-      checked={checked}
-      className='Checkbox-input'
-      defaultChecked={defaultChecked}
-      disabled={disabled}
-      name={name}
-      onChange={onChange}
-      type='checkbox'
-    />
-    <div className='Checkbox-icon'>
-      {checked || defaultChecked
-        ? <IconCheckbox />
-        : <IconCheckboxOutline />
-      }
-    </div>
-    <span className='Checkbox-label'>
-      {label}
-    </span>
-  </label>
-)
+export default class Checkbox extends React.Component {
+
+  constructor (props) {
+    super(props)
+    this.state = {
+      active: false
+    }
+  }
+
+  onCleanUp = (event) => {
+    this.setState({
+      active: false
+    })
+  }
+
+  onClick = (event) => {
+    this.setState({
+      active: true
+    })
+    window.setTimeout(this.onCleanUp, 100)
+  }
+
+  render () {
+    return (
+      <label className='Checkbox' title={this.props.label} onClick={this.onClick}>
+        <input
+          checked={this.props.checked}
+          className={classnames('Checkbox-input', {active: this.state.active})}
+          defaultChecked={this.props.defaultChecked}
+          disabled={this.props.disabled}
+          name={this.props.name}
+          onChange={this.props.onChange}
+          type='checkbox'
+        />
+        <div className='Checkbox-focus' />
+        <div className='Checkbox-icon'>
+          {this.props.checked || this.props.defaultChecked
+            ? <IconCheckbox />
+            : <IconCheckboxOutline />
+          }
+        </div>
+        <span className='Checkbox-label'>
+          {this.props.label}
+        </span>
+      </label>
+    )
+  }
+}
 
 Checkbox.propTypes = {
   checked: React.PropTypes.bool,
@@ -58,5 +85,3 @@ Checkbox.defaultProps = {
   disabled: false,
   label: 'Label'
 }
-
-export default Checkbox
