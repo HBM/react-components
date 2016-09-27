@@ -87,15 +87,13 @@ export default class Tabs extends React.Component {
         )}
         {this.state.index === -1
           ? null
-          : (
-            <div
-              className={`Tabs-InkBar transition-${this.state.direction}`}
-              style={{
-                left: `${left}%`,
-                right: `${right}%`
-              }}
-            />
-          )
+          : <div
+            className={`Tabs-InkBar transition-${this.state.direction}`}
+            style={{
+              left: `${left}%`,
+              right: `${right}%`
+            }}
+          />
         }
       </div>
     )
