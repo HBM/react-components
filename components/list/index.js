@@ -105,6 +105,14 @@ export const Row = ({
   }
 }
 
+const stringOrElement = () => {
+  return React.PropTypes.oneOfType([
+    React.PropTypes.element,
+    React.PropTypes.arrayOf(React.PropTypes.element),
+    React.PropTypes.string
+  ])
+}
+
 Row.propTypes = {
   avatar: React.PropTypes.oneOfType([
     React.PropTypes.element,
@@ -119,17 +127,8 @@ Row.propTypes = {
   onBlur: React.PropTypes.func,
   onClick: React.PropTypes.func,
   onFocus: React.PropTypes.func,
-  primary: React.PropTypes.oneOfType([
-    React.PropTypes.element,
-    React.PropTypes.string
-  ]).isRequired,
-  secondary: React.PropTypes.oneOfType([
-    React.PropTypes.element,
-    React.PropTypes.string
-  ]),
+  primary: stringOrElement().isRequired,
+  secondary: stringOrElement(),
   style: React.PropTypes.object,
-  subheader: React.PropTypes.oneOfType([
-    React.PropTypes.element,
-    React.PropTypes.string
-  ])
+  subheader: stringOrElement()
 }
