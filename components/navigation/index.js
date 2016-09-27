@@ -41,7 +41,8 @@ const Item = ({index, onClick, item}) => (
 /**
  * Navigation
  */
-class Navigation extends React.Component {
+// also export to enable tests (which don't require the router)
+export class Navigation extends React.Component {
 
   /**
    * Property types
@@ -68,10 +69,10 @@ class Navigation extends React.Component {
   /**
    * Handle click on navigation link
    */
-  onClick = (index) => {
+  onClick = (event, index) => {
     const item = this.props.links[index]
     this.props.onChange(item)
-    this.close()
+    this.close(event)
   }
 
   /**
@@ -123,7 +124,7 @@ class Navigation extends React.Component {
             {this.props.links.map((item, index) =>
               <Item
                 key={index}
-                onClick={() => this.onClick(index)}
+                onClick={(event) => this.onClick(event, index)}
                 item={item}
               />
             )}
