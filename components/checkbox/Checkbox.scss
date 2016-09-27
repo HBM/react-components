@@ -22,7 +22,6 @@
   line-height: 0;
   outline: 0;
   fill: rgba(0, 0, 0, 0.54);
-  transition: all 0.15s ease;
 
   @include medium {
     padding: 5px;
@@ -71,7 +70,7 @@
   height: 18px;
   border-radius: 50%;
   display: none;
-  pointer-events: none;
+  transition: all 0.15s ease;
 
   @include medium {
     left: 8px;
