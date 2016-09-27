@@ -33,25 +33,26 @@ export default class Checkbox extends React.Component {
     }
   }
 
-  onCleanUp = (event) => {
+  onCleanUp = (e) => {
     this.setState({
       active: false
     })
   }
 
-  onClick = (event) => {
-    this.setState({
-      active: true
-    })
-    window.setTimeout(this.onCleanUp, 100)
+  onKeyUp = (e) => {
+    if (e.keyCode === 9) {
+      this.setState({
+        active: true
+      })
+    }
   }
 
   render () {
     return (
-      <label className='Checkbox' title={this.props.label} onClick={this.onClick}>
+      <label className='Checkbox' title={this.props.label} onKeyUp={this.onKeyUp} onBlur={this.onCleanUp}>
         <input
           checked={this.props.checked}
-          className={classnames('Checkbox-input', {active: this.state.active})}
+          className={classnames('Checkbox-input', {'Checkbox-input--keyboard': this.state.active})}
           defaultChecked={this.props.defaultChecked}
           disabled={this.props.disabled}
           name={this.props.name}

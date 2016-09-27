@@ -15,14 +15,6 @@
   position: absolute;
   opacity: 0;
   z-index: -1;
-  overflow: hidden;
-  pointer-events: none;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-}
-
-.Checkbox-input:focus {
-  outline:0;
 }
 
 .Checkbox-icon {
@@ -85,22 +77,14 @@
   }
 }
 
-.Checkbox-input:checked:focus ~ .Checkbox-focus {
+.Checkbox-input:checked.Checkbox-input--keyboard ~ .Checkbox-focus {
   box-shadow: 0 0 0 8px rgba($blue-dark, 0.12);
   background-color: rgba($blue-dark, 0.12);
   display: block;
 }
 
-.Checkbox-input:not(:checked):focus ~ .Checkbox-focus {
+.Checkbox-input:not(:checked).Checkbox-input--keyboard ~ .Checkbox-focus {
   box-shadow: 0 0 0 8px rgba(0, 0, 0, 0.12);
   background-color: rgba(0, 0, 0, 0.12);
   display: block;
-}
-
-.Checkbox-input:active, .Checkbox-input.active {
-  display: none;
-  
-  & ~ .Checkbox-focus {
-    display: none;
-  }
 }
