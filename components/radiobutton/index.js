@@ -1,5 +1,6 @@
 
 import React from 'react'
+import classNames from 'classnames'
 
 /**
  * Radio button off - ic_radio_button_off_24px.svg
@@ -23,34 +24,55 @@ const RadioButtonOn = () => (
   </svg>
 )
 
-const RadioButton = ({name, selectedValue, items, onChange}) => (
-  <div className='RadioButton'>
-    {items.map((item, index) => {
-      var checked = item.toLowerCase() === selectedValue.toLowerCase()
-      return (
-        <label key={index} className='RadioButton-item'>
-          <input
-            checked={checked}
-            className='RadioButton-input'
-            name={name}
-            onChange={onChange.bind(this, item)}
-            type='radio'
-            value={item}
-          />
-          <div className='RadioButton-icon'>
-            {checked
-              ? <RadioButtonOn />
-              : <RadioButtonOff />
-            }
-          </div>
-          <span className='RadioButton-label'>
-            {item}
-          </span>
-        </label>
-      )
-    })}
-  </div>
-)
+class RadioButton extends React.Component {
+  state = {
+    kbPressed: false
+  }
+
+  setKbPressed = () => {
+    this.setState({kbPressed: true})
+  }
+
+  resetKbPressed = () => {
+    this.setState({kbPressed: false})
+  }
+
+  render () {
+    const {name, selectedValue, items, onChange} = this.props
+    return (
+      <div className={classNames('RadioButton', {'RadioButton--keyboard': this.state.kbPressed})}
+        onKeyUp={this.setKbPressed}
+        onClick={this.resetKbPressed}
+        onBlur={this.resetKbPressed}
+        >
+        {items.map((item, index) => {
+          var checked = item.toLowerCase() === selectedValue.toLowerCase()
+          return (
+            <label key={index} className='RadioButton-item'>
+              <input
+                checked={checked}
+                className='RadioButton-input'
+                name={name}
+                onChange={onChange.bind(this, item)}
+                type='radio'
+                value={item}
+              />
+              <div className='RadioButton-icon'>
+                {checked
+                  ? <RadioButtonOn />
+                  : <RadioButtonOff />
+                }
+              </div>
+              <span className='RadioButton-label'>
+                {item}
+              </span>
+            </label>
+          )
+        })}
+      </div>
+    )
+  }
+}
 
 RadioButton.propTypes = {
   name: React.PropTypes.string.isRequired,
