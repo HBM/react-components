@@ -1,6 +1,8 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import Playground from 'component-playground'
 import { List, Row, Icon } from '../../../'
+import {HashRouter, Match} from 'react-router'
 
 const longText = 'This is sometimes a very lengthy text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ita graviter et severe voluptatem secrevit a bono. Aliter homines, aliter philosophos loqui putas oportere? Nunc haec primum fortasse audientis servire debemus'
 
@@ -190,13 +192,41 @@ const selectableOnFocusOrOnBlurDefinedOnRow =
 </List>`
 
 const linkList =
-`// Links in preview are not working yet.
-// The active class is automatically added when using react-router.
-<List>
-  <Row primary='Modal' linkTo='/modal' className='active'/>
-  <Row primary='List' linkTo='/list' />
-  <Row primary='Tooltip' linkTo='/tooltip' />
-</List>`
+`const One = () => (
+  <div>
+    One
+  </div>
+)
+
+const Two = () => (
+  <div>
+    Two
+  </div>
+)
+
+class App extends React.Component {
+
+  render () {
+    return (
+      <HashRouter>
+        <div>
+          <List>
+            <Row primary='One' linkTo='/list/one' />
+            <Row primary='Two' linkTo='/list/two' />
+          </List>
+          <Match exactly pattern='/list' render={() => (
+            <span>Please select an item from the list.</span>
+          )} />
+          <Match pattern='/list/one' component={One} />
+          <Match pattern='/list/two' component={Two} />
+        </div>
+      </HashRouter>
+    )
+  }
+
+}
+
+ReactDOM.render(<App />, mountNode)`
 
 export default class ListRoute extends React.Component {
 
@@ -322,7 +352,8 @@ export default class ListRoute extends React.Component {
           <h2>Link list (linkTo defined)</h2>
           <Playground
             codeText={linkList}
-            scope={{React, List, Row}}
+            scope={{React, ReactDOM, List, Row, HashRouter, Match}}
+            noRender={false}
             collapsableCode
           />
         </section>

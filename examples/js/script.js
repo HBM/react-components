@@ -1,8 +1,7 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {Router, Route, IndexRoute, hashHistory} from 'react-router'
-import App from './components/app'
+import {HashRouter, Match} from 'react-router'
 import ButtonRoute from './components/buttonRoute'
 import CardRoute from './components/cardRoute'
 import CheckboxRoute from './components/checkboxRoute'
@@ -23,63 +22,81 @@ import TabsRoute from './components/tabsRoute'
 import TextfieldRoute from './components/textfieldRoute'
 import TooltipRoute from './components/tooltipRoute'
 
-// required for tabs component demo
-class Germany extends React.Component {
+import {
+  Header,
+  Navigation
+} from '../../'
+
+class App extends React.Component {
+
+  state = {
+    subtitle: 'Home'
+  }
+
+  onChange = (link) => {
+    this.setState({
+      subtitle: link.text
+    })
+  }
+
   render () {
+    const links = [
+      {text: 'Home', link: '/'},
+      {text: 'Button', link: '/button'},
+      {text: 'Card', link: '/card'},
+      {text: 'Checkbox', link: '/checkbox'},
+      {text: 'Chip', link: '/chip'},
+      {text: 'Icon', link: '/icon'},
+      {text: 'List', link: '/list'},
+      {text: 'Menu', link: '/menu'},
+      {text: 'Modal', link: '/modal'},
+      {text: 'Progress', link: '/progress'},
+      {text: 'Radiobutton', link: '/radiobutton'},
+      {text: 'Select', link: '/select'},
+      {text: 'Slider', link: '/slider'},
+      {text: 'Snackbar', link: '/snackbar'},
+      {text: 'Sparkline', link: '/sparkline'},
+      {text: 'Switch', link: '/switch'},
+      {text: 'Tabs', link: '/tabs'},
+      {text: 'Textfield', link: '/textfield'},
+      {text: 'Tooltip', link: '/tooltip'}
+    ]
+
     return (
-      <div>
-        Germany
-      </div>
+      <HashRouter>
+        <div>
+          <Header title='HBM/md-components' subtitle={this.state.subtitle} />
+          {/* wrap navigation into <Match /> to get access to location for componentDidMount */}
+          <Match pattern='/' render={({location}) => (
+            <Navigation location={location} links={links} onChange={this.onChange} />
+          )} />
+          <main>
+            <Match exactly pattern='/' component={HomeRoute} />
+            <Match pattern='/button' component={ButtonRoute} />
+            <Match pattern='/card' component={CardRoute} />
+            <Match pattern='/checkbox' component={CheckboxRoute} />
+            <Match pattern='/chip' component={ChipRoute} />
+            <Match pattern='/icon' component={IconRoute} />
+            <Match pattern='/list' component={ListRoute} />
+            <Match pattern='/menu' component={MenuRoute} />
+            <Match pattern='/modal' component={ModalRoute} />
+            <Match pattern='/progress' component={ProgressRoute} />
+            <Match pattern='/radiobutton' component={RadiobuttonRoute} />
+            <Match pattern='/select' component={SelectRoute} />
+            <Match pattern='/slider' component={SliderRoute} />
+            <Match pattern='/snackbar' component={SnackbarRoute} />
+            <Match pattern='/sparkline' component={SparklineRoute} />
+            <Match pattern='/switch' component={SwitchRoute} />
+            <Match pattern='/tabs' component={TabsRoute} />
+            <Match pattern='/textfield' component={TextfieldRoute} />
+            <Match pattern='/tooltip' component={TooltipRoute} />
+          </main>
+        </div>
+      </HashRouter>
     )
   }
+
 }
 
-class Spain extends React.Component {
-  render () {
-    return (
-      <div>
-        Spain
-      </div>
-    )
-  }
-}
-
-class Sweden extends React.Component {
-  render () {
-    return (
-      <div>
-        Sweden
-      </div>
-    )
-  }
-}
-
-ReactDOM.render((
-  <Router history={hashHistory}>
-    <Route path='/' component={App}>
-      <IndexRoute component={HomeRoute} />
-      <Route path='button' component={ButtonRoute} />
-      <Route path='card' component={CardRoute} />
-      <Route path='checkbox' component={CheckboxRoute} />
-      <Route path='chip' component={ChipRoute} />
-      <Route path='icon' component={IconRoute} />
-      <Route path='list' component={ListRoute} />
-      <Route path='menu' component={MenuRoute} />
-      <Route path='modal' component={ModalRoute} />
-      <Route path='progress' component={ProgressRoute} />
-      <Route path='radiobutton' component={RadiobuttonRoute} />
-      <Route path='select' component={SelectRoute} />
-      <Route path='slider' component={SliderRoute} />
-      <Route path='snackbar' component={SnackbarRoute} />
-      <Route path='sparkline' component={SparklineRoute} />
-      <Route path='switch' component={SwitchRoute} />
-      <Route path='/tabs' component={TabsRoute}>
-        <Route path='germany' component={Germany} />
-        <Route path='spain' component={Spain} />
-        <Route path='sweden' component={Sweden} />
-      </Route>
-      <Route path='textfield' component={TextfieldRoute} />
-      <Route path='tooltip' component={TooltipRoute} />
-    </Route>
-  </Router>
-), document.getElementById('react'))
+ReactDOM.render(<App />, document.getElementById('react'))
+// <main className={this.props.location.pathname.substr(1) || 'home'} >

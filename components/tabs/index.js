@@ -1,17 +1,18 @@
 
 import React from 'react'
-import {Link, withRouter} from 'react-router'
+import {Link} from 'react-router'
 
 /**
  * Tabs component
  */
-class Tabs extends React.Component {
+export default class Tabs extends React.Component {
 
   /**
    * Property types
    */
   static propTypes = {
-    tabs: React.PropTypes.array
+    tabs: React.PropTypes.array,
+    location: React.PropTypes.object
   }
 
   /**
@@ -22,7 +23,7 @@ class Tabs extends React.Component {
   }
 
   state = {
-    index: 0,
+    index: -1,
     direction: ''
   }
 
@@ -41,9 +42,20 @@ class Tabs extends React.Component {
    * Component did mount
    */
   componentDidMount () {
-    var activeRouteIndex = 0
-    this.props.tabs.forEach((tab, index) => {
-      if (this.props.router.isActive(tab.href)) {
+    this.setInkBarPosition(this.props)
+  }
+
+  /**
+   * Make sure ink bar is removed when no active tab is found anymore.
+   */
+  componentWillReceiveProps (nextProps) {
+    this.setInkBarPosition(nextProps)
+  }
+
+  setInkBarPosition = (props) => {
+    var activeRouteIndex = -1
+    props.tabs.forEach((tab, index) => {
+      if (props.location.pathname === tab.href) {
         activeRouteIndex = index
       }
     })
@@ -68,22 +80,25 @@ class Tabs extends React.Component {
             activeClassName='active'
             to={tab.href}
             className='Tabs-Item'
-            onClick={this.onClick.bind(this, index)}
+            onClick={() => this.onClick(index)}
           >
             {tab.text}
           </Link>
         )}
-        <div
-          className={`Tabs-InkBar transition-${this.state.direction}`}
-          style={{
-            left: `${left}%`,
-            right: `${right}%`
-          }}
-        />
+        {this.state.index === -1
+          ? null
+          : (
+            <div
+              className={`Tabs-InkBar transition-${this.state.direction}`}
+              style={{
+                left: `${left}%`,
+                right: `${right}%`
+              }}
+            />
+          )
+        }
       </div>
     )
   }
 
 }
-
-export default withRouter(Tabs)
