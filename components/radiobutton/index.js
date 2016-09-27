@@ -17,7 +17,9 @@ class RadioButton extends React.Component {
         this.props.onChange(e.target.value)
       }
     }
-    this.setState({kbPressed: true})
+    if (!this.state.kbPressed) {
+      this.setState({kbPressed: e.shiftKey ? 'shift' : true})
+    }
   }
 
   resetKbPressed = () => {
@@ -25,9 +27,13 @@ class RadioButton extends React.Component {
   }
 
   render () {
+    // state handling & event handlers are necessary to mimic
+    // native radio behaviour, which requires differentiating between
+    // focus by keyboard and focus by mouse/touch interaction.
     const {name, selectedValue, items, onChange} = this.props
     const {kbPressed} = this.state
-    const focusFirst = kbPressed && items.indexOf(selectedValue) < 0
+    const shouldFocus = kbPressed && items.indexOf(selectedValue) < 0
+    const focusIndex = kbPressed === 'shift' ? items.length - 1 : 0
     return (
       <div className={classNames('RadioButton', {'RadioButton--keyboard': kbPressed})}
         onKeyUp={this.setKbPressed}
@@ -37,7 +43,9 @@ class RadioButton extends React.Component {
         {items.map((item, index) => {
           var checked = item.toLowerCase() === selectedValue.toLowerCase()
           return (
-            <label key={index} className={classNames('RadioButton-item', {'RadioButton-item--keyboard': index === 0 && focusFirst})}>
+            <label key={index}
+              className={classNames('RadioButton-item', {'RadioButton-item--keyboard': index === focusIndex && shouldFocus})}
+              >
               <input
                 checked={checked}
                 className='RadioButton-input'
