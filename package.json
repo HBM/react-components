@@ -79,9 +79,6 @@
     "uglifyjs": "^2.4.10",
     "watchify": "^3.7.0"
   },
-  "peerDependencies": {
-    "react-router": ">=2.6.1"
-  },
   "dependencies": {
     "attr-accept": "^1.0.3",
     "classnames": "^2.2.4",
