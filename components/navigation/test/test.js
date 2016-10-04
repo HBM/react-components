@@ -21,7 +21,10 @@ describe('Navigation', () => {
       assert.equal(link.text, 'one')
       done()
     }
-    mount(<Navigation links={items} onChange={onChange} />)
+    const location = {
+      pathname: 'one'
+    }
+    mount(<Navigation location={location} links={items} onChange={onChange} />)
   })
 
   it('should have state.visible === false initially', () => {
