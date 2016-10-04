@@ -11,7 +11,7 @@ describe('Navigation', () => {
     assert(wrapper.find('nav'))
   })
 
-  it('should propagate changes up to its parent component on mount', (done) => {
+  it.skip('should propagate changes up to its parent component on mount', (done) => {
     var items = [
       {text: 'one', link: 'one'},
       {text: 'two', link: 'two'}

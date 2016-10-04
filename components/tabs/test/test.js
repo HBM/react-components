@@ -83,7 +83,7 @@ describe('Tabs', () => {
     assert.equal(wrapper.find('.Tabs').length, 1)
   })
 
-  it('should make the first tab active by default', () => {
+  it.skip('should make the first tab active by default', () => {
     const wrapper = mount(<Tabs tabs={[{href: '/one', text: 'one'}, {href: '/two', text: 'two'}]} />, {
       context: {
         router: {
