@@ -25,8 +25,9 @@ const Textfield = ({
   const isValueEmpty = value === undefined || value === ''
   const isDefaultValueEmpty = defaultValue === undefined || defaultValue === ''
   const empty = isValueEmpty && isDefaultValueEmpty
-  const calcLength = (empty ? 0 : (!isDefaultValueEmpty ? defaultValue.length : value.length))
-  const isLength = calcLength > length
+  const identifyValueLength = !isDefaultValueEmpty ? defaultValue.length : value.length
+  const valueLength = empty ? 0 : identifyValueLength
+  const showCounter = valueLength > length
   return (
     <label className={classnames('Textfield', {'Textfield--nolabel': !label})} >
       <div className='Textfield-icon-wrapper'>
@@ -42,7 +43,7 @@ const Textfield = ({
             autoCorrect={autoCorrect}
             autoFocus={autoFocus}
             className={classnames('Textfield-input', {
-              'Textfield-input--error': (error || isLength)
+              'Textfield-input--error': (error || showCounter)
             })}
             defaultValue={defaultValue}
             disabled={disabled}
@@ -57,7 +58,7 @@ const Textfield = ({
           <span
             className={classnames('Textfield-label',
               {'Textfield-label--floatup': (!float || !empty)},
-              {'Textfield-error': isLength})}
+              {'Textfield-error': showCounter})}
           >
             {label}
           </span>
@@ -66,7 +67,7 @@ const Textfield = ({
             {
               length
               ? <span className={classnames('Textfield-char-counter', {
-                'Textfield-error': isLength})}>{calcLength} / {length}</span>
+                'Textfield-error': showCounter})}>{valueLength} / {length}</span>
               : null
             }
           </div>
