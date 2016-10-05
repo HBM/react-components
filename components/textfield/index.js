@@ -19,11 +19,20 @@ const Textfield = ({
   readOnly,
   spellCheck,
   type,
-  value
+  value,
+  length
 }) => {
   const isValueEmpty = value === undefined || value === ''
   const isDefaultValueEmpty = defaultValue === undefined || defaultValue === ''
   const empty = isValueEmpty && isDefaultValueEmpty
+  let valueLength = 0
+  if (!isDefaultValueEmpty) {
+    valueLength = defaultValue.length
+  }
+  if (!isValueEmpty) {
+    valueLength = value.length
+  }
+  const showCounter = valueLength > length
   return (
     <label className={classnames('Textfield', {'Textfield--nolabel': !label})} >
       <div className='Textfield-icon-wrapper'>
@@ -39,7 +48,7 @@ const Textfield = ({
             autoCorrect={autoCorrect}
             autoFocus={autoFocus}
             className={classnames('Textfield-input', {
-              'Textfield-input--error': error
+              'Textfield-input--error': (error || showCounter)
             })}
             defaultValue={defaultValue}
             disabled={disabled}
@@ -52,13 +61,21 @@ const Textfield = ({
             value={value}
           />
           <span
-            className={classnames('Textfield-label', {
-              'Textfield-label--floatup': (!float || !empty)
-            })}
+            className={classnames('Textfield-label',
+              {'Textfield-label--floatup': (!float || !empty)},
+              {'Textfield-error': showCounter})}
           >
             {label}
           </span>
-          <span className='Textfield-error'>{error}</span>
+          <div className='Textfield-states'>
+            <span className='Textfield-error'>{error}</span>
+            {
+              length
+              ? <span className={classnames('Textfield-char-counter', {
+                'Textfield-error': showCounter})}>{valueLength} / {length}</span>
+              : null
+            }
+          </div>
         </div>
       </div>
     </label>
@@ -87,6 +104,7 @@ Textfield.propTypes = {
     React.PropTypes.string,
     React.PropTypes.number
   ]),
+  length: React.PropTypes.number,
   defaultValue: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.number
