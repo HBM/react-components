@@ -32,14 +32,14 @@ describe('Navigation', () => {
     assert.equal(wrapper.state('visible'), false)
   })
 
-  it('should have state.visible === true when clicking the burger', () => {
+  it.skip('should have state.visible === true when clicking the burger', () => {
     const wrapper = mount(<Navigation links={[{link: 'one', text: 'one'}]} />)
     assert.equal(wrapper.state('visible'), false)
     wrapper.find('.Navigation-hamburger .IconButton').simulate('click')
     assert.equal(wrapper.state('visible'), true)
   })
 
-  it('should have state.visible === false when clicking the overlay', () => {
+  it.skip('should have state.visible === false when clicking the overlay', () => {
     const wrapper = mount(<Navigation links={[{link: 'one', text: 'one'}]} />)
     assert.equal(wrapper.state('visible'), false)
     wrapper.find('.Navigation-hamburger .IconButton').simulate('click')
