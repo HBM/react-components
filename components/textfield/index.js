@@ -68,15 +68,15 @@ const Textfield = ({
             {label}
           </span>
           <div className='Textfield-states'>
-          <span className='Textfield-error'>{error}</span>
+            <span className='Textfield-error'>{error}</span>
             {
               length
               ? <span className={classnames('Textfield-char-counter', {
                 'Textfield-error': showCounter})}>{valueLength} / {length}</span>
               : null
             }
+          </div>
         </div>
-      </div>
       </div>
     </label>
   )
