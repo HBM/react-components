@@ -71,7 +71,8 @@ $error-color: rgb(244, 67, 54);
   border-bottom: 1px solid $black-012;
   transition: $transition-duration;
   padding: 0;
-  height: 20px;
+  line-height: 22px;
+  min-height: 20px;
   box-sizing: content-box;
   padding-bottom: 8px;
   margin-bottom: 8px;
@@ -113,7 +114,7 @@ $error-color: rgb(244, 67, 54);
   color: rgba($blue-dark, 0.6);
 }
 
-.Textfield-input:focus ~ .Textfield-label {
+.Textfield-input:focus ~ .Textfield-label:not(.Textfield-error) {
   color: $blue-dark;
 }
 
@@ -123,11 +124,20 @@ $error-color: rgb(244, 67, 54);
   border-bottom: 1px dotted rgba($blue-dark, 0.3);
 }
 
-.Textfield-error {
+.Textfield-char-counter {
+  color: rgba($blue-dark, 0.6);
+}
+
+.Textfield-states {
   order: 3;
-  display: block;
-  margin-top: 6px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
   font-size: $font-small;
-  color: $error-color;
+  margin-top: 6px;
   min-height: 16px;
+}
+
+.Textfield-error {
+  color: $error-color;
 }

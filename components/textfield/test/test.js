@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import React from 'react'
-import Textfield from '../'
+import {Textfield, TextfieldMultiline} from '../'
 import {mount} from 'enzyme'
 
 describe('Textfield', () => {
@@ -19,6 +19,11 @@ describe('Textfield', () => {
   it('should be able to set a custom label', () => {
     const wrapper = mount(<Textfield label='my custom label' />)
     assert.equal(wrapper.find('label').text(), 'my custom label')
+  })
+
+  it('should be able to set a custom icon', () => {
+    const wrapper = mount(<Textfield icon={<span>ICON</span>} />)
+    assert.equal(wrapper.find('.Textfield-icon').text(), 'ICON')
   })
 
   it('should not show label floated up when value is empty', () => {
@@ -81,3 +86,31 @@ describe('Textfield', () => {
     assert.equal(wrapper.find('.Textfield-input').node.type, 'password')
   })
 })
+
+describe('TextfieldMultiline', () => {
+  it('should be empty by default', () => {
+    const wrapper = mount(<TextfieldMultiline />)
+    assert.equal(wrapper.find('.Textfield-input').node.value, '')
+  })
+
+  it('should render value as text content of textarea', () => {
+    const wrapper = mount(<TextfieldMultiline value='foo bar' onChange={() => {}} />)
+    assert.equal(wrapper.find('textarea').node.textContent, 'foo bar')
+  })
+
+  it('should have style resize default to "none"', () => {
+    const wrapper = mount(<TextfieldMultiline />)
+    assert.equal(wrapper.find('textarea').node.style.resize, 'none')
+  })
+
+  it('should accept resizable attribute and set style resize to "vertical"', () => {
+    const wrapper = mount(<TextfieldMultiline resizable />)
+    assert.equal(wrapper.find('textarea').node.style.resize, 'vertical')
+  })
+
+  it('should autoset rows based on newlines in "value" + 1', () => {
+    const wrapper = mount(<TextfieldMultiline value={'foo\nbar'} onChange={() => {}} />)
+    assert.equal(wrapper.find('textarea').node.rows, 2)
+  })
+})
+
