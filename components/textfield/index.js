@@ -191,6 +191,7 @@ TextfieldMultiline.propTypes = {
   float: React.PropTypes.bool,
   icon: React.PropTypes.element,
   label: React.PropTypes.string,
+  length: React.PropTypes.number,
   name: React.PropTypes.string,
   onChange: React.PropTypes.func,
   readOnly: React.PropTypes.bool,
