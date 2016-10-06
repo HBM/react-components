@@ -195,6 +195,36 @@ const textfieldNonfloatingLabelComponent =
 
 ReactDOM.render(<App />, mountNode)`
 
+const textfieldWithErrorMessageComponentCharacterCounter =
+`class App extends React.Component {
+
+  state = {
+    name: 'peter'
+  }
+
+  onChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  render() {
+    return (
+      <Textfield
+        label='Name'
+        name='name'
+        value={this.state.name}
+        onChange={this.onChange}
+        error={!this.state.name.match(/^[A-Z]/) && 'The name must start with capital letter.'}
+        length={10}
+      />
+    )
+  }
+
+}
+
+ReactDOM.render(<App />, mountNode)`
+
 export default class TextfieldRoute extends React.Component {
 
   render () {
@@ -241,6 +271,15 @@ export default class TextfieldRoute extends React.Component {
           <h2>Textfield with error message</h2>
           <Playground
             codeText={textfieldWithErrorMessageComponent}
+            scope={{React, ReactDOM, Textfield}}
+            noRender={false}
+            collapsableCode
+          />
+        </section>
+        <section>
+          <h2>Textfield with error message and using character counter</h2>
+          <Playground
+            codeText={textfieldWithErrorMessageComponentCharacterCounter}
             scope={{React, ReactDOM, Textfield}}
             noRender={false}
             collapsableCode

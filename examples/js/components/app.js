@@ -38,6 +38,7 @@ class App extends React.Component {
       {text: 'Switch', link: '/switch'},
       {text: 'Tabs', link: '/tabs'},
       {text: 'Textfield', link: '/textfield'},
+      {text: 'Textfield Multiline', link: '/textfieldmultiline'},
       {text: 'Tooltip', link: '/tooltip'}
     ]
 
