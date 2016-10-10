@@ -2,6 +2,7 @@
 
 import assert from 'assert'
 import React from 'react'
+import {LocationBroadcast} from 'react-router/locationBroadcast'
 import Tabs from '../'
 import {mount} from 'enzyme'
 
@@ -83,21 +84,13 @@ describe('Tabs', () => {
     assert.equal(wrapper.find('.Tabs').length, 1)
   })
 
-  it.skip('should make the first tab active by default', () => {
-    const wrapper = mount(<Tabs tabs={[{href: '/one', text: 'one'}, {href: '/two', text: 'two'}]} />, {
-      context: {
-        router: {
-          push: () => {},
-          replace: () => {},
-          go: () => {},
-          goBack: () => {},
-          goForward: () => {},
-          setRouteLeaveHook: () => {},
-          createHref: () => {},
-          isActive: (link) => link === '/one'
-        }
-      }
-    })
+  it('should make the first tab active by default', () => {
+    const location = { pathname: '/one', search: '', hash: '' }
+    const wrapper = mount(
+      <LocationBroadcast value={location}>
+        <Tabs tabs={[{href: '/one', text: 'one'}, {href: '/two', text: 'two'}]} location={location} />
+      </LocationBroadcast>
+      )
     assert(wrapper.find('.Tabs-Item').at(0).hasClass('active'))
   })
 
