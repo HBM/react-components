@@ -1,34 +1,35 @@
 
 .Upload {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	height: 100%;
-	border: 2px dashed #888888;
-	margin: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  border: 2px dashed #888;
+  margin: 16px;
 }
 
 .Upload.is-over-window {
-	border-style: dashed;
+  border-style: dashed;
 }
 
 .Upload.is-over-dropzone {
-	background-color: steelblue;
+  background-color: steelblue;
 }
 
 .Upload.is-disabled {
-	cursor: auto;
-	border-color: lightgrey;
+  cursor: auto;
+  border-color: lightgrey;
 }
 
 .Upload-fileInput {
-	display: none;
+  display: none;
 }
 
 // set pointer-events to none to prevent firing drag leave event
 // when dragging over child elements inside drop zone
-.Upload-textAfter, .Upload-textBefore {
-	pointer-events: none;
-	margin: 16px;
+.Upload-textAfter,
+.Upload-textBefore {
+  pointer-events: none;
+  margin: 16px;
 }

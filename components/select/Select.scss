@@ -6,6 +6,7 @@
   justify-content: space-between;
   position: relative;
   font-size: 16px;
+
   /**
    * align text horizontally with textfields / text inputs
    */
@@ -15,8 +16,8 @@
 
 .Select-label {
   font-size: 12px;
-  padding: 0 0 8px 0;
-  color: rgba($blue-dark, 0.6)
+  padding: 0 0 8px;
+  color: rgba($blue-dark, 0.6);
 }
 
 /**
@@ -54,7 +55,6 @@
  */
 .Select-list {
   margin: 0;
-  padding: 0;
   z-index: 1;
   position: absolute;
   left: -16px;
@@ -62,8 +62,9 @@
   background: #fff;
   padding: 8px 0;
   border-radius: 2px;
-  box-shadow: 0 2px 40px rgba(0, 0, 0, .4);
+  box-shadow: 0 2px 40px rgba(0, 0, 0, 0.4);
   overflow-y: auto;
+
   /**
    * max-height is equal to 5 elements + margin top and margin bottom
    */

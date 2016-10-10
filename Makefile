@@ -5,6 +5,11 @@ WATCHIFY = $(BIN_DIR)/watchify
 SASS = $(BIN_DIR)/node-sass
 MOCHA = $(BIN_DIR)/_mocha
 ISTANBUL = $(BIN_DIR)/istanbul
+STYLELINT = $(BIN_DIR)/stylelint
+
+.PHONY: stylelint
+stylelint:
+	$(STYLELINT) css/*.scss components/**/*.scss
 
 .PHONY: standard
 standard:
@@ -30,4 +35,4 @@ serve:
 
 .PHONY: test
 test:
-	$(STANDARD) && $(ISTANBUL) cover $(MOCHA) test/.setup.js components/**/test/test.js
+	$(STANDARD) && $(STYLELINT) && $(ISTANBUL) cover $(MOCHA) test/.setup.js components/**/test/test.js

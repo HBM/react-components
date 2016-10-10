@@ -26,7 +26,8 @@
   cursor: default;
 }
 
-.Chip:focus, .Chip:hover {
+.Chip:focus,
+.Chip:hover {
   color: #fff;
   background-color: rgba(0, 0, 0, 0.54);
   outline: none;
@@ -44,7 +45,8 @@
   fill: rgba(0, 0, 0, 0.26);
 }
 
-.Chip:focus svg, .Chip:hover svg {
+.Chip:focus svg,
+.Chip:hover svg {
   fill: #fff;
 }
 

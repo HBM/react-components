@@ -32,8 +32,6 @@
   color: rgba(0, 0, 0, 0.54);
 }
 
-
-
 /**
  * checked
  */
@@ -42,8 +40,6 @@
   color: $blue-dark;
   fill: $blue-dark;
 }
-
-
 
 /**
  * disabled
@@ -54,13 +50,12 @@
   color: rgba(0, 0, 0, 0.26);
 }
 
-
-
 /**
  * focus
  */
 .Checkbox-focus {
   position: absolute;
+
   /* 48px - 18px = 30px / 2 = 15px */
   top: 15px;
   left: 13px;

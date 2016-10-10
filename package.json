@@ -6,6 +6,7 @@
   "scripts": {
     "test": "make test",
     "selenium": "mocha --timeout 60000 test/e2e/selenium.js",
+    "build:stylelint": "stylelint css/*.scss components/**/*.scss",
     "build:examples:all": "npm run build:examples:clear && npm run build:examples:style && npm run build:examples:js",
     "build:examples:clear": "rimraf examples/js/script.min.js examples/css/styles.min.css",
     "build:examples:js": "standard && NODE_ENV=production browserify examples/js/script.js --transform [ babelify --presets [ es2015 react stage-0 ] ] | uglifyjs --compress --mangle > examples/js/script.min.js 2>/dev/null",
@@ -75,6 +76,8 @@
     "selenium-webdriver": "^3.0.0-beta-2",
     "st": "^1.2.0",
     "standard": "^7.0.1",
+    "stylelint": "^7.3.1",
+    "stylelint-config-standard": "^13.0.2",
     "tarball-extract": "0.0.3",
     "uglifyjs": "^2.4.10",
     "watchify": "^3.7.0"

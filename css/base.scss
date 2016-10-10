@@ -5,8 +5,6 @@
 @import "normalize";
 @import "mixins";
 
-
-
 /**
  * Fonts
  */
@@ -23,7 +21,6 @@
   font-style: normal;
   font-weight: 300;
 }
-
 
 @font-face {
   font-family: 'Roboto';
@@ -46,8 +43,6 @@
   font-weight: 700;
 }
 
-
-
 /**
  * Variables
  */
@@ -65,8 +60,6 @@ $tabs-transition-delay: 0.075s;
 $tabs-transition-function: cubic-bezier(0.35, 0, 0.25, 1);
 
 $navigation-width: 240px;
-
-
 
 /**
  * Scaffolding
@@ -89,7 +82,7 @@ html {
   // Sets a specific default `font-size` for user with `rem` type scales.
   // font-size: $font-size-root;
   // Changes the default tap highlight to be completely transparent in iOS.
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 body {
@@ -105,25 +98,18 @@ body {
   @include medium {
     padding-top: 64px;
   }
-
 }
 
 main {
   flex: 1;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 2px;
-  padding-bottom: 10px;
+  padding: 2px 10px 10px;
   font-size: 13px;
 
   @include medium {
     /**
      * Cards have a margin of 8px => left = 40px and top = 20px
      */
-    padding-right: 0;
-    padding-left: 0;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 20px 0;
     width: $wrapper-medium;
     margin-left: auto;
     margin-right: auto;

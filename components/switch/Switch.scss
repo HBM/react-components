@@ -4,7 +4,7 @@
  */
 $thumb-on: $blue-dark;
 $thumb-off: #fafafa;
-$thumb-disabled: #BDBDBD;
+$thumb-disabled: #bdbdbd;
 $thumb-size: 20px;
 
 $track-on: rgba($blue-dark, 0.5);
@@ -46,11 +46,9 @@ $transition-function: ease;
   height: $thumb-size;
   border-radius: 50%;
   background: $thumb-off;
-  box-shadow: 0px 2px 5px 0 rgba(0, 0, 0, 0.26);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
   transition: $transition-duration $transition-function;
 }
-
-
 
 /**
  * focus
@@ -63,12 +61,9 @@ $transition-function: ease;
   box-shadow: 0 0 0 15px rgba(0, 0, 0, 0.12);
 }
 
-
-
 /**
  * checked
  */
-
 .Switch-input:checked ~ .Switch-track {
   background: $track-on;
 }
@@ -77,8 +72,6 @@ $transition-function: ease;
   left: $track-width - $thumb-size;
   background: $thumb-on;
 }
-
-
 
 /**
  * disabled

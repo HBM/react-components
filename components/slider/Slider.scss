@@ -34,14 +34,6 @@
   background: $blue-dark;
 }
 
-/*.Slider-input:focus ~ .Slider-track .Slider-thumb {
-  animation: click-jump 0.5s ease;
-}*/
-
-/*.Slider-track-on.is-animating {
-  transition: width 0.5s ease;
-}*/
-
 .Slider-thumb {
   pointer-events: none;
   position: absolute;
@@ -55,34 +47,13 @@
 
 .Slider-thumb.is-mouseDown {
   transition: left 0.5s;
-  /*transform: scale(1.25);
-  animation: click-jump 0.5s;*/
 }
-
-/*.Slider-thumb.is-clicking {
-  transform: scale(1.25);
-  transition: left 0.5s ease;
-  animation: click-jump 0.5s ease;
-}*/
 
 .Slider-thumb.is-zero {
   transition: border 0.5s, background 0.5s;
   background: #fff;
   border-color: rgba(0, 0, 0, 0.26);
 }
-
-/*.Slider-thumb.is-dragging {
-  transform: scale(1.25);
-}*/
-
-/*.Slider-thumb.is-click-jumping.is-zero {
-  transition: left 0.5s, background 0.25s 0.25s, border 0.25s 0.25s;
-  background: #fff;
-  border-color: rgba(0, 0, 0, 0.26);
-  animation: click-jump 0.5s ease;
-}*/
-
-
 
 @keyframes click-jump {
   0% {

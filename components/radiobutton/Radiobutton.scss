@@ -36,7 +36,8 @@
   transition: all 0.15s ease;
 }
 
-.RadioButton--keyboard .RadioButton-input:checked ~ .RadioButton-icon, .RadioButton-item--keyboard .RadioButton-icon {
+.RadioButton--keyboard .RadioButton-input:checked ~ .RadioButton-icon,
+.RadioButton-item--keyboard .RadioButton-icon {
   box-shadow: 0 0 0 8px rgba(27, 50, 95, 0.12);
   border-radius: 100%;
   background-color: rgba(27, 50, 95, 0.12);
@@ -50,8 +51,6 @@
   color: $blue-dark;
   fill: $blue-dark;
 }
-
-
 
 /**
  * disabled

@@ -29,6 +29,7 @@ nav {
 nav.is-visible {
   visibility: visible;
   transform: translateX(0);
+
   /**
    * Show overlay first and then slide in navigation
    */
@@ -50,7 +51,7 @@ nav.is-visible {
   list-style: none;
   margin: 0;
   padding: 0;
-  padding: 12px 0 10px 0;
+  padding: 12px 0 10px;
 }
 
 .Navigation-link {
@@ -84,7 +85,6 @@ nav.is-visible {
   @include xlarge {
     display: none;
   }
-
 }
 
 .Navigation-overlay {
