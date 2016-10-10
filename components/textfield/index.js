@@ -137,7 +137,7 @@ Textfield.defaultProps = {
   type: 'text'
 }
 
-export class TextfieldMultiline extends React.Component {
+export class Textarea extends React.Component {
 
   resize = ({target}) => {
     const borderBottomHeight = 1
@@ -203,7 +203,7 @@ export class TextfieldMultiline extends React.Component {
   }
 }
 
-TextfieldMultiline.propTypes = {
+Textarea.propTypes = {
   autoFocus: React.PropTypes.bool,
   defaultValue: React.PropTypes.oneOfType([
     React.PropTypes.string,
@@ -231,7 +231,7 @@ TextfieldMultiline.propTypes = {
   ])
 }
 
-TextfieldMultiline.defaultProps = {
+Textarea.defaultProps = {
   autoFocus: false,
   disabled: false,
   float: true,

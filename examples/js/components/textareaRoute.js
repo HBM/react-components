@@ -1,13 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Playground from 'component-playground'
-import {TextfieldMultiline, Icon} from '../../../'
+import {Textarea, Icon} from '../../../'
 
 const textareaComponent =
 `<textarea
 />`
 
-const textfieldMultiline =
+const textarea =
 `class App extends React.Component {
 
   state = {
@@ -22,7 +22,7 @@ const textfieldMultiline =
 
   render() {
     return (
-      <TextfieldMultiline
+      <Textarea
         label='Enter multiline text'
         name='multiline'
         value={this.state.multiline}
@@ -37,7 +37,7 @@ const textfieldMultiline =
 
 ReactDOM.render(<App />, mountNode)`
 
-const textfieldMultilineWithPlaceholderAndIconComponent =
+const textareaWithPlaceholderAndIconComponent =
 `class App extends React.Component {
 
   state = {
@@ -53,7 +53,7 @@ const textfieldMultilineWithPlaceholderAndIconComponent =
   render() {
     const story = this.state.story
     return (
-      <TextfieldMultiline 
+      <Textarea 
         name='story'
         label='Your Story'
         placeholder='Once upon a time...'
@@ -74,20 +74,20 @@ export default class TextfieldRoute extends React.Component {
     return (
       <div>
         <section>
-          <h2>TextfieldMultiline with Label</h2>
+          <h2>Textarea with Label</h2>
           <Playground
-            docClass={TextfieldMultiline}
-            codeText={textfieldMultiline}
-            scope={{React, ReactDOM, TextfieldMultiline}}
+            docClass={Textarea}
+            codeText={textarea}
+            scope={{React, ReactDOM, Textarea}}
             noRender={false}
             collapsableCode
           />
         </section>
         <section>
-          <h2>TextfieldMultiline with placeholder, icon and label</h2>
+          <h2>Textarea with placeholder, icon and label</h2>
           <Playground
-            codeText={textfieldMultilineWithPlaceholderAndIconComponent}
-            scope={{React, ReactDOM, TextfieldMultiline, Icon}}
+            codeText={textareaWithPlaceholderAndIconComponent}
+            scope={{React, ReactDOM, Textarea, Icon}}
             noRender={false}
             collapsableCode
           />
