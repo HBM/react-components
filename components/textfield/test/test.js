@@ -108,9 +108,65 @@ describe('TextfieldMultiline', () => {
     assert.equal(wrapper.find('textarea').node.style.resize, 'vertical')
   })
 
-  it('should autoset rows based on newlines in "value" + 1', () => {
-    const wrapper = mount(<TextfieldMultiline value={'foo\nbar'} onChange={() => {}} />)
+  it('should default rows = 2', () => {
+    const wrapper = mount(<TextfieldMultiline value={'foo'} onChange={() => {}} />)
     assert.equal(wrapper.find('textarea').node.rows, 2)
+  })
+
+  it('should allow seting rows', () => {
+    const wrapper = mount(<TextfieldMultiline value={'foo'} rows={1} onChange={() => {}} />)
+    assert.equal(wrapper.find('textarea').node.rows, 1)
+  })
+
+  it('should resize', () => {
+    let target = {
+      style: {
+        height: '30px'
+      },
+      scrollHeight: 60
+    }
+    const getComputedStyle = () => {
+      return {
+        'line-height': '22px'
+      }
+    }
+    const wrapper = mount(<TextfieldMultiline value={'foo\nbar'} onChange={() => {}} getComputedStyle={getComputedStyle} />)
+    wrapper.find('textarea').simulate('input', {target})
+    assert.equal(target.style.height, '61px') // 1px border
+  })
+
+  it('should resize with height < maxRows', () => {
+    let target = {
+      style: {
+        height: '30px'
+      },
+      scrollHeight: 60
+    }
+    const getComputedStyle = () => {
+      return {
+        'line-height': '22px'
+      }
+    }
+    const wrapper = mount(<TextfieldMultiline value={'foo\nbar'} onChange={() => {}} maxRows={3} getComputedStyle={getComputedStyle} />)
+    wrapper.find('textarea').simulate('input', {target})
+    assert.equal(target.style.height, '61px') // 1px border
+  })
+
+  it('should not resize with height > maxRows', () => {
+    let target = {
+      style: {
+        height: '30px'
+      },
+      scrollHeight: 90
+    }
+    const getComputedStyle = () => {
+      return {
+        'line-height': '22px'
+      }
+    }
+    const wrapper = mount(<TextfieldMultiline value={'foo\nbar'} onChange={() => {}} maxRows={3} getComputedStyle={getComputedStyle} />)
+    wrapper.find('textarea').simulate('input', {target})
+    assert.equal(target.style.height, '30px')
   })
 })
 

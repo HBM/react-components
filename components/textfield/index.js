@@ -1,4 +1,4 @@
-
+/* globals getComputedStyle */
 import React from 'react'
 import classnames from 'classnames'
 
@@ -137,44 +137,70 @@ Textfield.defaultProps = {
   type: 'text'
 }
 
-export const TextfieldMultiline = ({
-  autoFocus,
-  defaultValue,
-  disabled,
-  error,
-  float,
-  icon,
-  label,
-  length,
-  name,
-  onChange,
-  placeholder,
-  readOnly,
-  resizable,
-  spellCheck,
-  value
-}) => {
-  const newlines = (value || defaultValue || '').match(/\n/g)
-  return (
-    <TextfieldWrapper defaultValue={defaultValue} error={error} float={float} icon={icon} label={label} value={value} length={length}>
-      <textarea
-        autoFocus={autoFocus}
-        className={classnames('Textfield-input', {
-          'Textfield-input--error': error
-        })}
-        defaultValue={defaultValue}
-        disabled={disabled}
-        name={name}
-        onChange={onChange}
-        placeholder={placeholder}
-        readOnly={readOnly}
-        style={{resize: resizable ? 'vertical' : 'none'}}
-        rows={(newlines ? newlines.length : 0) + 1}
-        spellCheck={spellCheck}
-        value={value}
-      />
-    </TextfieldWrapper>
-  )
+export class TextfieldMultiline extends React.Component {
+
+  resize = ({target}) => {
+    const borderBottomHeight = 1
+    const prevHeight = target.style.height
+    // temporarily reset to auto to force re-calc of target.scrollHeight for shrinken input ("deleting text")
+    target.style.height = 'auto'
+    const newHeight = target.scrollHeight + borderBottomHeight
+    if (this.props.maxRows) {
+      const _getComputedStyle = this.props.getComputedStyle || getComputedStyle
+      // relies on the line-height css style to be given in px
+      const maxHeight = (this.props.maxRows + 1) * _getComputedStyle(target)['line-height'].split('px')[0]
+      if (newHeight < maxHeight) {
+        target.style.height = `${newHeight}px`
+      } else {
+        target.style.height = prevHeight
+      }
+    } else {
+      target.style.height = `${newHeight}px`
+    }
+  }
+
+  render () {
+    const {
+      autoFocus,
+      defaultValue,
+      disabled,
+      error,
+      float,
+      icon,
+      label,
+      length,
+      name,
+      onChange,
+      placeholder,
+      readOnly,
+      resizable,
+      rows,
+      spellCheck,
+      value
+    } = this.props
+
+    return (
+      <TextfieldWrapper defaultValue={defaultValue} error={error} float={float} icon={icon} label={label} value={value} length={length}>
+        <textarea
+          autoFocus={autoFocus}
+          className={classnames('Textfield-input', {
+            'Textfield-input--error': error
+          })}
+          defaultValue={defaultValue}
+          disabled={disabled}
+          name={name}
+          onChange={onChange}
+          onInput={this.resize}
+          placeholder={placeholder}
+          readOnly={readOnly}
+          rows={rows}
+          style={{resize: resizable ? 'vertical' : 'none', boxSizing: 'border-box', overflowY: 'hidden'}}
+          spellCheck={spellCheck}
+          value={value}
+        />
+      </TextfieldWrapper>
+    )
+  }
 }
 
 TextfieldMultiline.propTypes = {
@@ -192,10 +218,12 @@ TextfieldMultiline.propTypes = {
   icon: React.PropTypes.element,
   label: React.PropTypes.string,
   length: React.PropTypes.number,
+  maxRows: React.PropTypes.number,
   name: React.PropTypes.string,
   onChange: React.PropTypes.func,
   readOnly: React.PropTypes.bool,
   resizable: React.PropTypes.bool,
+  rows: React.PropTypes.number,
   spellCheck: React.PropTypes.bool,
   value: React.PropTypes.oneOfType([
     React.PropTypes.string,
@@ -208,5 +236,6 @@ TextfieldMultiline.defaultProps = {
   disabled: false,
   float: true,
   readOnly: false,
-  resizable: false
+  resizable: false,
+  rows: 2
 }
