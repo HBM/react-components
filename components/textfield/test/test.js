@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import React from 'react'
-import {Textfield, TextfieldMultiline} from '../'
+import {Textfield, Textarea} from '../'
 import {mount} from 'enzyme'
 
 describe('Textfield', () => {
@@ -87,34 +87,34 @@ describe('Textfield', () => {
   })
 })
 
-describe('TextfieldMultiline', () => {
+describe('Textarea', () => {
   it('should be empty by default', () => {
-    const wrapper = mount(<TextfieldMultiline />)
+    const wrapper = mount(<Textarea />)
     assert.equal(wrapper.find('.Textfield-input').node.value, '')
   })
 
   it('should render value as text content of textarea', () => {
-    const wrapper = mount(<TextfieldMultiline value='foo bar' onChange={() => {}} />)
+    const wrapper = mount(<Textarea value='foo bar' onChange={() => {}} />)
     assert.equal(wrapper.find('textarea').node.textContent, 'foo bar')
   })
 
   it('should have style resize default to "none"', () => {
-    const wrapper = mount(<TextfieldMultiline />)
+    const wrapper = mount(<Textarea />)
     assert.equal(wrapper.find('textarea').node.style.resize, 'none')
   })
 
   it('should accept resizable attribute and set style resize to "vertical"', () => {
-    const wrapper = mount(<TextfieldMultiline resizable />)
+    const wrapper = mount(<Textarea resizable />)
     assert.equal(wrapper.find('textarea').node.style.resize, 'vertical')
   })
 
   it('should default rows = 2', () => {
-    const wrapper = mount(<TextfieldMultiline value={'foo'} onChange={() => {}} />)
+    const wrapper = mount(<Textarea value={'foo'} onChange={() => {}} />)
     assert.equal(wrapper.find('textarea').node.rows, 2)
   })
 
   it('should allow seting rows', () => {
-    const wrapper = mount(<TextfieldMultiline value={'foo'} rows={1} onChange={() => {}} />)
+    const wrapper = mount(<Textarea value={'foo'} rows={1} onChange={() => {}} />)
     assert.equal(wrapper.find('textarea').node.rows, 1)
   })
 
@@ -130,7 +130,7 @@ describe('TextfieldMultiline', () => {
         'line-height': '22px'
       }
     }
-    const wrapper = mount(<TextfieldMultiline value={'foo\nbar'} onChange={() => {}} getComputedStyle={getComputedStyle} />)
+    const wrapper = mount(<Textarea value={'foo\nbar'} onChange={() => {}} getComputedStyle={getComputedStyle} />)
     wrapper.find('textarea').simulate('input', {target})
     assert.equal(target.style.height, '61px') // 1px border
   })
@@ -147,7 +147,7 @@ describe('TextfieldMultiline', () => {
         'line-height': '22px'
       }
     }
-    const wrapper = mount(<TextfieldMultiline value={'foo\nbar'} onChange={() => {}} maxRows={3} getComputedStyle={getComputedStyle} />)
+    const wrapper = mount(<Textarea value={'foo\nbar'} onChange={() => {}} maxRows={3} getComputedStyle={getComputedStyle} />)
     wrapper.find('textarea').simulate('input', {target})
     assert.equal(target.style.height, '61px') // 1px border
   })
@@ -164,7 +164,7 @@ describe('TextfieldMultiline', () => {
         'line-height': '22px'
       }
     }
-    const wrapper = mount(<TextfieldMultiline value={'foo\nbar'} onChange={() => {}} maxRows={3} getComputedStyle={getComputedStyle} />)
+    const wrapper = mount(<Textarea value={'foo\nbar'} onChange={() => {}} maxRows={3} getComputedStyle={getComputedStyle} />)
     wrapper.find('textarea').simulate('input', {target})
     assert.equal(target.style.height, '30px')
   })
