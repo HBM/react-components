@@ -20,6 +20,7 @@ import SparklineRoute from './components/sparklineRoute'
 import SwitchRoute from './components/switchRoute'
 import TabsRoute from './components/tabsRoute'
 import TextfieldRoute from './components/textfieldRoute'
+import TextareaRoute from './components/textareaRoute'
 import TooltipRoute from './components/tooltipRoute'
 
 import {
@@ -89,6 +90,7 @@ class App extends React.Component {
             <Match pattern='/switch' component={SwitchRoute} />
             <Match pattern='/tabs' component={TabsRoute} />
             <Match pattern='/textfield' component={TextfieldRoute} />
+            <Match pattern='/textarea' component={TextareaRoute} />
             <Match pattern='/tooltip' component={TooltipRoute} />
           </main>
         </div>
@@ -99,4 +101,3 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.getElementById('react'))
-// <main className={this.props.location.pathname.substr(1) || 'home'} >

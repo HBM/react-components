@@ -42,7 +42,8 @@ export function Menu ({items, children, visible, onClick, transformX, transformY
                       e.preventDefault()
                       onClick(item)
                     }}>
-                      {hasIcon &&
+                      {
+                        hasIcon &&
                         <div className='Menu-icon'>
                           {item.icon}
                         </div>

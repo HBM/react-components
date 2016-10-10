@@ -29,7 +29,8 @@ class Linear extends React.Component {
   render () {
     return (
       <Motion defaultStyle={{x: 0}} style={{x: spring(this.state.isDone ? 0 : 4)}}>
-        {(value) => value.x !== 0 &&
+        {
+          (value) => value.x !== 0 &&
           <div className='Progress-linear'>
             <div className='Progress-linear-background' style={{height: value.x}}>
               <div className='Progress-linear-inner' style={{width: `${this.props.percentage}%`}} />

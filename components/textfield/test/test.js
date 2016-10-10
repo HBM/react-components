@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import React from 'react'
-import Textfield from '../'
+import {Textfield, Textarea} from '../'
 import {mount} from 'enzyme'
 
 describe('Textfield', () => {
@@ -19,6 +19,11 @@ describe('Textfield', () => {
   it('should be able to set a custom label', () => {
     const wrapper = mount(<Textfield label='my custom label' />)
     assert.equal(wrapper.find('label').text(), 'my custom label')
+  })
+
+  it('should be able to set a custom icon', () => {
+    const wrapper = mount(<Textfield icon={<span>ICON</span>} />)
+    assert.equal(wrapper.find('.Textfield-icon').text(), 'ICON')
   })
 
   it('should not show label floated up when value is empty', () => {
@@ -81,3 +86,87 @@ describe('Textfield', () => {
     assert.equal(wrapper.find('.Textfield-input').node.type, 'password')
   })
 })
+
+describe('Textarea', () => {
+  it('should be empty by default', () => {
+    const wrapper = mount(<Textarea />)
+    assert.equal(wrapper.find('.Textfield-input').node.value, '')
+  })
+
+  it('should render value as text content of textarea', () => {
+    const wrapper = mount(<Textarea value='foo bar' onChange={() => {}} />)
+    assert.equal(wrapper.find('textarea').node.textContent, 'foo bar')
+  })
+
+  it('should have style resize default to "none"', () => {
+    const wrapper = mount(<Textarea />)
+    assert.equal(wrapper.find('textarea').node.style.resize, 'none')
+  })
+
+  it('should accept resizable attribute and set style resize to "vertical"', () => {
+    const wrapper = mount(<Textarea resizable />)
+    assert.equal(wrapper.find('textarea').node.style.resize, 'vertical')
+  })
+
+  it('should default rows = 2', () => {
+    const wrapper = mount(<Textarea value={'foo'} onChange={() => {}} />)
+    assert.equal(wrapper.find('textarea').node.rows, 2)
+  })
+
+  it('should allow seting rows', () => {
+    const wrapper = mount(<Textarea value={'foo'} rows={1} onChange={() => {}} />)
+    assert.equal(wrapper.find('textarea').node.rows, 1)
+  })
+
+  it('should resize', () => {
+    let target = {
+      style: {
+        height: '30px'
+      },
+      scrollHeight: 60
+    }
+    const getComputedStyle = () => {
+      return {
+        'line-height': '22px'
+      }
+    }
+    const wrapper = mount(<Textarea value={'foo\nbar'} onChange={() => {}} getComputedStyle={getComputedStyle} />)
+    wrapper.find('textarea').simulate('input', {target})
+    assert.equal(target.style.height, '61px') // 1px border
+  })
+
+  it('should resize with height < maxRows', () => {
+    let target = {
+      style: {
+        height: '30px'
+      },
+      scrollHeight: 60
+    }
+    const getComputedStyle = () => {
+      return {
+        'line-height': '22px'
+      }
+    }
+    const wrapper = mount(<Textarea value={'foo\nbar'} onChange={() => {}} maxRows={3} getComputedStyle={getComputedStyle} />)
+    wrapper.find('textarea').simulate('input', {target})
+    assert.equal(target.style.height, '61px') // 1px border
+  })
+
+  it('should not resize with height > maxRows', () => {
+    let target = {
+      style: {
+        height: '30px'
+      },
+      scrollHeight: 90
+    }
+    const getComputedStyle = () => {
+      return {
+        'line-height': '22px'
+      }
+    }
+    const wrapper = mount(<Textarea value={'foo\nbar'} onChange={() => {}} maxRows={3} getComputedStyle={getComputedStyle} />)
+    wrapper.find('textarea').simulate('input', {target})
+    assert.equal(target.style.height, '30px')
+  })
+})
+

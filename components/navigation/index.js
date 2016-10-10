@@ -24,7 +24,8 @@ const Item = ({index, onClick, item}) => (
     >
       {item.text}
     </Link>
-    {item.links &&
+    {
+      item.links &&
       <ul className='Navigation'>
         {item.links.map((item, index) =>
           <Item
