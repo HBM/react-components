@@ -55,17 +55,20 @@ export const Row = ({
     }
   }
 
-  const avatarElement = avatar &&
+  const avatarElement =
+    avatar &&
     <div className='List-row-avatar' key='avatar'>
       {(typeof avatar === 'string' ? <img src={avatar} /> : avatar)}
     </div>
 
-  const iconLeftElement = !avatar && icon &&
+  const iconLeftElement =
+    !avatar && icon &&
     <div className='List-row-icon-left' key='icon-left'>
       {icon}
     </div>
 
-  const iconRightElement = avatar && icon &&
+  const iconRightElement =
+    avatar && icon &&
     <div className='List-row-icon-right' key='icon-right'>
       {icon}
     </div>

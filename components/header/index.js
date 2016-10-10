@@ -43,7 +43,8 @@ export default class Header extends React.Component {
             <span className='Header-title'>
               {title}
             </span>
-            {subtitle &&
+            {
+              subtitle &&
               <span className='Header-subtitle'>
                 <Icon.ChevronRight className='Header-chevron' />
                 {subtitle}

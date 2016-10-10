@@ -75,7 +75,7 @@
     "saucelabs": "^1.2.0",
     "selenium-webdriver": "^3.0.0-beta-2",
     "st": "^1.2.0",
-    "standard": "^7.0.1",
+    "standard": "^8.0.3",
     "stylelint": "^7.3.1",
     "stylelint-config-standard": "^13.0.2",
     "tarball-extract": "0.0.3",

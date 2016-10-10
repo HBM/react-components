@@ -86,7 +86,8 @@ export default class Select extends React.Component {
 
     return (
       <div className='Select' ref={(c) => { this.ref = c }}>
-        {label &&
+        {
+          label &&
           <span className='Select-label'>{this.props.label}</span>
         }
         <button className='Select-body' onClick={this.open}>
@@ -100,16 +101,16 @@ export default class Select extends React.Component {
         }}>
           {style =>
             open &&
-              <List
-                style={{
-                  opacity: style.opacity
-                }}
-                hasLabel={!!this.props.label}
-                items={this.props.items}
-                selectedIndex={selectedIndex}
-                onClick={this.props.onChange}
-                width={this.state.width}
-              />
+            <List
+              style={{
+                opacity: style.opacity
+              }}
+              hasLabel={!!this.props.label}
+              items={this.props.items}
+              selectedIndex={selectedIndex}
+              onClick={this.props.onChange}
+              width={this.state.width}
+            />
           }
         </Motion>
       </div>

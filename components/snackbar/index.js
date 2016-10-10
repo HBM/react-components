@@ -27,7 +27,8 @@ var Snackbar = ({text, action, onAction, visible}) => (
               <span className='Snackbar-text'>
                 {text}
               </span>
-              {action &&
+              {
+                action &&
                 <input
                   type='button'
                   className='Snackbar-action'
