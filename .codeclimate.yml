@@ -15,4 +15,5 @@ ratings:
   - "**.js"
 exclude_paths:
 - components/**/test/test.js
+- components/icon/index.js
 - examples/
