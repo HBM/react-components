@@ -44,7 +44,6 @@ export default class CardRoute extends React.Component {
         <section>
           <h2>Card</h2>
           <Playground
-            docClass={Card}
             codeText={cardWithTitle}
             scope={{React, Button, Card, Title, Text, Actions}}
             collapsableCode
