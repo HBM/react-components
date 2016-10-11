@@ -1,35 +1,17 @@
-
-import React from 'react'
-
 /**
  * Card component
  */
-export var Card = ({children}) => (
-  <div className='Card'>
+
+import React from 'react'
+
+const container = (className) => ({children}) => (
+  <div className={className}>
     {children}
   </div>
 )
 
-export var Title = ({children}) => (
-  <div className='Card-title'>
-    {children}
-  </div>
-)
-
-export var Actions = ({children}) => (
-  <div className='Card-actions'>
-    {children}
-  </div>
-)
-
-export var Text = ({children}) => (
-  <div className='Card-text'>
-    {children}
-  </div>
-)
-
-export var Content = ({children}) => (
-  <div className='Card-content'>
-    {children}
-  </div>
-)
+export const Card = container('Card')
+export const Actions = container('Card-actions')
+export const Title = container('Card-title')
+export const Text = container('Card-text')
+export const Content = container('Card-content')
