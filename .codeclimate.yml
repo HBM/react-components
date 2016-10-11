@@ -14,5 +14,5 @@ ratings:
   paths:
   - "**.js"
 exclude_paths:
-- test/
+- components/**/test/test.js
 - examples/
