@@ -2,6 +2,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {HashRouter, Match} from 'react-router'
+import BottomNavigationRoute from './components/bottomnavigationRoute'
 import ButtonRoute from './components/buttonRoute'
 import CardRoute from './components/cardRoute'
 import CheckboxRoute from './components/checkboxRoute'
@@ -43,6 +44,7 @@ class App extends React.Component {
   render () {
     const links = [
       {text: 'Home', link: '/'},
+      {text: 'Bottom Navigation', link: '/bottomnavigation'},
       {text: 'Button', link: '/button'},
       {text: 'Card', link: '/card'},
       {text: 'Checkbox', link: '/checkbox'},
@@ -74,6 +76,7 @@ class App extends React.Component {
           )} />
           <main>
             <Match exactly pattern='/' component={HomeRoute} />
+            <Match pattern='/bottomnavigation' component={BottomNavigationRoute} />
             <Match pattern='/button' component={ButtonRoute} />
             <Match pattern='/card' component={CardRoute} />
             <Match pattern='/checkbox' component={CheckboxRoute} />
