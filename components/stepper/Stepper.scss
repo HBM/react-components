@@ -1,0 +1,68 @@
+
+.Stepper {
+  display: flex;
+  flex-direction: column;
+}
+
+.Stepper-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #bdbdbd;
+  color: #fff;
+  margin-right: 12px;
+}
+
+.Stepper-title {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #bdbdbd;
+}
+
+.Stepper-title.is-active {
+  color: #000;
+}
+
+.Stepper-title.is-active > .Stepper-circle{
+  background-color: #2196F3;
+  color: #fff;
+}
+
+.Stepper-body {
+  display: flex;
+  min-height: 24px;
+}
+
+.Stepper-body.is-last {
+  min-height: 0;
+}
+
+.Stepper-line-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 24px;
+}
+
+.Stepper-line {
+  width: 1px;
+  background-color: #BDBDBD;
+}
+
+.Stepper-content-wrapper {
+  flex: 1;
+}
+
+.Stepper-content {
+  margin-left: 12px;
+}
+
+.Stepper-footer {
+  margin-top: 16px;
+  // button has outer margin of 4
+  padding-left: 8px;
+}

@@ -87,6 +87,7 @@
     "classnames": "^2.2.4",
     "history": "^1.17.0",
     "object-assign": "^4.0.1",
+    "react-broadcast": "^0.1.1",
     "react-motion": "^0.4.3"
   },
   "standard": {
