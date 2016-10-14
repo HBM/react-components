@@ -1,6 +1,5 @@
 
 import React from 'react'
-import ReactDOM from 'react-dom'
 import classnames from 'classnames'
 import {Subscriber} from 'react-broadcast'
 import {Button} from '../../'
