@@ -3,10 +3,37 @@ import {Link} from 'react-router'
 import classNames from 'classnames'
 
 export default class BottomNavigation extends React.Component {
+
+  state = {
+    scrolling: false
+  }
+
+  onScroll = () => {
+    if (this.scrollTimer) {
+      clearTimeout(this.scrollTimer)
+    }
+    if (!this.state.scrolling) {
+      this.setState({
+        scrolling: true
+      })
+    }
+    this.scrollTimeout = setTimeout(() => {
+      this.setState({
+        scrolling: false
+      })
+    }, 1000)
+  }
+
+  componentWillUnmount () {
+    if (this.scrollTimer) {
+      clearTimeout(this.scrollTimer)
+    }
+  }
+
   render () {
     const {children, links, inverted} = this.props
     return (
-      <div className='BottomNavigation'>
+      <div onScroll={this.onScroll} className={classNames('BottomNavigation', {scrolling: this.state.scrolling})}>
         <div className='BottomNavigation-content'>
           {children}
         </div>

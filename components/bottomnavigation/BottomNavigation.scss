@@ -2,13 +2,21 @@
 
 .BottomNavigation {
   position: relative;
+  overflow: hidden;
   height: 100%;
 }
 
 .BottomNavigation-content {
   height: 100%;
-  overflow-y: scroll;
 }
+
+.BottomNavigation-content > * {
+  overflow-y: scroll;
+  padding-bottom: 56px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
 
 .BottomNavigation-menu {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 -3px 7px rgba(0, 0, 0, 0.08);
@@ -19,6 +27,14 @@
   right: 0;
   height: 56px;
   display: flex;
+  background-color: white;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.3s 0.1s ease;
+}
+
+.BottomNavigation.scrolling .BottomNavigation-menu {
+  transform: translate3d(0, 110%, 0);
 }
 
 .BottomNavigation-menu-item {
