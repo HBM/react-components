@@ -38,8 +38,10 @@ class App extends React.Component {
   onChange = (link) => {
     // use google analytics to track single page apps
     // https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications
-    ga('set', 'page', link.link)
-    ga('send', 'pageview')
+    if (typeof ga !== 'undefined') {
+      ga('set', 'page', link.link)
+      ga('send', 'pageview')
+    }
     this.setState({
       subtitle: link.text
     })
