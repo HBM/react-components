@@ -4,19 +4,26 @@
   position: relative;
   overflow: hidden;
   height: 100%;
+
+  @include medium {
+    position: initial;
+    width: 100%;
+    display: flex;
+  }
 }
 
 .BottomNavigation-content {
   height: 100%;
-}
-
-.BottomNavigation-content > * {
-  overflow-y: scroll;
   padding-bottom: 56px;
-  height: 100%;
-  box-sizing: border-box;
-}
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 
+  @include medium {
+    order: 2;
+    flex-grow: 1;
+    padding-bottom: 0;
+  }
+}
 
 .BottomNavigation-menu {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 -3px 7px rgba(0, 0, 0, 0.08);
@@ -31,10 +38,30 @@
   will-change: transform;
   transform: translate3d(0, 0, 0);
   transition: transform 0.3s 0.1s ease;
+  justify-content: center;
+
+  @include medium {
+    transform: none;
+    padding-top: 12px;
+    position: initial;
+    order: 1;
+    flex-grow: 0;
+    width: 72px;
+    height: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #fdfdfd;
+    border-top: none;
+    border-right: 1px solid #f1f1f1;
+    box-shadow: none;
+  }
 }
 
 .BottomNavigation.scrolling .BottomNavigation-menu {
   transform: translate3d(0, 110%, 0);
+  @include medium {
+    transform: none;
+  }
 }
 
 .BottomNavigation-menu-item {
@@ -49,10 +76,21 @@
   align-items: center;
   justify-content: space-around;
   flex-grow: 1;
+  cursor: pointer;
   svg {
     fill: #757575;
   }
   color: #757575;
+  max-width: 169px;
+
+  @include medium {
+    flex-grow: 0;
+    height: 56px;
+    min-width: 72px;
+    .BottomNavigation-menu-item-text {
+      display: none;
+    }
+  }
 }
 
 .BottomNavigation-menu-item.active {
@@ -77,3 +115,4 @@
     color: white;
   }
 }
+

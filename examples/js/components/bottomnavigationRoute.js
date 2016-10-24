@@ -39,55 +39,25 @@ const content = (title) => {
   )
 }
 
+const Home = () => content('Home')
+const Music = () => content('Music')
+const Photos = () => content('Photos')
+
 const BasicExample = () => (
   <HashRouter basename='/bottomnavigation'>
-    <div style={{height: '600px', width: '400px', margin: '0 auto', border: '10px solid #ececec'}}>
+    <div style={{height: '600px', width: '100%', margin: '0 auto', border: '10px solid #ececec'}}>
       <Match pattern='/' render={({location}) => (
         <BottomNavigation location={location} links={links}>
           <Match exactly pattern='/bottomnavigation' render={() => (
             <span>Please select a country from the tabs.</span>
           )} />
-          <Match pattern='/bottomnavigation/home' component={() => content('Home')} />
-          <Match pattern='/bottomnavigation/music' component={() => content('music')} />
-          <Match pattern='/bottomnavigation/photos' component={() => content('photos')} />
+          <Match pattern='/bottomnavigation/home' component={Home} />
+          <Match pattern='/bottomnavigation/music' component={Music} />
+          <Match exactly pattern='/bottomnavigation/photos' component={Photos} />
         </BottomNavigation>
       )} />
     </div>
   </HashRouter>
-)
-
-const Home = () => (
-  <div>
-    <h2>Home</h2>
-  </div>
-)
-
-const About = () => (
-  <div>
-    <h2>About</h2>
-  </div>
-)
-
-const Topics = ({ pathname }) => (
-  <div>
-    <h2>Topics</h2>
-    <ul>
-      <li><Link to={pathname + '/rendering'}>Rendering with React</Link></li>
-      <li><Link to={pathname + '/components'}>Components</Link></li>
-      <li><Link to={pathname + '/props-v-state'}>Props v. State</Link></li>
-    </ul>
-
-    <Match pattern={pathname + '/:topicId'} component={Topic}/>
-    <Match pattern={pathname} exactly render={() => (
-      <h3>Please select a topic</h3>
-    )}/>
-  </div>
-)
-
-const Topic = ({ params }) => (
-  <div>
-    <h3>{params.topicId}</h3>
-  </div>
 )
 
 ReactDOM.render(<BasicExample />, mountNode)`
