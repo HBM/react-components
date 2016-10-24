@@ -1,5 +1,3 @@
-/* globals performance */
-
 import React from 'react'
 import {Link} from 'react-router'
 import classNames from 'classnames'
@@ -12,7 +10,7 @@ export default class BottomNavigation extends React.Component {
 
   onScroll = () => {
     const scrollTop = this.contentNode.scrollTop
-    const lastScrollTop = this.lastScrollTop || scrollTop
+    const lastScrollTop = this.lastScrollTop
     this.lastScrollTop = scrollTop
     if (this.scrollTimer) {
       clearTimeout(this.scrollTimer)
@@ -29,11 +27,15 @@ export default class BottomNavigation extends React.Component {
         scrolling: true
       })
     }
-    this.scrollTimeout = setTimeout(() => {
+    this.scrollTimer = setTimeout(() => {
       this.setState({
         scrolling: false
       })
     }, 800)
+  }
+
+  componentWillMount () {
+    this.lastScrollTop = 0
   }
 
   componentWillUnmount () {
@@ -56,7 +58,8 @@ export default class BottomNavigation extends React.Component {
     const scrollDuration = 800
     const cosParameter = this.contentNode.scrollTop / 2
     let scrollCount = 0
-    let oldTimestamp = performance.now()
+    const _window = this.props.window || window
+    let oldTimestamp = _window.performance.now()
     const step = (newTimestamp) => {
       scrollCount += Math.PI / (scrollDuration / (newTimestamp - oldTimestamp))
       if (scrollCount >= Math.PI) {
@@ -67,9 +70,9 @@ export default class BottomNavigation extends React.Component {
       }
       this.contentNode.scrollTop = Math.round(cosParameter + cosParameter * Math.cos(scrollCount))
       oldTimestamp = newTimestamp
-      window.requestAnimationFrame(step)
+      _window.requestAnimationFrame(step)
     }
-    window.requestAnimationFrame(step)
+    _window.requestAnimationFrame(step)
   }
 
   render () {
