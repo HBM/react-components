@@ -49,7 +49,7 @@ class App extends React.Component {
     return (
       <HashRouter>
         <div>
-          <Stepper steps={steps}/>
+          <Stepper steps={steps} horizontal />
         </div>
       </HashRouter>
     )

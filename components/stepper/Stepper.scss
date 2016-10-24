@@ -2,6 +2,43 @@
 .Stepper {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+}
+
+$no-steps: 10;
+
+// -- vertical --
+// titles
+@for $i from 1 through $no-steps {
+  .Stepper > .Stepper-title:nth-of-type(#{$i}) {
+    order: #{$i * 2 - 1};
+  }
+}
+
+// steps
+@for $i from 1 through $no-steps {
+  .Stepper > .Stepper-step:nth-of-type(#{$i}) {
+    order: #{$i * 2};
+  }
+}
+
+// -- horizontal --
+.Stepper--horizontal {
+  flex-direction: row;
+}
+
+// titles
+@for $i from 1 through $no-steps {
+  .Stepper--horizontal > .Stepper-title:nth-of-type(#{$i}) {
+    order: #{$i};
+  }
+}
+
+// steps
+@for $i from 1 through $no-steps {
+  .Stepper--horizontal > .Stepper-step:nth-of-type(#{$i}) {
+    order: $no-steps + 1;
+  }
 }
 
 .Stepper-circle {
@@ -16,12 +53,22 @@
   margin-right: 12px;
 }
 
+.Stepper-links {
+  display: flex;
+  flex-direction: row;
+}
+
+.Stepper-step {
+  flex-basis: 100%;
+}
+
 .Stepper-title {
   height: 40px;
   display: flex;
   align-items: center;
   text-decoration: none;
   color: #bdbdbd;
+  flex: 1;
 }
 
 .Stepper-title.is-active {

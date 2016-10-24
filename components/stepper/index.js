@@ -5,20 +5,23 @@ import {Subscriber} from 'react-broadcast'
 import {Button} from '../../'
 import {Link, Match} from 'react-router'
 
+const StepLink = ({index, step, isActive}) => (
+  <Link
+    className='Stepper-title'
+    activeClassName='is-active'
+    to={step.href}
+  >
+    <div className={classnames('Stepper-circle', {
+      'is-active': isActive
+    })}>
+      {index + 1}
+    </div>
+    {step.title}
+  </Link>
+)
+
 const Step = ({index, step, isActive, isLast, onContinue, onCancel}) => (
   <div className='Stepper-step'>
-    <Link
-      className='Stepper-title'
-      activeClassName='is-active'
-      to={step.href}
-    >
-      <div className={classnames('Stepper-circle', {
-        'is-active': isActive
-      })}>
-        {index + 1}
-      </div>
-      {step.title}
-    </Link>
     <div className={classnames('Stepper-body', {
       'is-last': isLast
     })}>
@@ -63,7 +66,17 @@ export default class Stepper extends React.Component {
     return (
       <Subscriber channel='location'>
         {location => (
-          <div className='Stepper'>
+          <div className={classnames('Stepper', {
+            'Stepper--horizontal': this.props.horizontal
+          })}>
+            {this.props.steps.map((s, i) => (
+              <StepLink
+                key={i}
+                index={i}
+                step={s}
+                isActive={location.pathname === s.href}
+              />
+            ))}
             {this.props.steps.map((s, i) => (
               <Step
                 key={i}
