@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import React from 'react'
-import {LocationBroadcast} from 'react-router/locationBroadcast'
+import {LocationBroadcast} from 'react-router/Broadcasts'
 import {Match} from 'react-router'
 import BottomNavigation from '../'
 import {mount} from 'enzyme'
