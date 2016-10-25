@@ -78,8 +78,8 @@ export default class BottomNavigationRoute extends React.Component {
         </section>
         <section>
           <h2>Specification</h2>
-          <a href='https://material.google.com/components/cards.html'>
-            https://material.google.com/components/cards.html
+          <a href='https://material.google.com/components/bottom-navigation.html'>
+            https://material.google.com/components/bottom-navigation.html
           </a>
         </section>
       </div>
