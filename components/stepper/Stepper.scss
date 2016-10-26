@@ -23,21 +23,55 @@ $no-steps: 10;
 }
 
 // -- horizontal --
-.Stepper--horizontal {
-  flex-direction: row;
-}
-
-// titles
-@for $i from 1 through $no-steps {
-  .Stepper--horizontal > .Stepper-title:nth-of-type(#{$i}) {
-    order: #{$i};
+@include medium {
+  .Stepper--horizontal {
+    flex-direction: row;
+    padding: 0 24px;
   }
-}
 
-// steps
-@for $i from 1 through $no-steps {
-  .Stepper--horizontal > .Stepper-step:nth-of-type(#{$i}) {
-    order: $no-steps + 1;
+  .Stepper--horizontal .Stepper-circle {
+    margin: 0 8px;
+  }
+
+  .Stepper--horizontal .Stepper-title {
+    height: 72px;
+  }
+
+  .Stepper--horizontal .Stepper-title:last-of-type {
+    flex: 0;
+  }
+
+  .Stepper--horizontal > .Stepper-step .Stepper-line-wrapper,
+  .Stepper--horizontal .Stepper-title:last-of-type .Stepper-line-wrapper {
+    display: none;
+  }
+
+  .Stepper--horizontal > .Stepper-title .Stepper-line-wrapper {
+    flex: 1;
+    margin-left: 8px;
+  }
+
+  .Stepper--horizontal > .Stepper-title .Stepper-line {
+    height: 1px;
+    width: 100%;
+  }
+
+  .Stepper--horizontal > .Stepper-step > .Stepper-body {
+    min-height: 0;
+  }
+
+  // titles
+  @for $i from 1 through $no-steps {
+    .Stepper--horizontal > .Stepper-title:nth-of-type(#{$i}) {
+      order: #{$i};
+    }
+  }
+
+  // steps
+  @for $i from 1 through $no-steps {
+    .Stepper--horizontal > .Stepper-step:nth-of-type(#{$i}) {
+      order: $no-steps + 1;
+    }
   }
 }
 
@@ -47,10 +81,21 @@ $no-steps: 10;
   justify-content: center;
   width: 24px;
   height: 24px;
+  margin-right: 12px;
+}
+
+.Stepper-circle:not(.Stepper--error) {
   border-radius: 50%;
   background-color: #bdbdbd;
   color: #fff;
-  margin-right: 12px;
+}
+
+.Stepper--error {
+  color: #f44336;
+}
+
+.Stepper--error svg {
+  fill: #f44336;
 }
 
 .Stepper-links {
@@ -69,14 +114,19 @@ $no-steps: 10;
   text-decoration: none;
   color: #bdbdbd;
   flex: 1;
+  white-space: nowrap;
+}
+
+.Stepper-title:hover {
+  background-color: #f6f6f6;
 }
 
 .Stepper-title.is-active {
   color: #000;
 }
 
-.Stepper-title.is-active > .Stepper-circle{
-  background-color: #2196F3;
+.Stepper-title.is-active > .Stepper-circle:not(.Stepper--error) {
+  background-color: #2196f3;
   color: #fff;
 }
 
@@ -97,7 +147,7 @@ $no-steps: 10;
 
 .Stepper-line {
   width: 1px;
-  background-color: #BDBDBD;
+  background-color: #bdbdbd;
 }
 
 .Stepper-content-wrapper {
@@ -112,4 +162,9 @@ $no-steps: 10;
   margin-top: 16px;
   // button has outer margin of 4
   padding-left: 8px;
+}
+
+.Stepper-title.is-active .Stepper-step-optional {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.54);
 }

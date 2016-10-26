@@ -74,6 +74,12 @@ export default class StepperRoute extends React.Component {
             collapsableCode
           />
         </section>
+        <section>
+          <h2>Specification</h2>
+          <a href='https://material.google.com/components/steppers.html'>
+            https://material.google.com/components/selection-controls.html#selection-controls-switch
+          </a>
+        </section>
       </div>
     )
   }

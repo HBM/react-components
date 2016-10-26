@@ -2,7 +2,7 @@
 import React from 'react'
 import classnames from 'classnames'
 import {Subscriber} from 'react-broadcast'
-import {Button} from '../../'
+import {Button, Icon} from '../../'
 import {Link, Match} from 'react-router'
 
 const StepLink = ({index, step, isActive}) => (
@@ -11,13 +11,38 @@ const StepLink = ({index, step, isActive}) => (
     activeClassName='is-active'
     to={step.href}
   >
-    <div className={classnames('Stepper-circle', {
-      'is-active': isActive
-    })}>
-      {index + 1}
+    <div className={classnames(
+      'Stepper-circle',
+      {'Stepper--error': step.error},
+      {'is-active': isActive}
+    )}>
+      {step.error
+        ? Icon['ReportProblem']()
+        : index + 1
+      }
     </div>
-    {step.title}
+    <div className={classnames(
+        'Stepper-title-text-wrapper',
+        {'Stepper--error': step.error}
+      )}>
+      <div className='Stepper-title-text'>
+        {step.title}
+      </div>
+      {step.optional || step.error
+        ? <div className={'Stepper-step-optional'}>
+          {step.error ? step.error : step.optional}
+        </div>
+        : null
+      }
+    </div>
+    <StepLine />
   </Link>
+)
+
+const StepLine = () => (
+  <div className='Stepper-line-wrapper'>
+    <div className='Stepper-line' />
+  </div>
 )
 
 const Step = ({index, step, isActive, isLast, onContinue, onCancel}) => (
@@ -25,9 +50,7 @@ const Step = ({index, step, isActive, isLast, onContinue, onCancel}) => (
     <div className={classnames('Stepper-body', {
       'is-last': isLast
     })}>
-      <div className='Stepper-line-wrapper'>
-        <div className='Stepper-line' />
-      </div>
+      <StepLine />
       <div className='Stepper-content-wrapper'>
         <div className='Stepper-content'>
           <Match pattern={step.href} component={step.component} />
@@ -96,3 +119,12 @@ export default class Stepper extends React.Component {
 
 }
 
+Stepper.propTypes = {
+  horizontal: React.PropTypes.bool,
+  steps: React.PropTypes.arrayOf(React.PropTypes.shape({
+    title: React.PropTypes.string.isRequired,
+    href: React.PropTypes.string.isRequired,
+    component: React.PropTypes.func.isRequired,
+    optional: React.PropTypes.string
+  })).isRequired
+}
