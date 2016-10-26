@@ -2,9 +2,15 @@
 
 import assert from 'assert'
 import React from 'react'
-import {LocationBroadcast} from 'react-router/locationBroadcast'
+import {Broadcast} from 'react-broadcast'
 import {Navigation} from '../'
 import {mount, shallow} from 'enzyme'
+
+const LocationBroadcast = ({value, children}) => (
+  <Broadcast channel='location' value={value}>
+    {children}
+  </Broadcast>
+)
 
 describe('Navigation', () => {
   it('should work', () => {
