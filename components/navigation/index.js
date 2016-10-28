@@ -9,29 +9,31 @@
 import React from 'react'
 import {Link} from 'react-router'
 import classnames from 'classnames'
-import Icon from '../icon/'
+import {Logo, Button, Menu} from '../icon/'
 
 /**
  * Navigation item
  */
-const Item = ({index, onClick, item}) => (
+const Item = ({index, onClick, text, link, links}) => (
   <li key={index} className='Navigation-item' onClick={onClick}>
     <Link
       activeClassName='active'
-      to={item.link}
+      to={link}
       className='Navigation-link'
-      title={item.text}
+      title={text}
     >
-      {item.text}
+      {text}
     </Link>
     {
-      item.links &&
+      links &&
       <ul className='Navigation'>
-        {item.links.map((item, index) =>
+        {links.map((item, index) =>
           <Item
             key={index}
             onClick={onClick}
-            item={item}
+            text={item.text}
+            link={item.link}
+            link={`${link}${item.link}`}
           />
         )}
       </ul>
@@ -117,7 +119,7 @@ export class Navigation extends React.Component {
         <nav className={this.state.visible ? 'is-visible' : ''}>
           <div className='Navigation-logo'>
             <a href='#' onClick={this.close}>
-              <Icon.Logo fill='#A7A5A5' />
+              <Logo fill='#A7A5A5' />
             </a>
           </div>
           <ul className='Navigation'>
@@ -125,15 +127,17 @@ export class Navigation extends React.Component {
               <Item
                 key={index}
                 onClick={(event) => this.onClick(event, index)}
-                item={item}
+                text={item.text}
+                link={item.link}
+                links={item.links}
               />
             )}
           </ul>
         </nav>
         <div className='Navigation-hamburger'>
-          <Icon.Button onClick={this.open}>
-            <Icon.Menu />
-          </Icon.Button>
+          <Button onClick={this.open}>
+            <Menu />
+          </Button>
         </div>
         <div
           className={classnames('Navigation-overlay', {
