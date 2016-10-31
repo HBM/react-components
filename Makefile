@@ -34,5 +34,5 @@ serve:
 	cd examples && python -m SimpleHTTPServer 5000
 
 .PHONY: test
-test:
-	$(STANDARD) && $(STYLELINT) && $(ISTANBUL) cover $(MOCHA) test/.setup.js components/**/test/test.js
+test: standard stylelint
+	$(ISTANBUL) cover $(MOCHA) test/.setup.js components/**/test/test.js
