@@ -1,4 +1,4 @@
-
+export BottomNavigation from './components/bottomnavigation'
 export Button from './components/button/'
 export {Card, Title, Actions, Text, Content} from './components/card/'
 export Checkbox from './components/checkbox/'
