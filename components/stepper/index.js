@@ -2,8 +2,37 @@
 import React from 'react'
 import classnames from 'classnames'
 import {Subscriber} from 'react-broadcast'
-import {Button, Icon} from '../../'
+import {Icon, Button} from '../../'
 import {Link, Match} from 'react-router'
+
+export const StepperStepFooter = ({labelBack, labelNext, labelCancel, onBack, onNext, onCancel}) => (
+  <div className='Stepper-footer'>
+    {(labelBack)
+      ? <div className='Stepper-step-back'>
+        <Button onClick={onBack}>
+          {labelBack}
+        </Button>
+      </div>
+      : null
+    }
+    {(labelNext && onNext)
+      ? <div className='Stepper-step-next'>
+        <Button onClick={onNext}>
+          {labelNext}
+        </Button>
+      </div>
+      : null
+    }
+    {(labelCancel && onCancel)
+      ? <div className='Stepper-step-cancel'>
+        <Button onClick={onCancel}>
+          {labelCancel}
+        </Button>
+      </div>
+      : null
+    }
+  </div>
+)
 
 const StepLink = ({index, step, isActive}) => (
   <Link
@@ -12,14 +41,20 @@ const StepLink = ({index, step, isActive}) => (
     to={step.href}
   >
     <div className={classnames(
-      'Stepper-circle',
-      {'Stepper--error': step.error},
-      {'is-active': isActive}
+      'Stepper-circle-wrapper',
+      {'Stepper-circle-wrapper--alternative': step.alternative}
     )}>
-      {step.error
-        ? Icon['ReportProblem']()
-        : index + 1
-      }
+      <div className={classnames(
+        'Stepper-circle',
+        {'Stepper--error': step.error},
+        {'is-active': isActive}
+      )}>
+        {step.error
+          ? Icon['ReportProblem']()
+          : index + 1
+        }
+      </div>
+      <StepLine />
     </div>
     <div className={classnames(
         'Stepper-title-text-wrapper',
@@ -30,7 +65,7 @@ const StepLink = ({index, step, isActive}) => (
       </div>
       {step.optional || step.error
         ? <div className={'Stepper-step-optional'}>
-          {step.error ? step.error : step.optional}
+          {step.error ? step.error.message : step.optional}
         </div>
         : null
       }
@@ -45,7 +80,7 @@ const StepLine = () => (
   </div>
 )
 
-const Step = ({index, step, isActive, isLast, onContinue, onCancel}) => (
+const Step = ({index, step, isActive, isLast, onNext, onCancel, onError}) => (
   <div className='Stepper-step'>
     <div className={classnames('Stepper-body', {
       'is-last': isLast
@@ -53,36 +88,33 @@ const Step = ({index, step, isActive, isLast, onContinue, onCancel}) => (
       <StepLine />
       <div className='Stepper-content-wrapper'>
         <div className='Stepper-content'>
-          <Match pattern={step.href} component={step.component} />
+          <Match pattern={step.href} render={() => (
+            <step.component
+              index={index}
+              isLast={isLast}
+              cancel={() => onCancel()}
+              back={() => onNext(index - 1)}
+              next={() => onNext(index + 1)}
+              error={(message) => onError(message)}
+            />
+          )} />
         </div>
-        {(!isActive || isLast) ? null : <div className='Stepper-footer'>
-          <Button onClick={onContinue}>
-            Continue
-          </Button>
-          <Button onClick={onCancel}>
-            Cancel
-          </Button>
-        </div>}
       </div>
     </div>
   </div>
 )
 
-export default class Stepper extends React.Component {
+export class Stepper extends React.Component {
 
   static contextTypes = {
     router: React.PropTypes.object
   }
 
-  onContinue = (index) => {
-    const next = this.props.steps[index + 1]
+  onNext = (index) => {
+    const next = this.props.steps[index]
     if (next) {
       this.context.router.transitionTo(next.href)
     }
-  }
-
-  onCancel = (index) => {
-    console.log(`canceled at step ${index + 1}`)
   }
 
   render () {
@@ -107,8 +139,9 @@ export default class Stepper extends React.Component {
                 step={s}
                 isActive={location.pathname === s.href}
                 isLast={this.props.steps.length - 1 === i}
-                onContinue={() => this.onContinue(i)}
-                onCancel={() => this.onCancel(i)}
+                onNext={(index) => this.onNext(index)}
+                onCancel={() => this.props.onCancel(i)}
+                onError={(message) => this.props.onError(i, message)}
               />
             ))}
           </div>
@@ -116,15 +149,16 @@ export default class Stepper extends React.Component {
       </Subscriber>
     )
   }
-
 }
 
 Stepper.propTypes = {
-  horizontal: React.PropTypes.bool,
   steps: React.PropTypes.arrayOf(React.PropTypes.shape({
     title: React.PropTypes.string.isRequired,
     href: React.PropTypes.string.isRequired,
     component: React.PropTypes.func.isRequired,
     optional: React.PropTypes.string
-  })).isRequired
+  })).isRequired,
+  horizontal: React.PropTypes.bool,
+  onCancel: React.PropTypes.func,
+  onError: React.PropTypes.func
 }

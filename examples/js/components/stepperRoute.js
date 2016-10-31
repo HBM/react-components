@@ -3,7 +3,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Playground from 'component-playground'
 import {HashRouter} from 'react-router'
-import {Stepper} from '../../../'
+import {Stepper, StepperStepFooter, Button} from '../../../'
 
 const stepperComponent =
 `
@@ -11,8 +11,25 @@ const step1 = () => (
   <div style={{width: '100%', height: 300, background: '#bdbdbd'}} />
 )
 
-const step2 = () => (
-  <div>step2</div>
+const step2 = ({index, isLast, cancel, back, next, error}) => (
+  <div>
+    <h3>step2</h3>
+    <pre>{JSON.stringify({index, isLast, cancel, back, next, error}, null, 2)}</pre>
+    <Button onClick={() => error(new Error('My Error'))}>
+      Set error
+    </Button>
+    <Button onClick={() => error()}>
+      Clear error
+    </Button>
+    <StepperStepFooter
+      labelBack='Back'
+      labelNext='Next'
+      labelCancel='Cancel'
+      onBack={back}
+      onNext={next}
+      onCancel={cancel}
+    />
+  </div>
 )
 
 const step3 = () => (
@@ -28,8 +45,8 @@ const step3 = () => (
 
 class App extends React.Component {
 
-  render () {
-    const steps = [
+  state = {
+    steps: [
       {
         title: 'Select campaign settings',
         href: '/stepper/settings',
@@ -38,6 +55,7 @@ class App extends React.Component {
       {
         title: 'Create an ad group',
         href: '/stepper/group',
+        optional: 'Optional',
         component: step2
       },
       {
@@ -46,15 +64,37 @@ class App extends React.Component {
         component: step3
       }
     ]
+  }
+
+  onCancel = (index) => {
+    let num = index + 1
+    console.log('canceled at step' + num)
+  }
+
+  onError = (index, message) => {
+    let steps = this.state.steps.slice()
+    if (index > 0 && index < steps.length) {
+      steps[index].error = message
+      this.setState({
+        steps: steps
+      })
+    }
+  }
+
+  render () {
     return (
       <HashRouter>
         <div>
-          <Stepper steps={steps} horizontal />
+          <Stepper
+            steps={this.state.steps}
+            onError={(i, me) => this.onError(i, me)}
+            onCancel={(i) => this.onCancel(i)}
+            horizontal
+          />
         </div>
       </HashRouter>
     )
   }
-
 }
 
 ReactDOM.render(<App />, mountNode)`
@@ -69,7 +109,7 @@ export default class StepperRoute extends React.Component {
           <Playground
             docClass={Stepper}
             codeText={stepperComponent}
-            scope={{React, ReactDOM, Stepper, HashRouter}}
+            scope={{React, ReactDOM, Stepper, StepperStepFooter, Button, HashRouter}}
             noRender={false}
             collapsableCode
           />
@@ -77,11 +117,10 @@ export default class StepperRoute extends React.Component {
         <section>
           <h2>Specification</h2>
           <a href='https://material.google.com/components/steppers.html'>
-            https://material.google.com/components/selection-controls.html#selection-controls-switch
+            https://material.google.com/components/steppers.html
           </a>
         </section>
       </div>
     )
   }
-
 }

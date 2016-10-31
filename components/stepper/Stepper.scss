@@ -5,6 +5,10 @@
   flex-wrap: wrap;
 }
 
+.Stepper-step-back {
+  display: none;
+}
+
 $no-steps: 10;
 
 // -- vertical --
@@ -73,6 +77,25 @@ $no-steps: 10;
       order: $no-steps + 1;
     }
   }
+
+  .Stepper-footer {
+    justify-content: flex-end;
+  }
+
+  .Stepper-step-back {
+    display: flex;
+    align-self: flex-start;
+    flex: 1;
+  }
+
+  .Stepper-step-next,
+  .Stepper-step-cancel {
+    align-self: flex-end;
+  }
+}
+
+.Stepper-circle-wrapper > .Stepper-circle ~ .Stepper-line-wrapper {
+  display: none;
 }
 
 .Stepper-circle {
@@ -90,7 +113,8 @@ $no-steps: 10;
   color: #fff;
 }
 
-.Stepper--error {
+.Stepper--error > .Stepper-title-text,
+.Stepper--error > .Stepper-step-optional {
   color: #f44336;
 }
 
@@ -117,15 +141,11 @@ $no-steps: 10;
   white-space: nowrap;
 }
 
-.Stepper-title:hover {
-  background-color: #f6f6f6;
-}
-
 .Stepper-title.is-active {
   color: #000;
 }
 
-.Stepper-title.is-active > .Stepper-circle:not(.Stepper--error) {
+.Stepper-title.is-active > .Stepper-circle-wrapper > .Stepper-circle:not(.Stepper--error) {
   background-color: #2196f3;
   color: #fff;
 }
@@ -159,12 +179,13 @@ $no-steps: 10;
 }
 
 .Stepper-footer {
+  display: flex;
   margin-top: 16px;
   // button has outer margin of 4
   padding-left: 8px;
 }
 
-.Stepper-title.is-active .Stepper-step-optional {
+.Stepper-title.is-active > .Stepper-title-text-wrapper:not(.Stepper--error) > .Stepper-step-optional {
   font-size: 12px;
   color: rgba(0, 0, 0, 0.54);
 }
