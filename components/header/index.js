@@ -3,9 +3,6 @@ import React from 'react'
 import classnames from 'classnames'
 import Icon from '../icon/'
 
-/**
- * Header component
- */
 export default class Header extends React.Component {
 
   state = {
@@ -32,12 +29,12 @@ export default class Header extends React.Component {
   }
 
   render () {
-    const {title, subtitle, children} = this.props
+    const {title, subtitle, children, color} = this.props
     const klass = classnames({
       'Header--shadow': this.state.hasShadow
     })
     return (
-      <header className={klass}>
+      <header className={klass} style={{backgroundColor: color}}>
         <div className='Header'>
           <div className='Header-block'>
             <span className='Header-title'>
