@@ -53,12 +53,19 @@ nav.is-visible {
   margin: 0;
   padding: 0;
   padding: 12px 0 10px;
+  // hide submenu when collapsed
+  overflow: hidden;
+  transition: height 0.25s ease-in-out;
 }
 
 .Navigation-link {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   text-decoration: none;
-  padding: 15px 0 15px 22px;
+  // padding: 15px 0 15px 22px;
+  padding-left: 22px;
+  padding-right: 16px;
   color: #333;
   font-weight: 700;
 }
@@ -70,6 +77,18 @@ nav.is-visible {
 .Navigation-link:focus {
   background-color: #eee;
   outline: 0;
+}
+
+.Navigation-chevron {
+  // point down \/
+  transform: rotate(90deg);
+  transition: transform 0.25s ease-in-out;
+}
+
+.Navigation-chevron.is-open {
+  // point up /\
+  // transition from down, right, up. NOT down, LEFT, up
+  transform: rotate(-90deg);
 }
 
 .Navigation-hamburger {

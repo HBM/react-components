@@ -9,72 +9,108 @@
 import React from 'react'
 import {Link} from 'react-router'
 import classnames from 'classnames'
-import {Logo, Button, Menu} from '../icon/'
+import {Logo, Button, Menu, ChevronRight} from '../icon/'
+
+const height = 48
 
 /**
  * Navigation item
  */
-const Item = ({index, onClick, text, link, links}) => (
-  <li key={index} className='Navigation-item' onClick={onClick}>
-    <Link
-      activeClassName='active'
-      to={link}
-      className='Navigation-link'
-      title={text}
-    >
-      {text}
-    </Link>
-    {
-      links &&
-      <ul className='Navigation'>
-        {links.map((item, index) =>
-          <Item
-            key={index}
-            onClick={onClick}
-            text={item.text}
-            link={item.link}
-            link={`${link}${item.link}`}
-          />
-        )}
-      </ul>
+class Item extends React.Component {
+
+  state = {
+    isOpen: false
+  }
+
+  onClick = (item, subItem, e) => {
+    this.setState({
+      isOpen: !this.state.isOpen
+    })
+    if (item.links && !subItem) {
+      // simply open submenu without notifying parent or changing url
+      if (e) {
+        e.preventDefault()
+      }
+      return
     }
-  </li>
-)
+    this.props.onClick(item, subItem, e)
+  }
+
+  /**
+   * Update parent component and open submenu on initial render
+   */
+  componentWillMount () {
+    if (this.props.location.pathname.includes(this.props.link)) {
+      this.onClick(this.props.item, this.props.subItem)
+    }
+  }
+
+  render () {
+    const {index, subIndex, link, text, onClick, links, item, subItem, location} = this.props
+    const {isOpen} = this.state
+    return (
+      <li className='Navigation-item'>
+        <Link
+          activeClassName='active'
+          to={link}
+          className='Navigation-link'
+          title={text}
+          style={{height}}
+          onClick={(e) => this.onClick(item, subItem, e)}
+        >
+          <span>{text}</span>
+          {
+            links
+            ? <ChevronRight className={classnames('Navigation-chevron', {
+              'is-open': isOpen
+            })}/>
+            : null
+          }
+        </Link>
+        {
+          links &&
+          <ul className='Navigation' style={{height: isOpen ? (links.length * height) : 0}}>
+            {links.map((subItem, j) =>
+              <Item
+                index={index}
+                subIndex={j}
+                key={j}
+                onClick={onClick}
+                text={subItem.text}
+                link={`${link}${subItem.link}`}
+                item={item}
+                subItem={subItem}
+                location={location}
+              />
+            )}
+          </ul>
+        }
+      </li>
+    )
+  }
+
+}
 
 /**
  * Navigation
  */
-// also export to enable tests (which don't require the router)
 export class Navigation extends React.Component {
 
-  /**
-   * Property types
-   */
   static propTypes = {
     links: React.PropTypes.array.isRequired,
     onChange: React.PropTypes.func
   }
 
-  /**
-   * Default properties
-   */
   static defaultProps = {
     onChange: () => {}
   }
 
-  /**
-   * State
-   */
   state = {
     visible: false
   }
 
-  /**
-   * Handle click on navigation link
-   */
-  onClick = (event, index) => {
-    const item = this.props.links[index]
-    this.props.onChange(item)
+  onClick = (item, subItem, event) => {
+    this.props.onChange(item, subItem)
     this.close(event)
   }
 
@@ -82,7 +118,6 @@ export class Navigation extends React.Component {
    * Hide overlay
    */
   close = (event) => {
-    event.preventDefault()
     this.setState({
       visible: false
     })
@@ -97,22 +132,6 @@ export class Navigation extends React.Component {
     })
   }
 
-  /**
-   * Update parent component on initial render
-   */
-  componentDidMount () {
-    let activeRouteIndex = 0
-    this.props.links.forEach((link, index) => {
-      if (this.props.location.pathname === link.link) {
-        activeRouteIndex = index
-      }
-    })
-    this.props.onChange(this.props.links[activeRouteIndex])
-  }
-
-  /**
-   * Render component
-   */
   render () {
     return (
       <div>
@@ -125,11 +144,14 @@ export class Navigation extends React.Component {
           <ul className='Navigation'>
             {this.props.links.map((item, index) =>
               <Item
+                index={index}
                 key={index}
-                onClick={(event) => this.onClick(event, index)}
+                onClick={this.onClick}
                 text={item.text}
                 link={item.link}
                 links={item.links}
+                item={item}
+                location={this.props.location}
               />
             )}
           </ul>

@@ -29,13 +29,47 @@ import {
   Navigation
 } from '../../'
 
+const sub1 = () => (
+  <div>
+    <p>
+      Navigation submenu #1
+    </p>
+    <p>
+      Checkout the navigation on the left side to see the component in action.
+    </p>
+  </div>
+)
+
+const sub2 = () => (
+  <div>
+    <p>
+      Navigation submenu #2
+    </p>
+    <p>
+      Checkout the navigation on the left side to see the component in action.
+    </p>
+  </div>
+)
+
+const sub3 = () => (
+  <div>
+    <p>
+      Navigation submenu #3
+    </p>
+    <p>
+      Checkout the navigation on the left side to see the component in action.
+    </p>
+  </div>
+)
+
 class App extends React.Component {
 
   state = {
-    subtitle: 'Home'
+    title: 'HBM/md-components',
+    subtitle: '',
   }
 
-  onChange = (link) => {
+  onChange = (link, sublink) => {
     // use google analytics to track single page apps
     // https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications
     if (window.ga) {
@@ -43,7 +77,8 @@ class App extends React.Component {
       ga('send', 'pageview')
     }
     this.setState({
-      subtitle: link.text
+      title: link.text,
+      subtitle: sublink && sublink.text
     })
   }
 
@@ -58,6 +93,11 @@ class App extends React.Component {
       {text: 'List', link: '/list'},
       {text: 'Menu', link: '/menu'},
       {text: 'Modal', link: '/modal'},
+      {text: 'Navigation', link: '/navigation', links: [
+        {text: 'submenu #1', link: '/sub1'},
+        {text: 'submenu #2', link: '/sub2'},
+        {text: 'submenu #3', link: '/sub3'}
+      ]},
       {text: 'Progress', link: '/progress'},
       {text: 'Radiobutton', link: '/radiobutton'},
       {text: 'Select', link: '/select'},
@@ -70,14 +110,17 @@ class App extends React.Component {
       {text: 'Textarea', link: '/textarea'},
       {text: 'Tooltip', link: '/tooltip'}
     ]
-
     return (
       <HashRouter>
         <div>
-          <Header title='HBM/md-components' subtitle={this.state.subtitle} />
+          <Header title={this.state.title} subtitle={this.state.subtitle} />
           {/* wrap navigation into <Match /> to get access to location for componentDidMount */}
           <Match pattern='/' render={({location}) => (
-            <Navigation location={location} links={links} onChange={this.onChange} />
+            <Navigation
+              location={location}
+              links={links}
+              onChange={this.onChange}
+            />
           )} />
           <main>
             <Match exactly pattern='/' component={HomeRoute} />
@@ -89,6 +132,9 @@ class App extends React.Component {
             <Match pattern='/list' component={ListRoute} />
             <Match pattern='/menu' component={MenuRoute} />
             <Match pattern='/modal' component={ModalRoute} />
+            <Match pattern='/navigation/sub1' component={sub1} />
+            <Match pattern='/navigation/sub2' component={sub2} />
+            <Match pattern='/navigation/sub3' component={sub3} />
             <Match pattern='/progress' component={ProgressRoute} />
             <Match pattern='/radiobutton' component={RadiobuttonRoute} />
             <Match pattern='/select' component={SelectRoute} />
