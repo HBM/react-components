@@ -66,7 +66,7 @@ class App extends React.Component {
 
   state = {
     title: 'HBM/md-components',
-    subtitle: '',
+    subtitle: ''
   }
 
   onChange = (link, sublink) => {
@@ -93,11 +93,15 @@ class App extends React.Component {
       {text: 'List', link: '/list'},
       {text: 'Menu', link: '/menu'},
       {text: 'Modal', link: '/modal'},
-      {text: 'Navigation', link: '/navigation', links: [
-        {text: 'submenu #1', link: '/sub1'},
-        {text: 'submenu #2', link: '/sub2'},
-        {text: 'submenu #3', link: '/sub3'}
-      ]},
+      {
+        text: 'Navigation',
+        link: '/navigation',
+        links: [
+          {text: 'submenu #1', link: '/sub1'},
+          {text: 'submenu #2', link: '/sub2'},
+          {text: 'submenu #3', link: '/sub3'}
+        ]
+      },
       {text: 'Progress', link: '/progress'},
       {text: 'Radiobutton', link: '/radiobutton'},
       {text: 'Select', link: '/select'},

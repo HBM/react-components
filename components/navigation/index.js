@@ -46,7 +46,7 @@ class Item extends React.Component {
   }
 
   render () {
-    const {index, subIndex, link, text, onClick, links, item, subItem, location} = this.props
+    const {index, link, text, onClick, links, item, subItem, location} = this.props
     const {isOpen} = this.state
     return (
       <li className='Navigation-item'>
@@ -63,7 +63,7 @@ class Item extends React.Component {
             links
             ? <ChevronRight className={classnames('Navigation-chevron', {
               'is-open': isOpen
-            })}/>
+            })} />
             : null
           }
         </Link>
