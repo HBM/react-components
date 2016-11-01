@@ -4,8 +4,8 @@ import assert from 'assert'
 import React from 'react'
 import {mount} from 'enzyme'
 import {Broadcast} from 'react-broadcast'
-import {Button} from '../../..'
 import {Stepper, StepperStepFooter} from '../'
+// import {Button} from '../../..'
 
 describe('Stepper', () => {
   it('should work', () => {
