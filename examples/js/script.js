@@ -118,14 +118,7 @@ class App extends React.Component {
       <HashRouter>
         <div>
           <Header title={this.state.title} subtitle={this.state.subtitle} />
-          {/* wrap navigation into <Match /> to get access to location for componentDidMount */}
-          <Match pattern='/' render={({location}) => (
-            <Navigation
-              location={location}
-              links={links}
-              onChange={this.onChange}
-            />
-          )} />
+          <Navigation links={links} onChange={this.onChange} />
           <main>
             <Match exactly pattern='/' component={HomeRoute} />
             <Match pattern='/button' component={ButtonRoute} />

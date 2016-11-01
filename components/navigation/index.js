@@ -9,8 +9,15 @@
 import React from 'react'
 import {Link} from 'react-router'
 import classnames from 'classnames'
+import {Subscriber} from 'react-broadcast'
 import {Logo, Button, Menu, ChevronRight} from '../icon/'
 
+// height is menu item height.
+// we need it in JS instead CSS to calculate overall height of submenu.
+// e.g. 10 items in submenu => height = 10 * 48 = 480px.
+// we have to know the overall height to animate between height 0 and height 480.
+// unfortunately we cannot animate between height 0 and height: auto.
+// that's why we cannot set the height in css.
 const height = 48
 
 /**
@@ -134,41 +141,45 @@ export class Navigation extends React.Component {
 
   render () {
     return (
-      <div>
-        <nav className={this.state.visible ? 'is-visible' : ''}>
-          <div className='Navigation-logo'>
-            <a href='#' onClick={this.close}>
-              <Logo fill='#A7A5A5' />
-            </a>
+      <Subscriber channel='location'>{
+        location => (
+          <div>
+            <nav className={this.state.visible ? 'is-visible' : ''}>
+              <div className='Navigation-logo'>
+                <a href='#' onClick={this.close}>
+                  <Logo fill='#A7A5A5' />
+                </a>
+              </div>
+              <ul className='Navigation'>
+                {this.props.links.map((item, index) =>
+                  <Item
+                    index={index}
+                    key={index}
+                    onClick={this.onClick}
+                    text={item.text}
+                    link={item.link}
+                    links={item.links}
+                    item={item}
+                    location={location}
+                  />
+                )}
+              </ul>
+            </nav>
+            <div className='Navigation-hamburger'>
+              <Button onClick={this.open}>
+                <Menu />
+              </Button>
+            </div>
+            <div
+              className={classnames('Navigation-overlay', {
+                'is-visible': this.state.visible
+              })}
+              onClick={this.close}
+              onTouchEnd={this.close}
+            />
           </div>
-          <ul className='Navigation'>
-            {this.props.links.map((item, index) =>
-              <Item
-                index={index}
-                key={index}
-                onClick={this.onClick}
-                text={item.text}
-                link={item.link}
-                links={item.links}
-                item={item}
-                location={this.props.location}
-              />
-            )}
-          </ul>
-        </nav>
-        <div className='Navigation-hamburger'>
-          <Button onClick={this.open}>
-            <Menu />
-          </Button>
-        </div>
-        <div
-          className={classnames('Navigation-overlay', {
-            'is-visible': this.state.visible
-          })}
-          onClick={this.close}
-          onTouchEnd={this.close}
-        />
-      </div>
+        )
+      }</Subscriber>
     )
   }
 
