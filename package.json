@@ -15,7 +15,8 @@
     "server:examples": "http-server -p 5000 ./examples",
     "watch:examples:all": "npm run watch:examples:js & npm run watch:examples:style",
     "watch:examples:js": "watchify examples/js/script.js -o examples/js/script.min.js -d -v --transform [ babelify --presets [ es2015 react stage-0 react-hmre ] ] --plugin browserify-hmr",
-    "watch:examples:style": "npm run build:examples:style && npm run build:examples:style -- -w"
+    "watch:examples:style": "npm run build:examples:style && npm run build:examples:style -- -w",
+    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha test/.setup.js components/**/test/test.js"
   },
   "repository": {
     "type": "git",
@@ -89,6 +90,7 @@
     "classnames": "^2.2.4",
     "history": "^1.17.0",
     "object-assign": "^4.0.1",
+    "react-broadcast": "^0.1.1",
     "react-motion": "^0.4.3"
   },
   "standard": {
