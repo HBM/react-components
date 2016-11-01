@@ -17,7 +17,7 @@ export default class BottomNavigation extends React.Component {
       clearTimeout(this.scrollTimer)
     }
     /* only hide menu on scroll down */
-    if (lastScrollTop > scrollTop) {
+    if (lastScrollTop >= scrollTop) {
       this.setState({
         scrolling: false
       })
