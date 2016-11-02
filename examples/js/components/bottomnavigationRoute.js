@@ -12,17 +12,17 @@ const links = [
   {
     icon: <Icon.Home />,
     text: 'Home',
-    link: '/bottomnavigation/home'
+    link: '/home'
   },
   {
     icon: <Icon.MusicNote />,
     text: 'Music',
-    link: '/bottomnavigation/music'
+    link: '/music'
   },
   {
     icon: <Icon.Photo />,
     text: 'Photos',
-    link: '/bottomnavigation/photos'
+    link: '/photos'
   }
 ]
 
@@ -47,10 +47,9 @@ const BasicExample = () => (
   <HashRouter basename='/bottomnavigation'>
     <div style={{height: '600px', width: '100%', margin: '0 auto', border: '10px solid #ececec'}}>
       <BottomNavigation links={links}>
-        <Miss component={() => <Redirect to='/bottomnavigation/home' />} />
-        <Match pattern='/bottomnavigation/home' component={Home} />
-        <Match pattern='/bottomnavigation/music' component={Music} />
-        <Match exactly pattern='/bottomnavigation/photos' component={Photos} />
+        <Match pattern='/home' component={Home} />
+        <Match pattern='/music' component={Music} />
+        <Match exactly pattern='/photos' component={Photos} />
       </BottomNavigation>
     </div>
   </HashRouter>
