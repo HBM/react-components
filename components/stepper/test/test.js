@@ -2,10 +2,11 @@
 
 import assert from 'assert'
 import React from 'react'
+import {MemoryRouter} from 'react-router'
 import {mount} from 'enzyme'
 import {Broadcast} from 'react-broadcast'
 import {Stepper, StepperStepFooter} from '../'
-// import {Button} from '../../..'
+import {Button} from '../../..'
 
 describe('Stepper', () => {
   it('should work', () => {
@@ -150,84 +151,83 @@ describe('Stepper', () => {
     assert(wrapper.find('a[href="/second"]').hasClass('is-active'))
   })
 
-  // it('should apply active class name to currently active step and StepperStepFooter test next', () => {
-  //   const location = {pathname: '/second', search: '', hash: ''}
-  //   const step = ({index, isLast, cancel, back, next, error}) => (
-  //     <div>
-  //       <h3>step second</h3>
-  //       <Button onClick={() => error(new Error('My Error'))}>
-  //         Set error
-  //       </Button>
-  //       <Button onClick={() => error()}>
-  //         Clear error
-  //       </Button>
-  //       <StepperStepFooter
-  //         labelBack='Back'
-  //         labelNext='Next'
-  //         labelCancel='Cancel'
-  //         onBack={back}
-  //         onNext={next}
-  //         onCancel={cancel}
-  //       />
-  //     </div>
-  //   )
-  //
-  //   const steps = [
-  //     {
-  //       title: 'first',
-  //       href: '/first',
-  //       component: () => <div>first</div>
-  //     },
-  //     {
-  //       title: 'second',
-  //       href: '/second',
-  //       component: step
-  //     },
-  //     {
-  //       title: 'third',
-  //       href: '/third',
-  //       component: () => <div>third</div>
-  //     }
-  //   ]
-  //
-  //   const onCancel = (index) => {
-  //     // let num = index + 1
-  //     // console.log('canceled at step' + num)
-  //   }
-  //
-  //   const onError = (index, message) => {
-  //     // let steps = this.state.steps.slice()
-  //     // if (index > 0 && index < steps.length) {
-  //     //   steps[index].error = message
-  //     //   this.setState({
-  //     //     steps: steps
-  //     //   })
-  //     // }
-  //   }
-  //
-  //   const transitionTo = (href) => {
-  //     console.log(href)
-  //   }
-  //   const wrapper = mount(
-  //     <Broadcast channel='location' value={location}>
-  //       <Stepper
-  //         steps={steps}
-  //         onError={(i, me) => onError(i, me)}
-  //         onCancel={(i) => onCancel(i)}
-  //       />
-  //     </Broadcast>
-  //   , {context: {transitionTo: {transitionTo}}})
-  //   assert(wrapper.find('a[href="/second"]').hasClass('is-active'))
-  //   console.log(wrapper.find('.Stepper-step-next').childAt(0).html())
-  //   wrapper.find('.Stepper-step-next').childAt(0).simulate('click')
-  //   // assert(wrapper.find('a[href="/third"]').hasClass('is-active'))
-  //   // wrapper.find('.Stepper-title .Stepper-title-text')[1].simulate('click')
-  //   // assert(wrapper.find('a[href="/second"]').hasClass('is-active'))
-  //   // wrapper.find('.Stepper-step-back .Button').simulate('click')
-  //   // wrapper.find('.Stepper-title .Stepper-title-text')[1].simulate('click')
-  //   // assert(wrapper.find('a[href="/second"]').hasClass('is-active'))
-  //   // wrapper.find('.Stepper-step-cancel .Button').simulate('click')
-  //   console.log('--------------------------------------------------------------')
-  //   console.log(wrapper.html())
-  // })
+  it('should apply active class name to currently active step and StepperStepFooter test next', () => {
+    const location = {pathname: '/second', search: '', hash: ''}
+    const step = ({index, isLast, cancel, back, next, error}) => (
+      <div>
+        <h3>step second</h3>
+        <Button onClick={() => error(new Error('My Error'))}>
+          Set error
+        </Button>
+        <Button onClick={() => error()}>
+          Clear error
+        </Button>
+        <StepperStepFooter
+          labelBack='Back'
+          labelNext='Next'
+          labelCancel='Cancel'
+          onBack={back}
+          onNext={next}
+          onCancel={cancel}
+        />
+      </div>
+    )
+
+    const steps = [
+      {
+        title: 'first',
+        href: '/first',
+        component: () => <div>first</div>
+      },
+      {
+        title: 'second',
+        href: '/second',
+        component: step
+      },
+      {
+        title: 'third',
+        href: '/third',
+        component: () => <div>third</div>
+      }
+    ]
+
+    const onCancel = (index) => {
+      // let num = index + 1
+      // console.log('canceled at step' + num)
+    }
+
+    const onError = (index, message) => {
+      // let steps = this.state.steps.slice()
+      // if (index > 0 && index < steps.length) {
+      //   steps[index].error = message
+      //   this.setState({
+      //     steps: steps
+      //   })
+      // }
+    }
+
+    const transitionTo = (href) => {
+      console.log(href)
+    }
+    const wrapper = mount(
+      <MemoryRouter initialEntries={[location.pathname]} initialIndex={0} >
+        <Stepper
+          steps={steps}
+          onError={(i, me) => onError(i, me)}
+          onCancel={(i) => onCancel(i)}
+        />
+      </MemoryRouter>
+    , {context: {transitionTo: {transitionTo}}})
+    assert(wrapper.find('a[href="/second"]').hasClass('is-active'))
+    wrapper.find('.Stepper-step-next').childAt(0).simulate('click')
+    // assert(wrapper.find('a[href="/third"]').hasClass('is-active'))
+    // wrapper.find('.Stepper-title .Stepper-title-text')[1].simulate('click')
+    // assert(wrapper.find('a[href="/second"]').hasClass('is-active'))
+    // wrapper.find('.Stepper-step-back .Button').simulate('click')
+    // wrapper.find('.Stepper-title .Stepper-title-text')[1].simulate('click')
+    // assert(wrapper.find('a[href="/second"]').hasClass('is-active'))
+    // wrapper.find('.Stepper-step-cancel .Button').simulate('click')
+    console.log('--------------------------------------------------------------')
+    console.log(wrapper.html())
+  })
 })
