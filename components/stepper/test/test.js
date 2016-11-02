@@ -152,16 +152,19 @@ describe('Stepper', () => {
   })
 
   it('should apply active class name to currently active step and StepperStepFooter test next', () => {
-    const location = {pathname: '/second', search: '', hash: ''}
     const step = ({index, isLast, cancel, back, next, error}) => (
       <div>
         <h3>step second</h3>
-        <Button onClick={() => error(new Error('My Error'))}>
-          Set error
-        </Button>
-        <Button onClick={() => error()}>
-          Clear error
-        </Button>
+        <div className='button-setError'>
+          <Button onClick={() => error(new Error('My Error'))}>
+            Set error
+          </Button>
+        </div>
+        <div className='button-clearError'>
+          <Button onClick={() => error()}>
+            Clear error
+          </Button>
+        </div>
         <StepperStepFooter
           labelBack='Back'
           labelNext='Next'
@@ -206,28 +209,33 @@ describe('Stepper', () => {
       // }
     }
 
-    const transitionTo = (href) => {
-      console.log(href)
-    }
-    const wrapper = mount(
-      <MemoryRouter initialEntries={[location.pathname]} initialIndex={0} >
+    let wrapper = mount(
+      <MemoryRouter initialEntries={['/second']} initialIndex={0} >
         <Stepper
           steps={steps}
           onError={(i, me) => onError(i, me)}
           onCancel={(i) => onCancel(i)}
         />
       </MemoryRouter>
-    , {context: {transitionTo: {transitionTo}}})
+    )
     assert(wrapper.find('a[href="/second"]').hasClass('is-active'))
+    wrapper.find('.Stepper-step-cancel').childAt(0).simulate('click')
+    wrapper.find('.button-setError').childAt(0).simulate('click')
+    wrapper.find('.button-clearError').childAt(0).simulate('click')
     wrapper.find('.Stepper-step-next').childAt(0).simulate('click')
-    // assert(wrapper.find('a[href="/third"]').hasClass('is-active'))
-    // wrapper.find('.Stepper-title .Stepper-title-text')[1].simulate('click')
-    // assert(wrapper.find('a[href="/second"]').hasClass('is-active'))
-    // wrapper.find('.Stepper-step-back .Button').simulate('click')
-    // wrapper.find('.Stepper-title .Stepper-title-text')[1].simulate('click')
-    // assert(wrapper.find('a[href="/second"]').hasClass('is-active'))
-    // wrapper.find('.Stepper-step-cancel .Button').simulate('click')
-    console.log('--------------------------------------------------------------')
-    console.log(wrapper.html())
+    assert(wrapper.find('a[href="/third"]').hasClass('is-active'))
+
+    wrapper = mount(
+      <MemoryRouter initialEntries={['/second']} initialIndex={0} >
+        <Stepper
+          steps={steps}
+          onError={(i, me) => onError(i, me)}
+          onCancel={(i) => onCancel(i)}
+        />
+      </MemoryRouter>
+    )
+    assert(wrapper.find('a[href="/second"]').hasClass('is-active'))
+    wrapper.find('.Stepper-step-back').childAt(0).simulate('click')
+    assert(wrapper.find('a[href="/first"]').hasClass('is-active'))
   })
 })
