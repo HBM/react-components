@@ -18,6 +18,7 @@ import SelectRoute from './components/selectRoute'
 import SliderRoute from './components/sliderRoute'
 import SnackbarRoute from './components/snackbarRoute'
 import SparklineRoute from './components/sparklineRoute'
+import StepperRoute from './components/stepperRoute'
 import SwitchRoute from './components/switchRoute'
 import TabsRoute from './components/tabsRoute'
 import TextfieldRoute from './components/textfieldRoute'
@@ -108,6 +109,7 @@ class App extends React.Component {
       {text: 'Slider', link: '/slider'},
       {text: 'Snackbar', link: '/snackbar'},
       {text: 'Sparkline', link: '/sparkline'},
+      {text: 'Stepper', link: '/stepper'},
       {text: 'Switch', link: '/switch'},
       {text: 'Tabs', link: '/tabs'},
       {text: 'Textfield', link: '/textfield'},
@@ -138,6 +140,7 @@ class App extends React.Component {
             <Match pattern='/slider' component={SliderRoute} />
             <Match pattern='/snackbar' component={SnackbarRoute} />
             <Match pattern='/sparkline' component={SparklineRoute} />
+            <Match pattern='/stepper' component={StepperRoute} />
             <Match pattern='/switch' component={SwitchRoute} />
             <Match pattern='/tabs' component={TabsRoute} />
             <Match pattern='/textfield' component={TextfieldRoute} />

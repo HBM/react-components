@@ -1,0 +1,191 @@
+
+.Stepper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.Stepper-step-back {
+  display: none;
+}
+
+$no-steps: 10;
+
+// -- vertical --
+// titles
+@for $i from 1 through $no-steps {
+  .Stepper > .Stepper-title:nth-of-type(#{$i}) {
+    order: #{$i * 2 - 1};
+  }
+}
+
+// steps
+@for $i from 1 through $no-steps {
+  .Stepper > .Stepper-step:nth-of-type(#{$i}) {
+    order: #{$i * 2};
+  }
+}
+
+// -- horizontal --
+@include medium {
+  .Stepper--horizontal {
+    flex-direction: row;
+    padding: 0 24px;
+  }
+
+  .Stepper--horizontal .Stepper-circle {
+    margin: 0 8px;
+  }
+
+  .Stepper--horizontal .Stepper-title {
+    height: 72px;
+  }
+
+  .Stepper--horizontal .Stepper-title:last-of-type {
+    flex: 0;
+  }
+
+  .Stepper--horizontal > .Stepper-step .Stepper-line-wrapper,
+  .Stepper--horizontal .Stepper-title:last-of-type .Stepper-line-wrapper {
+    display: none;
+  }
+
+  .Stepper--horizontal > .Stepper-title .Stepper-line-wrapper {
+    flex: 1;
+    margin-left: 8px;
+  }
+
+  .Stepper--horizontal > .Stepper-title .Stepper-line {
+    height: 1px;
+    width: 100%;
+  }
+
+  .Stepper--horizontal > .Stepper-step > .Stepper-body {
+    min-height: 0;
+  }
+
+  // titles
+  @for $i from 1 through $no-steps {
+    .Stepper--horizontal > .Stepper-title:nth-of-type(#{$i}) {
+      order: #{$i};
+    }
+  }
+
+  // steps
+  @for $i from 1 through $no-steps {
+    .Stepper--horizontal > .Stepper-step:nth-of-type(#{$i}) {
+      order: $no-steps + 1;
+    }
+  }
+
+  .Stepper-footer {
+    justify-content: flex-end;
+  }
+
+  .Stepper-step-back {
+    display: flex;
+    align-self: flex-start;
+    flex: 1;
+  }
+
+  .Stepper-step-next,
+  .Stepper-step-cancel {
+    align-self: flex-end;
+  }
+}
+
+.Stepper-circle-wrapper > .Stepper-circle ~ .Stepper-line-wrapper {
+  display: none;
+}
+
+.Stepper-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+.Stepper-circle:not(.Stepper--error) {
+  border-radius: 50%;
+  background-color: #bdbdbd;
+  color: #fff;
+}
+
+.Stepper--error > .Stepper-title-text,
+.Stepper--error > .Stepper-step-optional {
+  color: #f44336;
+}
+
+.Stepper--error svg {
+  fill: #f44336;
+}
+
+.Stepper-links {
+  display: flex;
+  flex-direction: row;
+}
+
+.Stepper-step {
+  flex-basis: 100%;
+}
+
+.Stepper-title {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #bdbdbd;
+  flex: 1;
+  white-space: nowrap;
+}
+
+.Stepper-title.is-active {
+  color: #000;
+}
+
+.Stepper-title.is-active > .Stepper-circle-wrapper > .Stepper-circle:not(.Stepper--error) {
+  background-color: #2196f3;
+  color: #fff;
+}
+
+.Stepper-body {
+  display: flex;
+  min-height: 24px;
+}
+
+.Stepper-body.is-last {
+  min-height: 0;
+}
+
+.Stepper-line-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 24px;
+}
+
+.Stepper-line {
+  width: 1px;
+  background-color: #bdbdbd;
+}
+
+.Stepper-content-wrapper {
+  flex: 1;
+}
+
+.Stepper-content {
+  margin-left: 12px;
+}
+
+.Stepper-footer {
+  display: flex;
+  margin-top: 16px;
+  // button has outer margin of 4
+  padding-left: 8px;
+}
+
+.Stepper-title.is-active > .Stepper-title-text-wrapper:not(.Stepper--error) > .Stepper-step-optional {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.54);
+}
