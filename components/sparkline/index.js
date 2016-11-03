@@ -14,7 +14,28 @@ export default class Sparkline extends React.Component {
   }
 
   componentDidMount () {
-    var ctx = this.refs.canvas.getContext('2d')
+    const {canvas} = this.refs
+    var ctx = canvas.getContext('2d')
+
+    // retinafy canvas
+    // https://www.html5rocks.com/en/tutorials/canvas/hidpi/
+    const devicePixelRatio = window.devicePixelRatio || 1
+    const backingStoreRatio = ctx.webkitBackingStorePixelRatio ||
+                            ctx.mozBackingStorePixelRatio ||
+                            ctx.msBackingStorePixelRatio ||
+                            ctx.oBackingStorePixelRatio ||
+                            ctx.backingStorePixelRatio || 1
+
+    const ratio = devicePixelRatio / backingStoreRatio
+
+    canvas.style.width = `${canvas.width}px`
+    canvas.style.height = `${canvas.height}px`
+
+    canvas.width *= ratio
+    canvas.height *= ratio
+
+    ctx.scale(ratio, ratio)
+
     this.paint(ctx)
   }
 
