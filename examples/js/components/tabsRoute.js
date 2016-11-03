@@ -47,9 +47,7 @@ class App extends React.Component {
     return (
       <HashRouter>
         <div>
-          <Match pattern='/tabs' render={({location}) => (
-            <Tabs location={location} tabs={tabs} />
-          )} />
+          <Tabs tabs={tabs} />
           <div style={{padding: '30px 0'}}>
             <Match exactly pattern='/tabs' render={() => (
               <span>Please select a country from the tabs.</span>

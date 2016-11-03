@@ -1,23 +1,15 @@
 
 import React from 'react'
 import {Link} from 'react-router'
+import {Subscriber} from 'react-broadcast'
 
-/**
- * Tabs component
- */
-export default class Tabs extends React.Component {
+class WrappedTabs extends React.Component {
 
-  /**
-   * Property types
-   */
   static propTypes = {
     tabs: React.PropTypes.array,
     location: React.PropTypes.object
   }
 
-  /**
-   * Default properties
-   */
   static defaultProps = {
     tabs: []
   }
@@ -38,9 +30,6 @@ export default class Tabs extends React.Component {
     })
   }
 
-  /**
-   * Component did mount
-   */
   componentDidMount () {
     this.setInkBarPosition(this.props)
   }
@@ -96,6 +85,21 @@ export default class Tabs extends React.Component {
           />
         }
       </div>
+    )
+  }
+
+}
+
+/**
+ * Export wrapper to have access to location object inside WrappedTabs component.
+ */
+export default class Tabs extends React.Component {
+
+  render () {
+    return (
+      <Subscriber channel='location'>
+        {location => <WrappedTabs location={location} tabs={this.props.tabs} />}
+      </Subscriber>
     )
   }
 
