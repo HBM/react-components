@@ -29,7 +29,7 @@ section {
 main h2 {
   font-size: 3rem;
   line-height: 110%;
-  margin: 1.5rem 0 1.2rem 0;
+  margin: 1.5rem 0 1.2rem;
   color: #1b325f;
 }
 
@@ -52,17 +52,17 @@ main h2 {
   margin-bottom: 10px;
 }
 
-.playground>div>ul {
+.playground > div > ul {
   list-style: none;
   padding: 0;
 }
 
-.playground>div>ul>li {
+.playground > div > ul > li {
   padding-top: 15px;
   padding-left: 10px;
 }
 
-.playground>div>ul>li>b:first-child {
+.playground > div > ul > li > b:first-child {
   font-weight: normal;
   font-family: source-code-pro, Menlo, Consolas, Monaco, monospace;
   background-color: rgba(0, 0, 0, 0.05);
@@ -71,26 +71,26 @@ main h2 {
   margin-right: 0.2rem;
 }
 
-.playground>div>ul>li>i {
+.playground > div > ul > li > i {
   font-style: normal;
 }
 
 .playground {
   margin: 10px auto;
-  box-shadow: 0px 0px 5px rgba(0,0,0,0.25);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
 }
 
 .playgroundToggleCodeBar {
-  padding: 0 10px 0 10px;
+  padding: 0 10px;
   background-color: #1b325f;
   color: #fff;
   order: 1;
 }
 
 .playgroundCode {
-  margin-bottom: 0px;
+  margin-bottom: 0;
   order: 2;
 }
 
@@ -103,18 +103,22 @@ main h2 {
   height: auto;
 }
 
-.playgroundToggleCodeLink, .playgroundToggleCodeLink::before {
+.playgroundToggleCodeLink,
+.playgroundToggleCodeLink::before {
   cursor: pointer;
   position: relative;
   right: 0;
   display: inline-block;
 }
+
 .playgroundToggleCodeLink::before {
-  padding: 5px 5px 5px 0px;
+  padding: 5px 5px 5px 0;
 }
+
 .playgroundToggleCodeLink {
   padding: 5px 10px 5px 5px;
 }
+
 .playgroundToggleCodeLink::before {
   content: '<live edit>';
 }
@@ -133,7 +137,7 @@ main h2 {
   padding: 10px;
   font-size: 12px;
   color: white;
-  background: #F2777A;
+  background: #f2777a;
 }
 
 #react main.home {
@@ -149,9 +153,11 @@ main h2 {
   justify-content: space-between;
   align-items: center;
   padding-top: 100px;
+
   @include medium {
     padding-top: 20%;
   }
+
   padding-bottom: 45px;
 }
 
@@ -159,13 +165,14 @@ main h2 {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
 
   h1 {
-    margin: 0 0;
+    margin: 0;
   }
 
   span {
     padding: 20px 15px;
     font-size: 30px;
   }
+
   margin-bottom: 12px;
 
   @include medium {
@@ -173,6 +180,7 @@ main h2 {
       padding: 30px 20px;
       font-size: 35px;
     }
+
     margin-bottom: 20px;
   }
 
@@ -192,10 +200,12 @@ main h2 {
   }
 }
 
-.Hero-tagline, .Hero-links {
+.Hero-tagline,
+.Hero-links {
   font-size: 16px;
   line-height: 22px;
   margin-top: 40px;
+
   @include medium {
     margin-top: 60px;
     font-size: 20px;
@@ -204,8 +214,9 @@ main h2 {
 
 .Hero-sponsor {
   font-weight: normal;
-  margin: 0 0;
+  margin: 0;
   display: flex;
+
   svg {
     width: 20px;
     height: 20px;
