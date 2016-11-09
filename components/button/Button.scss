@@ -12,31 +12,31 @@
   outline: none;
   color: $blue-dark;
   font-weight: 500;
-}
 
-.Button:hover,
-.Button:focus {
-  background: rgba(#999, 0.2);
-}
+  &:hover,
+  &:focus {
+    background: rgba(#999, 0.2);
+  }
 
-.Button:active {
-  background: rgba(#999, 0.4);
-}
+  &:active {
+    background: rgba(#999, 0.4);
+  }
 
-.Button:disabled {
-  color: rgba(#000, 0.4);
-  background: none;
-}
+  &:disabled {
+    color: rgba(#000, 0.4);
+    background: none;
+  }
 
-/* http://www.google.com/design/spec/components/buttons.html#buttons-flat-raised-buttons */
+  /* http://www.google.com/design/spec/components/buttons.html#buttons-flat-raised-buttons */
 
-.Button--raised {
-  background: rgba(#999, 0.2);
-  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.26);
-  transition: 0.25s;
-}
+  &--raised {
+    background: rgba(#999, 0.2);
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.26);
+    transition: 0.25s;
 
-.Button--raised:active {
-  background: rgba(#999, 0.2);
-  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.3);
+    &:active {
+      background: rgba(#999, 0.2);
+      box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.3);
+    }
+  }
 }
