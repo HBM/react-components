@@ -13,6 +13,11 @@ const buttonComponent =
   Button
 </Button>`
 
+const buttonFilled =
+`<Button filled onClick={e => console.log(e)}>
+  Button
+</Button>`
+
 const buttonDisabled =
 `<Button onClick={e => console.log(e)} disabled>
   Disabled
@@ -21,6 +26,11 @@ const buttonDisabled =
 const buttonRaised =
 `<Button onClick={e => console.log(e)} raised>
   Raised
+</Button>`
+
+const buttonRaisedAndFilled =
+`<Button onClick={e => console.log(e)} raised filled>
+  Raised & Filled
 </Button>`
 
 export default class ButtonRoute extends React.Component {
@@ -41,9 +51,9 @@ export default class ButtonRoute extends React.Component {
           />
         </section>
         <section>
-          <h2>Disabled Button</h2>
+          <h2>Filled Button</h2>
           <Playground
-            codeText={buttonDisabled}
+            codeText={buttonFilled}
             scope={{React, Button}}
             collapsableCode
           />
@@ -52,6 +62,22 @@ export default class ButtonRoute extends React.Component {
           <h2>Raised Button</h2>
           <Playground
             codeText={buttonRaised}
+            scope={{React, Button}}
+            collapsableCode
+          />
+        </section>
+        <section>
+          <h2>Raised & Filled Button</h2>
+          <Playground
+            codeText={buttonRaisedAndFilled}
+            scope={{React, Button}}
+            collapsableCode
+          />
+        </section>
+        <section>
+          <h2>Disabled Button</h2>
+          <Playground
+            codeText={buttonDisabled}
             scope={{React, Button}}
             collapsableCode
           />

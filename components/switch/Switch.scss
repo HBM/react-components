@@ -2,12 +2,12 @@
 /**
  * http://www.google.com/design/spec/components/switches.html#switches-switch
  */
-$thumb-on: $blue-dark;
+$thumb-on: $color-accent;
 $thumb-off: #fafafa;
 $thumb-disabled: #bdbdbd;
 $thumb-size: 20px;
 
-$track-on: rgba($blue-dark, 0.5);
+$track-on: $color-accent--light;
 $track-off: rgba(0, 0, 0, 0.26);
 $track-disabled: rgba(0, 0, 0, 0.12);
 $track-width: 36px;
@@ -46,7 +46,7 @@ $transition-function: ease;
   height: $thumb-size;
   border-radius: 50%;
   background: $thumb-off;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.4);
   transition: $transition-duration $transition-function;
 }
 
@@ -54,7 +54,7 @@ $transition-function: ease;
  * focus
  */
 .Switch-input:checked.Switch-input:focus ~ .Switch-track .Switch-thumb {
-  box-shadow: 0 0 0 15px rgba($blue-dark, 0.12);
+  box-shadow: 0 0 0 15px rgba($color-accent--light, 0.5);
 }
 
 .Switch-input:not(:checked).Switch-input:focus ~ .Switch-track .Switch-thumb {

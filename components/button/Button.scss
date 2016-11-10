@@ -10,12 +10,12 @@
   text-transform: uppercase;
   border-radius: 2px;
   outline: none;
-  color: $blue-dark;
+  color: $color-accent;
   font-weight: 500;
 
   &:hover,
   &:focus {
-    background: rgba(#999, 0.2);
+    background: rgba(#999, 0.1);
   }
 
   &:active {
@@ -27,17 +27,29 @@
     background: none;
   }
 
+  &--filled {
+    color: text-color($color-accent-text);
+    background: $color-accent;
+    
+    &:hover,
+    &:focus {
+      background: $color-accent--dark;
+    }
+    &:active {
+      background: darken($color-accent--dark, 10%);
+    }
+  }
+
   /* http://www.google.com/design/spec/components/buttons.html#buttons-flat-raised-buttons */
 
   &--raised {
-    background: rgba(#999, 0.2);
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.26);
     transition: box-shadow 0.25s;
     will-change: box-shadow;
 
     &:active {
-      background: rgba(#999, 0.2);
       box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.3);
     }
   }
+
 }
