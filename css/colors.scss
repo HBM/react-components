@@ -1,0 +1,51 @@
+/* https://material.google.com/style/color.html#color-color-palette */
+
+$text-colors: (
+  Black: (
+    Text: rgba(0, 0, 0, 0.87),
+    Secondary Text: rgba(0, 0, 0, 0.54),
+    Icons: rgba(0, 0, 0, 0.54),
+    Disabled: rgba(0, 0, 0, 0.26),
+    Hint Text: rgba(0, 0, 0, 0.26),
+    Dividers: rgba(0, 0, 0, 0.12),
+  ),
+  White: (
+    Text: #fff,
+    Secondary Text: rgba(255, 255, 255, 0.7),
+    Icons: #fff,
+    Disabled: rgba(255, 255, 255, 0.3),
+    Hint Text: rgba(255, 255, 255, 0.3),
+    Dividers: rgba(255, 255, 255, 0.12),
+  ),
+);
+
+@function text-color($color, $type: Text) {
+  $colorMap: map-get($text-colors, $color);
+
+  @return map-get($colorMap, $type);
+}
+
+$color-primary: #1b325f;
+$color-primary-text: White;
+
+$color-primary--dark: #303f9f;
+$color-primary-text--dark: White;
+
+$color-primary--light: #e8eaf6;
+$color-primary-text--light: Black;
+
+/* from Pink pallete */
+$color-accent: #ff4081;
+$color-accent-text: White;
+
+$color-accent--dark: #f50057;
+$color-accent-text--dark: White;
+
+$color-accent--light: #ff80ab;
+$color-accent-text--light: Black;
+
+/* deprecated */
+$blue-dark: $color-primary;
+$black-012: text-color(Black, Dividers);
+$black-026: text-color(Black, Hint);
+$black-054: text-color(Black, Icons);

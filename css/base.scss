@@ -4,6 +4,7 @@
  */
 @import "normalize";
 @import "mixins";
+@import "colors";
 
 /**
  * Fonts
@@ -46,10 +47,6 @@
 /**
  * Variables
  */
-$blue-dark: #1b325f;
-$black-012: rgba(0, 0, 0, 0.12);
-$black-026: rgba(0, 0, 0, 0.26);
-$black-054: rgba(0, 0, 0, 0.54);
 
 $wrapper-medium: 750px;
 $wrapper-large: 970px;
