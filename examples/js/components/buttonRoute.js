@@ -5,7 +5,7 @@ import {Button} from '../../../'
 
 const defaultButton =
 `<button type='button'>
-  Default
+  Button
 </button>`
 
 const buttonComponent =
@@ -20,17 +20,17 @@ const buttonFilled =
 
 const buttonDisabled =
 `<Button onClick={e => console.log(e)} disabled>
-  Disabled
+  Button
 </Button>`
 
 const buttonRaised =
 `<Button onClick={e => console.log(e)} raised>
-  Raised
+  Button
 </Button>`
 
 const buttonRaisedAndFilled =
 `<Button onClick={e => console.log(e)} raised filled>
-  Raised & Filled
+  Button
 </Button>`
 
 export default class ButtonRoute extends React.Component {
