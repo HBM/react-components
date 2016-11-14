@@ -25,13 +25,18 @@
   }
 
   &:disabled {
-    color: rgba(#000, 0.4);
+    color: rgba($color-accent, 0.5);
     background: none;
   }
 
   &--filled {
     color: text-color($color-accent-text);
     background: $color-accent;
+
+    &:disabled {
+      color: text-color($color-accent-text, Disabled);
+      background: darken(saturate($color-accent, 12%), 10%);
+    }
 
     &:hover,
     &:focus {
@@ -47,7 +52,7 @@
 
   &--raised {
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.26);
-    transition: background, box-shadow 0.25s;
+    transition: background 0.25s, box-shadow 0.25s;
     will-change: background, box-shadow;
 
     &:active {
