@@ -12,14 +12,16 @@
   outline: none;
   color: $color-accent;
   font-weight: 500;
+  will-change: background;
+  transition: background 0.25s;
 
   &:hover,
   &:focus {
-    background: rgba(#999, 0.1);
+    background: rgba($color-accent, 0.12);
   }
 
   &:active {
-    background: rgba(#999, 0.4);
+    background: rgba($color-accent, 0.24);
   }
 
   &:disabled {
@@ -33,10 +35,10 @@
     
     &:hover,
     &:focus {
-      background: $color-accent--dark;
+      background: darken($color-accent, 12%);
     }
     &:active {
-      background: darken($color-accent--dark, 10%);
+      background: darken($color-accent, 18%);
     }
   }
 
@@ -44,8 +46,8 @@
 
   &--raised {
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.26);
-    transition: box-shadow 0.25s;
-    will-change: box-shadow;
+    transition: background, box-shadow 0.25s;
+    will-change: background, box-shadow;
 
     &:active {
       box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.3);
