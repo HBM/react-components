@@ -2,7 +2,8 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {HashRouter, Match} from 'react-router'
+import {Match} from 'react-router'
+import {Shell} from '../../'
 import BottomNavigationRoute from './components/bottomnavigationRoute'
 import ButtonRoute from './components/buttonRoute'
 import CardRoute from './components/cardRoute'
@@ -25,11 +26,6 @@ import TabsRoute from './components/tabsRoute'
 import TextfieldRoute from './components/textfieldRoute'
 import TextareaRoute from './components/textareaRoute'
 import TooltipRoute from './components/tooltipRoute'
-
-import {
-  Header,
-  Navigation
-} from '../../'
 
 const sub1 = () => (
   <div>
@@ -119,39 +115,38 @@ class App extends React.Component {
       {text: 'Tooltip', link: '/tooltip'}
     ]
     return (
-      <HashRouter>
-        <div>
-          <Header title={this.state.title} subtitle={this.state.subtitle} />
-          <Navigation links={links} onChange={this.onChange} />
-          <main>
-            <Match exactly pattern='/' component={HomeRoute} />
-            <Match pattern='/bottomnavigation' component={BottomNavigationRoute} />
-            <Match pattern='/button' component={ButtonRoute} />
-            <Match pattern='/card' component={CardRoute} />
-            <Match pattern='/checkbox' component={CheckboxRoute} />
-            <Match pattern='/chip' component={ChipRoute} />
-            <Match pattern='/icon' component={IconRoute} />
-            <Match pattern='/list' component={ListRoute} />
-            <Match pattern='/menu' component={MenuRoute} />
-            <Match pattern='/modal' component={ModalRoute} />
-            <Match pattern='/navigation/sub1' component={sub1} />
-            <Match pattern='/navigation/sub2' component={sub2} />
-            <Match pattern='/navigation/sub3' component={sub3} />
-            <Match pattern='/progress' component={ProgressRoute} />
-            <Match pattern='/radiobutton' component={RadiobuttonRoute} />
-            <Match pattern='/select' component={SelectRoute} />
-            <Match pattern='/slider' component={SliderRoute} />
-            <Match pattern='/snackbar' component={SnackbarRoute} />
-            <Match pattern='/sparkline' component={SparklineRoute} />
-            <Match pattern='/stepper' component={StepperRoute} />
-            <Match pattern='/switch' component={SwitchRoute} />
-            <Match pattern='/tabs' component={TabsRoute} />
-            <Match pattern='/textfield' component={TextfieldRoute} />
-            <Match pattern='/textarea' component={TextareaRoute} />
-            <Match pattern='/tooltip' component={TooltipRoute} />
-          </main>
-        </div>
-      </HashRouter>
+      <Shell
+        links={links}
+        title={this.state.title}
+        subtitle={this.state.subtitle}
+        onChange={this.onChange}
+      >
+        <Match exactly pattern='/' component={HomeRoute} />
+        <Match pattern='/bottomnavigation' component={BottomNavigationRoute} />
+        <Match pattern='/button' component={ButtonRoute} />
+        <Match pattern='/card' component={CardRoute} />
+        <Match pattern='/checkbox' component={CheckboxRoute} />
+        <Match pattern='/chip' component={ChipRoute} />
+        <Match pattern='/icon' component={IconRoute} />
+        <Match pattern='/list' component={ListRoute} />
+        <Match pattern='/menu' component={MenuRoute} />
+        <Match pattern='/modal' component={ModalRoute} />
+        <Match pattern='/navigation/sub1' component={sub1} />
+        <Match pattern='/navigation/sub2' component={sub2} />
+        <Match pattern='/navigation/sub3' component={sub3} />
+        <Match pattern='/progress' component={ProgressRoute} />
+        <Match pattern='/radiobutton' component={RadiobuttonRoute} />
+        <Match pattern='/select' component={SelectRoute} />
+        <Match pattern='/slider' component={SliderRoute} />
+        <Match pattern='/snackbar' component={SnackbarRoute} />
+        <Match pattern='/sparkline' component={SparklineRoute} />
+        <Match pattern='/stepper' component={StepperRoute} />
+        <Match pattern='/switch' component={SwitchRoute} />
+        <Match pattern='/tabs' component={TabsRoute} />
+        <Match pattern='/textfield' component={TextfieldRoute} />
+        <Match pattern='/textarea' component={TextareaRoute} />
+        <Match pattern='/tooltip' component={TooltipRoute} />
+      </Shell>
     )
   }
 
