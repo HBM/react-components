@@ -104,11 +104,12 @@ class Item extends React.Component {
 export class Navigation extends React.Component {
 
   static propTypes = {
-    links: React.PropTypes.array.isRequired,
+    links: React.PropTypes.array,
     onChange: React.PropTypes.func
   }
 
   static defaultProps = {
+    links: [],
     onChange: () => {}
   }
 

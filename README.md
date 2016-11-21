@@ -21,33 +21,28 @@ $ npm install --save md-components
 
 ```js
 import React from 'react'
-import {Button} from 'md-components'
-
+import ReactDOM from 'react'
+import {Shell} from 'md-components'
 
 class App extends React.Component {
 
-  onClick = () => {
-    console.log('clicked')
-  }
-
   render() {
     return (
-      <div>
-        <Button onClick={this.onClick}>
-          Hello
-        </Button>
-      </div>
+      <Shell title='my app'>
+        <div>hello world</div>
+      </Shell>
     )
   }
 
 }
+
+ReactDOM.render(<App />, document.getElementById('react'))
 ```
 
 `/css/index.scss`
 
 ```scss
 @import "../node_modules/md-components/css/base";
-@import "../node_modules/md-components/button/Button";
 ```
 
 ## Custom colors / Theming
