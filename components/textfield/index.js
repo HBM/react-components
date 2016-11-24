@@ -56,60 +56,26 @@ const TextfieldWrapper = ({
   )
 }
 
-export const Textfield = ({
-  autoCapitalize,
-  autoComplete,
-  autoCorrect,
-  autoFocus,
-  defaultValue,
-  disabled,
-  error,
-  float,
-  icon,
-  label,
-  name,
-  onChange,
-  placeholder,
-  readOnly,
-  spellCheck,
-  type,
-  length,
-  value
-}) => {
-  return (
-    <TextfieldWrapper defaultValue={defaultValue} error={error} float={float} icon={icon} label={label} value={value} length={length}>
-      <input
-        autoCapitalize={autoCapitalize}
-        autoComplete={autoComplete}
-        autoCorrect={autoCorrect}
-        autoFocus={autoFocus}
-        className={classnames('Textfield-input', {
-          'Textfield-input--error': error
-        })}
-        defaultValue={defaultValue}
-        disabled={disabled}
-        name={name}
-        onChange={onChange}
-        placeholder={placeholder}
-        readOnly={readOnly}
-        spellCheck={spellCheck}
-        type={type}
-        value={value}
-      />
-    </TextfieldWrapper>
-  )
-}
+export const Textfield = ({float, error, length, ...rest}) => (
+  <TextfieldWrapper
+    defaultValue={rest.defaultValue}
+    error={error}
+    float={float}
+    icon={rest.icon}
+    label={rest.label}
+    value={rest.value}
+    length={length}
+  >
+    <input
+      className={classnames('Textfield-input', {
+        'Textfield-input--error': error
+      })}
+      {...rest}
+    />
+  </TextfieldWrapper>
+)
 
 Textfield.propTypes = {
-  autoCapitalize: React.PropTypes.string,
-  autoComplete: React.PropTypes.string,
-  autoCorrect: React.PropTypes.string,
-  autoFocus: React.PropTypes.bool,
-  defaultValue: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.number
-  ]),
-  disabled: React.PropTypes.bool,
   error: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.bool
@@ -118,15 +84,6 @@ Textfield.propTypes = {
   icon: React.PropTypes.element,
   label: React.PropTypes.string,
   length: React.PropTypes.number,
-  name: React.PropTypes.string,
-  onChange: React.PropTypes.func,
-  readOnly: React.PropTypes.bool,
-  spellCheck: React.PropTypes.bool,
-  type: React.PropTypes.oneOf(['text', 'password', 'email', 'search', 'tel', 'url', 'number']),
-  value: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.number
-  ])
 }
 
 Textfield.defaultProps = {
