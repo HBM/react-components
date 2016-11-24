@@ -83,7 +83,7 @@ Textfield.propTypes = {
   float: React.PropTypes.bool,
   icon: React.PropTypes.element,
   label: React.PropTypes.string,
-  length: React.PropTypes.number,
+  length: React.PropTypes.number
 }
 
 Textfield.defaultProps = {
