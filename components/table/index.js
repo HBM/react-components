@@ -19,12 +19,12 @@ const Arrow = ({sorted}) => (
   />
 )
 
-const Table = (props) => (
+const Table = ({head = [], onSortClick, body, footer}) => (
   <div>
     <table className='Table'>
       <thead className='Table-head'>
         <tr className='Table-head-row'>
-          {props.head.map((cell, i) => (
+          {head.map((cell, i) => (
             <th
               key={i}
               className={classnames('Table-head-row-cell', {
@@ -34,7 +34,7 @@ const Table = (props) => (
               })}
             >
               { cell.sorted
-                ? <div className='Table-head-row-cell-sorter' onClick={() => props.onSortClick(i)}>
+                ? <div className='Table-head-row-cell-sorter' onClick={() => onSortClick(i)}>
                   <Arrow sorted={cell.sorted} />{cell.text || cell}
                 </div>
                 : cell.text || cell
@@ -44,7 +44,7 @@ const Table = (props) => (
         </tr>
       </thead>
       <tbody className='Table-body'>
-        {props.body.map((row, i) => (
+        {body.map((row, i) => (
           <tr key={i} className='Table-body-row'>
             {row.map((cell, j) => (
               <td key={j} className={classnames('Table-body-row-cell', {
@@ -59,23 +59,23 @@ const Table = (props) => (
         ))}
       </tbody>
     </table>
-    {props.footer ? (
+    {footer ? (
       <div className='Table-footer'>
         <span className='Table-footer-rowsPerPage'>
-          {props.footer.labelRowsPerPage}
+          {footer.labelRowsPerPage}
         </span>
         <Select
-          items={props.footer.possibleRowsPerPage}
-          onChange={props.footer.onChangeRowsPerPage}
-          selectedIndex={props.footer.rowsPerPageIndex}
+          items={footer.possibleRowsPerPage}
+          onChange={footer.onChangeRowsPerPage}
+          selectedIndex={footer.rowsPerPageIndex}
         />
         <span className='Table-footer-xOfY'>
-          {props.footer.labelXOfY}
+          {footer.labelXOfY}
         </span>
-        <Icon.Button onClick={props.footer.onPaginateLeft}>
+        <Icon.Button onClick={footer.onPaginateLeft}>
           <Icon.ChevronLeft fill='rgba(0, 0, 0, 0.54)' />
         </Icon.Button>
-        <Icon.Button onClick={props.footer.onPaginateRight}>
+        <Icon.Button onClick={footer.onPaginateRight}>
           <Icon.ChevronRight fill='rgba(0, 0, 0, 0.54)' />
         </Icon.Button>
       </div>
