@@ -8,7 +8,7 @@ const defaultHeader =
 <Header title='title' subtitle='subtitle' />
 `
 
-const headerWithColorAndChildren  =
+const headerWithColorAndChildren =
 `
 <Header title='title' subtitle='subtitle' className='custom'>
   <Icon.Button>
