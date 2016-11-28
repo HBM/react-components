@@ -225,3 +225,17 @@ main h2 {
     margin-top: -2px;
   }
 }
+
+.HeaderRoute header {
+  position: relative;
+  z-index: 100;
+}
+
+header.custom {
+  background-color: rgb(156, 39, 176);
+  color: rgba(255, 255, 255, 0.87);
+}
+
+header.custom .Header-chevron {
+  fill: rgba(255, 255, 255, 0.87);
+}

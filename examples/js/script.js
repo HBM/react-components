@@ -9,6 +9,7 @@ import ButtonRoute from './components/buttonRoute'
 import CardRoute from './components/cardRoute'
 import CheckboxRoute from './components/checkboxRoute'
 import ChipRoute from './components/chipRoute'
+import HeaderRoute from './components/headerRoute'
 import HomeRoute from './components/homeRoute'
 import IconRoute from './components/iconRoute'
 import ListRoute from './components/listRoute'
@@ -89,6 +90,7 @@ class App extends React.Component {
       {text: 'Card', link: '/card'},
       {text: 'Checkbox', link: '/checkbox'},
       {text: 'Chip', link: '/chip'},
+      {text: 'Header', link: '/header'},
       {text: 'Icon', link: '/icon'},
       {text: 'List', link: '/list'},
       {text: 'Menu', link: '/menu'},
@@ -129,6 +131,7 @@ class App extends React.Component {
         <Match pattern='/card' component={CardRoute} />
         <Match pattern='/checkbox' component={CheckboxRoute} />
         <Match pattern='/chip' component={ChipRoute} />
+        <Match pattern='/header' component={HeaderRoute} />
         <Match pattern='/icon' component={IconRoute} />
         <Match pattern='/list' component={ListRoute} />
         <Match pattern='/menu' component={MenuRoute} />

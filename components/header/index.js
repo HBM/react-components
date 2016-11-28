@@ -29,12 +29,12 @@ export default class Header extends React.Component {
   }
 
   render () {
-    const {title, subtitle, children, color} = this.props
+    const {title, subtitle, children, className} = this.props
     const klass = classnames({
       'Header--shadow': this.state.hasShadow
-    })
+    }, className)
     return (
-      <header className={klass} style={{backgroundColor: color}}>
+      <header className={klass}>
         <div className='Header'>
           <div className='Header-block'>
             <span className='Header-title'>
