@@ -11,7 +11,8 @@ export default class Tooltip extends React.Component {
    * Property types
    */
   static propTypes = {
-    content: React.PropTypes.string
+    content: React.PropTypes.string,
+    visible: React.PropTypes.bool
   }
 
   /**
@@ -79,7 +80,7 @@ export default class Tooltip extends React.Component {
             ref: 'content'
           })
         )}
-        <Motion style={{val: spring(this.state.visible ? 1 : 0)}}>
+        <Motion style={{val: spring(this.state.visible || this.props.visible ? 1 : 0)}}>
           {style => {
             return (
               <div className='Tooltip' ref={(component) => { this.tooltipRef = component }} style={{
