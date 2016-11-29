@@ -13,26 +13,10 @@ const tooltipDefault =
 const tooltipComponent =
 `class App extends React.Component {
 
-  state = {
-    visible: false
-  }
-
-  show = () => {
-    this.setState({
-      visible: true
-    })
-  }
-
-  hide = () => {
-    this.setState({
-      visible: false
-    })
-  }
-
   render () {
     return (
-      <Tooltip content='Tooltip' visible={this.state.visible}>
-        <span onMouseOver={this.show} onMouseOut={this.hide}>
+      <Tooltip content='Tooltip'>
+        <span>
           Tooltip
         </span>
       </Tooltip>
@@ -46,26 +30,10 @@ ReactDOM.render(<App />, mountNode)`
 const tooltipIcon =
 `class App extends React.Component {
 
-  state = {
-    visible: false
-  }
-
-  show = () => {
-    this.setState({
-      visible: true
-    })
-  }
-
-  hide = () => {
-    this.setState({
-      visible: false
-    })
-  }
-
   render () {
     return (
-      <Tooltip content='Icon' visible={this.state.visible}>
-        <div style={{display: 'inline-block'}} onMouseOver={this.show} onMouseOut={this.hide}>
+      <Tooltip content='Icon'>
+        <div style={{display: 'inline-block'}}>
           <Icon.Person />
         </div>
       </Tooltip>
@@ -79,26 +47,10 @@ ReactDOM.render(<App />, mountNode)`
 const tooltipButton =
 `class App extends React.Component {
 
-  state = {
-    visible: false
-  }
-
-  show = () => {
-    this.setState({
-      visible: true
-    })
-  }
-
-  hide = () => {
-    this.setState({
-      visible: false
-    })
-  }
-
   render () {
     return (
       <Tooltip content='Button' visible={this.state.visible}>
-        <div style={{display: 'inline-block'}} onMouseOver={this.show} onMouseOut={this.hide}>
+        <div style={{display: 'inline-block'}}>
           <Button onClick={() => {}}>
             Button
           </Button>
