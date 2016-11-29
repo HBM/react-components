@@ -15,6 +15,7 @@ import IconRoute from './components/iconRoute'
 import ListRoute from './components/listRoute'
 import MenuRoute from './components/menuRoute'
 import ModalRoute from './components/modalRoute'
+import NavigationRoute from './components/navigationRoute'
 import ProgressRoute from './components/progressRoute'
 import RadiobuttonRoute from './components/radiobuttonRoute'
 import SelectRoute from './components/selectRoute'
@@ -28,39 +29,6 @@ import TabsRoute from './components/tabsRoute'
 import TextfieldRoute from './components/textfieldRoute'
 import TextareaRoute from './components/textareaRoute'
 import TooltipRoute from './components/tooltipRoute'
-
-const sub1 = () => (
-  <div>
-    <p>
-      Navigation submenu #1
-    </p>
-    <p>
-      Checkout the navigation on the left side to see the component in action.
-    </p>
-  </div>
-)
-
-const sub2 = () => (
-  <div>
-    <p>
-      Navigation submenu #2
-    </p>
-    <p>
-      Checkout the navigation on the left side to see the component in action.
-    </p>
-  </div>
-)
-
-const sub3 = () => (
-  <div>
-    <p>
-      Navigation submenu #3
-    </p>
-    <p>
-      Checkout the navigation on the left side to see the component in action.
-    </p>
-  </div>
-)
 
 class App extends React.Component {
 
@@ -95,15 +63,7 @@ class App extends React.Component {
       {text: 'List', link: '/list'},
       {text: 'Menu', link: '/menu'},
       {text: 'Modal', link: '/modal'},
-      {
-        text: 'Navigation',
-        link: '/navigation',
-        links: [
-          {text: 'submenu #1', link: '/sub1'},
-          {text: 'submenu #2', link: '/sub2'},
-          {text: 'submenu #3', link: '/sub3'}
-        ]
-      },
+      {text: 'Navigation', link: '/navigation'},
       {text: 'Progress', link: '/progress'},
       {text: 'Radiobutton', link: '/radiobutton'},
       {text: 'Select', link: '/select'},
@@ -136,9 +96,7 @@ class App extends React.Component {
         <Match pattern='/list' component={ListRoute} />
         <Match pattern='/menu' component={MenuRoute} />
         <Match pattern='/modal' component={ModalRoute} />
-        <Match pattern='/navigation/sub1' component={sub1} />
-        <Match pattern='/navigation/sub2' component={sub2} />
-        <Match pattern='/navigation/sub3' component={sub3} />
+        <Match pattern='/navigation' component={NavigationRoute} />
         <Match pattern='/progress' component={ProgressRoute} />
         <Match pattern='/radiobutton' component={RadiobuttonRoute} />
         <Match pattern='/select' component={SelectRoute} />
