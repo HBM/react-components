@@ -18,6 +18,7 @@ const MAX_LIST_LENGTH = 5
 export default class Select extends React.Component {
 
   static propTypes = {
+    disabled: React.PropTypes.bool,
     label: React.PropTypes.string,
     items: React.PropTypes.array,
     placeholder: React.PropTypes.string,
@@ -79,7 +80,7 @@ export default class Select extends React.Component {
   }
 
   render () {
-    const {selectedIndex, label} = this.props
+    const {selectedIndex, label, disabled} = this.props
     const {open} = this.state
     const empty = selectedIndex === -1
     const text = empty ? this.props.placeholder : this.props.items[selectedIndex]
@@ -90,7 +91,7 @@ export default class Select extends React.Component {
           label &&
           <span className='Select-label'>{this.props.label}</span>
         }
-        <button className='Select-body' onClick={this.open}>
+        <button className='Select-body' onClick={this.open} disabled={disabled}>
           <span className={empty ? 'Select-placeholder' : ''}>
             {text}
           </span>

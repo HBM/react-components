@@ -34,6 +34,11 @@
   outline: 0;
 }
 
+// https://material.google.com/style/color.html#color-text-background-colors
+.Select-body:disabled {
+  color: rgba(0, 0, 0, 0.38);
+}
+
 .Select-placeholder {
   color: rgba(0, 0, 0, 0.54);
 }

@@ -24,6 +24,11 @@ describe('Select', () => {
     assert.equal(wrapper.find('.Select-placeholder').text(), 'Placeholder')
   })
 
+  it('should allow disabling the button', () => {
+    const wrapper = mount(<Select onChange={noop} disabled />)
+    assert(wrapper.find('.Select-body').props().disabled)
+  })
+
   it('should render a given value instead of placeholder', () => {
     const wrapper = mount(
       <Select

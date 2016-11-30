@@ -89,6 +89,52 @@ const selectWithLabelComponent =
 
 ReactDOM.render(<App />, mountNode)`
 
+const selectDisabled =
+`
+class App extends React.Component {
+
+  state = {
+    first: -1,
+    second: -1
+  }
+
+  onChangeFirst = (index) => {
+    this.setState({
+      first: index
+    })
+  }
+
+  onChangeSecond = (index) => {
+    this.setState({
+      second: index
+    })
+  }
+
+  render () {
+    return (
+      <div style={{display: 'flex'}}>
+        <Select
+          label='first'
+          onChange={this.onChangeFirst}
+          items={['One', 'Two', 'Three']}
+          selectedIndex={this.state.first}
+        />
+        <Select
+          label='second'
+          onChange={this.onChangeSecond}
+          items={['Eleven', 'Twelve', 'Thirteen']}
+          selectedIndex={this.state.second}
+          disabled={this.state.first === -1}
+        />
+      </div>
+    )
+  }
+
+}
+
+ReactDOM.render(<App />, mountNode)
+`
+
 export default class SelectRoute extends React.Component {
 
   render () {
@@ -117,6 +163,15 @@ export default class SelectRoute extends React.Component {
           <h2>Select with label</h2>
           <Playground
             codeText={selectWithLabelComponent}
+            scope={{React, ReactDOM, Select}}
+            noRender={false}
+            collapsableCode
+          />
+        </section>
+        <section>
+          <h2>Disabled select</h2>
+          <Playground
+            codeText={selectDisabled}
             scope={{React, ReactDOM, Select}}
             noRender={false}
             collapsableCode
