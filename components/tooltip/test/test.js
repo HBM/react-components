@@ -49,4 +49,18 @@ describe('Tooltip', () => {
     )
     assert.equal(wrapper.find('.Tooltip').node.style.opacity, '1')
   })
+
+  it('should be visible when mouseover and mouseout', () => {
+    const wrapper = mount(
+      <Tooltip>
+        <span className='span'>
+          lorem ipsum dolor etc.
+        </span>
+      </Tooltip>
+    )
+    wrapper.find('.span').simulate('mouseover')
+    assert.equal(wrapper.state().visible, true)
+    wrapper.find('.span').simulate('mouseout')
+    assert.equal(wrapper.state().visible, false)
+  })
 })
