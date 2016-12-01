@@ -19,7 +19,8 @@ export default class Tooltip extends React.Component {
    * Default properties
    */
   static defaultProps = {
-    content: 'tooltip content'
+    content: 'tooltip content',
+    visible: false
   }
 
   /**
@@ -74,7 +75,7 @@ export default class Tooltip extends React.Component {
    */
   render () {
     return (
-      <div onMouseOver={this.show} onMouseOut={this.hide}>
+      <div onMouseOver={!this.props.visible && this.show} onMouseOut={!this.props.visible && this.hide}>
         {React.Children.map(this.props.children, child =>
           React.cloneElement(child, {
             ref: 'content'

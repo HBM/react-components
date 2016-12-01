@@ -22,7 +22,22 @@ const tooltipComponent =
       </Tooltip>
     )
   }
+}
 
+ReactDOM.render(<App />, mountNode)`
+
+const tooltipComponentVisible =
+`class App extends React.Component {
+
+  render () {
+    return (
+      <Tooltip content='Tooltip' visible>
+        <span>
+          Tooltip
+        </span>
+      </Tooltip>
+    )
+  }
 }
 
 ReactDOM.render(<App />, mountNode)`
@@ -49,7 +64,7 @@ const tooltipButton =
 
   render () {
     return (
-      <Tooltip content='Button' visible={this.state.visible}>
+      <Tooltip content='Button'>
         <div style={{display: 'inline-block'}}>
           <Button onClick={() => {}}>
             Button
@@ -90,6 +105,16 @@ export default class TooltipRoute extends React.Component {
           <Playground
             docClass={Tooltip}
             codeText={tooltipComponent}
+            scope={{React, ReactDOM, Tooltip}}
+            noRender={false}
+            collapsableCode
+          />
+        </section>
+        <section>
+          <h2>Tooltip visible</h2>
+          <Playground
+            docClass={Tooltip}
+            codeText={tooltipComponentVisible}
             scope={{React, ReactDOM, Tooltip}}
             noRender={false}
             collapsableCode
