@@ -27,7 +27,20 @@ export default class Tooltip extends React.Component {
    * Initial state
    */
   state = {
-    left: 'auto'
+    left: 'auto',
+    visible: this.props.visible
+  }
+
+  show = () => {
+    this.setState({
+      visible: true
+    })
+  }
+
+  hide = () => {
+    this.setState({
+      visible: false
+    })
   }
 
   /**
@@ -62,13 +75,13 @@ export default class Tooltip extends React.Component {
    */
   render () {
     return (
-      <div>
+      <div onMouseOver={this.show} onMouseOut={this.hide}>
         {React.Children.map(this.props.children, child =>
           React.cloneElement(child, {
             ref: 'content'
           })
         )}
-        <Motion style={{val: spring(this.props.visible ? 1 : 0)}}>
+        <Motion style={{val: spring(this.state.visible ? 1 : 0)}}>
           {style => {
             return (
               <div className='Tooltip' ref={(component) => { this.tooltipRef = component }} style={{
