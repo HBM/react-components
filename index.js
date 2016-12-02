@@ -18,7 +18,16 @@ export Snackbar from './components/snackbar/'
 export Sparkline from './components/sparkline/'
 export {Stepper, StepperStepFooter} from './components/stepper/'
 export Switch from './components/switch/'
-export Table from './components/table/'
+export {
+  Table,
+  TableHead,
+  TableHeadRow,
+  TableHeadCell,
+  TableBody,
+  TableBodyRow,
+  TableBodyCell,
+  TableFooter
+} from './components/table/'
 export Tabs from './components/tabs/'
 export {Textarea, Textfield} from './components/textfield/'
 export Tooltip from './components/tooltip/'

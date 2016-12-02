@@ -3,87 +3,87 @@ import React from 'react'
 import classnames from 'classnames'
 import {Icon, Select} from '../../'
 
-const Left = 'left'
-const Right = 'right'
-const Ascending = 'ascending'
-const Descending = 'descending'
+export const Table = ({children, className, ...rest}) => (
+  <table className='Table'>
+    {children}
+  </table>
+)
 
+export const TableHead = ({children, className, ...rest}) => (
+  <thead className={classnames('Table-head')}>
+    {children}
+  </thead>
+)
+
+export const TableHeadRow = ({children, className, ...rest}) => (
+  <tr className={classnames('Table-head-row', className)} {...rest}>
+    {children}
+  </tr>
+)
+
+// Arrow component is not exported and used internally for sorted columns.
 const Arrow = ({sorted}) => (
   <Icon.ArrowUpward
     width={16}
     height={16}
-    className={classnames('Table-head-row-cell-sorter-arrow', {
-      'Table-head-row-cell-sorter-arrow--descending': sorted === Descending,
-      'Table-head-row-cell-sorter-arrow--ascending': sorted === Ascending
+    className={classnames('Table-head-row-cell-button-arrow', {
+      'Table-head-row-cell-button-arrow--descending': sorted === 'desc',
+      'Table-head-row-cell-button-arrow--ascending': sorted === 'asc'
     })}
   />
 )
 
-const Table = ({head = [], onSortClick, body, footer}) => (
-  <div>
-    <table className='Table'>
-      <thead className='Table-head'>
-        <tr className='Table-head-row'>
-          {head.map((cell, i) => (
-            <th
-              key={i}
-              className={classnames('Table-head-row-cell', {
-                'Table-head-row-cell--align-left': cell.align === Left,
-                // default case when no alignment is given
-                'Table-head-row-cell--align-right': !cell.align
-              })}
-            >
-              { cell.sorted
-                ? <div className='Table-head-row-cell-sorter' onClick={() => onSortClick(i)}>
-                  <Arrow sorted={cell.sorted} />{cell.text || cell}
-                </div>
-                : cell.text || cell
-              }
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody className='Table-body'>
-        {body.map((row, i) => (
-          <tr key={i} className='Table-body-row'>
-            {row.map((cell, j) => (
-              <td key={j} className={classnames('Table-body-row-cell', {
-                'Table-body-row-cell--align-left': cell.align === Left,
-                // default case when no alignment is given
-                'Table-body-row-cell--align-right': !cell.align
-              })}>
-                {cell.text || cell}
-              </td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
-    {footer ? (
-      <div className='Table-footer'>
-        <span className='Table-footer-rowsPerPage'>
-          {footer.labelRowsPerPage}
-        </span>
-        <Select
-          items={footer.possibleRowsPerPage}
-          onChange={footer.onChangeRowsPerPage}
-          selectedIndex={footer.rowsPerPageIndex}
-        />
-        <span className='Table-footer-xOfY'>
-          {footer.labelXOfY}
-        </span>
-        <Icon.Button onClick={footer.onPaginateLeft}>
-          <Icon.ChevronLeft fill='rgba(0, 0, 0, 0.54)' />
-        </Icon.Button>
-        <Icon.Button onClick={footer.onPaginateRight}>
-          <Icon.ChevronRight fill='rgba(0, 0, 0, 0.54)' />
-        </Icon.Button>
-      </div>
-    ) : null}
-  </div>
+export const TableHeadCell = ({children, className, sorted, onClick, ...rest}) => (
+  <th className={classnames('Table-head-row-cell', className)} {...rest}>
+    {sorted
+      ? (
+        <button className='Table-head-row-cell-button' onClick={onClick}>
+          <Arrow sorted={sorted} />
+          {children}
+        </button>
+      ) : (
+        children
+      )
+    }
+  </th>
 )
 
-Table.Align = {Left, Right}
-Table.Sort = {Ascending, Descending}
+export const TableBody = ({children, className, ...rest}) => (
+  <tbody className={classnames('Table-body', className)} {...rest}>
+    {children}
+  </tbody>
+)
 
-export default Table
+export const TableBodyRow = ({children, className, ...rest}) => (
+  <tr className={classnames('Table-body-row', className)} {...rest}>
+    {children}
+  </tr>
+)
+
+export const TableBodyCell = ({children, className, ...rest}) => (
+  <td className={classnames('Table-body-row-cell', className)} {...rest}>
+    {children}
+  </td>
+)
+
+export const TableFooter = (props) => (
+  <div className='Table-footer'>
+    <span className='Table-footer-rowsPerPage'>
+      {props.labelRowsPerPage}
+    </span>
+    <Select
+      items={props.possibleRowsPerPage}
+      onChange={props.onChangeRowsPerPage}
+      selectedIndex={props.rowsPerPageIndex}
+    />
+    <span className='Table-footer-xOfY'>
+      {props.labelXOfY}
+    </span>
+    <Icon.Button onClick={props.onPaginateLeft}>
+      <Icon.ChevronLeft fill='rgba(0, 0, 0, 0.54)' />
+    </Icon.Button>
+    <Icon.Button onClick={props.onPaginateRight}>
+      <Icon.ChevronRight fill='rgba(0, 0, 0, 0.54)' />
+    </Icon.Button>
+  </div>
+)

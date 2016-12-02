@@ -21,15 +21,13 @@
           padding-right: 24px;
         }
 
-        &--align-left {
-          text-align: left;
-        }
+        &-button {
+          // remove button styles
+          background: none;
+          border: none;
+          outline: none;
 
-        &--align-right {
-          text-align: right;
-        }
-
-        &-sorter {
+          // align arrow icon and cell content
           display: flex;
           align-items: center;
           cursor: pointer;
@@ -75,14 +73,6 @@
 
         &:last-child {
           padding-right: 24px;
-        }
-
-        &--align-left {
-          text-align: left;
-        }
-
-        &--align-right {
-          text-align: right;
         }
       }
     }
