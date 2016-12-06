@@ -17,4 +17,10 @@
   align-items: center;
   pointer-events: none;
   transform-origin: center top;
+  opacity: 0;
+
+  &.is-active {
+    opacity: 1;
+    transition: opacity 0.15s ease-in-out;
+  }
 }

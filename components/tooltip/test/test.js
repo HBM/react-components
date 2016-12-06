@@ -36,7 +36,7 @@ describe('Tooltip', () => {
         </span>
       </Tooltip>
     )
-    assert.equal(wrapper.find('.Tooltip').node.style.opacity, '0')
+    assert.equal(wrapper.find('.Tooltip').hasClass('is-active'), false)
   })
 
   it('should be visible when specified', () => {
@@ -47,7 +47,7 @@ describe('Tooltip', () => {
         </span>
       </Tooltip>
     )
-    assert.equal(wrapper.find('.Tooltip').node.style.opacity, '1')
+    assert.equal(wrapper.find('.Tooltip').hasClass('is-active'), true)
   })
 
   it('should be visible when mouseover and mouseout', () => {

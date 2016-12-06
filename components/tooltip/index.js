@@ -1,5 +1,6 @@
 
 import React from 'react'
+import classnames from 'classnames'
 
 /**
  * Tooltip
@@ -53,9 +54,7 @@ export default class Tooltip extends React.Component {
 
     // when initially hidden we do not have any refs
     if (!this.tooltipRef) { return }
-    var tooltipDOM = this.tooltipRef
-    tooltipDOM.style.transform = 'scale(1)'
-    var tooltipRect = tooltipDOM.getBoundingClientRect()
+    var tooltipRect = this.tooltipRef.getBoundingClientRect()
     var contentRect = this.refs.content.getBoundingClientRect()
     var left = (contentRect.width / 2) + contentRect.left - (tooltipRect.width / 2)
     this.setState({left})
@@ -73,6 +72,7 @@ export default class Tooltip extends React.Component {
    * Render component
    */
   render () {
+    const {left} = this.state
     return (
       <div onMouseOver={this.show} onMouseOut={this.hide}>
         {React.Children.map(this.props.children, child =>
@@ -80,11 +80,11 @@ export default class Tooltip extends React.Component {
             ref: 'content'
           })
         )}
-        <div className='Tooltip' ref={(component) => { this.tooltipRef = component }} style={{
-          left: this.state.left,
-          opacity: this.state.visible ? 1 : 0,
-          transition: `opacity 0.15s ease-in-out`
-        }}>
+        <div className={classnames(
+          'Tooltip',
+          {'is-active': this.state.visible})}
+          ref={(component) => { this.tooltipRef = component }} style={{left}}
+        >
           {this.props.content}
         </div>
       </div>
