@@ -1,6 +1,5 @@
 
 import React from 'react'
-import {Motion, spring} from 'react-motion'
 
 /**
  * Tooltip
@@ -81,19 +80,13 @@ export default class Tooltip extends React.Component {
             ref: 'content'
           })
         )}
-        <Motion style={{val: spring(this.state.visible ? 1 : 0)}}>
-          {style => {
-            return (
-              <div className='Tooltip' ref={(component) => { this.tooltipRef = component }} style={{
-                left: this.state.left,
-                opacity: style.val,
-                transform: `scale(${style.val})`
-              }}>
-                {this.props.content}
-              </div>
-            )
-          }}
-        </Motion>
+        <div className='Tooltip' ref={(component) => { this.tooltipRef = component }} style={{
+          left: this.state.left,
+          opacity: this.state.visible ? 1 : 0,
+          transition: `opacity 0.15s ease-in-out`
+        }}>
+          {this.props.content}
+        </div>
       </div>
     )
   }
