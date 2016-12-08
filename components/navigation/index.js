@@ -33,7 +33,7 @@ class Item extends React.Component {
     this.setState({
       isOpen: !this.state.isOpen
     })
-    if (item.links && !subItem) {
+    if ((item.links && !subItem) || subItem && subItem.links) {
       // simply open submenu without notifying parent or changing url
       if (e) {
         e.preventDefault()
@@ -46,7 +46,7 @@ class Item extends React.Component {
   /**
    * Update parent component and open submenu on initial render
    */
-  componentWillMount () {
+  componentDidMount () {
     if (this.props.location.pathname.includes(this.props.link)) {
       this.onClick(this.props.item, this.props.subItem)
     }
@@ -56,7 +56,9 @@ class Item extends React.Component {
     const {index, link, text, onClick, links, item, subItem, location} = this.props
     const {isOpen} = this.state
     return (
-      <li className='Navigation-item'>
+      <li className={classnames('Navigation-item', {
+        'has-children': links && links.length
+      })}>
         <Link
           activeClassName='active'
           to={link}
@@ -76,15 +78,18 @@ class Item extends React.Component {
         </Link>
         {
           links &&
-          <ul className='Navigation' style={{height: isOpen ? (links.length * height) : 0}}>
+          <ul className='Navigation' style={{
+            display: isOpen ? null : 'none'
+          }}>
             {links.map((subItem, j) =>
               <Item
                 index={index}
                 subIndex={j}
                 key={j}
-                onClick={onClick}
+                onClick={subItem.links ? this.onClick : onClick}
                 text={subItem.text}
                 link={`${link}${subItem.link}`}
+                links={subItem.links}
                 item={item}
                 subItem={subItem}
                 location={location}

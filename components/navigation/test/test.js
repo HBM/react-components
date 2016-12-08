@@ -66,4 +66,63 @@ describe('Navigation', () => {
     wrapper.find('.Navigation-overlay').simulate('click')
     assert.equal(wrapper.find('.Navigation-overlay').hasClass('is-visible'), false)
   })
+
+  it('should go multiple levels deep', () => {
+    const location = {pathname: '/cars/tesla/models-s/p100d', search: '', hash: ''}
+    const wrapper = mount(
+      <LocationBroadcast value={location}>
+        <Navigation links={[
+          {text: 'Home', link: '/'},
+          {text: 'About', link: '/about'},
+          {
+            text: 'Cars',
+            link: '/cars',
+            links: [
+              {
+                text: 'Tesla',
+                link: '/tesla',
+                links: [
+                  {
+                    text: 'Model S',
+                    link: '/model-s',
+                    links: [
+                      {text: '60', link: '/60'},
+                      {text: '60D', link: '/60d'},
+                      {text: '75', link: '/75'},
+                      {text: '75D', link: '/75d'},
+                      {text: '90D', link: '/90d'},
+                      {text: 'P100D', link: '/p100d'}
+                    ]
+                  },
+                  {
+                    text: 'Model X',
+                    link: '/model-x',
+                    links: [
+                      {text: 'Ultra White Seats', link: '/white'},
+                      {text: 'Tan Leather Seats', link: '/tan'},
+                      {text: 'Black Leather Seats', link: '/black'}
+                    ]
+                  },
+                  {
+                    text: 'Model 3',
+                    link: '/model-3',
+                    links: [
+                      {text: 'Hardware', link: '/hardware'},
+                      {text: 'Safety', link: '/safety'},
+                      {text: 'Range', link: '/range'}
+                    ]
+                  }
+                ]
+              },
+              {
+                text: 'Audi',
+                link: '/audi'
+              }
+            ]
+          }
+        ]} />
+      </LocationBroadcast>
+    )
+    assert(wrapper.find('a[href]="/cars/tesla/model-s/p100d"'))
+  })
 })

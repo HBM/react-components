@@ -4,7 +4,6 @@
  */
 
 nav {
-  color: #333;
   border-right: 1px solid rgba(0, 0, 0, 0.14);
   position: fixed;
   top: 0;
@@ -13,6 +12,7 @@ nav {
   width: $navigation-width;
   background: #fff;
   font-size: 13px;
+  font-weight: 500;
   visibility: hidden;
   transform: translateX(-$navigation-width);
   transition-duration: 0.2s;
@@ -51,11 +51,7 @@ nav.is-visible {
 .Navigation {
   list-style: none;
   margin: 0;
-  padding: 0;
   padding: 12px 0 10px;
-  // hide submenu when collapsed
-  overflow: hidden;
-  transition: height 0.25s ease-in-out;
 }
 
 .Navigation-link {
@@ -66,7 +62,6 @@ nav.is-visible {
   padding-left: 22px;
   padding-right: 16px;
   color: #333;
-  font-weight: 700;
 }
 
 .Navigation-link.active {
@@ -81,7 +76,7 @@ nav.is-visible {
 .Navigation-chevron {
   // point down \/
   transform: rotate(90deg);
-  transition: transform 0.25s ease-in-out;
+  transition: transform 0.15s ease-in-out;
 }
 
 .Navigation-chevron.is-open {
@@ -123,18 +118,25 @@ nav.is-visible {
   visibility: visible;
 }
 
+// make children in submenu grey
+.Navigation-item .Navigation-item > .Navigation-link {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+// add frame (border-top and border-bottom) to those navigation items that have sub menus
+.Navigation-item.has-children {
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+// revert grey color for those children that have children themselves
+.Navigation-item.has-children > .Navigation-link {
+  color: #333;
+}
+
 /**
  * Nested navigation
  */
 .Navigation .Navigation {
   padding: 0;
-}
-
-.Navigation-item > .Navigation > .Navigation-item > .Navigation-link {
-  padding: 10px 24px 10px 46px;
-  font-weight: 400;
-}
-
-.Navigation-item > .Navigation > .Navigation-item > .Navigation-link.active {
-  font-weight: 500;
 }
