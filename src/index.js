@@ -15,7 +15,6 @@ export Shell from './components/shell/'
 export Select from './components/select/'
 export Slider from './components/slider/'
 export Snackbar from './components/snackbar/'
-export Sparkline from './components/sparkline/'
 export {Stepper, StepperStepFooter} from './components/stepper/'
 export Switch from './components/switch/'
 export {

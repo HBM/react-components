@@ -21,7 +21,6 @@ import RadiobuttonRoute from './components/radiobuttonRoute'
 import SelectRoute from './components/selectRoute'
 import SliderRoute from './components/sliderRoute'
 import SnackbarRoute from './components/snackbarRoute'
-import SparklineRoute from './components/sparklineRoute'
 import StepperRoute from './components/stepperRoute'
 import SwitchRoute from './components/switchRoute'
 import TableRoute from './components/tableRoute'
@@ -69,7 +68,6 @@ class App extends React.Component {
       {text: 'Select', link: '/select'},
       {text: 'Slider', link: '/slider'},
       {text: 'Snackbar', link: '/snackbar'},
-      {text: 'Sparkline', link: '/sparkline'},
       {text: 'Stepper', link: '/stepper'},
       {text: 'Switch', link: '/switch'},
       {text: 'Table', link: '/table'},
@@ -102,7 +100,6 @@ class App extends React.Component {
         <Match pattern='/select' component={SelectRoute} />
         <Match pattern='/slider' component={SliderRoute} />
         <Match pattern='/snackbar' component={SnackbarRoute} />
-        <Match pattern='/sparkline' component={SparklineRoute} />
         <Match pattern='/stepper' component={StepperRoute} />
         <Match pattern='/switch' component={SwitchRoute} />
         <Match pattern='/table' component={TableRoute} />
