@@ -2,8 +2,9 @@
   "name": "md-components",
   "version": "6.0.0",
   "description": "Material Design React components",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
+    "lib": "cp -r src lib && babel lib --out-dir lib",
     "test": "make test",
     "selenium": "mocha --timeout 60000 test/e2e/selenium.js",
     "build:examples:stylelint": "stylelint css/*.scss components/**/*.scss",
@@ -97,7 +98,7 @@
     "parser": "babel-eslint",
     "ignore": [
       "karma.conf.js",
-      "components/icon/*.js"
+      "src/components/icon/*.js"
     ]
   }
 }

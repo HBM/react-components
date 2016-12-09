@@ -3,7 +3,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Playground from 'component-playground'
 import {Button, Tooltip} from '../../../'
-import Icon from '../../../components/icon/'
+import Icon from '../../../src/components/icon/'
 
 const tooltipDefault =
 `<p title='Tooltip'>

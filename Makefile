@@ -9,7 +9,7 @@ STYLELINT = $(BIN_DIR)/stylelint
 
 .PHONY: stylelint
 stylelint:
-	$(STYLELINT) css/*.scss components/**/*.scss
+	$(STYLELINT) src/css/*.scss src/components/**/*.scss
 
 .PHONY: standard
 standard:
@@ -35,4 +35,4 @@ serve:
 
 .PHONY: test
 test: standard stylelint
-	$(ISTANBUL) cover $(MOCHA) test/.setup.js components/**/test/test.js
+	$(ISTANBUL) cover $(MOCHA) test/.setup.js src/components/**/test/test.js

@@ -3,7 +3,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Playground from 'component-playground'
 import {Menu, Divider} from '../../../'
-import Icon from '../../../components/icon/'
+import Icon from '../../../src/components/icon/'
 
 const menuTopRight =
 `class App extends React.Component {
