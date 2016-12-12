@@ -4,10 +4,10 @@
   "description": "Material Design React components",
   "main": "lib/index.js",
   "scripts": {
-    "lib": "cp -r src lib && babel lib --out-dir lib",
+    "lib": "rimraf lib && mkdir lib && cpx \"src/**/*\" lib && babel lib --out-dir lib",
     "test": "make test",
     "selenium": "mocha --timeout 60000 test/e2e/selenium.js",
-    "build:examples:stylelint": "stylelint css/*.scss components/**/*.scss",
+    "build:examples:stylelint": "stylelint src/css/*.scss src/components/**/*.scss",
     "build:examples:all": "npm run build:examples:clear && npm run build:examples:style && npm run build:examples:js",
     "build:examples:clear": "rimraf examples/js/script.min.js examples/css/styles.min.css",
     "build:examples:js": "standard && NODE_ENV=production browserify examples/js/script.js --transform [ babelify --presets [ es2015 react stage-0 ] ] | uglifyjs --compress --mangle > examples/js/script.min.js 2>/dev/null",
@@ -17,7 +17,7 @@
     "watch:examples:all": "npm run watch:examples:js & npm run watch:examples:style",
     "watch:examples:js": "watchify examples/js/script.js -o examples/js/script.min.js -d -v --transform [ babelify --presets [ es2015 react stage-0 react-hmre ] ] --plugin browserify-hmr",
     "watch:examples:style": "npm run build:examples:style && npm run build:examples:style -- -w",
-    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha test/.setup.js components/**/test/test.js"
+    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha test/.setup.js src/components/**/test/test.js"
   },
   "repository": {
     "type": "git",
@@ -58,6 +58,7 @@
     "browserify-hmr": "^0.3.1",
     "component-playground": "^1.3.1",
     "coveralls": "^2.11.12",
+    "cpx": "^1.5.0",
     "envify": "^3.4.0",
     "enzyme": "^2.3.0",
     "eslint-plugin-react": "^6.0.0",
