@@ -1,0 +1,93 @@
+
+.Home .Hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 100px;
+  padding-bottom: 45px;
+}
+
+.Home .Hero-logo {
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+  margin-bottom: 12px;
+}
+
+.Home .Hero-logo  h1 {
+  margin: 0;
+}
+
+.Home .Hero-logo span {
+  padding: 20px 15px;
+  font-size: 30px;
+  display: inline-block;
+}
+
+.Home .Hero-logo span:last-child {
+  background-color: #1b325f;
+  color: white;
+}
+
+.Home .Hero-logo span:first-child {
+  background-color: white;
+  font-weight: normal;
+  color: #1b325f;
+}
+
+.Hero-tagline, .Hero-links {
+  font-size: 16px;
+  line-height: 22px;
+  margin-top: 40px;
+}
+
+.Hero-sponsor {
+  font-weight: normal;
+  margin: 0;
+  display: flex;
+}
+
+.Hero-sponsor svg {
+  width: 20px;
+  height: 20px;
+  margin-left: 6px;
+  margin-top: -2px;
+}
+
+section {
+  margin-bottom: 50px;
+}
+
+.Chip-example1 {
+  border-bottom: 2px solid #ddd;
+}
+
+.Chip-example1.is-focused {
+  border-color: #1b325f;
+}
+
+.HeaderRoute header {
+  position: relative;
+  z-index: 100;
+}
+
+header.custom {
+  background-color: rgb(156, 39, 176);
+  color: rgba(255, 255, 255, 0.87);
+}
+
+header.custom .Header-chevron {
+  fill: rgba(255, 255, 255, 0.87);
+}
+
+.NavigationRoute nav {
+  position: relative;
+  z-index: auto;
+}
+
+.NavigationRoute .Navigation-hamburger {
+  position: absolute;
+}
+
+.NavigationRoute .Navigation-hamburger svg {
+  fill: #000;
+}

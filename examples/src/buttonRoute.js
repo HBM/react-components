@@ -1,0 +1,56 @@
+
+import React from 'react'
+import {Button} from '../../lib'
+
+export default class ButtonRoute extends React.Component {
+
+  render () {
+    return (
+      <div>
+        <section>
+          <h2>Button Component</h2>
+          <Button onClick={e => console.log(e)}>
+            Button
+          </Button>
+        </section>
+        <section>
+          <h2>Filled Button</h2>
+          <Button filled onClick={e => console.log(e)}>
+            Button
+          </Button>
+        </section>
+        <section>
+          <h2>Raised Button</h2>
+          <Button onClick={e => console.log(e)} raised>
+            Button
+          </Button>
+        </section>
+        <section>
+          <h2>Raised & Filled Button</h2>
+          <Button onClick={e => console.log(e)} raised filled>
+            Button
+          </Button>
+        </section>
+        <section>
+          <h2>Disabled Button</h2>
+          <Button onClick={e => console.log(e)} disabled>
+            Button
+          </Button>
+        </section>
+        <section>
+          <h2>Default button</h2>
+          <button type='button'>
+            Button
+          </button>
+        </section>
+        <section>
+          <h2>Specification</h2>
+          <a href='https://material.google.com/components/buttons.html'>
+            https://material.google.com/components/buttons.html
+          </a>
+        </section>
+      </div>
+    )
+  }
+
+}
