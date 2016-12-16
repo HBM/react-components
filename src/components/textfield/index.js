@@ -116,8 +116,8 @@ export class Textarea extends React.Component {
     }
   }
 
-  handleChange = (event) => {
-    this.props.onChange(event)
+  handleInput = (event) => {
+    this.props.onInput && this.props.onInput(event)
     this.resize(event)
   }
 
@@ -132,6 +132,7 @@ export class Textarea extends React.Component {
       label,
       length,
       name,
+      onChange,
       placeholder,
       readOnly,
       resizable,
@@ -150,7 +151,8 @@ export class Textarea extends React.Component {
           defaultValue={defaultValue}
           disabled={disabled}
           name={name}
-          onInput={this.handleChange}
+          onChange={onChange}
+          onInput={this.handleInput}
           placeholder={placeholder}
           readOnly={readOnly}
           rows={rows}
