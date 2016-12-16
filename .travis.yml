@@ -13,7 +13,7 @@ node_js:
 #   sauce_connect: true
 
 script:
-  - make test
+  - npm test
   # build lib dir to make examples work
   - npm run lib
   # - npm run selenium
