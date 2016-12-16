@@ -16,8 +16,6 @@ script:
   - make test
   # build lib dir to make examples work
   - npm run lib
-  # build minified css and js
-  - npm run build:examples:all
   # - npm run selenium
 
 after_success:
