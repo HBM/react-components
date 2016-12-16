@@ -113,7 +113,7 @@ describe('Textarea', () => {
     assert.equal(wrapper.find('textarea').node.rows, 2)
   })
 
-  it('should allow seting rows', () => {
+  it('should allow setting rows', () => {
     const wrapper = mount(<Textarea value={'foo'} rows={1} onChange={() => {}} />)
     assert.equal(wrapper.find('textarea').node.rows, 1)
   })
