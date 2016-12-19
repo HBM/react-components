@@ -116,6 +116,11 @@ export class Textarea extends React.Component {
     }
   }
 
+  handleInput = (event) => {
+    this.props.onInput && this.props.onInput(event)
+    this.resize(event)
+  }
+
   render () {
     const {
       autoFocus,
@@ -147,7 +152,7 @@ export class Textarea extends React.Component {
           disabled={disabled}
           name={name}
           onChange={onChange}
-          onInput={this.resize}
+          onInput={this.handleInput}
           placeholder={placeholder}
           readOnly={readOnly}
           rows={rows}
