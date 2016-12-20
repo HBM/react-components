@@ -156,18 +156,6 @@ const Element = ({
     marginLeft: icon ? 8 : 12,
     marginRight: onDelete ? 0 : 12
   }
-  const button = (
-    <button
-      type='button'
-      tabIndex='-1'
-      className='Chip-delete'
-      onClick={(event) => {
-        onDelete(event.currentTarget.parentElement, index)
-      }}
-    >
-      <Icon.Cancel style={{width: 22, height: 22, display: 'block'}} />
-    </button>
-  )
   const onKeyDown = (event) => {
     if (onDelete && (event.which === keyBackspace || event.which === keyDelete)) {
       event.preventDefault()
@@ -188,7 +176,21 @@ const Element = ({
       <span style={textStyle}>
         {text}
       </span>
-      {onDelete ? button : null}
+      {onDelete
+        ? (
+          <button
+            type='button'
+            tabIndex='-1'
+            className='Chip-delete'
+            onClick={(event) => {
+              onDelete(event.currentTarget.parentElement, index)
+            }}
+          >
+            <Icon.Cancel style={{width: 22, height: 22, display: 'block'}} />
+          </button>
+        )
+        : null
+      }
     </div>
   )
 }
