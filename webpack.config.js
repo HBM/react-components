@@ -1,4 +1,6 @@
 
+const autoprefixer = require('autoprefixer')
+
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -15,7 +17,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loaders: ['style-loader', 'css-loader', 'sass-loader']
+        loaders: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
       },
       {
         test: /\.woff$/,
@@ -27,5 +29,10 @@ module.exports = {
     'react': 'react',
     'react-router': 'react-router',
     'react-motion': 'react-motion'
-  }
+  },
+  postcss: [
+    autoprefixer({
+      browsers: ['last 2 versions']
+    })
+  ]
 }
