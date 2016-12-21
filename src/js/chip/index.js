@@ -47,10 +47,6 @@ export default class Chip extends React.Component {
   onKeyPress = (event) => {
     const text = this.state.inputValue.trim()
     if ((this.props.delimiters.indexOf(event.which) > -1) && text !== '') {
-      if (event.which !== keycode('enter')) {
-        // prevent window.history.back() for backspace (for example)
-        event.preventDefault()
-      }
       // empty input field
       this.setState({
         inputValue: ''
