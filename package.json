@@ -69,6 +69,7 @@
     "attr-accept": "^1.0.3",
     "classnames": "^2.2.4",
     "history": "^1.17.0",
+    "keycode": "^2.1.8",
     "object-assign": "^4.0.1",
     "react-broadcast": "^0.1.1",
     "react-motion": "^0.4.3"

@@ -1,5 +1,7 @@
+
 import React from 'react'
 import classNames from 'classnames'
+import keycode from 'keycode'
 import { Link } from 'react-router'
 
 /**
@@ -43,13 +45,10 @@ export const Row = ({
   subheader
   }) => {
   const onKeyDown = (event) => {
-    const arrowUp = 38
-    const arrowDown = 40
-
-    if (event.which === arrowDown && event.target.nextSibling) {
+    if (event.which === keycode('down') && event.target.nextSibling) {
       event.preventDefault()
       event.target.nextSibling.focus()
-    } else if (event.which === arrowUp && event.target.previousSibling) {
+    } else if (event.which === keycode('up') && event.target.previousSibling) {
       event.preventDefault()
       event.target.previousSibling.focus()
     }

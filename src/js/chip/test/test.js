@@ -3,6 +3,7 @@
 import assert from 'assert'
 import React from 'react'
 import {mount} from 'enzyme'
+import keycode from 'keycode'
 import Chip from '../'
 
 const noop = () => {}
@@ -65,7 +66,7 @@ describe('Chip', () => {
     assert.equal(wrapper.find('input').node.value, 'hello')
     // simulate enter
     wrapper.find('input').simulate('keypress', {
-      which: 13
+      which: keycode('enter')
     })
   })
 
@@ -84,7 +85,7 @@ describe('Chip', () => {
     assert.equal(wrapper.find('input').node.value, '')
     // simulate enter
     wrapper.find('input').simulate('keypress', {
-      which: 13
+      which: keycode('enter')
     })
     // wait for 100 ms to make sure callback would have the chance to fire
     setTimeout(done, 100)
@@ -93,7 +94,7 @@ describe('Chip', () => {
   it('should focus the last chip when left arrow is pressed inside input the field', () => {
     const wrapper = mount(<Chip value={[{text: 'one'}]} onChange={noop} />)
     wrapper.find('input').simulate('keydown', {
-      which: 37
+      which: keycode('left')
     })
     assert.equal(wrapper.find('.Chip').node, document.activeElement)
   })
@@ -101,7 +102,7 @@ describe('Chip', () => {
   it('should focus the last chip when backspace is pressed inside input the field', () => {
     const wrapper = mount(<Chip value={[{text: 'one'}]} onChange={noop} />)
     wrapper.find('input').simulate('keydown', {
-      which: 8
+      which: keycode('backspace')
     })
     assert.equal(wrapper.find('.Chip').node, document.activeElement)
   })
@@ -109,7 +110,7 @@ describe('Chip', () => {
   it('should focus the first chip when right arrow is pressed inside input the field', () => {
     const wrapper = mount(<Chip value={[{text: 'one'}]} onChange={noop} />)
     wrapper.find('input').simulate('keydown', {
-      which: 39
+      which: keycode('right')
     })
     assert.equal(wrapper.find('.Chip').node, document.activeElement)
   })
@@ -117,7 +118,7 @@ describe('Chip', () => {
   it('should cycle left when chip is selected and left arrow is clicked', () => {
     const wrapper = mount(<Chip value={[{text: 'one'}, {text: 'two'}]} onChange={noop} />)
     wrapper.find('.Chip-wrapper').childAt(1).simulate('keydown', {
-      which: 37
+      which: keycode('left')
     })
     assert.equal(document.activeElement.textContent, 'one')
   })
@@ -125,7 +126,7 @@ describe('Chip', () => {
   it('should focus the input field when first chip is selected and left arrow is clicked', () => {
     const wrapper = mount(<Chip value={[{text: 'one'}]} onChange={noop} />)
     wrapper.find('.Chip').simulate('keydown', {
-      which: 37
+      which: keycode('left')
     })
     assert.equal(wrapper.find('.Chip-input').node, document.activeElement)
   })
@@ -133,7 +134,7 @@ describe('Chip', () => {
   it('should cycle right when chip is selected and right arrow is clicked', () => {
     const wrapper = mount(<Chip value={[{text: 'one'}, {text: 'two'}]} onChange={noop} />)
     wrapper.find('.Chip-wrapper').childAt(0).simulate('keydown', {
-      which: 39
+      which: keycode('right')
     })
     assert.equal(document.activeElement.textContent, 'two')
   })
@@ -141,7 +142,7 @@ describe('Chip', () => {
   it('should focus the input field when last chip is selected and right arrow is clicked', () => {
     const wrapper = mount(<Chip value={[{text: 'one'}]} onChange={noop} />)
     wrapper.find('.Chip').simulate('keydown', {
-      which: 39
+      which: keycode('right')
     })
     assert.equal(wrapper.find('.Chip-input').node, document.activeElement)
   })
@@ -165,7 +166,7 @@ describe('Chip', () => {
     }
     const wrapper = mount(<Chip value={[{text: 'one'}]} onChange={onChange} />)
     wrapper.find('.Chip').simulate('keydown', {
-      which: 8
+      which: keycode('backspace')
     })
   })
 
@@ -176,7 +177,7 @@ describe('Chip', () => {
     }
     const wrapper = mount(<Chip value={[{text: 'one'}]} onChange={onChange} />)
     wrapper.find('.Chip').simulate('keydown', {
-      which: 46
+      which: keycode('delete')
     })
   })
 
@@ -198,7 +199,7 @@ describe('Chip', () => {
   it('should focus chip to the left when last chip is removed', () => {
     const wrapper = mount(<Chip value={[{text: 'one'}, {text: 'two'}]} onChange={noop} />)
     wrapper.find('.Chip-wrapper').childAt(1).simulate('keydown', {
-      which: 8
+      which: keycode('backspace')
     })
     assert.equal(document.activeElement.textContent, 'one')
   })
@@ -218,7 +219,7 @@ describe('Chip', () => {
     assert.equal(wrapper.find('input').node.value, 'hello')
     // simulate enter
     wrapper.find('input').simulate('keypress', {
-      which: 32
+      which: keycode('space')
     })
   })
 })

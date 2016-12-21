@@ -1,12 +1,7 @@
 
 import React from 'react'
 import Icon from '../icon'
-
-const keyEnter = 13
-const keyBackspace = 8
-const keyDelete = 46
-const keyArrowLeft = 37
-const keyArrowRight = 39
+import keycode from 'keycode'
 
 const focusLeftOrRight = (event, leftKeys, rightKeys) => {
   // go left
@@ -41,7 +36,7 @@ export default class Chip extends React.Component {
 
   static defaultProps = {
     deletable: true,
-    delimiters: [keyEnter],
+    delimiters: [keycode('enter')],
     value: []
   }
 
@@ -52,7 +47,7 @@ export default class Chip extends React.Component {
   onKeyPress = (event) => {
     const text = this.state.inputValue.trim()
     if ((this.props.delimiters.indexOf(event.which) > -1) && text !== '') {
-      if (event.which !== keyEnter) {
+      if (event.which !== keycode('enter')) {
         // prevent window.history.back() for backspace (for example)
         event.preventDefault()
       }
@@ -75,7 +70,7 @@ export default class Chip extends React.Component {
     if (this.state.inputValue !== '' || !this.props.value.length) {
       return
     }
-    return focusLeftOrRight(event, [keyBackspace, keyArrowLeft], [keyArrowRight])
+    return focusLeftOrRight(event, [keycode('backspace'), keycode('left')], [keycode('right')])
   }
 
   onChange = (event) => {
@@ -169,11 +164,11 @@ const Element = ({
     </button>
   )
   const onKeyDown = (event) => {
-    if (onDelete && (event.which === keyBackspace || event.which === keyDelete)) {
+    if (onDelete && (event.which === keycode('backspace') || event.which === keycode('delete'))) {
       event.preventDefault()
       return onDelete(event.target, index)
     }
-    return focusLeftOrRight(event, [keyArrowLeft], [keyArrowRight])
+    return focusLeftOrRight(event, [keycode('left')], [keycode('right')])
   }
 
   return (

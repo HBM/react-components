@@ -1,9 +1,8 @@
 
 import React from 'react'
 import classNames from 'classnames'
+import keycode from 'keycode'
 import {RadioButtonChecked, RadioButtonUnchecked} from '../icon'
-
-const spaceKey = 32
 
 class RadioButton extends React.Component {
   state = {
@@ -11,7 +10,7 @@ class RadioButton extends React.Component {
   }
 
   setKbPressed = (e) => {
-    if (e.which === spaceKey) {
+    if (e.which === keycode('space')) {
       e.preventDefault()
       if (this.props.selectedValue !== e.target.value) {
         this.props.onChange(e.target.value)
