@@ -8,7 +8,7 @@
     "lib": "webpack",
     "lib:watch": "webpack --watch",
     "examples": "cd examples && react-scripts start",
-    "test": "standard && npm run stylelint && istanbul cover ./node_modules/mocha/bin/_mocha test/.setup.js src/js/**/test/test.js"
+    "test": "standard && npm run stylelint && istanbul cover _mocha test/.setup.js src/js/**/test/test.js"
   },
   "repository": {
     "type": "git",
