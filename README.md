@@ -112,19 +112,20 @@ $color-accent-text--light: Black;
 @import "node_modules/md-components/components/navigation/Navigation";
 ```
 
-
 ## Development
 
-```
-$ make watch
-$ make css
-$ make serve
-```
+The following tasks are available: 
+- `test` - Run tests & coverage report `npm run test`
+- `lib` - Build lib `npm run lib`
+- `lib:watch`- Watch `npm lib:watch`
+- `examples` - Run examples `npm run examples`
+- `stylelint` - Runs `npm run stylelint`
 
+# More Documents
 - [Google Material Design](https://www.google.com/design/spec/material-design/introduction.html)
 - use [Sass](http://sass-lang.com/)
 - follow [SUIT CSS](https://suitcss.github.io/) guidelines
-
+- [Webpack](https://webpack.github.io/), module bundler. 
 ### New release
 
 [np - A better npm publish](https://github.com/sindresorhus/np)
