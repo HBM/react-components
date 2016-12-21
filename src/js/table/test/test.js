@@ -18,7 +18,13 @@ describe('Table', () => {
   it('should render the table component with children', () => {
     const table = (
       <Table>
-        hello world
+        <tbody>
+          <tr>
+            <td>
+              hello world
+            </td>
+          </tr>
+        </tbody>
       </Table>
     )
     const wrapper = mount(table)
@@ -27,9 +33,15 @@ describe('Table', () => {
 
   it('should render the table head component with children', () => {
     const table = (
-      <TableHead>
-        hello world
-      </TableHead>
+      <table>
+        <TableHead>
+          <tr>
+            <th>
+              hello world
+            </th>
+          </tr>
+        </TableHead>
+      </table>
     )
     const wrapper = mount(table)
     assert.equal(wrapper.text(), 'hello world')
@@ -37,9 +49,15 @@ describe('Table', () => {
 
   it('should render the table head row component with children', () => {
     const table = (
-      <TableHeadRow>
-        hello world
-      </TableHeadRow>
+      <table>
+        <thead>
+          <TableHeadRow>
+            <th>
+              hello world
+            </th>
+          </TableHeadRow>
+        </thead>
+      </table>
     )
     const wrapper = mount(table)
     assert.equal(wrapper.text(), 'hello world')
@@ -47,9 +65,15 @@ describe('Table', () => {
 
   it('should render the table head cell component with children', () => {
     const table = (
-      <TableHeadCell>
-        hello world
-      </TableHeadCell>
+      <table>
+        <thead>
+          <tr>
+            <TableHeadCell>
+              hello world
+            </TableHeadCell>
+          </tr>
+        </thead>
+      </table>
     )
     const wrapper = mount(table)
     assert.equal(wrapper.text(), 'hello world')
@@ -57,9 +81,15 @@ describe('Table', () => {
 
   it('should the table head cell component with a clickable button and arrow icon', (done) => {
     const table = (
-      <TableHeadCell sorted='desc' onClick={() => done()}>
-        hello world
-      </TableHeadCell>
+      <table>
+        <thead>
+          <tr>
+            <TableHeadCell sorted='desc' onClick={() => done()}>
+              hello world
+            </TableHeadCell>
+          </tr>
+        </thead>
+      </table>
     )
     const wrapper = mount(table)
     assert.equal(wrapper.text(), 'hello world')
@@ -68,9 +98,15 @@ describe('Table', () => {
 
   it('should render the table body component with children', () => {
     const table = (
-      <TableBody>
-        hello world
-      </TableBody>
+      <table>
+        <TableBody>
+          <tr>
+            <td>
+              hello world
+            </td>
+          </tr>
+        </TableBody>
+      </table>
     )
     const wrapper = mount(table)
     assert.equal(wrapper.text(), 'hello world')
@@ -78,9 +114,15 @@ describe('Table', () => {
 
   it('should render the table body row component with children', () => {
     const table = (
-      <TableBodyRow>
-        hello world
-      </TableBodyRow>
+      <table>
+        <tbody>
+          <TableBodyRow>
+            <td>
+              hello world
+            </td>
+          </TableBodyRow>
+        </tbody>
+      </table>
     )
     const wrapper = mount(table)
     assert.equal(wrapper.text(), 'hello world')
@@ -88,9 +130,15 @@ describe('Table', () => {
 
   it('should render the table body row component with children', () => {
     const table = (
-      <TableBodyCell>
-        hello world
-      </TableBodyCell>
+      <table>
+        <tbody>
+          <tr>
+            <TableBodyCell>
+              hello world
+            </TableBodyCell>
+          </tr>
+        </tbody>
+      </table>
     )
     const wrapper = mount(table)
     assert.equal(wrapper.text(), 'hello world')
@@ -100,6 +148,7 @@ describe('Table', () => {
     const footer = <TableFooter
       labelRowsPerPage='Rows per page:'
       labelXOfY='1-5 of 10'
+      onChangeRowsPerPage={() => {}}
     />
     const wrapper = mount(footer)
     assert.equal(wrapper.find('.Table-footer-rowsPerPage').text(), 'Rows per page:')
@@ -112,6 +161,7 @@ describe('Table', () => {
       labelRowsPerPage='Rows per page:'
       labelXOfY='1-5 of 10'
       onPaginateLeft={onPaginateLeft}
+      onChangeRowsPerPage={() => {}}
     />
     const wrapper = mount(footer)
     assert.equal(wrapper.find('.IconButton').at(0).simulate('click'))
@@ -123,6 +173,7 @@ describe('Table', () => {
       labelRowsPerPage='Rows per page:'
       labelXOfY='1-5 of 10'
       onPaginateRight={onPaginateRight}
+      onChangeRowsPerPage={() => {}}
     />
     const wrapper = mount(footer)
     assert.equal(wrapper.find('.IconButton').at(1).simulate('click'))
@@ -132,6 +183,7 @@ describe('Table', () => {
     const footer = <TableFooter
       possibleRowsPerPage={[5, 10, 20, 50]}
       rowsPerPageIndex={3}
+      onChangeRowsPerPage={() => {}}
     />
     const wrapper = mount(footer)
     assert.equal(wrapper.find('.Select-body').text(), '50')
