@@ -9,31 +9,31 @@ export default class ButtonRoute extends React.Component {
       <div>
         <section>
           <h2>Button Component</h2>
-          <Button onClick={e => console.log(e)}>
+          <Button name='ButtonComponent' onClick={e => console.log(e)}>
             Button
           </Button>
         </section>
         <section>
           <h2>Filled Button</h2>
-          <Button filled onClick={e => console.log(e)}>
+          <Button name='FilledButton' filled onClick={e => console.log(e)}>
             Button
           </Button>
         </section>
         <section>
           <h2>Raised Button</h2>
-          <Button onClick={e => console.log(e)} raised>
+          <Button name='RaisedButton' onClick={e => console.log(e)} raised>
             Button
           </Button>
         </section>
         <section>
           <h2>Raised & Filled Button</h2>
-          <Button onClick={e => console.log(e)} raised filled>
+          <Button name='RaisedFilledButton' onClick={e => console.log(e)} raised filled>
             Button
           </Button>
         </section>
         <section>
           <h2>Disabled Button</h2>
-          <Button onClick={e => console.log(e)} disabled>
+          <Button name='DisabledButton' onClick={e => console.log(e)} disabled>
             Button
           </Button>
         </section>
