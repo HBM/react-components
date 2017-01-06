@@ -21,4 +21,8 @@ describe('Button', () => {
     const wrapper = shallow(<Button onClick={() => {}} disabled />)
     assert.ok(wrapper.find('.Button').props().disabled)
   })
+  it('should have extra class `myStyle`', () => {
+    const wrapper = shallow(<Button className='myStyle' onClick={() => {}} />)
+    assert.ok(wrapper.find('.Button').hasClass('myStyle'))
+  })
 })

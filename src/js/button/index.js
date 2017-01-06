@@ -7,7 +7,7 @@ const Button = ({children, className, filled, raised, ...rest}) => (
     className={classnames('Button', {
       'Button--raised': raised,
       'Button--filled': filled
-    }, `${className}`)}
+    }, className)}
     {...rest}
   >
     {children}
@@ -21,7 +21,6 @@ Button.propTypes = {
 }
 
 Button.defaultProps = {
-  className: '',
   filled: false,
   raised: false
 }
