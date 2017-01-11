@@ -14,6 +14,6 @@ ratings:
   paths:
   - "**.js"
 exclude_paths:
-- src/components/**/test/test.js
-- src/components/icon/index.js
+- src/js/**/test/test.js
+- src/js/icon/index.js
 - examples/
