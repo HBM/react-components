@@ -85,6 +85,11 @@ describe('Textfield', () => {
     const wrapper = mount(<Textfield type='password' />)
     assert.equal(wrapper.find('.Textfield-input').node.type, 'password')
   })
+
+  it('should allow setting the htmlFor attribute on label element', () => {
+    const wrapper = mount(<Textfield htmlFor='foo' />)
+    assert.equal(wrapper.find('label').node.htmlFor, 'foo')
+  })
 })
 
 describe('Textarea', () => {
@@ -167,6 +172,11 @@ describe('Textarea', () => {
     const wrapper = mount(<Textarea value={'foo\nbar'} onChange={() => {}} maxRows={3} getComputedStyle={getComputedStyle} />)
     wrapper.find('textarea').simulate('input', {target})
     assert.equal(target.style.height, '30px')
+  })
+
+  it('should allow setting the htmlFor attribute on label element', () => {
+    const wrapper = mount(<Textarea htmlFor='foo' />)
+    assert.equal(wrapper.find('label').node.htmlFor, 'foo')
   })
 })
 

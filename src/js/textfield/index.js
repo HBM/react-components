@@ -57,7 +57,7 @@ const TextfieldWrapper = ({
   )
 }
 
-export const Textfield = ({float, error, length, ...rest}) => (
+export const Textfield = ({float, error, length, htmlFor, ...rest}) => (
   <TextfieldWrapper
     defaultValue={rest.defaultValue}
     error={error}
@@ -66,7 +66,7 @@ export const Textfield = ({float, error, length, ...rest}) => (
     label={rest.label}
     value={rest.value}
     length={length}
-    htmlFor={rest.htmlFor}
+    htmlFor={htmlFor}
   >
     <input
       className={classnames('Textfield-input', {
