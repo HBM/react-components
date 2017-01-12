@@ -10,7 +10,8 @@ const TextfieldWrapper = ({
   icon,
   label,
   value,
-  length
+  length,
+  htmlFor
 }) => {
   const isValueEmpty = value === undefined || value === ''
   const isDefaultValueEmpty = defaultValue === undefined || defaultValue === ''
@@ -24,7 +25,7 @@ const TextfieldWrapper = ({
   }
   const showCounter = valueLength > length
   return (
-    <label className={classnames('Textfield', {'Textfield--nolabel': !label})} >
+    <label className={classnames('Textfield', {'Textfield--nolabel': !label})} htmlFor={htmlFor}>
       <div className='Textfield-icon-wrapper'>
         {
           icon
@@ -65,6 +66,7 @@ export const Textfield = ({float, error, length, ...rest}) => (
     label={rest.label}
     value={rest.value}
     length={length}
+    htmlFor={rest.htmlFor}
   >
     <input
       className={classnames('Textfield-input', {
@@ -138,11 +140,21 @@ export class Textarea extends React.Component {
       resizable,
       rows,
       spellCheck,
-      value
+      value,
+      htmlFor
     } = this.props
 
     return (
-      <TextfieldWrapper defaultValue={defaultValue} error={error} float={float} icon={icon} label={label} value={value} length={length}>
+      <TextfieldWrapper
+        defaultValue={defaultValue}
+        error={error}
+        float={float}
+        icon={icon}
+        label={label}
+        value={value}
+        length={length}
+        htmlFor={htmlFor}
+      >
         <textarea
           autoFocus={autoFocus}
           className={classnames('Textfield-input', {
