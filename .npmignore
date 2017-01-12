@@ -1,2 +1,5 @@
 examples/
 src/
+bin/
+test/
+coverage/
