@@ -6,7 +6,7 @@
 /**
  * HTML5 header element
  */
-header {
+.Header {
   height: 48px;
   background: $blue-dark;
   color: #fff;
@@ -17,33 +17,24 @@ header {
   top: 0;
   z-index: 102;
   transition: box-shadow 0.5s ease;
+  justify-content: space-between;
+  padding-left: 16px;
+  padding-right: 16px;
 
   @include medium {
     height: 64px;
+  }
+
+  @include xlarge {
+    left: $navigation-width;
   }
 }
 
 /**
  * Add shadow to header when scrolling down.
  */
-header.Header--shadow {
+.Header.has--shadow {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
-}
-
-/**
- * Header component CSS class
- */
-.Header {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-left: 16px;
-  margin-right: 16px;
-
-  @include xlarge {
-    margin-left: $navigation-width;
-  }
 }
 
 .Header-block {
