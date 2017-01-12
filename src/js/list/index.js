@@ -92,7 +92,7 @@ export const Row = ({
 
   const rowContent = [avatarElement, iconLeftElement, textElement, iconRightElement]
   const rowProps = {
-    className: classNames(className ? className + ' List-row' : 'List-row', dynamicClasses),
+    className: classNames('List-row', dynamicClasses, className),
     onClick,
     style,
     onKeyDown,
