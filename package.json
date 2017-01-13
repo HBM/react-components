@@ -9,7 +9,7 @@
     "lib:watch": "webpack --watch",
     "examples": "cd examples && react-scripts start",
     "test": "standard && npm run stylelint && istanbul cover ./node_modules/mocha/bin/_mocha test/.setup.js src/js/**/test/test.js",
-    "release": "npm run lib && cp -r ./src/css/ ./lib/"
+    "release": "npm run lib && cpx ./src/css/**/* ./lib/css"
   },
   "repository": {
     "type": "git",
@@ -34,6 +34,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "babelify": "^7.3.0",
     "coveralls": "^2.11.12",
+    "cpx": "^1.5.0",
     "css-loader": "^0.26.1",
     "envify": "^3.4.0",
     "enzyme": "^2.3.0",
