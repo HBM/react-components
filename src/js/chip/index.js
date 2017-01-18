@@ -63,12 +63,12 @@ export default class Chip extends React.Component {
   // That's why we need KeyDown event for backspace and arrow keys.
   onKeyDown = (event) => {
     // toggle through chips when input field is empty and when we have some chips to toggle through
+    if (this.state.inputValue !== '' || !this.props.value.length) {
+      return
+    }
     if (event.which === keycode('backspace')) {
       // prevent window.history.back() for backspace (for example)
       event.preventDefault()
-    }
-    if (this.state.inputValue !== '' || !this.props.value.length) {
-      return
     }
     return focusLeftOrRight(event, [keycode('backspace'), keycode('left')], [keycode('right')])
   }
