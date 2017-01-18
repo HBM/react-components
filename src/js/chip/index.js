@@ -47,10 +47,6 @@ export default class Chip extends React.Component {
   onKeyPress = (event) => {
     const text = this.state.inputValue.trim()
     if ((this.props.delimiters.indexOf(event.which) > -1) && text !== '') {
-      if (event.which !== keycode('enter')) {
-        // prevent window.history.back() for backspace (for example)
-        event.preventDefault()
-      }
       // empty input field
       this.setState({
         inputValue: ''
@@ -67,6 +63,10 @@ export default class Chip extends React.Component {
   // That's why we need KeyDown event for backspace and arrow keys.
   onKeyDown = (event) => {
     // toggle through chips when input field is empty and when we have some chips to toggle through
+    if (event.which === keycode('backspace')) {
+      // prevent window.history.back() for backspace (for example)
+      event.preventDefault()
+    }
     if (this.state.inputValue !== '' || !this.props.value.length) {
       return
     }
