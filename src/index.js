@@ -28,8 +28,7 @@ export {
   TableBody,
   TableBodyRow,
   TableBodyCell,
-  TableFooter,
-  SmallEditDialog
+  TableFooter
 } from './js/table/index.js'
 export Tabs from './js/tabs/index.js'
 export {Textarea, Textfield} from './js/textfield/index.js'

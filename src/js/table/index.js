@@ -7,7 +7,7 @@ import {Textfield} from '../textfield/'
 import keycode from 'keycode'
 
 // internal helper component
-export class EditDialog extends React.Component {
+class EditDialog extends React.Component {
 
   state = {
     value: this.props.value
@@ -116,14 +116,10 @@ export class TableBodyCell extends React.Component {
     })
   }
 
-  hide = () => {
+  onSubmit = (value) => {
     this.setState({
       isEditing: false
     })
-  }
-
-  onSubmit = (value) => {
-    this.hide()
     this.props.onSubmit(value)
   }
 
