@@ -50,7 +50,11 @@ export default class TableRoute extends React.Component {
     ],
     page: 1,
     rowsPerPageIndex: 0,
-    possibleRowsPerPage: [5, 10]
+    possibleRowsPerPage: [5, 10],
+    comments: [
+      'Add a comment',
+      'Add a comment'
+    ]
   }
 
   onSortClick = (columnIndex) => {
@@ -91,6 +95,14 @@ export default class TableRoute extends React.Component {
   // handle body row clicks
   onClick = (index) => {
     console.log(index)
+  }
+
+  onSubmit = (index, value) => {
+    const {comments} = this.state
+    comments[index] = value
+    this.setState({
+      comments
+    })
   }
 
   render () {
@@ -215,6 +227,59 @@ export default class TableRoute extends React.Component {
             rowsPerPageIndex={this.state.rowsPerPageIndex}
             possibleRowsPerPage={this.state.possibleRowsPerPage}
           />
+        </section>
+        <section>
+          <h2>Inline text editing</h2>
+          <Table style={{backgroundColor: 'white'}}>
+            <TableHead>
+              <TableHeadRow>
+                <TableHeadCell style={{textAlign: 'right'}}>
+                  Carbs (g)
+                </TableHeadCell>
+                <TableHeadCell style={{textAlign: 'right'}}>
+                  Protein (g)
+                </TableHeadCell>
+                <TableHeadCell style={{textAlign: 'left'}}>
+                  Comments
+                </TableHeadCell>
+              </TableHeadRow>
+            </TableHead>
+            <TableBody>
+              <TableBodyRow>
+                <TableBodyCell style={{textAlign: 'right'}}>
+                  24
+                </TableBodyCell>
+                <TableBodyCell style={{textAlign: 'right'}}>
+                  4.0
+                </TableBodyCell>
+                <TableBodyCell editable onSubmit={value => this.onSubmit(0, value)}>
+                  {this.state.comments[0]}
+                </TableBodyCell>
+              </TableBodyRow>
+              <TableBodyRow>
+                <TableBodyCell style={{textAlign: 'right'}}>
+                  37
+                </TableBodyCell>
+                <TableBodyCell style={{textAlign: 'right'}}>
+                  4.3
+                </TableBodyCell>
+                <TableBodyCell editable onSubmit={value => this.onSubmit(1, value)}>
+                  {this.state.comments[1]}
+                </TableBodyCell>
+              </TableBodyRow>
+              <TableBodyRow>
+                <TableBodyCell style={{textAlign: 'right'}}>
+                  24
+                </TableBodyCell>
+                <TableBodyCell style={{textAlign: 'right'}}>
+                  6.0
+                </TableBodyCell>
+                <TableBodyCell>
+                  337
+                </TableBodyCell>
+              </TableBodyRow>
+            </TableBody>
+          </Table>
         </section>
         <section>
           <p>Specification</p>

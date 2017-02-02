@@ -1,4 +1,33 @@
 
+.Table-edit {
+  position: relative;
+}
+
+.Table-edit-container {
+  background-color: #fafafa;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -14px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  padding: 0 24px;
+}
+
+.Table-body-row-cell-edit-wrapper {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.Table-edit-icon {
+  margin-left: auto;
+}
+
+// override textfield font size
+.Table-edit-container .Textfield-input {
+  font-size: 13px;
+}
+
 .Table {
   width: 100%;
 

@@ -3,9 +3,52 @@ import React from 'react'
 import classnames from 'classnames'
 import Icon from '../icon/'
 import Select from '../select/'
+import {Textfield} from '../textfield/'
+import keycode from 'keycode'
+
+// internal helper component
+export class EditDialog extends React.Component {
+
+  state = {
+    value: this.props.value
+  }
+
+  onChange = (event) => {
+    const {value} = event.target
+    this.setState({value})
+  }
+
+  onSubmit = (event) => {
+    event.preventDefault()
+    event.stopPropagation()
+    this.props.onSubmit(this.state.value)
+  }
+
+  onKeyUp = (event) => {
+    // hide box and return old value
+    if (event.which === keycode('escape')) {
+      this.props.onSubmit(this.props.value)
+    }
+  }
+
+  render () {
+    return (
+      <div className='Table-edit'>
+        <form onSubmit={this.onSubmit} className='Table-edit-container'>
+          <Textfield
+            onChange={this.onChange}
+            value={this.state.value}
+            onKeyUp={this.onKeyUp}
+          />
+        </form>
+      </div>
+    )
+  }
+
+}
 
 export const Table = ({children, className, ...rest}) => (
-  <table className='Table'>
+  <table className='Table' {...rest}>
     {children}
   </table>
 )
@@ -61,11 +104,54 @@ export const TableBodyRow = ({children, className, ...rest}) => (
   </tr>
 )
 
-export const TableBodyCell = ({children, className, ...rest}) => (
-  <td className={classnames('Table-body-row-cell', className)} {...rest}>
-    {children}
-  </td>
-)
+export class TableBodyCell extends React.Component {
+
+  state = {
+    isEditing: false
+  }
+
+  show = () => {
+    this.setState({
+      isEditing: true
+    })
+  }
+
+  hide = () => {
+    this.setState({
+      isEditing: false
+    })
+  }
+
+  onSubmit = (value) => {
+    this.hide()
+    this.props.onSubmit(value)
+  }
+
+  render () {
+    const {children, className, editable, ...rest} = this.props
+    return (
+      <td className={classnames('Table-body-row-cell', className)} {...rest}>
+        {this.state.isEditing
+          ? <EditDialog onSubmit={this.onSubmit} value={children} />
+          : null
+        }
+        { editable
+          ? <div className='Table-body-row-cell-edit-wrapper' onClick={this.show}>
+            {children}
+            <Icon.Edit
+              className='Table-edit-icon'
+              width={18}
+              height={18}
+              fill='rgba(0, 0, 0, 0.54)'
+            />
+          </div>
+          : children
+        }
+      </td>
+    )
+  }
+
+}
 
 export const TableFooter = (props) => (
   <div className='Table-footer'>
