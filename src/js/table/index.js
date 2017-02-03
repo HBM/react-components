@@ -25,15 +25,32 @@ class EditDialog extends React.Component {
   }
 
   onKeyUp = (event) => {
-    // hide box and return old value
+    // hide box on escape key
     if (event.which === keycode('escape')) {
-      this.props.onSubmit(this.props.value)
+      this.props.onCancel()
     }
+  }
+
+  onClick = (event) => {
+    // make sure click happened outside of component
+    const element = this.c
+    // https://github.com/tj/react-click-outside/blob/master/index.js#L25
+    if (!element.contains(event.target)) {
+      this.props.onCancel()
+    }
+  }
+
+  componentDidMount = () => {
+    document.addEventListener('click', this.onClick)
+  }
+
+  componentWillUnmount = () => {
+    document.removeEventListener('click', this.onClick)
   }
 
   render () {
     return (
-      <div className='Table-edit'>
+      <div className='Table-edit' ref={c => { this.c = c }}>
         <form onSubmit={this.onSubmit} className='Table-edit-container'>
           <Textfield
             onChange={this.onChange}
@@ -116,10 +133,14 @@ export class TableBodyCell extends React.Component {
     })
   }
 
-  onSubmit = (value) => {
+  hide = () => {
     this.setState({
       isEditing: false
     })
+  }
+
+  onSubmit = (value) => {
+    this.hide()
     this.props.onSubmit(value)
   }
 
@@ -128,7 +149,7 @@ export class TableBodyCell extends React.Component {
     return (
       <td className={classnames('Table-body-row-cell', className)} {...rest}>
         {this.state.isEditing
-          ? <EditDialog onSubmit={this.onSubmit} value={children} />
+          ? <EditDialog onSubmit={this.onSubmit} onCancel={this.hide} value={children} />
           : null
         }
         { editable
