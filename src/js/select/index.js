@@ -3,8 +3,6 @@ import React from 'react'
 import {Motion, spring} from 'react-motion'
 import objectAssign from 'object-assign'
 
-// CSS space
-const PADDING_TOP = 12
 const PADDING_TOP_WITH_LABEL = -12
 const PADDING_LEFT = 16
 const LIST_ITEM_HEIGHT = 48
@@ -57,11 +55,28 @@ export default class Select extends React.Component {
   }
 
   /**
+   * Check if Select component is inside table.
+   */
+  findTableTag = (node) => {
+    while (node.parentNode) {
+      node = node.parentNode
+      if (node.tagName === 'TABLE') {
+        return true
+      }
+    }
+    return false
+  }
+
+  /**
    * Make dropdown list as wide as parent placeholder including caret
    */
   componentDidMount () {
     const selectRect = this.ref.getBoundingClientRect()
+
+    const isInsideTable = this.findTableTag(this.ref)
+
     this.setState({
+      isInsideTable,
       width: selectRect.width
     })
   }
@@ -111,6 +126,7 @@ export default class Select extends React.Component {
               selectedIndex={selectedIndex}
               onClick={this.props.onChange}
               width={this.state.width}
+              isInsideTable={this.state.isInsideTable}
             />
           }
         </Motion>
@@ -128,6 +144,7 @@ class List extends React.Component {
   static propTypes = {
     hasLabel: React.PropTypes.bool,
     items: React.PropTypes.array.isRequired,
+    isInsideTable: React.PropTypes.bool,
     selectedIndex: React.PropTypes.number.isRequired,
     onClick: React.PropTypes.func.isRequired,
     width: React.PropTypes.number
@@ -161,6 +178,17 @@ class List extends React.Component {
    * Render list component
    */
   render () {
+    // CSS space
+    let PADDING_TOP = 12
+    if (this.props.isInsideTable) {
+      // when select component is inside a table cell we have to remove
+      // border bottom, padding top and padding bottom.
+      // this changes the location of the text.
+      // that leads to the list menu / overlay no being directly on top of the text.
+      // we therefore have to modify the padding top to fix the overlay position.
+      PADDING_TOP = 26
+    }
+
     const {items, selectedIndex} = this.props
 
     // handle list absolute position top

@@ -139,3 +139,15 @@
     }
   }
 }
+
+// Select / dropdown inside table cell
+.Table .Select {
+  font-size: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.Table .Select-body {
+  border-bottom: none;
+  padding-bottom: 0;
+}

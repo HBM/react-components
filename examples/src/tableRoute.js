@@ -8,7 +8,8 @@ import {
   TableBody,
   TableBodyRow,
   TableBodyCell,
-  TableFooter
+  TableFooter,
+  Select
 } from '../../lib'
 
 export default class TableRoute extends React.Component {
@@ -54,7 +55,12 @@ export default class TableRoute extends React.Component {
     comments: [
       'Add a comment',
       'Add a comment'
-    ]
+    ],
+    types: {
+      yogurt: 1,
+      sandwich: 1,
+      eclair: 1
+    }
   }
 
   onSortClick = (columnIndex) => {
@@ -105,6 +111,15 @@ export default class TableRoute extends React.Component {
     })
   }
 
+  onChangeType = (key, index) => {
+    this.setState({
+      types: {
+        ...this.state.types,
+        [key]: index
+      }
+    })
+  }
+
   render () {
     const {head, simple} = this.state
     const {page} = this.state
@@ -113,6 +128,12 @@ export default class TableRoute extends React.Component {
     const end = start + rowsPerPage
     const xOfY = start + 1 + '-' + end + ' of ' + this.state.data.length
     const data = this.state.data.slice(start, end)
+
+    const types = [
+      'Ice cream',
+      'Pastry',
+      'Other'
+    ]
 
     return (
       <div>
@@ -276,6 +297,83 @@ export default class TableRoute extends React.Component {
                 </TableBodyCell>
                 <TableBodyCell>
                   337
+                </TableBodyCell>
+              </TableBodyRow>
+            </TableBody>
+          </Table>
+        </section>
+        <section>
+          <h2>Inline menu</h2>
+          <Table style={{backgroundColor: 'white'}}>
+            <TableHead>
+              <TableHeadRow>
+                <TableHeadCell style={{textAlign: 'left'}}>
+                  Dessert (100g serving)
+                </TableHeadCell>
+                <TableHeadCell style={{textAlign: 'left'}}>
+                  Type
+                </TableHeadCell>
+                <TableHeadCell style={{textAlign: 'right'}}>
+                  Fat (g)
+                </TableHeadCell>
+                <TableHeadCell style={{textAlign: 'right'}}>
+                  Carbs (g)
+                </TableHeadCell>
+              </TableHeadRow>
+            </TableHead>
+            <TableBody>
+              <TableBodyRow>
+                <TableBodyCell>
+                  Frozen yogurt
+                </TableBodyCell>
+                <TableBodyCell>
+                  <Select
+                    onChange={(index) => this.onChangeType('yogurt', index)}
+                    items={types}
+                    selectedIndex={this.state.types.yogurt}
+                  />
+                </TableBodyCell>
+                <TableBodyCell style={{textAlign: 'right'}}>
+                  6.0
+                </TableBodyCell>
+                <TableBodyCell style={{textAlign: 'right'}}>
+                  24
+                </TableBodyCell>
+              </TableBodyRow>
+              <TableBodyRow>
+                <TableBodyCell>
+                  Ice cream sandwich
+                </TableBodyCell>
+                <TableBodyCell>
+                  <Select
+                    onChange={(index) => this.onChangeType('sandwich', index)}
+                    items={types}
+                    selectedIndex={this.state.types.sandwich}
+                  />
+                </TableBodyCell>
+                <TableBodyCell style={{textAlign: 'right'}}>
+                  9.0
+                </TableBodyCell>
+                <TableBodyCell style={{textAlign: 'right'}}>
+                  37
+                </TableBodyCell>
+              </TableBodyRow>
+              <TableBodyRow>
+                <TableBodyCell>
+                  Eclair
+                </TableBodyCell>
+                <TableBodyCell>
+                  <Select
+                    onChange={(index) => this.onChangeType('eclair', index)}
+                    items={types}
+                    selectedIndex={this.state.types.eclair}
+                  />
+                </TableBodyCell>
+                <TableBodyCell style={{textAlign: 'right'}}>
+                  16.0
+                </TableBodyCell>
+                <TableBodyCell style={{textAlign: 'right'}}>
+                  24
                 </TableBodyCell>
               </TableBodyRow>
             </TableBody>

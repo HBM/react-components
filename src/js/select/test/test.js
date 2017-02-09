@@ -134,4 +134,24 @@ describe('Select', () => {
     wrapper.find('.Select-body').simulate('click')
     assert.equal(wrapper.find('.Select-list').node.style.top, '-204px')
   })
+
+  it('should change its position top when inside a table', () => {
+    const wrapper = mount(
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <Select
+                selectedIndex={8}
+                items={['Fox', 'Cat', 'Rabbit', 'Dog', 'Horse', 'Mouse', 'Dragon', 'Unicorn', 'Wookiee']}
+                onChange={noop}
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    )
+    wrapper.find('.Select-body').simulate('click')
+    assert.equal(wrapper.find('.Select-list').node.style.top, '-218px')
+  })
 })
