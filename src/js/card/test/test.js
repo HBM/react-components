@@ -15,4 +15,9 @@ describe('Card', () => {
     const wrapper = shallow(<Title>some title</Title>)
     assert.equal(wrapper.find('.Card-title').text(), 'some title')
   })
+
+  it('should pass down className prop', () => {
+    const wrapper = shallow(<Card className='foo' />)
+    assert.equal(wrapper.find('.Card.foo').length, 1)
+  })
 })

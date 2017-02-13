@@ -3,9 +3,10 @@
  */
 
 import React from 'react'
+import classNames from 'classnames'
 
-const container = (className) => ({children}) => (
-  <div className={className}>
+const container = (name) => ({children, className}) => (
+  <div className={classNames(name, className)}>
     {children}
   </div>
 )
