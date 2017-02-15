@@ -33,8 +33,12 @@ describe('Select', () => {
     const wrapper = mount(
       <Select
         onChange={noop}
-        selectedIndex={2}
-        items={['Fox', 'Rabbit', 'Dog']}
+        value='dog'
+        options={[
+          {value: 'fox', label: 'Fox'},
+          {value: 'rabbit', label: 'Rabbit'},
+          {value: 'dog', label: 'Dog'}
+        ]}
       />
     )
     assert.equal(wrapper.find('.Select-body').text(), 'Dog')
@@ -65,7 +69,16 @@ describe('Select', () => {
 
   it('should close the list on click on an item', () => {
     const callback = () => {}
-    const wrapper = mount(<Select items={['Fox', 'Rabbit', 'Dog']} onChange={callback} />)
+    const wrapper = mount(
+      <Select
+        options={[
+          {value: 'fox', label: 'Fox'},
+          {value: 'rabbit', label: 'Rabbit'},
+          {value: 'dog', label: 'Dog'}
+        ]}
+        onChange={callback}
+      />
+    )
     // open list
     wrapper.find('.Select-body').simulate('click')
     assert.equal(wrapper.find('.Select-list').length, 1)
@@ -80,8 +93,17 @@ describe('Select', () => {
   it('should render the list directly above the selected item', () => {
     const wrapper = mount(
       <Select
-        selectedIndex={1}
-        items={['Fox', 'Rabbit', 'Dog', 'Horse', 'Mouse', 'Dragon', 'Unicorn', 'Wookiee']}
+        value='rabbit'
+        options={[
+          {value: 'fox', label: 'Fox'},
+          {value: 'rabbit', label: 'Rabbit'},
+          {value: 'dog', label: 'Dog'},
+          {value: 'horse', label: 'Horse'},
+          {value: 'mouse', label: 'mouse'},
+          {value: 'dragon', label: 'Dragon'},
+          {value: 'unicorn', label: 'Unicorn'},
+          {value: 'wookiee', label: 'Wookiee'}
+        ]}
         onChange={noop}
       />
     )
@@ -96,8 +118,18 @@ describe('Select', () => {
   it('should render a list item always in the middle of the list when list is too large', () => {
     const wrapper = mount(
       <Select
-        selectedIndex={6}
-        items={['Fox', 'Cat', 'Rabbit', 'Dog', 'Horse', 'Mouse', 'Dragon', 'Unicorn', 'Wookiee']}
+        value='dragon'
+        options={[
+          {value: 'fox', label: 'Fox'},
+          {value: 'cat', label: 'Cat'},
+          {value: 'rabbit', label: 'Rabbit'},
+          {value: 'dog', label: 'Dog'},
+          {value: 'horse', label: 'Horse'},
+          {value: 'mouse', label: 'mouse'},
+          {value: 'dragon', label: 'Dragon'},
+          {value: 'unicorn', label: 'Unicorn'},
+          {value: 'wookiee', label: 'Wookiee'}
+        ]}
         onChange={noop}
       />
     )
@@ -114,8 +146,18 @@ describe('Select', () => {
   it('should not show the second last item in the center of the list', () => {
     const wrapper = mount(
       <Select
-        selectedIndex={7}
-        items={['Fox', 'Cat', 'Rabbit', 'Dog', 'Horse', 'Mouse', 'Dragon', 'Unicorn', 'Wookiee']}
+        value='unicorn'
+        options={[
+          {value: 'fox', label: 'Fox'},
+          {value: 'cat', label: 'Cat'},
+          {value: 'rabbit', label: 'Rabbit'},
+          {value: 'dog', label: 'Dog'},
+          {value: 'horse', label: 'Horse'},
+          {value: 'mouse', label: 'mouse'},
+          {value: 'dragon', label: 'Dragon'},
+          {value: 'unicorn', label: 'Unicorn'},
+          {value: 'wookiee', label: 'Wookiee'}
+        ]}
         onChange={noop}
       />
     )
@@ -126,8 +168,18 @@ describe('Select', () => {
   it('should show the last item at the end of the list', () => {
     const wrapper = mount(
       <Select
-        selectedIndex={8}
-        items={['Fox', 'Cat', 'Rabbit', 'Dog', 'Horse', 'Mouse', 'Dragon', 'Unicorn', 'Wookiee']}
+        value='wookiee'
+        options={[
+          {value: 'fox', label: 'Fox'},
+          {value: 'cat', label: 'Cat'},
+          {value: 'rabbit', label: 'Rabbit'},
+          {value: 'dog', label: 'Dog'},
+          {value: 'horse', label: 'Horse'},
+          {value: 'mouse', label: 'mouse'},
+          {value: 'dragon', label: 'Dragon'},
+          {value: 'unicorn', label: 'Unicorn'},
+          {value: 'wookiee', label: 'Wookiee'}
+        ]}
         onChange={noop}
       />
     )
@@ -142,8 +194,18 @@ describe('Select', () => {
           <tr>
             <td>
               <Select
-                selectedIndex={8}
-                items={['Fox', 'Cat', 'Rabbit', 'Dog', 'Horse', 'Mouse', 'Dragon', 'Unicorn', 'Wookiee']}
+                value='wookiee'
+                options={[
+                  {value: 'fox', label: 'Fox'},
+                  {value: 'cat', label: 'Cat'},
+                  {value: 'rabbit', label: 'Rabbit'},
+                  {value: 'dog', label: 'Dog'},
+                  {value: 'horse', label: 'Horse'},
+                  {value: 'mouse', label: 'mouse'},
+                  {value: 'dragon', label: 'Dragon'},
+                  {value: 'unicorn', label: 'Unicorn'},
+                  {value: 'wookiee', label: 'Wookiee'}
+                ]}
                 onChange={noop}
               />
             </td>

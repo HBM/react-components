@@ -176,9 +176,9 @@ export const TableFooter = (props) => (
       {props.labelRowsPerPage}
     </span>
     <Select
-      items={props.possibleRowsPerPage}
+      options={props.possibleRowsPerPage}
       onChange={props.onChangeRowsPerPage}
-      selectedIndex={props.rowsPerPageIndex}
+      value={props.rowsPerPageIndex}
     />
     <span className='Table-footer-xOfY'>
       {props.labelXOfY}

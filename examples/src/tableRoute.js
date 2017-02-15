@@ -51,7 +51,10 @@ export default class TableRoute extends React.Component {
     ],
     page: 1,
     rowsPerPageIndex: 0,
-    possibleRowsPerPage: [5, 10],
+    possibleRowsPerPage: [
+      {value: 0, label: 5},
+      {value: 1, label: 10}
+    ],
     comments: [
       'Add a comment',
       'Add a comment'
@@ -86,15 +89,15 @@ export default class TableRoute extends React.Component {
 
   onPaginateRight = () => {
     const page = this.state.page + 1
-    const rowsPerPage = this.state.possibleRowsPerPage[this.state.rowsPerPageIndex]
+    const rowsPerPage = this.state.possibleRowsPerPage[this.state.rowsPerPageIndex].label
     if (page * rowsPerPage <= this.state.data.length) {
       this.setState({page})
     }
   }
 
-  onChangeRowsPerPage = (index) => {
+  onChangeRowsPerPage = (item) => {
     this.setState({
-      rowsPerPageIndex: index
+      rowsPerPageIndex: item.value
     })
   }
 
@@ -123,7 +126,7 @@ export default class TableRoute extends React.Component {
   render () {
     const {head, simple} = this.state
     const {page} = this.state
-    const rowsPerPage = this.state.possibleRowsPerPage[this.state.rowsPerPageIndex]
+    const rowsPerPage = this.state.possibleRowsPerPage[this.state.rowsPerPageIndex].label
     const start = (page - 1) * rowsPerPage
     const end = start + rowsPerPage
     const xOfY = start + 1 + '-' + end + ' of ' + this.state.data.length

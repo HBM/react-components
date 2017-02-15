@@ -181,7 +181,12 @@ describe('Table', () => {
 
   it('should display the selected number of visible rows', () => {
     const footer = <TableFooter
-      possibleRowsPerPage={[5, 10, 20, 50]}
+      possibleRowsPerPage={[
+        {value: 0, label: 5},
+        {value: 1, label: 10},
+        {value: 2, label: 20},
+        {value: 3, label: 50}
+      ]}
       rowsPerPageIndex={3}
       onChangeRowsPerPage={() => {}}
     />

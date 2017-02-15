@@ -18,16 +18,19 @@ export default class Select extends React.Component {
   static propTypes = {
     disabled: React.PropTypes.bool,
     label: React.PropTypes.string,
-    items: React.PropTypes.array,
+    options: React.PropTypes.array,
     placeholder: React.PropTypes.string,
-    onChange: React.PropTypes.func.isRequired,
-    selectedIndex: React.PropTypes.number
+    onChange: React.PropTypes.func.isRequired
   }
 
   static defaultProps = {
-    items: ['one', 'two', 'three'],
+    options: [
+      {value: 'one', label: 'one'},
+      {value: 'two', label: 'two'},
+      {value: 'three', label: 'three'}
+    ],
     placeholder: 'Placeholder',
-    selectedIndex: -1
+    value: ''
   }
 
   state = {
@@ -95,10 +98,11 @@ export default class Select extends React.Component {
   }
 
   render () {
-    const {selectedIndex, label, disabled} = this.props
+    const {label, disabled, options, value} = this.props
     const {open} = this.state
+    const selectedIndex = options.findIndex(option => option.value === value)
     const empty = selectedIndex === -1
-    const text = empty ? this.props.placeholder : this.props.items[selectedIndex]
+    const text = empty ? this.props.placeholder : this.props.options[selectedIndex].label
 
     return (
       <div className='Select' ref={(c) => { this.ref = c }}>
@@ -122,7 +126,7 @@ export default class Select extends React.Component {
                 opacity: style.opacity
               }}
               hasLabel={!!this.props.label}
-              items={this.props.items}
+              options={this.props.options}
               selectedIndex={selectedIndex}
               onClick={this.props.onChange}
               width={this.state.width}
@@ -143,7 +147,7 @@ class List extends React.Component {
 
   static propTypes = {
     hasLabel: React.PropTypes.bool,
-    items: React.PropTypes.array.isRequired,
+    options: React.PropTypes.array.isRequired,
     isInsideTable: React.PropTypes.bool,
     selectedIndex: React.PropTypes.number.isRequired,
     onClick: React.PropTypes.func.isRequired,
@@ -157,7 +161,7 @@ class List extends React.Component {
     const index = this.props.selectedIndex
 
     // create boolean helper variables
-    const scrollable = this.props.items.length > MAX_LIST_LENGTH
+    const scrollable = this.props.options.length > MAX_LIST_LENGTH
     const indexWithinFirstTwoItems = index < 2
 
     if (scrollable && !indexWithinFirstTwoItems) {
@@ -171,7 +175,7 @@ class List extends React.Component {
    */
   onClick = (index, event) => {
     event.preventDefault()
-    this.props.onClick(index)
+    this.props.onClick(this.props.options[index])
   }
 
   /**
@@ -189,7 +193,7 @@ class List extends React.Component {
       PADDING_TOP = 26
     }
 
-    const {items, selectedIndex} = this.props
+    const {options, selectedIndex} = this.props
 
     // handle list absolute position top
     const paddingTop = this.props.hasLabel ? PADDING_TOP_WITH_LABEL : PADDING_TOP
@@ -203,14 +207,14 @@ class List extends React.Component {
     }
 
     // handle scrollable lists with more than 5 list items
-    if (items.length > MAX_LIST_LENGTH) {
-      if (selectedIndex >= 2 && selectedIndex <= items.length - 3) {
+    if (options.length > MAX_LIST_LENGTH) {
+      if (selectedIndex >= 2 && selectedIndex <= options.length - 3) {
         // handle "center" items => always set to third position
         top = -1 * (paddingTop + (LIST_ITEM_HEIGHT * 2))
-      } else if (selectedIndex === items.length - 2) {
+      } else if (selectedIndex === options.length - 2) {
         // handle second last item
         top = -1 * (paddingTop + (LIST_ITEM_HEIGHT * 3))
-      } else if (selectedIndex === items.length - 1) {
+      } else if (selectedIndex === options.length - 1) {
         // handle last item
         top = -1 * (paddingTop + (LIST_ITEM_HEIGHT * 4))
       }
@@ -227,13 +231,13 @@ class List extends React.Component {
         className='Select-list'
         style={objectAssign(style, this.props.style)}
       >
-        {items.map((item, i) =>
+        {options.map((item, i) =>
           <li key={i} className='Select-listItem'>
             <a href
               className='Select-listItemLink'
               onClick={this.onClick.bind(this, i)}
             >
-              {item}
+              {item.label}
             </a>
           </li>
         )}

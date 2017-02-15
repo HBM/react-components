@@ -5,26 +5,14 @@ import {Select} from '../../lib'
 export default class SelectRoute extends React.Component {
 
   state = {
-    selected: -1,
-    first: -1,
-    second: -1
+    first: '',
+    second: '',
+    third: ''
   }
 
-  onChangeFirst = (index) => {
+  onChange = (key, item) => {
     this.setState({
-      first: index
-    })
-  }
-
-  onChangeSecond = (index) => {
-    this.setState({
-      second: index
-    })
-  }
-
-  onChange = (index) => {
-    this.setState({
-      selected: index
+      [key]: item.value
     })
   }
 
@@ -34,43 +22,67 @@ export default class SelectRoute extends React.Component {
         <section>
           <h2>Select</h2>
           <Select
-            onChange={this.onChange}
-            items={['Blue', 'Red', 'Green']}
-            selectedIndex={this.state.selected}
+            onChange={(item) => this.onChange('first', item)}
+            options={[
+              {value: 'blue', label: 'Blue'},
+              {value: 'red', label: 'Red'},
+              {value: 'green', label: 'Green'}
+            ]}
+            value={this.state.first}
           />
         </section>
         <section>
           <h2>Select with scrolling</h2>
           <Select
-            onChange={this.onChange}
-            items={['Blue', 'Red', 'Green', 'Yellow', 'Orange', 'Black', 'White']}
-            selectedIndex={this.state.selected}
+            onChange={(item) => this.onChange('first', item)}
+            options={[
+              {value: 'blue', label: 'Blue'},
+              {value: 'red', label: 'Red'},
+              {value: 'green', label: 'Green'},
+              {value: 'yellow', label: 'Yellow'},
+              {value: 'orange', label: 'Orange'},
+              {value: 'black', label: 'Black'},
+              {value: 'white', label: 'White'}
+            ]}
+            value={this.state.first}
           />
         </section>
         <section>
           <h2>Select with label</h2>
           <Select
             label='Some label'
-            onChange={this.onChange}
-            items={['Blue', 'Red', 'Green']}
-            selectedIndex={this.state.selected}
+            onChange={(item) => this.onChange('first', item)}
+            options={[
+              {value: 'blue', label: 'Blue'},
+              {value: 'red', label: 'Red'},
+              {value: 'green', label: 'Green'}
+            ]}
+            value={this.state.first}
           />
         </section>
         <section>
           <h2>Disabled select</h2>
           <div style={{display: 'flex'}}>
             <Select
-              label='first'
-              onChange={this.onChangeFirst}
-              items={['One', 'Two', 'Three']}
-              selectedIndex={this.state.first}
+              label='second'
+              onChange={(item) => this.onChange('second', item)}
+              options={[
+                {value: 'one', label: 'One'},
+                {value: 'two', label: 'Two'},
+                {value: 'three', label: 'Three'}
+              ]}
+              value={this.state.second}
             />
             <Select
-              label='second'
-              onChange={this.onChangeSecond}
-              items={['Eleven', 'Twelve', 'Thirteen']}
-              selectedIndex={this.state.second}
-              disabled={this.state.first === -1}
+              label='third'
+              onChange={(item) => this.onChange('third', item)}
+              options={[
+                {value: 'eleven', label: 'Eleven'},
+                {value: 'twelve', label: 'Twelve'},
+                {value: 'thirteen', label: 'Thirteen'}
+              ]}
+              value={this.state.third}
+              disabled={this.state.second === ''}
             />
           </div>
         </section>
