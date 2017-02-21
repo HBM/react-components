@@ -60,9 +60,9 @@ export default class TableRoute extends React.Component {
       'Add a comment'
     ],
     types: {
-      yogurt: 1,
-      sandwich: 1,
-      eclair: 1
+      yogurt: 'ice',
+      sandwich: 'pastry',
+      eclair: 'other'
     }
   }
 
@@ -106,19 +106,19 @@ export default class TableRoute extends React.Component {
     console.log(index)
   }
 
-  onSubmit = (index, value) => {
+  onChange = (index, event) => {
     const {comments} = this.state
-    comments[index] = value
+    comments[index] = event.target.value
     this.setState({
       comments
     })
   }
 
-  onChangeType = (key, index) => {
+  onChangeType = (key, item) => {
     this.setState({
       types: {
         ...this.state.types,
-        [key]: index
+        [key]: item.value
       }
     })
   }
@@ -133,9 +133,9 @@ export default class TableRoute extends React.Component {
     const data = this.state.data.slice(start, end)
 
     const types = [
-      'Ice cream',
-      'Pastry',
-      'Other'
+      {value: 'ice', label: 'Ice cream'},
+      {value: 'pastry', label: 'Pastry'},
+      {value: 'other', label: 'Other'}
     ]
 
     return (
@@ -276,7 +276,7 @@ export default class TableRoute extends React.Component {
                 <TableBodyCell style={{textAlign: 'right'}}>
                   4.0
                 </TableBodyCell>
-                <TableBodyCell editable onSubmit={value => this.onSubmit(0, value)}>
+                <TableBodyCell editable onChange={event => this.onChange(0, event)}>
                   {this.state.comments[0]}
                 </TableBodyCell>
               </TableBodyRow>
@@ -287,7 +287,7 @@ export default class TableRoute extends React.Component {
                 <TableBodyCell style={{textAlign: 'right'}}>
                   4.3
                 </TableBodyCell>
-                <TableBodyCell editable onSubmit={value => this.onSubmit(1, value)}>
+                <TableBodyCell editable onChange={event => this.onChange(1, event)}>
                   {this.state.comments[1]}
                 </TableBodyCell>
               </TableBodyRow>
@@ -332,8 +332,8 @@ export default class TableRoute extends React.Component {
                 <TableBodyCell>
                   <Select
                     onChange={(index) => this.onChangeType('yogurt', index)}
-                    items={types}
-                    selectedIndex={this.state.types.yogurt}
+                    options={types}
+                    value={this.state.types.yogurt}
                   />
                 </TableBodyCell>
                 <TableBodyCell style={{textAlign: 'right'}}>
@@ -350,8 +350,8 @@ export default class TableRoute extends React.Component {
                 <TableBodyCell>
                   <Select
                     onChange={(index) => this.onChangeType('sandwich', index)}
-                    items={types}
-                    selectedIndex={this.state.types.sandwich}
+                    options={types}
+                    value={this.state.types.sandwich}
                   />
                 </TableBodyCell>
                 <TableBodyCell style={{textAlign: 'right'}}>
@@ -368,8 +368,8 @@ export default class TableRoute extends React.Component {
                 <TableBodyCell>
                   <Select
                     onChange={(index) => this.onChangeType('eclair', index)}
-                    items={types}
-                    selectedIndex={this.state.types.eclair}
+                    options={types}
+                    value={this.state.types.eclair}
                   />
                 </TableBodyCell>
                 <TableBodyCell style={{textAlign: 'right'}}>

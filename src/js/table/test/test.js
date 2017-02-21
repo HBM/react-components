@@ -212,7 +212,7 @@ describe('Table', () => {
       <table>
         <tbody>
           <tr>
-            <TableBodyCell editable>
+            <TableBodyCell editable onChange={() => {}}>
               hello world
             </TableBodyCell>
           </tr>
@@ -228,7 +228,7 @@ describe('Table', () => {
       <table>
         <tbody>
           <tr>
-            <TableBodyCell editable>
+            <TableBodyCell editable onChange={() => {}}>
               hello world
             </TableBodyCell>
           </tr>
@@ -240,16 +240,16 @@ describe('Table', () => {
     assert(wrapper.find('.Table-edit'))
   })
 
-  it('should return the new value when enter is pressed', (done) => {
-    const onSubmit = (value) => {
-      assert.equal(value, 'beep bopp')
+  it('should return the new value on change', (done) => {
+    const onChange = (event) => {
+      assert.equal(event.target.value, 'beep bopp')
       done()
     }
     const table = (
       <table>
         <tbody>
           <tr>
-            <TableBodyCell editable onSubmit={onSubmit}>
+            <TableBodyCell editable onChange={onChange}>
               hello world
             </TableBodyCell>
           </tr>
@@ -264,16 +264,14 @@ describe('Table', () => {
         value: 'beep bopp'
       }
     })
-    // simulate submit
-    wrapper.find('.Table-edit-container').simulate('submit')
   })
 
-  it('should cancel when escape is pressed', () => {
+  it('should hide the overlay when escape is pressed', () => {
     const table = (
       <table>
         <tbody>
           <tr>
-            <TableBodyCell editable>
+            <TableBodyCell editable onChange={() => {}}>
               hello world
             </TableBodyCell>
           </tr>
@@ -282,23 +280,15 @@ describe('Table', () => {
     )
     const wrapper = mount(table)
     wrapper.find('.Table-body-row-cell-edit-wrapper').simulate('click')
-    // enter some new text
-    wrapper.find('.Textfield-input').simulate('change', {
-      target: {
-        value: 'beep bopp'
-      }
-    })
     // simulate esc key
     wrapper.find('.Textfield-input').simulate('keyup', {
       which: 27
     })
-    // make sure old value is still present
-    assert.equal(wrapper.find('.Table-body-row-cell-edit-wrapper').text(), 'hello world')
     // make sure overlay isn't visible anymore
     assert.equal(wrapper.find('.Table-edit').length, 0)
   })
 
-  it('should cancel when mouse click happened outside of edit dialog', () => {
+  it('should hide the overlay when mouse click happened outside of edit dialog', () => {
     const table = (
       <table>
         <tbody>
@@ -312,16 +302,8 @@ describe('Table', () => {
     )
     const wrapper = mount(table)
     wrapper.find('.Table-body-row-cell-edit-wrapper').simulate('click')
-    // enter some new text
-    wrapper.find('.Textfield-input').simulate('change', {
-      target: {
-        value: 'beep bopp'
-      }
-    })
     // simulate click outside of component
     document.dispatchEvent(new Event('click'))
-    // make sure old value is still present
-    assert.equal(wrapper.find('.Table-body-row-cell-edit-wrapper').text(), 'hello world')
     // make sure overlay isn't visible anymore
     assert.equal(wrapper.find('.Table-edit').length, 0)
   })

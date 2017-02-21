@@ -9,23 +9,12 @@ import keycode from 'keycode'
 // internal helper component
 class EditDialog extends React.Component {
 
-  state = {
-    value: this.props.value
-  }
-
-  onChange = (event) => {
-    const {value} = event.target
-    this.setState({value})
-  }
-
   onSubmit = (event) => {
     event.preventDefault()
-    event.stopPropagation()
-    this.props.onSubmit(this.state.value)
+    this.props.onCancel()
   }
 
   onKeyUp = (event) => {
-    // hide box on escape key
     if (event.which === keycode('escape')) {
       this.props.onCancel()
     }
@@ -53,8 +42,8 @@ class EditDialog extends React.Component {
       <div className='Table-edit' ref={c => { this.c = c }}>
         <form onSubmit={this.onSubmit} className='Table-edit-container'>
           <Textfield
-            onChange={this.onChange}
-            value={this.state.value}
+            onChange={this.props.onChange}
+            value={this.props.value}
             onKeyUp={this.onKeyUp}
           />
         </form>
@@ -139,17 +128,12 @@ export class TableBodyCell extends React.Component {
     })
   }
 
-  onSubmit = (value) => {
-    this.hide()
-    this.props.onSubmit(value)
-  }
-
   render () {
-    const {children, className, editable, ...rest} = this.props
+    const {children, className, editable, onChange, ...rest} = this.props
     return (
       <td className={classnames('Table-body-row-cell', className)} {...rest}>
         {this.state.isEditing
-          ? <EditDialog onSubmit={this.onSubmit} onCancel={this.hide} value={children} />
+          ? <EditDialog onChange={onChange} onCancel={this.hide} value={children} />
           : null
         }
         { editable
