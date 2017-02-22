@@ -11,12 +11,12 @@ class EditDialog extends React.Component {
 
   onSubmit = (event) => {
     event.preventDefault()
-    this.props.onCancel()
+    this.props.onClose()
   }
 
   onKeyUp = (event) => {
     if (event.which === keycode('escape')) {
-      this.props.onCancel()
+      this.props.onClose()
     }
   }
 
@@ -25,16 +25,18 @@ class EditDialog extends React.Component {
     const element = this.c
     // https://github.com/tj/react-click-outside/blob/master/index.js#L25
     if (!element.contains(event.target)) {
-      this.props.onCancel()
+      this.props.onClose()
     }
   }
 
   componentDidMount = () => {
     document.addEventListener('click', this.onClick)
+    document.addEventListener('keyup', this.onKeyUp)
   }
 
   componentWillUnmount = () => {
     document.removeEventListener('click', this.onClick)
+    document.removeEventListener('keyup', this.onKeyUp)
   }
 
   render () {
@@ -44,7 +46,6 @@ class EditDialog extends React.Component {
           <Textfield
             onChange={this.props.onChange}
             value={this.props.value}
-            onKeyUp={this.onKeyUp}
           />
         </form>
       </div>
@@ -133,7 +134,7 @@ export class TableBodyCell extends React.Component {
     return (
       <td className={classnames('Table-body-row-cell', className)} {...rest}>
         {this.state.isEditing
-          ? <EditDialog onChange={onChange} onCancel={this.hide} value={children} />
+          ? <EditDialog onChange={onChange} onClose={this.hide} value={children} />
           : null
         }
         { editable

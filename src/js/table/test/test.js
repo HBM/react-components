@@ -1,4 +1,4 @@
-/* global describe, it, Event */
+/* global describe, it, Event, KeyboardEvent */
 
 import assert from 'assert'
 import React from 'react'
@@ -281,9 +281,9 @@ describe('Table', () => {
     const wrapper = mount(table)
     wrapper.find('.Table-body-row-cell-edit-wrapper').simulate('click')
     // simulate esc key
-    wrapper.find('.Textfield-input').simulate('keyup', {
+    document.dispatchEvent(new KeyboardEvent('keyup', {
       which: 27
-    })
+    }))
     // make sure overlay isn't visible anymore
     assert.equal(wrapper.find('.Table-edit').length, 0)
   })
