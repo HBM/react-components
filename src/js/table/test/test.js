@@ -228,7 +228,7 @@ describe('Table', () => {
       <table>
         <tbody>
           <tr>
-            <TableBodyCell editable onChange={() => {}}>
+            <TableBodyCell editor={<input type='text' />}>
               hello world
             </TableBodyCell>
           </tr>
@@ -249,7 +249,7 @@ describe('Table', () => {
       <table>
         <tbody>
           <tr>
-            <TableBodyCell editable onChange={onChange}>
+            <TableBodyCell editor={<input className='Textfield-input' type='text' onChange={onChange} />}>
               hello world
             </TableBodyCell>
           </tr>
@@ -271,7 +271,7 @@ describe('Table', () => {
       <table>
         <tbody>
           <tr>
-            <TableBodyCell editable onChange={() => {}}>
+            <TableBodyCell editor={<input />}>
               hello world
             </TableBodyCell>
           </tr>
@@ -293,7 +293,7 @@ describe('Table', () => {
       <table>
         <tbody>
           <tr>
-            <TableBodyCell editable>
+            <TableBodyCell editor={<input />}>
               hello world
             </TableBodyCell>
           </tr>
