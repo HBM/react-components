@@ -278,13 +278,12 @@ export default class TableRoute extends React.Component {
                   4.0
                 </TableBodyCell>
                 <TableBodyCell
-                  onEdit={() => (
+                  editor={
                     <Textfield
                       onChange={(event) => this.onChange(0, event)}
                       value={this.state.comments[0]}
-                      onFocus={() => console.log('super')}
                     />
-                  )}
+                  }
                 >
                   {this.state.comments[0]}
                 </TableBodyCell>
@@ -296,7 +295,14 @@ export default class TableRoute extends React.Component {
                 <TableBodyCell style={{textAlign: 'right'}}>
                   4.3
                 </TableBodyCell>
-                <TableBodyCell onChange={event => this.onChange(1, event)}>
+                <TableBodyCell
+                  editor={
+                    <Textfield
+                      onChange={(event) => this.onChange(1, event)}
+                      value={this.state.comments[1]}
+                    />
+                  }
+                >
                   {this.state.comments[1]}
                 </TableBodyCell>
               </TableBodyRow>
