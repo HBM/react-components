@@ -9,7 +9,8 @@ import {
   TableBodyRow,
   TableBodyCell,
   TableFooter,
-  Select
+  Select,
+  Textfield
 } from '../../lib'
 
 export default class TableRoute extends React.Component {
@@ -276,7 +277,15 @@ export default class TableRoute extends React.Component {
                 <TableBodyCell style={{textAlign: 'right'}}>
                   4.0
                 </TableBodyCell>
-                <TableBodyCell editable onChange={event => this.onChange(0, event)}>
+                <TableBodyCell
+                  onEdit={() => (
+                    <Textfield
+                      onChange={(event) => this.onChange(0, event)}
+                      value={this.state.comments[0]}
+                      onFocus={() => console.log('super')}
+                    />
+                  )}
+                >
                   {this.state.comments[0]}
                 </TableBodyCell>
               </TableBodyRow>
@@ -287,7 +296,7 @@ export default class TableRoute extends React.Component {
                 <TableBodyCell style={{textAlign: 'right'}}>
                   4.3
                 </TableBodyCell>
-                <TableBodyCell editable onChange={event => this.onChange(1, event)}>
+                <TableBodyCell onChange={event => this.onChange(1, event)}>
                   {this.state.comments[1]}
                 </TableBodyCell>
               </TableBodyRow>

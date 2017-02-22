@@ -3,7 +3,6 @@ import React from 'react'
 import classnames from 'classnames'
 import Icon from '../icon/'
 import Select from '../select/'
-import {Textfield} from '../textfield/'
 import keycode from 'keycode'
 
 // internal helper component
@@ -43,10 +42,7 @@ class EditDialog extends React.Component {
     return (
       <div className='Table-edit' ref={c => { this.c = c }}>
         <form onSubmit={this.onSubmit} className='Table-edit-container'>
-          <Textfield
-            onChange={this.props.onChange}
-            value={this.props.value}
-          />
+          {this.props.children}
         </form>
       </div>
     )
@@ -130,14 +126,14 @@ export class TableBodyCell extends React.Component {
   }
 
   render () {
-    const {children, className, editable, onChange, ...rest} = this.props
+    const {children, className, onEdit, ...rest} = this.props
     return (
       <td className={classnames('Table-body-row-cell', className)} {...rest}>
         {this.state.isEditing
-          ? <EditDialog onChange={onChange} onClose={this.hide} value={children} />
+          ? <EditDialog onClose={this.hide}>{onEdit()}</EditDialog>
           : null
         }
-        { editable
+        { onEdit
           ? <div className='Table-body-row-cell-edit-wrapper' onClick={this.show}>
             {children}
             <Icon.Edit
