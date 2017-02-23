@@ -216,7 +216,8 @@ describe('Select', () => {
     wrapper.find('.Select-body').simulate('click')
     assert.equal(wrapper.find('.Select-list').node.style.top, '-218px')
   })
-  it('Specifies a name attribute for the button', () => {
+
+  it('specifies a name attribute for the button', () => {
     const wrapper = mount(<Select name='donald' onChange={noop} />)
     assert.equal(wrapper.find('button').node.name, 'donald')
   })
