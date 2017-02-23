@@ -20,7 +20,8 @@ export default class Select extends React.Component {
     label: React.PropTypes.string,
     options: React.PropTypes.array,
     placeholder: React.PropTypes.string,
-    onChange: React.PropTypes.func.isRequired
+    onChange: React.PropTypes.func.isRequired,
+    name: React.PropTypes.string
   }
 
   static defaultProps = {
@@ -98,7 +99,7 @@ export default class Select extends React.Component {
   }
 
   render () {
-    const {label, disabled, options, value} = this.props
+    const {label, disabled, options, value, name} = this.props
     const {open} = this.state
     const selectedIndex = options.findIndex(option => option.value === value)
     const empty = selectedIndex === -1
@@ -110,7 +111,7 @@ export default class Select extends React.Component {
           label &&
           <span className='Select-label'>{this.props.label}</span>
         }
-        <button className='Select-body' onClick={this.open} disabled={disabled}>
+        <button name={name} className='Select-body' onClick={this.open} disabled={disabled}>
           <span className={empty ? 'Select-placeholder' : ''}>
             {text}
           </span>
