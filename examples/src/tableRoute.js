@@ -278,7 +278,7 @@ export default class TableRoute extends React.Component {
                   4.0
                 </TableBodyCell>
                 <TableBodyCell
-                  editor={
+                  textfield={
                     <Textfield
                       onChange={(event) => this.onChange(0, event)}
                       value={this.state.comments[0]}
@@ -296,7 +296,7 @@ export default class TableRoute extends React.Component {
                   4.3
                 </TableBodyCell>
                 <TableBodyCell
-                  editor={
+                  textfield={
                     <Textfield
                       onChange={(event) => this.onChange(1, event)}
                       value={this.state.comments[1]}

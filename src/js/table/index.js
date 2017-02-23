@@ -126,14 +126,14 @@ export class TableBodyCell extends React.Component {
   }
 
   render () {
-    const {children, className, editor, ...rest} = this.props
+    const {children, className, textfield, ...rest} = this.props
     return (
       <td className={classnames('Table-body-row-cell', className)} {...rest}>
         {this.state.isEditing
-          ? <EditDialog onClose={this.hide}>{editor}</EditDialog>
+          ? <EditDialog onClose={this.hide}>{textfield}</EditDialog>
           : null
         }
-        { editor
+        { textfield
           ? <div className='Table-body-row-cell-edit-wrapper' onClick={this.show}>
             {children}
             <Icon.Edit
