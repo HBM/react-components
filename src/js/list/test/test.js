@@ -4,6 +4,7 @@ import assert from 'assert'
 import React from 'react'
 import { shallow, mount } from 'enzyme'
 import { List, Row } from '../'
+import { Broadcast } from 'react-broadcast'
 
 describe('List', () => {
   it('should work', () => {
@@ -30,12 +31,16 @@ describe('List', () => {
     assert.equal(wrapper.find('li.List-row').length, 2)
   })
 
-  it.skip('should render as <div> <a> when rows have linkTo prop', () => {
+  it('should render as <div> <a> when rows have linkTo prop', () => {
+    const location = {pathname: '', search: '', hash: ''}
     const wrapper = mount(
-      <List>
-        <Row primary='A' linkTo='foo' />
-        <Row primary='B' linkTo='bar' />
-      </List>)
+      <Broadcast channel='location' value={location}>
+        <List>
+          <Row primary='A' linkTo='foo' />
+          <Row primary='B' linkTo='bar' />
+        </List>
+      </Broadcast>
+    )
     assert.equal(wrapper.find('div.List').length, 1)
     assert.equal(wrapper.find('a.List-row.List-row--islink').length, 2)
   })
