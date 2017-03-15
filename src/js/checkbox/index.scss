@@ -52,12 +52,14 @@
 
   &-icon {
     padding: 10px;
+    padding-left: 0;
     line-height: 0;
     outline: 0;
     fill: rgba(0, 0, 0, 0.54);
 
     @include medium {
       padding: 5px;
+      padding-left: 0;
     }
   }
 
