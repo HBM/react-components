@@ -32,7 +32,6 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-0": "^6.5.0",
-    "babelify": "^7.3.0",
     "coveralls": "^2.11.12",
     "cpx": "^1.5.0",
     "css-loader": "^0.27.3",
@@ -48,9 +47,9 @@
     "node-sass": "^4.5.0",
     "react": "^15.4.0",
     "react-addons-test-utils": "^15.3.0",
-    "react-broadcast": "^0.1.2",
     "react-dom": "^15.4.0",
-    "react-router": "4.0.0-alpha.6",
+    "react-router": "^4.0.0",
+    "react-router-dom": "^4.0.0",
     "react-scripts": "^0.9.5",
     "react-transform-hmr": "^1.0.4",
     "rimraf": "^2.5.4",
@@ -70,7 +69,6 @@
     "classnames": "^2.2.4",
     "keycode": "^2.1.8",
     "object-assign": "^4.0.1",
-    "react-broadcast": "^0.1.1",
     "react-motion": "^0.4.3"
   },
   "standard": {

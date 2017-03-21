@@ -2,15 +2,9 @@
 
 import assert from 'assert'
 import React from 'react'
-import {Broadcast} from 'react-broadcast'
 import Tabs from '../'
 import {mount} from 'enzyme'
-
-const LocationBroadcast = ({value, children}) => (
-  <Broadcast channel='location' value={value}>
-    {children}
-  </Broadcast>
-)
+import {MemoryRouter} from 'react-router-dom'
 
 /**
  * Create parent component and include button.
@@ -86,17 +80,20 @@ const LocationBroadcast = ({value, children}) => (
 
 describe('Tabs', () => {
   it('should work', () => {
-    const wrapper = mount(<Tabs />)
+    const wrapper = mount(
+      <MemoryRouter>
+        <Tabs />
+      </MemoryRouter>
+    )
     assert.equal(wrapper.find('.Tabs').length, 1)
   })
 
   it('should make the first tab active by default', () => {
-    const location = { pathname: '/one', search: '', hash: '' }
     const wrapper = mount(
-      <LocationBroadcast value={location}>
-        <Tabs tabs={[{href: '/one', text: 'one'}, {href: '/two', text: 'two'}]} location={location} />
-      </LocationBroadcast>
-      )
+      <MemoryRouter initialEntries={['/one']}>
+        <Tabs tabs={[{href: '/one', text: 'one'}, {href: '/two', text: 'two'}]} />
+      </MemoryRouter>
+    )
     assert(wrapper.find('.Tabs-Item').at(0).hasClass('active'))
   })
 

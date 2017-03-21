@@ -1,6 +1,6 @@
 
 import React from 'react'
-import {HashRouter, Match} from 'react-router'
+import {HashRouter, Route} from 'react-router-dom'
 import {Tabs} from '../../lib'
 
 class Germany extends React.Component {
@@ -48,12 +48,12 @@ export default class TabsRoute extends React.Component {
             <div>
               <Tabs tabs={tabs} />
               <div style={{padding: '30px 0'}}>
-                <Match exactly pattern='/tabs' render={() => (
+                <Route exact path='/tabs' render={() => (
                   <span>Please select a country from the tabs.</span>
                 )} />
-                <Match pattern='/tabs/germany' component={Germany} />
-                <Match pattern='/tabs/spain' component={Spain} />
-                <Match pattern='/tabs/sweden' component={Sweden} />
+                <Route path='/tabs/germany' component={Germany} />
+                <Route path='/tabs/spain' component={Spain} />
+                <Route path='/tabs/sweden' component={Sweden} />
               </div>
             </div>
           </HashRouter>

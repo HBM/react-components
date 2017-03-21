@@ -1,6 +1,6 @@
 
 import React from 'react'
-import {HashRouter, Match} from 'react-router'
+import {HashRouter, Route} from 'react-router-dom'
 import {BottomNavigation, Icon, List, Row} from '../../lib'
 
 const links = [
@@ -42,9 +42,9 @@ const BasicExample = () => (
   <HashRouter basename='/bottomnavigation'>
     <div style={{height: '600px', width: '100%', margin: '0 auto', border: '10px solid #ececec'}}>
       <BottomNavigation links={links}>
-        <Match pattern='/home' component={Home} />
-        <Match pattern='/music' component={Music} />
-        <Match exactly pattern='/photos' component={Photos} />
+        <Route path='/home' component={Home} />
+        <Route path='/music' component={Music} />
+        <Route exact path='/photos' component={Photos} />
       </BottomNavigation>
     </div>
   </HashRouter>

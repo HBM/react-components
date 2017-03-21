@@ -1,9 +1,8 @@
 
 import React from 'react'
-import {Link} from 'react-router'
-import {Subscriber} from 'react-broadcast'
+import {NavLink, withRouter} from 'react-router-dom'
 
-class WrappedTabs extends React.Component {
+class Tabs extends React.Component {
   static propTypes = {
     tabs: React.PropTypes.array,
     location: React.PropTypes.object
@@ -63,7 +62,7 @@ class WrappedTabs extends React.Component {
     return (
       <div className='Tabs'>
         {this.props.tabs.map((tab, index) =>
-          <Link
+          <NavLink
             key={index}
             activeClassName='active'
             to={tab.href}
@@ -71,7 +70,7 @@ class WrappedTabs extends React.Component {
             onClick={() => this.onClick(index)}
           >
             {tab.text}
-          </Link>
+          </NavLink>
         )}
         {this.state.index === -1
           ? null
@@ -88,15 +87,4 @@ class WrappedTabs extends React.Component {
   }
 }
 
-/**
- * Export wrapper to have access to location object inside WrappedTabs component.
- */
-export default class Tabs extends React.Component {
-  render () {
-    return (
-      <Subscriber channel='location'>
-        {location => <WrappedTabs location={location} tabs={this.props.tabs} />}
-      </Subscriber>
-    )
-  }
-}
+export default withRouter(Tabs)

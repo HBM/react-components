@@ -1,9 +1,8 @@
 import React from 'react'
-import {Link, Match} from 'react-router'
+import {NavLink, Route, withRouter} from 'react-router-dom'
 import classNames from 'classnames'
-import {Subscriber} from 'react-broadcast'
 
-export default class BottomNavigation extends React.Component {
+class BottomNavigation extends React.Component {
   state = {
     scrolling: false
   }
@@ -77,11 +76,11 @@ export default class BottomNavigation extends React.Component {
 
   renderLink (link, key) {
     return (
-      <Match pattern={link.link} key={key} children={({matched}) => (
-        <Link to={link.link} className='BottomNavigation-menu-item' activeClassName='active' onClick={matched && this.scrollTop}>
+      <Route path={link.link} key={key} children={({matched}) => (
+        <NavLink to={link.link} className='BottomNavigation-menu-item' activeClassName='active' onClick={matched && this.scrollTop}>
           {link.icon}
           {(this.props.links.length < 4 || matched) && <div className='BottomNavigation-menu-item-text'>{link.text}</div>}
-        </Link>
+        </NavLink>
       )} />
     )
   }
@@ -89,18 +88,16 @@ export default class BottomNavigation extends React.Component {
   render () {
     const {children, links, inverted} = this.props
     return (
-      <Subscriber channel='location'>
-        {location => (
-          <div onScroll={this.onScroll} className={classNames('BottomNavigation', {scrolling: this.state.scrolling})}>
-            <div ref={(content) => { this.contentNode = content }} className='BottomNavigation-content'>
-              {children}
-            </div>
-            <div className={classNames('BottomNavigation-menu', {'BottomNavigation-menu--inverted': inverted})}>
-              {links.map((link, index) => this.renderLink(link, index))}
-            </div>
-          </div>
-        )}
-      </Subscriber>
+      <div onScroll={this.onScroll} className={classNames('BottomNavigation', {scrolling: this.state.scrolling})}>
+        <div ref={(content) => { this.contentNode = content }} className='BottomNavigation-content'>
+          {children}
+        </div>
+        <div className={classNames('BottomNavigation-menu', {'BottomNavigation-menu--inverted': inverted})}>
+          {links.map((link, index) => this.renderLink(link, index))}
+        </div>
+      </div>
     )
   }
 }
+
+export default withRouter(BottomNavigation)

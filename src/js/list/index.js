@@ -2,7 +2,7 @@
 import React from 'react'
 import classNames from 'classnames'
 import keycode from 'keycode'
-import { Link } from 'react-router'
+import { NavLink } from 'react-router-dom'
 
 /**
  * List components
@@ -101,7 +101,7 @@ export const Row = ({
     tabIndex: isSelectable ? '0' : null
   }
   if (linkTo) {
-    return <Link to={linkTo} activeClassName='active' {...rowProps}>{rowContent}</Link>
+    return <NavLink to={linkTo} activeClassName='active' {...rowProps}>{rowContent}</NavLink>
   } else {
     return <li {...rowProps}>{rowContent}</li>
   }

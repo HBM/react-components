@@ -4,7 +4,7 @@ import './index.css'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {Match} from 'react-router'
+import {Route} from 'react-router-dom'
 import {Shell} from '../../lib'
 import BottomNavigationRoute from './bottomnavigationRoute'
 import ButtonRoute from './buttonRoute'
@@ -84,29 +84,29 @@ class App extends React.Component {
         subtitle={this.state.subtitle}
         onChange={this.onChange}
       >
-        <Match exactly pattern='/' component={HomeRoute} />
-        <Match pattern='/bottomnavigation' component={BottomNavigationRoute} />
-        <Match pattern='/button' component={ButtonRoute} />
-        <Match pattern='/card' component={CardRoute} />
-        <Match pattern='/checkbox' component={CheckboxRoute} />
-        <Match pattern='/chip' component={ChipRoute} />
-        <Match pattern='/header' component={HeaderRoute} />
-        <Match pattern='/icon' component={IconRoute} />
-        <Match pattern='/list' component={ListRoute} />
-        <Match pattern='/menu' component={MenuRoute} />
-        <Match pattern='/modal' component={ModalRoute} />
-        <Match pattern='/navigation' component={NavigationRoute} />
-        <Match pattern='/progress' component={ProgressRoute} />
-        <Match pattern='/radiobutton' component={RadiobuttonRoute} />
-        <Match pattern='/select' component={SelectRoute} />
-        <Match pattern='/slider' component={SliderRoute} />
-        <Match pattern='/snackbar' component={SnackbarRoute} />
-        <Match pattern='/stepper' component={StepperRoute} />
-        <Match pattern='/switch' component={SwitchRoute} />
-        <Match pattern='/table' component={TableRoute} />
-        <Match pattern='/tabs' component={TabsRoute} />
-        <Match pattern='/textfield' component={TextfieldRoute} />
-        <Match pattern='/textarea' component={TextareaRoute} />
+        <Route exact path='/' component={HomeRoute} />
+        <Route path='/bottomnavigation' component={BottomNavigationRoute} />
+        <Route path='/button' component={ButtonRoute} />
+        <Route path='/card' component={CardRoute} />
+        <Route path='/checkbox' component={CheckboxRoute} />
+        <Route path='/chip' component={ChipRoute} />
+        <Route path='/header' component={HeaderRoute} />
+        <Route path='/icon' component={IconRoute} />
+        <Route path='/list' component={ListRoute} />
+        <Route path='/menu' component={MenuRoute} />
+        <Route path='/modal' component={ModalRoute} />
+        <Route path='/navigation' component={NavigationRoute} />
+        <Route path='/progress' component={ProgressRoute} />
+        <Route path='/radiobutton' component={RadiobuttonRoute} />
+        <Route path='/select' component={SelectRoute} />
+        <Route path='/slider' component={SliderRoute} />
+        <Route path='/snackbar' component={SnackbarRoute} />
+        <Route path='/stepper' component={StepperRoute} />
+        <Route path='/switch' component={SwitchRoute} />
+        <Route path='/table' component={TableRoute} />
+        <Route path='/tabs' component={TabsRoute} />
+        <Route path='/textfield' component={TextfieldRoute} />
+        <Route path='/textarea' component={TextareaRoute} />
       </Shell>
     )
   }

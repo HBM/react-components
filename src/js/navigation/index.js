@@ -7,9 +7,8 @@
  */
 
 import React from 'react'
-import {Link} from 'react-router'
+import {NavLink, withRouter} from 'react-router-dom'
 import classnames from 'classnames'
-import {Subscriber} from 'react-broadcast'
 import {Logo, Button, Menu, ChevronRight} from '../icon/'
 
 // height is menu item height.
@@ -46,19 +45,19 @@ class Item extends React.Component {
    * Update parent component and open submenu on initial render
    */
   componentDidMount () {
-    if (this.props.location.pathname.includes(this.props.link)) {
+    if (this.props.match.isExact) {
       this.onClick(this.props.item, this.props.subItem)
     }
   }
 
   render () {
-    const {index, link, text, onClick, links, item, subItem, location} = this.props
+    const {index, link, text, onClick, links, item, subItem, match} = this.props
     const {isOpen} = this.state
     return (
       <li className={classnames('Navigation-item', {
         'has-children': links && links.length
       })}>
-        <Link
+        <NavLink
           activeClassName='active'
           to={link}
           className='Navigation-link'
@@ -74,7 +73,7 @@ class Item extends React.Component {
             })} />
             : null
           }
-        </Link>
+        </NavLink>
         {
           links &&
           <ul className='Navigation' style={{
@@ -91,7 +90,7 @@ class Item extends React.Component {
                 links={subItem.links}
                 item={item}
                 subItem={subItem}
-                location={location}
+                match={match}
               />
             )}
           </ul>
@@ -104,7 +103,7 @@ class Item extends React.Component {
 /**
  * Navigation
  */
-export class Navigation extends React.Component {
+class Navigation extends React.Component {
   static propTypes = {
     links: React.PropTypes.array,
     onChange: React.PropTypes.func
@@ -144,47 +143,43 @@ export class Navigation extends React.Component {
 
   render () {
     return (
-      <Subscriber channel='location'>{
-        location => (
-          <div>
-            <nav className={this.state.visible ? 'is-visible' : ''}>
-              <div className='Navigation-logo'>
-                <a href='#' onClick={this.close}>
-                  <Logo fill='#A7A5A5' />
-                </a>
-              </div>
-              <ul className='Navigation'>
-                {this.props.links.map((item, index) =>
-                  <Item
-                    index={index}
-                    key={index}
-                    onClick={this.onClick}
-                    text={item.text}
-                    link={item.link}
-                    links={item.links}
-                    item={item}
-                    location={location}
-                  />
-                )}
-              </ul>
-            </nav>
-            <div className='Navigation-hamburger'>
-              <Button onClick={this.open}>
-                <Menu />
-              </Button>
-            </div>
-            <div
-              className={classnames('Navigation-overlay', {
-                'is-visible': this.state.visible
-              })}
-              onClick={this.close}
-              onTouchEnd={this.close}
-            />
+      <div>
+        <nav className={this.state.visible ? 'is-visible' : ''}>
+          <div className='Navigation-logo'>
+            <a href='#' onClick={this.close}>
+              <Logo fill='#A7A5A5' />
+            </a>
           </div>
-        )
-      }</Subscriber>
+          <ul className='Navigation'>
+            {this.props.links.map((item, index) =>
+              <Item
+                index={index}
+                key={index}
+                onClick={this.onClick}
+                text={item.text}
+                link={item.link}
+                links={item.links}
+                item={item}
+                match={this.props.match}
+              />
+            )}
+          </ul>
+        </nav>
+        <div className='Navigation-hamburger'>
+          <Button onClick={this.open}>
+            <Menu />
+          </Button>
+        </div>
+        <div
+          className={classnames('Navigation-overlay', {
+            'is-visible': this.state.visible
+          })}
+          onClick={this.close}
+          onTouchEnd={this.close}
+        />
+      </div>
     )
   }
 }
 
-export default Navigation
+export default withRouter(Navigation)

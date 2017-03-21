@@ -2,15 +2,13 @@
 
 import assert from 'assert'
 import React from 'react'
-import {MemoryRouter} from 'react-router'
+import {MemoryRouter} from 'react-router-dom'
 import {mount} from 'enzyme'
-import {Broadcast} from 'react-broadcast'
 import {Stepper, StepperStepFooter} from '../'
 import Button from '../../button/'
 
 describe('Stepper', () => {
   it('should work', () => {
-    const location = {pathname: '', search: '', hash: ''}
     const steps = [
       {
         title: 'first',
@@ -24,15 +22,14 @@ describe('Stepper', () => {
       }
     ]
     const wrapper = mount(
-      <Broadcast channel='location' value={location}>
+      <MemoryRouter>
         <Stepper steps={steps} />
-      </Broadcast>
+      </MemoryRouter>
     )
     assert.equal(wrapper.find('.Stepper').length, 1)
   })
 
   it('should work horizontal', () => {
-    const location = {pathname: '', search: '', hash: ''}
     const steps = [
       {
         title: 'first',
@@ -46,15 +43,14 @@ describe('Stepper', () => {
       }
     ]
     const wrapper = mount(
-      <Broadcast channel='location' value={location}>
+      <MemoryRouter>
         <Stepper steps={steps} horizontal />
-      </Broadcast>
+      </MemoryRouter>
     )
     assert.equal(wrapper.find('.Stepper--horizontal').length, 1)
   })
 
   it('should work with optional text', () => {
-    const location = {pathname: '', search: '', hash: ''}
     const optionalText = 'Optional'
     const steps = [
       {
@@ -70,16 +66,15 @@ describe('Stepper', () => {
       }
     ]
     const wrapper = mount(
-      <Broadcast channel='location' value={location}>
+      <MemoryRouter>
         <Stepper steps={steps} />
-      </Broadcast>
+      </MemoryRouter>
     )
     assert.equal(wrapper.find('.Stepper-step-optional').length, 1)
     assert(wrapper.find('.Stepper-step-optional').text(), optionalText)
   })
 
   it('should work with error', () => {
-    const location = {pathname: '', search: '', hash: ''}
     const errorText = 'my error'
     const steps = [
       {
@@ -95,9 +90,9 @@ describe('Stepper', () => {
       }
     ]
     const wrapper = mount(
-      <Broadcast channel='location' value={location}>
+      <MemoryRouter>
         <Stepper steps={steps} />
-      </Broadcast>
+      </MemoryRouter>
     )
     assert.equal(wrapper.find('.Stepper--error').length, 2)
     assert(wrapper.find('.Stepper--error > .Stepper-step-optional').text(), errorText)
@@ -130,7 +125,6 @@ describe('Stepper', () => {
   })
 
   it('should apply active class name to currently active step', () => {
-    const location = {pathname: '/second', search: '', hash: ''}
     const steps = [
       {
         title: 'first',
@@ -144,9 +138,9 @@ describe('Stepper', () => {
       }
     ]
     const wrapper = mount(
-      <Broadcast channel='location' value={location}>
+      <MemoryRouter initialEntries={['/second']}>
         <Stepper steps={steps} />
-      </Broadcast>
+      </MemoryRouter>
     )
     assert(wrapper.find('a[href="/second"]').hasClass('is-active'))
   })
@@ -210,7 +204,7 @@ describe('Stepper', () => {
     }
 
     let wrapper = mount(
-      <MemoryRouter initialEntries={['/second']} initialIndex={0} >
+      <MemoryRouter initialEntries={['/second']}>
         <Stepper
           steps={steps}
           onError={(i, me) => onError(i, me)}
@@ -226,7 +220,7 @@ describe('Stepper', () => {
     assert(wrapper.find('a[href="/third"]').hasClass('is-active'))
 
     wrapper = mount(
-      <MemoryRouter initialEntries={['/second']} initialIndex={0} >
+      <MemoryRouter initialEntries={['/second']}>
         <Stepper
           steps={steps}
           onError={(i, me) => onError(i, me)}

@@ -1,10 +1,9 @@
 
 import React from 'react'
 import classnames from 'classnames'
-import {Subscriber} from 'react-broadcast'
 import Icon from '../icon/'
 import Button from '../button/'
-import {Link, Match} from 'react-router'
+import {NavLink, Route, withRouter} from 'react-router-dom'
 
 export const StepperStepFooter = ({labelBack, labelNext, labelCancel, onBack, onNext, onCancel}) => (
   <div className='Stepper-footer'>
@@ -36,7 +35,7 @@ export const StepperStepFooter = ({labelBack, labelNext, labelCancel, onBack, on
 )
 
 const StepLink = ({index, step, isActive}) => (
-  <Link
+  <NavLink
     className='Stepper-title'
     activeClassName='is-active'
     to={step.href}
@@ -72,7 +71,7 @@ const StepLink = ({index, step, isActive}) => (
       }
     </div>
     <StepLine />
-  </Link>
+  </NavLink>
 )
 
 const StepLine = () => (
@@ -89,7 +88,7 @@ const Step = ({index, step, isActive, isLast, onNext, onCancel, onError}) => (
       <StepLine />
       <div className='Stepper-content-wrapper'>
         <div className='Stepper-content'>
-          <Match pattern={step.href} render={() => (
+          <Route path={step.href} render={() => (
             <step.component
               index={index}
               isLast={isLast}
@@ -105,51 +104,45 @@ const Step = ({index, step, isActive, isLast, onNext, onCancel, onError}) => (
   </div>
 )
 
-export class Stepper extends React.Component {
-  static contextTypes = {
-    router: React.PropTypes.object
-  }
-
+class StepperComponent extends React.Component {
   onNext = (index) => {
     const next = this.props.steps[index]
     if (next) {
-      this.context.router.transitionTo(next.href)
+      this.props.history.push(next.href)
     }
   }
 
   render () {
     return (
-      <Subscriber channel='location'>
-        {location => (
-          <div className={classnames('Stepper', {
-            'Stepper--horizontal': this.props.horizontal
-          })}>
-            {this.props.steps.map((s, i) => (
-              <StepLink
-                key={i}
-                index={i}
-                step={s}
-                isActive={location.pathname === s.href}
-              />
-            ))}
-            {this.props.steps.map((s, i) => (
-              <Step
-                key={i}
-                index={i}
-                step={s}
-                isActive={location.pathname === s.href}
-                isLast={this.props.steps.length - 1 === i}
-                onNext={(index) => this.onNext(index)}
-                onCancel={() => this.props.onCancel(i)}
-                onError={(message) => this.props.onError(i, message)}
-              />
-            ))}
-          </div>
-        )}
-      </Subscriber>
+      <div className={classnames('Stepper', {
+        'Stepper--horizontal': this.props.horizontal
+      })}>
+        {this.props.steps.map((s, i) => (
+          <StepLink
+            key={i}
+            index={i}
+            step={s}
+            isActive={this.props.location.pathname === s.href}
+          />
+        ))}
+        {this.props.steps.map((s, i) => (
+          <Step
+            key={i}
+            index={i}
+            step={s}
+            isActive={this.props.location.pathname === s.href}
+            isLast={this.props.steps.length - 1 === i}
+            onNext={(index) => this.onNext(index)}
+            onCancel={() => this.props.onCancel(i)}
+            onError={(message) => this.props.onError(i, message)}
+          />
+        ))}
+      </div>
     )
   }
 }
+
+export const Stepper = withRouter(StepperComponent)
 
 Stepper.propTypes = {
   steps: React.PropTypes.arrayOf(React.PropTypes.shape({

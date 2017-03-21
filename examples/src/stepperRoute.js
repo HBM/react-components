@@ -1,6 +1,6 @@
 
 import React from 'react'
-import {HashRouter} from 'react-router'
+import {HashRouter} from 'react-router-dom'
 import {Stepper, StepperStepFooter, Textfield} from '../../lib'
 
 const step1 = () => (

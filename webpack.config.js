@@ -27,7 +27,7 @@ module.exports = {
   },
   externals: {
     'react': 'react',
-    'react-router': 'react-router',
+    'react-router-dom': 'react-router-dom',
     'react-motion': 'react-motion'
   },
   postcss: [
