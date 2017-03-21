@@ -2,7 +2,6 @@ import React from 'react'
 import {Icon} from '../../lib'
 
 export default class IconRoute extends React.Component {
-
   render () {
     let icons = Object.keys(Icon).map((key, index) => {
       if (key !== 'Button' && key !== 'Logo') {
@@ -32,5 +31,4 @@ export default class IconRoute extends React.Component {
       </div>
     )
   }
-
 }

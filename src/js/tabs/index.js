@@ -4,7 +4,6 @@ import {Link} from 'react-router'
 import {Subscriber} from 'react-broadcast'
 
 class WrappedTabs extends React.Component {
-
   static propTypes = {
     tabs: React.PropTypes.array,
     location: React.PropTypes.object
@@ -87,14 +86,12 @@ class WrappedTabs extends React.Component {
       </div>
     )
   }
-
 }
 
 /**
  * Export wrapper to have access to location object inside WrappedTabs component.
  */
 export default class Tabs extends React.Component {
-
   render () {
     return (
       <Subscriber channel='location'>
@@ -102,5 +99,4 @@ export default class Tabs extends React.Component {
       </Subscriber>
     )
   }
-
 }

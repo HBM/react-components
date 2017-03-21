@@ -51,7 +51,6 @@ const BasicExample = () => (
 )
 
 export default class BottomNavigationRoute extends React.Component {
-
   render () {
     return (
       <div className='BottomNavigationExamples'>
@@ -68,5 +67,4 @@ export default class BottomNavigationRoute extends React.Component {
       </div>
     )
   }
-
 }

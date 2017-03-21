@@ -3,7 +3,6 @@ import React from 'react'
 import {Progress} from '../../lib'
 
 export default class ProgressRoute extends React.Component {
-
   state = {
     progress: 0
   }
@@ -44,5 +43,4 @@ export default class ProgressRoute extends React.Component {
       </div>
     )
   }
-
 }

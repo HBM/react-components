@@ -179,4 +179,3 @@ describe('Textarea', () => {
     assert.equal(wrapper.find('label').node.htmlFor, 'foo')
   })
 })
-

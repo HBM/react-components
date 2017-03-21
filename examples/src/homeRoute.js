@@ -3,7 +3,6 @@ import React from 'react'
 import {Icon} from '../../lib'
 
 export default class HomeRoute extends React.Component {
-
   render () {
     return (
       <div className='Home'>
@@ -31,5 +30,4 @@ export default class HomeRoute extends React.Component {
       </div>
     )
   }
-
 }

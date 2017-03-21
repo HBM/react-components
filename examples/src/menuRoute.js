@@ -3,7 +3,6 @@ import React from 'react'
 import {Menu, Divider, Icon} from '../../lib'
 
 export default class MenuRoute extends React.Component {
-
   state = {
     visible: false
   }
@@ -101,5 +100,4 @@ export default class MenuRoute extends React.Component {
       </div>
     )
   }
-
 }

@@ -24,7 +24,6 @@ const height = 48
  * Navigation item
  */
 class Item extends React.Component {
-
   state = {
     isOpen: false
   }
@@ -33,7 +32,7 @@ class Item extends React.Component {
     this.setState({
       isOpen: !this.state.isOpen
     })
-    if ((item.links && !subItem) || subItem && subItem.links) {
+    if ((item.links && !subItem) || (subItem && subItem.links)) {
       // simply open submenu without notifying parent or changing url
       if (e) {
         e.preventDefault()
@@ -100,14 +99,12 @@ class Item extends React.Component {
       </li>
     )
   }
-
 }
 
 /**
  * Navigation
  */
 export class Navigation extends React.Component {
-
   static propTypes = {
     links: React.PropTypes.array,
     onChange: React.PropTypes.func
@@ -188,7 +185,6 @@ export class Navigation extends React.Component {
       }</Subscriber>
     )
   }
-
 }
 
 export default Navigation

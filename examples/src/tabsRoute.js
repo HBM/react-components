@@ -34,7 +34,6 @@ class Sweden extends React.Component {
 }
 
 export default class TabsRoute extends React.Component {
-
   render () {
     const tabs = [
       {href: '/tabs/germany', text: 'Germany'},
@@ -62,5 +61,4 @@ export default class TabsRoute extends React.Component {
       </div>
     )
   }
-
 }

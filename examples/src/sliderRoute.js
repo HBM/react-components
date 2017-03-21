@@ -3,7 +3,6 @@ import React from 'react'
 import {Slider} from '../../lib'
 
 export default class SliderRoute extends React.Component {
-
   state = {
   }
 
@@ -63,5 +62,4 @@ export default class SliderRoute extends React.Component {
       </div>
     )
   }
-
 }

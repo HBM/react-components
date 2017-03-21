@@ -3,7 +3,6 @@ import React from 'react'
 import {Switch} from '../../lib'
 
 export default class SwitchRoute extends React.Component {
-
   state = {
     switch: false
   }
@@ -59,5 +58,4 @@ export default class SwitchRoute extends React.Component {
       </div>
     )
   }
-
 }

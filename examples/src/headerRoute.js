@@ -3,7 +3,6 @@ import React from 'react'
 import {Header, Icon} from '../../lib'
 
 export default class HeaderRoute extends React.Component {
-
   render () {
     return (
       <div className='HeaderRoute'>
@@ -40,5 +39,4 @@ export default class HeaderRoute extends React.Component {
       </div>
     )
   }
-
 }

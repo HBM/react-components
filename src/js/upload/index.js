@@ -5,7 +5,6 @@ import accept from 'attr-accept'
 import Button from '../button/'
 
 export default class Upload extends React.Component {
-
   static propTypes = {
     accept: React.PropTypes.string,
     disabled: React.PropTypes.bool,
@@ -163,5 +162,4 @@ export default class Upload extends React.Component {
       </div>
     )
   }
-
 }

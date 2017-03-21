@@ -4,7 +4,6 @@ import classNames from 'classnames'
 import {Subscriber} from 'react-broadcast'
 
 export default class BottomNavigation extends React.Component {
-
   state = {
     scrolling: false
   }

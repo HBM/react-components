@@ -6,7 +6,6 @@ import classnames from 'classnames'
  * Tooltip
  */
 export default class Tooltip extends React.Component {
-
   /**
    * Property types
    */
@@ -90,5 +89,4 @@ export default class Tooltip extends React.Component {
       </div>
     )
   }
-
 }

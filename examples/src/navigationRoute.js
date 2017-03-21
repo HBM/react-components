@@ -4,7 +4,6 @@ import {HashRouter} from 'react-router'
 import {Navigation} from '../../lib'
 
 export default class NavigationRoute extends React.Component {
-
   render () {
     return (
       <div className='NavigationRoute'>
@@ -91,5 +90,4 @@ export default class NavigationRoute extends React.Component {
       </div>
     )
   }
-
 }

@@ -3,7 +3,6 @@ import React from 'react'
 import {Snackbar, Button} from '../../lib'
 
 export default class SnackbarRoute extends React.Component {
-
   state = {
     visible: false
   }
@@ -38,5 +37,4 @@ export default class SnackbarRoute extends React.Component {
       </div>
     )
   }
-
 }

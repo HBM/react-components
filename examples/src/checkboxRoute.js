@@ -3,7 +3,6 @@ import React from 'react'
 import {Checkbox} from '../../lib'
 
 export default class CheckboxRoute extends React.Component {
-
   state = {
     checked: false
   }
@@ -44,5 +43,4 @@ export default class CheckboxRoute extends React.Component {
       </div>
     )
   }
-
 }

@@ -3,7 +3,6 @@ import React from 'react'
 import {Modal, Button} from '../../lib'
 
 export default class ModalRoute extends React.Component {
-
   state = {
     visible: false
   }

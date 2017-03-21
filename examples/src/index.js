@@ -32,7 +32,6 @@ import TextareaRoute from './textareaRoute'
 // import TooltipRoute from './tooltipRoute'
 
 class App extends React.Component {
-
   state = {
     title: 'HBM/md-components',
     subtitle: ''
@@ -111,7 +110,6 @@ class App extends React.Component {
       </Shell>
     )
   }
-
 }
 
 ReactDOM.render(<App />, document.getElementById('root'))

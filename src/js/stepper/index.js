@@ -106,7 +106,6 @@ const Step = ({index, step, isActive, isLast, onNext, onCancel, onError}) => (
 )
 
 export class Stepper extends React.Component {
-
   static contextTypes = {
     router: React.PropTypes.object
   }

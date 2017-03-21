@@ -14,7 +14,6 @@ import {
 } from '../../lib'
 
 export default class TableRoute extends React.Component {
-
   state = {
     head: [
       'Dessert (100g serving)',
@@ -406,5 +405,4 @@ export default class TableRoute extends React.Component {
       </div>
     )
   }
-
 }

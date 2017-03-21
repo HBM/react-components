@@ -3,7 +3,6 @@ import React from 'react'
 import {Select} from '../../lib'
 
 export default class SelectRoute extends React.Component {
-
   state = {
     first: '',
     second: '',

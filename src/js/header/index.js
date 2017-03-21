@@ -4,7 +4,6 @@ import classnames from 'classnames'
 import Icon from '../icon'
 
 export default class Header extends React.Component {
-
   state = {
     hasShadow: false
   }
@@ -53,5 +52,4 @@ export default class Header extends React.Component {
       </header>
     )
   }
-
 }

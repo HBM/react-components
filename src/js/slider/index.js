@@ -16,7 +16,6 @@ const clip = (v, min, max) => {
 }
 
 export default class Slider extends React.Component {
-
   static propTypes = {
     value: React.PropTypes.number,
     min: React.PropTypes.number.isRequired,
@@ -174,5 +173,4 @@ export default class Slider extends React.Component {
       </label>
     )
   }
-
 }

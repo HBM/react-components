@@ -10,7 +10,6 @@ const step1 = () => (
 )
 
 class step2 extends React.Component {
-
   state = {
     name: '',
     error: ''
@@ -51,7 +50,6 @@ class step2 extends React.Component {
       </div>
     )
   }
-
 }
 
 const step3 = () => (
@@ -66,7 +64,6 @@ const step3 = () => (
 )
 
 export default class StepperRoute extends React.Component {
-
   state = {
     steps: [
       {

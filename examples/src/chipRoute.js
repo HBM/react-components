@@ -4,7 +4,6 @@ import classnames from 'classnames'
 import {Chip} from '../../lib'
 
 export default class ChipRoute extends React.Component {
-
   state = {
     focused: false,
     value: [],
@@ -175,5 +174,4 @@ export default class ChipRoute extends React.Component {
       </div>
     )
   }
-
 }

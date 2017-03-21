@@ -17,7 +17,6 @@ const Two = () => (
 )
 
 export default class ListRoute extends React.Component {
-
   render () {
     return (
       <div className='ListExamples'>
@@ -245,5 +244,4 @@ export default class ListRoute extends React.Component {
       </div>
     )
   }
-
 }

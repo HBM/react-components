@@ -22,7 +22,6 @@ const focusLeftOrRight = (event, leftKeys, rightKeys) => {
 
 // input fields which handles all logic
 export default class Chip extends React.Component {
-
   static propTypes = {
     autoFocus: React.PropTypes.bool,
     deletable: React.PropTypes.bool,
@@ -135,7 +134,6 @@ export default class Chip extends React.Component {
       </div>
     )
   }
-
 }
 
 const Element = ({

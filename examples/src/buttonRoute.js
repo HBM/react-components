@@ -3,7 +3,6 @@ import React from 'react'
 import {Button} from '../../lib'
 
 export default class ButtonRoute extends React.Component {
-
   render () {
     return (
       <div>
@@ -52,5 +51,4 @@ export default class ButtonRoute extends React.Component {
       </div>
     )
   }
-
 }

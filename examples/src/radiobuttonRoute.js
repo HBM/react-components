@@ -3,7 +3,6 @@ import React from 'react'
 import {Radiobutton} from '../../lib'
 
 export default class RadiobuttonRoute extends React.Component {
-
   state = {
     selectedValue: 'Germany'
   }
@@ -52,5 +51,4 @@ export default class RadiobuttonRoute extends React.Component {
       </div>
     )
   }
-
 }

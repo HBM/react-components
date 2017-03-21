@@ -7,7 +7,6 @@ import keycode from 'keycode'
 
 // internal helper component
 class EditDialog extends React.Component {
-
   onSubmit = (event) => {
     event.preventDefault()
     this.props.onClose()
@@ -47,7 +46,6 @@ class EditDialog extends React.Component {
       </div>
     )
   }
-
 }
 
 export const Table = ({children, className, ...rest}) => (
@@ -108,7 +106,6 @@ export const TableBodyRow = ({children, className, ...rest}) => (
 )
 
 export class TableBodyCell extends React.Component {
-
   state = {
     isEditing: false
   }
@@ -148,7 +145,6 @@ export class TableBodyCell extends React.Component {
       </td>
     )
   }
-
 }
 
 export const TableFooter = (props) => (

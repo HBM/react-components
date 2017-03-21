@@ -2,7 +2,6 @@ import React from 'react'
 import {Textfield, Icon} from '../../lib'
 
 export default class TextfieldRoute extends React.Component {
-
   state = {
     country: 'Germany',
     color: '',
@@ -97,5 +96,4 @@ export default class TextfieldRoute extends React.Component {
       </div>
     )
   }
-
 }

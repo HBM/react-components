@@ -2,7 +2,6 @@ import React from 'react'
 import {Textarea, Icon} from '../../lib'
 
 export default class TextfieldRoute extends React.Component {
-
   state = {
     multiline: '',
     story: ''
@@ -54,5 +53,4 @@ export default class TextfieldRoute extends React.Component {
       </div>
     )
   }
-
 }

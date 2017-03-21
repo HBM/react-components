@@ -14,7 +14,6 @@ const MAX_LIST_LENGTH = 5
  * Select component
  */
 export default class Select extends React.Component {
-
   static propTypes = {
     disabled: React.PropTypes.bool,
     label: React.PropTypes.string,
@@ -138,14 +137,12 @@ export default class Select extends React.Component {
       </div>
     )
   }
-
 }
 
 /**
  * List component
  */
 class List extends React.Component {
-
   static propTypes = {
     hasLabel: React.PropTypes.bool,
     options: React.PropTypes.array.isRequired,
@@ -245,5 +242,4 @@ class List extends React.Component {
       </ul>
     )
   }
-
 }

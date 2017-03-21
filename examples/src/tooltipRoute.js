@@ -3,7 +3,6 @@ import React from 'react'
 import {Button, Tooltip, Icon} from '../../lib'
 
 export default class TooltipRoute extends React.Component {
-
   state = {
     tooltip: false,
     button: false
@@ -73,5 +72,4 @@ export default class TooltipRoute extends React.Component {
       </div>
     )
   }
-
 }

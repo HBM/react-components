@@ -4,7 +4,6 @@ import classnames from 'classnames'
 import {CheckBox, CheckBoxOutlineBlank} from '../icon'
 
 export default class Checkbox extends React.Component {
-
   state = {
     active: false
   }

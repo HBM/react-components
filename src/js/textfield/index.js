@@ -97,7 +97,6 @@ Textfield.defaultProps = {
 }
 
 export class Textarea extends React.Component {
-
   resize = ({target}) => {
     const borderBottomHeight = 1
     const prevHeight = target.style.height

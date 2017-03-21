@@ -3,7 +3,6 @@ import React from 'react'
 import {Button, Card, Title, Text, Actions} from '../../lib'
 
 export default class CardRoute extends React.Component {
-
   render () {
     return (
       <div>
@@ -51,5 +50,4 @@ export default class CardRoute extends React.Component {
       </div>
     )
   }
-
 }
