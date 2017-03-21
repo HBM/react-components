@@ -6,12 +6,6 @@ import {Route, MemoryRouter} from 'react-router-dom'
 import BottomNavigation from '../'
 import {mount} from 'enzyme'
 
-// const LocationBroadcast = ({value, children}) => (
-//   <Broadcast channel='location' value={value}>
-//     {children}
-//   </Broadcast>
-// )
-
 const _window = {
   performance: {now: () => Date.now()},
   requestAnimationFrame: (f) => {
