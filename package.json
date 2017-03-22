@@ -8,7 +8,7 @@
     "lib": "webpack",
     "lib:watch": "webpack --watch",
     "examples": "cd examples && react-scripts start",
-    "test": "standard && npm run stylelint && nyc mocha ./src/js/**/test/test.js",
+    "test": "standard && npm run stylelint && nyc mocha src/js/**/test/test.js",
     "prepublish": "npm run lib && cpx ./src/css/**/* ./lib/css"
   },
   "repository": {
