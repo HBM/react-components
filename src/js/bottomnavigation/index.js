@@ -43,13 +43,6 @@ class BottomNavigation extends React.Component {
     }
   }
 
-  componentWillReceiveProps (props) {
-    if (this.contentNode) {
-      this.scrollingTop = false
-      this.contentNode.scrollTop = 0
-    }
-  }
-
   scrollTop = () => {
     if (!this.contentNode) {
       return
@@ -74,12 +67,27 @@ class BottomNavigation extends React.Component {
     _window.requestAnimationFrame(step)
   }
 
+  resetScrollTop = () => {
+    if (this.contentNode) {
+      this.contentNode.scrollTop = 0
+    }
+  }
+
+  updateContentNode = content => {
+    if (!content) {
+      return
+    }
+    const scrollTop = this.contentNode ? this.contentNode.scrollTop : 0
+    this.contentNode = content
+    this.contentNode.scrollTop = scrollTop
+  }
+
   renderLink (link, key) {
     return (
-      <Route path={link.link} key={key} children={({matched}) => (
-        <NavLink to={link.link} className='BottomNavigation-menu-item' activeClassName='active' onClick={matched && this.scrollTop}>
+      <Route path={link.link} key={key} children={({match}) => (
+        <NavLink to={link.link} className='BottomNavigation-menu-item' activeClassName='active' onClick={match ? this.scrollTop : this.resetScrollTop}>
           {link.icon}
-          {(this.props.links.length < 4 || matched) && <div className='BottomNavigation-menu-item-text'>{link.text}</div>}
+          {(this.props.links.length < 4 || match) && <div className='BottomNavigation-menu-item-text'>{link.text}</div>}
         </NavLink>
       )} />
     )
@@ -89,7 +97,7 @@ class BottomNavigation extends React.Component {
     const {children, links, inverted} = this.props
     return (
       <div onScroll={this.onScroll} className={classNames('BottomNavigation', {scrolling: this.state.scrolling})}>
-        <div ref={(content) => { this.contentNode = content }} className='BottomNavigation-content'>
+        <div ref={this.updateContentNode} className='BottomNavigation-content'>
           {children}
         </div>
         <div className={classNames('BottomNavigation-menu', {'BottomNavigation-menu--inverted': inverted})}>
