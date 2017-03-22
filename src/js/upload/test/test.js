@@ -1,4 +1,4 @@
-/* global describe, it, Event */
+/* global describe, it */
 
 import assert from 'assert'
 import React from 'react'
@@ -79,9 +79,9 @@ describe('Upload', () => {
 
   it('should toggle "is-over-window" css class on document dragenter and dragleave', () => {
     const wrapper = mount(<Upload onChange={noop} />)
-    document.dispatchEvent(new Event('dragenter'))
+    document.dispatchEvent(new window.Event('dragenter'))
     assert(wrapper.find('.Upload').hasClass('is-over-window'))
-    document.dispatchEvent(new Event('dragleave'))
+    document.dispatchEvent(new window.Event('dragleave'))
     assert.equal(wrapper.find('.Upload').hasClass('is-over-window'), false)
   })
 
@@ -99,20 +99,20 @@ describe('Upload', () => {
     // simulate unmount by calling method directly
     wrapper.unmount()
     // now simulate dragenter event and make sure component does not react anymore
-    document.dispatchEvent(new Event('dragenter'))
+    document.dispatchEvent(new window.Event('dragenter'))
     assert.equal(instance.hasClass('is-over-window'), false)
   })
 
   it('should remove dragleave event listener when component is unmounted', () => {
     const wrapper = mount(<Upload onChange={noop} />)
     const instance = wrapper.find('.Upload')
-    document.dispatchEvent(new Event('dragenter'))
+    document.dispatchEvent(new window.Event('dragenter'))
     // make sure component has correct class
     assert(instance.hasClass('is-over-window'))
     // now simulate unmount
     wrapper.unmount()
     // now simulate dragleave event and make sure component does not loose its class
-    document.dispatchEvent(new Event('dragleave'))
+    document.dispatchEvent(new window.Event('dragleave'))
     assert(instance.hasClass('is-over-window'))
   })
 

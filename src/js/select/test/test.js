@@ -1,4 +1,4 @@
-/* global it, describe, MouseEvent */
+/* global it, describe */
 
 import assert from 'assert'
 import React from 'react'
@@ -61,7 +61,7 @@ describe('Select', () => {
     wrapper.find('.Select-body').simulate('click')
     assert.equal(wrapper.find('.Select-list').length, 1)
     // simulate click somewhere
-    var event = new MouseEvent('click')
+    var event = new window.MouseEvent('click')
     document.dispatchEvent(event)
     // make sure list is closed
     assert.equal(wrapper.find('.Select-list').length, 0)
@@ -84,7 +84,7 @@ describe('Select', () => {
     assert.equal(wrapper.find('.Select-list').length, 1)
     // click on list item
     wrapper.find('.Select-listItemLink').at(1).simulate('click')
-    var event = new MouseEvent('click')
+    var event = new window.MouseEvent('click')
     document.dispatchEvent(event)
     // make sure list is closed
     assert.equal(wrapper.find('.Select-list').length, 0)
