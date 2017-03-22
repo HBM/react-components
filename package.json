@@ -8,7 +8,7 @@
     "lib": "webpack",
     "lib:watch": "webpack --watch",
     "examples": "cd examples && react-scripts start",
-    "test": "standard && npm run stylelint && istanbul cover ./node_modules/mocha/bin/_mocha test/.setup.js src/js/**/test/test.js",
+    "test": "standard && npm run stylelint && nyc mocha ./src/js/**/test/test.js",
     "prepublish": "npm run lib && cpx ./src/css/**/* ./lib/css"
   },
   "repository": {
@@ -41,11 +41,11 @@
     "glob": "^7.0.5",
     "history": "^4.6.1",
     "http-server": "^0.9.0",
-    "istanbul": "^1.1.0-alpha.1",
     "jasmine-core": "^2.3.4",
     "jsdom": "^7.2.2",
     "mocha": "^3.0.2",
     "node-sass": "^4.5.0",
+    "nyc": "^10.1.2",
     "react": "^15.4.0",
     "react-addons-test-utils": "^15.3.0",
     "react-broadcast": "^0.1.2",
@@ -64,6 +64,20 @@
     "tarball-extract": "0.0.3",
     "uglifyjs": "^2.4.10",
     "webpack": "^1.14.0"
+  },
+  "nyc": {
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "require": [
+      "babel-register",
+      "./test/.setup.js"
+    ],
+    "exclude": [
+      "**/test.js",
+      "test"
+    ]
   },
   "dependencies": {
     "attr-accept": "^1.0.3",
