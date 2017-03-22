@@ -1,7 +1,6 @@
 
 import React from 'react'
 import {Motion, spring} from 'react-motion'
-import objectAssign from 'object-assign'
 
 const PADDING_TOP_WITH_LABEL = -12
 const PADDING_LEFT = 16
@@ -227,7 +226,7 @@ class List extends React.Component {
       <ul
         ref={(c) => { this.ref = c }}
         className='Select-list'
-        style={objectAssign(style, this.props.style)}
+        style={Object.assign(style, this.props.style)}
       >
         {options.map((item, i) =>
           <li key={i} className='Select-listItem'>
