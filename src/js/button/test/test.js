@@ -13,7 +13,7 @@ describe('Button', () => {
   })
 
   it('should have `Button--raised` class when raised property is true', () => {
-    const wrapper = shallow(<Button onclick={() => {}} raised />)
+    const wrapper = shallow(<Button onClick={() => {}} raised />)
     assert.ok(wrapper.find('.Button').hasClass('Button--raised'))
   })
 
