@@ -42,7 +42,7 @@ describe('BottomNavigation', () => {
     assert(wrapper.find('.BottomNavigation-menu-item').at(0).hasClass('active'))
   })
 
-  it.skip('should scroll top when clicking active item', function (done) {
+  it('should scroll top when clicking active item', function (done) {
     this.slow(1300)
     const wrapper = mount(
       <MemoryRouter initialEntries={['/one']}>
