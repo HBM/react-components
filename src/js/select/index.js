@@ -81,6 +81,19 @@ export default class Select extends React.Component {
       isInsideTable,
       width: selectRect.width
     })
+
+    window.addEventListener('resize', this.resize)
+  }
+
+  componentWillUnmount () {
+    window.removeEventListener('resize', this.resize)
+  }
+
+  resize = () => {
+    const {width} = this.ref.getBoundingClientRect()
+    this.setState({
+      width
+    })
   }
 
   /**
@@ -217,10 +230,20 @@ class List extends React.Component {
       }
     }
 
-    const style = {
-      top: top,
-      width: this.props.width + (2 * PADDING_LEFT)
+    let width = this.props.width + (2 * PADDING_LEFT)
+    let left = -16
+    let padding = 16
+
+    // check if select overlay is wider than window which would cause horizontal overflow
+    // if so decrease padding left and right from 16px to 8px
+    // adjust absolute position left and inner link padding accordingly
+    if (width > document.body.clientWidth) {
+      width = this.props.width + PADDING_LEFT
+      left = -8
+      padding = 8
     }
+
+    const style = {top, width, left}
 
     return (
       <ul
@@ -233,6 +256,7 @@ class List extends React.Component {
             <a href
               className='Select-listItemLink'
               onClick={this.onClick.bind(this, i)}
+              style={{padding: `0 ${padding}px`}}
             >
               {item.label}
             </a>

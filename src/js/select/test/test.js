@@ -221,4 +221,14 @@ describe('Select', () => {
     const wrapper = mount(<Select name='donald' onChange={noop} />)
     assert.equal(wrapper.find('button').node.name, 'donald')
   })
+
+  it('should handle window resize events', () => {
+    const wrapper = mount(<Select onChange={noop} />)
+    wrapper.setState({width: 100})
+    assert.equal(wrapper.state().width, 100)
+    const event = new window.Event('resize')
+    window.dispatchEvent(event)
+    // in jsdom the window width and height is always zero
+    assert.equal(wrapper.state().width, 0)
+  })
 })
