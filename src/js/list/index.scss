@@ -108,7 +108,7 @@
 .List-row.List-row--threeline {
   align-items: flex-start;
 
-  & > * {
+  .List-row-avatar, .List-row-text, .List-row-icon-right, .List-row-icon-left {
     margin-top: 12px;
   }
 
@@ -120,7 +120,7 @@
 .List-row-icon-right {
   margin-left: auto;
 
-  & > * {
+  svg {
     float: right;
   }
 }
@@ -130,7 +130,8 @@
   display: flex;
   align-items: center;
 
-  > * {
+  // use wildcard since element is user defined and can be anything
+  & > * {
     border-radius: 100%;
     width: 40px;
   }
