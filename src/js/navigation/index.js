@@ -130,6 +130,9 @@ class Navigation extends React.Component {
     this.setState({
       visible: false
     })
+    if (event) {
+      event.preventDefault()
+    }
   }
 
   /**
