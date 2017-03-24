@@ -108,7 +108,10 @@
 .List-row.List-row--threeline {
   align-items: flex-start;
 
-  .List-row-avatar, .List-row-text, .List-row-icon-right, .List-row-icon-left {
+  .List-row-avatar,
+  .List-row-text,
+  .List-row-icon-right,
+  .List-row-icon-left {
     margin-top: 12px;
   }
 
