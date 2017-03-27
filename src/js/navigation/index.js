@@ -120,7 +120,9 @@ class Navigation extends React.Component {
 
   onClick = (item, subItem, event) => {
     this.props.onChange(item, subItem)
-    this.close(event)
+    this.setState({
+      visible: false
+    })
   }
 
   /**
