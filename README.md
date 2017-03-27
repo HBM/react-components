@@ -1,6 +1,8 @@
 
 # md-components
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/HBM/md-components.svg)](https://greenkeeper.io/)
+
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 [![Build Status](https://travis-ci.org/HBM/md-components.svg?branch=master)](https://travis-ci.org/HBM/md-components)
 [![npm](https://img.shields.io/npm/v/md-components.svg)](https://www.npmjs.com/package/md-components)
