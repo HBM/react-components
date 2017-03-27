@@ -120,6 +120,7 @@ class Navigation extends React.Component {
 
   onClick = (item, subItem, event) => {
     this.props.onChange(item, subItem)
+    this.close()
     this.setState({
       visible: false
     })
@@ -128,13 +129,15 @@ class Navigation extends React.Component {
   /**
    * Hide overlay
    */
-  close = (event) => {
+  close = () => {
     this.setState({
       visible: false
     })
-    if (event) {
-      event.preventDefault()
-    }
+  }
+
+  closeOverlay = (event) => {
+    this.close()
+    event.preventDefault()
   }
 
   /**
@@ -179,8 +182,8 @@ class Navigation extends React.Component {
           className={classnames('Navigation-overlay', {
             'is-visible': this.state.visible
           })}
-          onClick={this.close}
-          onTouchEnd={this.close}
+          onClick={this.closeOverlay}
+          onTouchEnd={this.closeOverlay}
         />
       </div>
     )
