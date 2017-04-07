@@ -96,7 +96,7 @@ export default class Select extends React.Component {
     })
   }
 
-  onChange = (item) => this.props.onChange && this.props.onChange({
+  onChange = (item) => this.props.onChange({
     target: {
       name: this.props.name,
       ...item

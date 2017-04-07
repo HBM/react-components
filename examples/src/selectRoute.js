@@ -22,7 +22,7 @@ export default class SelectRoute extends React.Component {
         <section>
           <h2>Select</h2>
           <Select
-            name={'first'}
+            name='first'
             onChange={this.onChange}
             options={[
               {value: 'blue', label: 'Blue'},
@@ -35,7 +35,7 @@ export default class SelectRoute extends React.Component {
         <section>
           <h2>Select with scrolling</h2>
           <Select
-            name={'first'}
+            name='first'
             onChange={this.onChange}
             options={[
               {value: 'blue', label: 'Blue'},
@@ -53,7 +53,7 @@ export default class SelectRoute extends React.Component {
           <h2>Select with label</h2>
           <Select
             label='Some label'
-            name={'first'}
+            name='first'
             onChange={this.onChange}
             options={[
               {value: 'blue', label: 'Blue'},
@@ -68,7 +68,7 @@ export default class SelectRoute extends React.Component {
           <div style={{display: 'flex'}}>
             <Select
               label='second'
-              name={'second'}
+              name='second'
               onChange={this.onChange}
               options={[
                 {value: 'one', label: 'One'},
@@ -79,7 +79,7 @@ export default class SelectRoute extends React.Component {
             />
             <Select
               label='third'
-              name={'third'}
+              name='third'
               onChange={this.onChange}
               options={[
                 {value: 'eleven', label: 'Eleven'},
