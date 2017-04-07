@@ -9,9 +9,10 @@ export default class SelectRoute extends React.Component {
     third: ''
   }
 
-  onChange = (key, item) => {
+  onChange = (item) => {
+    const {name, value} = item.target
     this.setState({
-      [key]: item.value
+      [name]: value
     })
   }
 
@@ -21,7 +22,8 @@ export default class SelectRoute extends React.Component {
         <section>
           <h2>Select</h2>
           <Select
-            onChange={(item) => this.onChange('first', item)}
+            name={'first'}
+            onChange={this.onChange}
             options={[
               {value: 'blue', label: 'Blue'},
               {value: 'red', label: 'Red'},
@@ -33,7 +35,8 @@ export default class SelectRoute extends React.Component {
         <section>
           <h2>Select with scrolling</h2>
           <Select
-            onChange={(item) => this.onChange('first', item)}
+            name={'first'}
+            onChange={this.onChange}
             options={[
               {value: 'blue', label: 'Blue'},
               {value: 'red', label: 'Red'},
@@ -50,7 +53,8 @@ export default class SelectRoute extends React.Component {
           <h2>Select with label</h2>
           <Select
             label='Some label'
-            onChange={(item) => this.onChange('first', item)}
+            name={'first'}
+            onChange={this.onChange}
             options={[
               {value: 'blue', label: 'Blue'},
               {value: 'red', label: 'Red'},
@@ -64,7 +68,8 @@ export default class SelectRoute extends React.Component {
           <div style={{display: 'flex'}}>
             <Select
               label='second'
-              onChange={(item) => this.onChange('second', item)}
+              name={'second'}
+              onChange={this.onChange}
               options={[
                 {value: 'one', label: 'One'},
                 {value: 'two', label: 'Two'},
@@ -74,7 +79,8 @@ export default class SelectRoute extends React.Component {
             />
             <Select
               label='third'
-              onChange={(item) => this.onChange('third', item)}
+              name={'third'}
+              onChange={this.onChange}
               options={[
                 {value: 'eleven', label: 'Eleven'},
                 {value: 'twelve', label: 'Twelve'},

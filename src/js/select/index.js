@@ -96,6 +96,13 @@ export default class Select extends React.Component {
     })
   }
 
+  onChange = (item) => this.props.onChange && this.props.onChange({
+    target: {
+      name: this.props.name,
+      ...item
+    }
+  })
+
   /**
    * Component should not update when it is open. In that case it should
    * only update when open state changes.
@@ -140,7 +147,7 @@ export default class Select extends React.Component {
               hasLabel={!!this.props.label}
               options={this.props.options}
               selectedIndex={selectedIndex}
-              onClick={this.props.onChange}
+              onClick={this.onChange}
               width={this.state.width}
               isInsideTable={this.state.isInsideTable}
             />
@@ -183,7 +190,8 @@ class List extends React.Component {
   /**
    * Handle click on list item
    */
-  onClick = (index, event) => {
+  onClick = (event) => {
+    const index = parseInt(event.target.getAttribute('data-id'))
     event.preventDefault()
     this.props.onClick(this.props.options[index])
   }
@@ -254,8 +262,9 @@ class List extends React.Component {
         {options.map((item, i) =>
           <li key={i} className='Select-listItem'>
             <a href
+              data-id={i}
               className='Select-listItemLink'
-              onClick={this.onClick.bind(this, i)}
+              onClick={this.onClick}
               style={{padding: `0 ${padding}px`}}
             >
               {item.label}
