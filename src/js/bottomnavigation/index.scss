@@ -39,6 +39,7 @@
   transform: translate3d(0, 0, 0);
   transition: transform 0.3s 0.1s ease;
   justify-content: center;
+  box-sizing: content-box;
 
   @include medium {
     transform: none;
@@ -65,14 +66,24 @@
   }
 }
 
+.BottomNavigation-menu--narrow .BottomNavigation-menu-item > *:not(.active) .BottomNavigation-menu-item-text {
+  display: none;
+}
+
 .BottomNavigation-menu-item {
-  text-decoration: none;
   min-width: 80px;
   padding: 6px 12px 10px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+  & > * { // this is the user defined / custom Link element
+    text-decoration: none;
+    color: #757575;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
   flex-grow: 1;
   cursor: pointer;
 
@@ -80,7 +91,6 @@
     fill: #757575;
   }
 
-  color: #757575;
   max-width: 169px;
 
   @include medium {
@@ -94,7 +104,7 @@
   }
 }
 
-.BottomNavigation-menu-item.active {
+.BottomNavigation-menu-item .active {
   svg {
     fill: $blue-dark;
   }

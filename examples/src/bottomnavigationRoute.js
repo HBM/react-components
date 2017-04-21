@@ -1,24 +1,21 @@
 
 import React from 'react'
-import {HashRouter, Route} from 'react-router-dom'
-import {BottomNavigation, Icon, List, Row} from '../../lib'
+import {HashRouter, Route, NavLink} from 'react-router-dom'
+import {BottomNavigation, BottomNavigationText, Icon, List, Row} from '../../lib'
 
-const links = [
-  {
-    icon: <Icon.Home />,
-    text: 'Home',
-    link: '/home'
-  },
-  {
-    icon: <Icon.MusicNote />,
-    text: 'Music',
-    link: '/music'
-  },
-  {
-    icon: <Icon.Photo />,
-    text: 'Photos',
-    link: '/photos'
-  }
+let links = [
+  <NavLink to='/home'>
+    <Icon.Home />
+    <BottomNavigationText>Home</BottomNavigationText>
+  </NavLink>,
+  <NavLink to='/music'>
+    <Icon.MusicNote />
+    <BottomNavigationText>Music</BottomNavigationText>
+  </NavLink>,
+  <NavLink to='/photos'>
+    <Icon.Photo />
+    <BottomNavigationText>Photos</BottomNavigationText>
+  </NavLink>
 ]
 
 const content = (title) => {
