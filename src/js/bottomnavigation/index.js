@@ -116,4 +116,3 @@ export class BottomNavigation extends React.Component {
 }
 
 export const BottomNavigationText = ({children}) => <div className='BottomNavigation-menu-item-text'>{children}</div>
-

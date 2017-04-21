@@ -76,6 +76,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+
   & > * { // this is the user defined / custom Link element
     text-decoration: none;
     color: #757575;
@@ -84,6 +85,7 @@
     align-items: center;
     justify-content: space-around;
   }
+
   flex-grow: 1;
   cursor: pointer;
 

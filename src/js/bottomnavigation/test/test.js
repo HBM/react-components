@@ -2,8 +2,8 @@
 
 import assert from 'assert'
 import React from 'react'
-import {Route, MemoryRouter} from 'react-router-dom'
-import BottomNavigation from '../'
+import {Route, MemoryRouter, NavLink} from 'react-router-dom'
+import {BottomNavigation, BottomNavigationText} from '../'
 import {mount} from 'enzyme'
 
 const _window = {
@@ -14,6 +14,18 @@ const _window = {
     }, 100)
   }
 }
+
+describe('BottomNavigationText', () => {
+  it('should render the text', () => {
+    const wrapper = mount(<BottomNavigationText>foo</BottomNavigationText>)
+    assert.equal(wrapper.text(), 'foo')
+  })
+
+  it('should have the .BottomNavigation-menu-item-text', () => {
+    const wrapper = mount(<BottomNavigationText>foo</BottomNavigationText>)
+    assert(wrapper.hasClass('BottomNavigation-menu-item-text'))
+  })
+})
 
 describe('BottomNavigation', () => {
   it('should render', () => {
@@ -30,8 +42,8 @@ describe('BottomNavigation', () => {
       <MemoryRouter initialEntries={['/one']}>
         <BottomNavigation
           links={[
-            {link: '/one', text: 'one'},
-            {link: '/two', text: 'two'}
+            <NavLink to='/one' />,
+            <NavLink to='/two' />
           ]}
         >
           <Route path='/one' component={() => <h1>One</h1>} />
@@ -39,7 +51,7 @@ describe('BottomNavigation', () => {
         </BottomNavigation>
       </MemoryRouter>
     )
-    assert(wrapper.find('.BottomNavigation-menu-item').at(0).hasClass('active'))
+    assert(wrapper.find('.BottomNavigation-menu-item a').at(0).hasClass('active'))
   })
 
   it('should scroll top when clicking active item', function (done) {
@@ -48,8 +60,8 @@ describe('BottomNavigation', () => {
       <MemoryRouter initialEntries={['/one']}>
         <BottomNavigation
           links={[
-            {link: '/one', text: 'one'},
-            {link: '/two', text: 'two'}
+            <NavLink to='/one' />,
+            <NavLink to='/two' />
           ]}
           window={_window}
         >
@@ -71,7 +83,10 @@ describe('BottomNavigation', () => {
     const wrapper = mount(
       <MemoryRouter initialEntries={['/one']}>
         <BottomNavigation
-          links={[{link: '/one', text: 'one'}, {link: '/two', text: 'two'}]}
+          links={[
+            <NavLink to='/one' />,
+            <NavLink to='/two' />
+          ]}
           window={_window}
         >
           <Route path='/one' component={() => <h1>One</h1>} />
@@ -96,7 +111,10 @@ describe('BottomNavigation', () => {
     const wrapper = mount(
       <MemoryRouter initialEntries={['/one']}>
         <BottomNavigation
-          links={[{link: '/one', text: 'one'}, {link: '/two', text: 'two'}]}
+          links={[
+            <NavLink to='/one' />,
+            <NavLink to='/two' />
+          ]}
           window={_window}
         >
           <Route path='/one' component={() => <h1>One</h1>} />
@@ -122,7 +140,10 @@ describe('BottomNavigation', () => {
     const wrapper = mount(
       <MemoryRouter initialEntries={['/one']}>
         <BottomNavigation
-          links={[{link: '/one', text: 'one'}, {link: '/two', text: 'two'}]}
+          links={[
+            <NavLink to='/one' />,
+            <NavLink to='/two' />
+          ]}
           window={_window}
         >
           <Route path='/one' component={() => <h1>One</h1>} />
