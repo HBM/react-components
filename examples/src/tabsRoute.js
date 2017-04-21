@@ -1,6 +1,6 @@
 
 import React from 'react'
-import {HashRouter, Route} from 'react-router-dom'
+import {HashRouter, Route, NavLink} from 'react-router-dom'
 import {Tabs} from '../../lib'
 
 class Germany extends React.Component {
@@ -36,9 +36,9 @@ class Sweden extends React.Component {
 export default class TabsRoute extends React.Component {
   render () {
     const tabs = [
-      {href: '/tabs/germany', text: 'Germany'},
-      {href: '/tabs/spain', text: 'Spain'},
-      {href: '/tabs/sweden', text: 'Sweden'}
+      <NavLink to='/tabs/germany'>Germany</NavLink>,
+      <NavLink to='/tabs/spain'>Spain</NavLink>,
+      <NavLink to='/tabs/sweden'>Sweden</NavLink>
     ]
     return (
       <div>
