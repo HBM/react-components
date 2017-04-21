@@ -1,6 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
 
+const defaultScrollDuration = 800
+
 export class BottomNavigation extends React.Component {
   state = {
     scrolling: false
@@ -29,7 +31,7 @@ export class BottomNavigation extends React.Component {
       this.setState({
         scrolling: false
       })
-    }, 800)
+    }, this.props.scrollDuration || defaultScrollDuration)
   }
 
   componentWillMount () {
@@ -46,7 +48,7 @@ export class BottomNavigation extends React.Component {
     if (!this.contentNode) {
       return
     }
-    const scrollDuration = 800
+    const scrollDuration = this.props.scrollDuration || defaultScrollDuration
     const cosParameter = this.contentNode.scrollTop / 2
     let scrollCount = 0
     const _window = this.props.window || window

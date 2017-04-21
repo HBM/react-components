@@ -55,10 +55,11 @@ describe('BottomNavigation', () => {
   })
 
   it('should scroll top when clicking active item', function (done) {
-    this.slow(1300)
+    this.slow(200)
     const wrapper = mount(
       <MemoryRouter initialEntries={['/one']}>
         <BottomNavigation
+          scrollDuration={30}
           links={[
             <NavLink to='/one' />,
             <NavLink to='/two' />
@@ -76,13 +77,15 @@ describe('BottomNavigation', () => {
     setTimeout(() => {
       assert.equal(node.scrollTop, 0)
       done()
-    }, 1000)
+    }, 100)
   })
 
   it('should show menu on scroll and hide after timeout', function (done) {
+    this.slow(200)
     const wrapper = mount(
       <MemoryRouter initialEntries={['/one']}>
         <BottomNavigation
+          scrollDuration={30}
           links={[
             <NavLink to='/one' />,
             <NavLink to='/two' />
@@ -104,13 +107,15 @@ describe('BottomNavigation', () => {
     setTimeout(() => {
       assert(!wrapper.find('.BottomNavigation').at(0).hasClass('scrolling'))
       done()
-    }, 1000)
+    }, 50)
   })
 
   it('should show menu on scroll and hide after timeout', function (done) {
+    this.slow(200)
     const wrapper = mount(
       <MemoryRouter initialEntries={['/one']}>
         <BottomNavigation
+          scrollDuration={30}
           links={[
             <NavLink to='/one' />,
             <NavLink to='/two' />
@@ -133,7 +138,7 @@ describe('BottomNavigation', () => {
     setTimeout(() => {
       assert(!wrapper.find('.BottomNavigation').at(0).hasClass('scrolling'))
       done()
-    }, 100)
+    }, 50)
   })
 
   it('should clear scroll timer on unmount', function () {
