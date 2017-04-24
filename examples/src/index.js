@@ -4,7 +4,7 @@ import './index.css'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {Route} from 'react-router-dom'
+import {Route, NavLink, HashRouter} from 'react-router-dom'
 import {Shell} from '../../lib'
 import BottomNavigationRoute from './bottomnavigationRoute'
 import ButtonRoute from './buttonRoute'
@@ -37,77 +37,83 @@ class App extends React.Component {
     subtitle: ''
   }
 
-  onChange = (link, sublink) => {
+  onLinkChange = event => {
+    const link = event.currentTarget
     // use google analytics to track single page apps
     // https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications
     if (window.ga) {
-      ga('set', 'page', link.link)
+      ga('set', 'page', link.href)
       ga('send', 'pageview')
     }
     this.setState({
-      title: link.text,
-      subtitle: sublink && sublink.text
+      title: 'md-components',
+      subtitle: link.text
     })
+  }
+
+  test = () => {
+    console.log('test')
   }
 
   render () {
     const links = [
-      {text: 'Home', link: '/'},
-      {text: 'Bottom Navigation', link: '/bottomnavigation'},
-      {text: 'Button', link: '/button'},
-      {text: 'Card', link: '/card'},
-      {text: 'Checkbox', link: '/checkbox'},
-      {text: 'Chip', link: '/chip'},
-      {text: 'Header', link: '/header'},
-      {text: 'Icon', link: '/icon'},
-      {text: 'List', link: '/list'},
-      {text: 'Menu', link: '/menu'},
-      {text: 'Modal', link: '/modal'},
-      {text: 'Navigation', link: '/navigation'},
-      {text: 'Progress', link: '/progress'},
-      {text: 'Radiobutton', link: '/radiobutton'},
-      {text: 'Select', link: '/select'},
-      {text: 'Slider', link: '/slider'},
-      {text: 'Snackbar', link: '/snackbar'},
-      {text: 'Stepper', link: '/stepper'},
-      {text: 'Switch', link: '/switch'},
-      {text: 'Table', link: '/table'},
-      {text: 'Tabs', link: '/tabs'},
-      {text: 'Textfield', link: '/textfield'},
-      {text: 'Textarea', link: '/textarea'}
-      // {text: 'Tooltip', link: '/tooltip'}
+      <NavLink to='/' onClick={this.onLinkChange} >Home</NavLink>,
+      <NavLink to='/bottomnavigation' onClick={this.onLinkChange} >Bottom Navigation</NavLink>,
+      <NavLink to='/button' onClick={this.onLinkChange} >Button</NavLink>,
+      <NavLink to='/card' onClick={this.onLinkChange} >Card</NavLink>,
+      <NavLink to='/checkbox' onClick={this.onLinkChange} >Checkbox</NavLink>,
+      <NavLink to='/chip' onClick={this.onLinkChange} >Chip</NavLink>,
+      <NavLink to='/header' onClick={this.onLinkChange} >Header</NavLink>,
+      <NavLink to='/icon' onClick={this.onLinkChange} >Icon</NavLink>,
+      <NavLink to='/list' onClick={this.onLinkChange} >List</NavLink>,
+      <NavLink to='/menu' onClick={this.onLinkChange} >Menu</NavLink>,
+      <NavLink to='/modal' onClick={this.onLinkChange} >Modal</NavLink>,
+      <NavLink to='/navigation' onClick={this.onLinkChange} >Navigation</NavLink>,
+      <NavLink to='/progress' onClick={this.onLinkChange} >Progress</NavLink>,
+      <NavLink to='/radiobutton' onClick={this.onLinkChange} >Radiobutton</NavLink>,
+      <NavLink to='/select' onClick={this.onLinkChange} >Select</NavLink>,
+      <NavLink to='/slider' onClick={this.onLinkChange} >Slider</NavLink>,
+      <NavLink to='/snackbar' onClick={this.onLinkChange} >Snackbar</NavLink>,
+      <NavLink to='/stepper' onClick={this.onLinkChange} >Stepper</NavLink>,
+      <NavLink to='/switch' onClick={this.onLinkChange} >Switch</NavLink>,
+      <NavLink to='/table' onClick={this.onLinkChange} >Table</NavLink>,
+      <NavLink to='/tabs'>Tabs</NavLink>,
+      <NavLink to='/textfield' onClick={this.onLinkChange} >Textfield</NavLink>,
+      <NavLink to='/textarea' onClick={this.onLinkChange} >Textarea</NavLink>
     ]
     return (
-      <Shell
-        links={links}
-        title={this.state.title}
-        subtitle={this.state.subtitle}
-        onChange={this.onChange}
-      >
-        <Route exact path='/' component={HomeRoute} />
-        <Route path='/bottomnavigation' component={BottomNavigationRoute} />
-        <Route path='/button' component={ButtonRoute} />
-        <Route path='/card' component={CardRoute} />
-        <Route path='/checkbox' component={CheckboxRoute} />
-        <Route path='/chip' component={ChipRoute} />
-        <Route path='/header' component={HeaderRoute} />
-        <Route path='/icon' component={IconRoute} />
-        <Route path='/list' component={ListRoute} />
-        <Route path='/menu' component={MenuRoute} />
-        <Route path='/modal' component={ModalRoute} />
-        <Route path='/navigation' component={NavigationRoute} />
-        <Route path='/progress' component={ProgressRoute} />
-        <Route path='/radiobutton' component={RadiobuttonRoute} />
-        <Route path='/select' component={SelectRoute} />
-        <Route path='/slider' component={SliderRoute} />
-        <Route path='/snackbar' component={SnackbarRoute} />
-        <Route path='/stepper' component={StepperRoute} />
-        <Route path='/switch' component={SwitchRoute} />
-        <Route path='/table' component={TableRoute} />
-        <Route path='/tabs' component={TabsRoute} />
-        <Route path='/textfield' component={TextfieldRoute} />
-        <Route path='/textarea' component={TextareaRoute} />
-      </Shell>
+      <HashRouter>
+        <Shell
+          links={links}
+          title={this.state.title}
+          subtitle={this.state.subtitle}
+          onChange={this.onChange}
+        >
+          <Route exact path='/' component={HomeRoute} />
+          <Route path='/bottomnavigation' component={BottomNavigationRoute} />
+          <Route path='/button' component={ButtonRoute} />
+          <Route path='/card' component={CardRoute} />
+          <Route path='/checkbox' component={CheckboxRoute} />
+          <Route path='/chip' component={ChipRoute} />
+          <Route path='/header' component={HeaderRoute} />
+          <Route path='/icon' component={IconRoute} />
+          <Route path='/list' component={ListRoute} />
+          <Route path='/menu' component={MenuRoute} />
+          <Route path='/modal' component={ModalRoute} />
+          <Route path='/navigation' component={NavigationRoute} />
+          <Route path='/progress' component={ProgressRoute} />
+          <Route path='/radiobutton' component={RadiobuttonRoute} />
+          <Route path='/select' component={SelectRoute} />
+          <Route path='/slider' component={SliderRoute} />
+          <Route path='/snackbar' component={SnackbarRoute} />
+          <Route path='/stepper' component={StepperRoute} />
+          <Route path='/switch' component={SwitchRoute} />
+          <Route path='/table' component={TableRoute} />
+          <Route path='/tabs' component={TabsRoute} />
+          <Route path='/textfield' component={TextfieldRoute} />
+          <Route path='/textarea' component={TextareaRoute} />
+        </Shell>
+      </HashRouter>
     )
   }
 }
