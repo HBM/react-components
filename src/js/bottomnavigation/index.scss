@@ -72,12 +72,15 @@
 
 .BottomNavigation-menu-item {
   min-width: 80px;
-  padding: 6px 12px 10px;
+  font-size: 12px;
+  padding: 8px 12px 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 
   & > * { // this is the user defined / custom Link element
+    transform: translate3d(0, 0, 0);
+    transition: transform 0.2s ease;
     text-decoration: none;
     color: #757575;
     display: flex;
@@ -91,11 +94,13 @@
 
   svg {
     fill: #757575;
+    flex-shrink: 0;
   }
 
   max-width: 169px;
 
   @include medium {
+    padding: 0;
     flex-grow: 0;
     height: 56px;
     min-width: 72px;
@@ -106,12 +111,14 @@
   }
 }
 
-.BottomNavigation-menu-item .active {
+.BottomNavigation-menu-item > .active {
   svg {
     fill: $blue-dark;
   }
 
   color: $blue-dark;
+  font-size: 14px;
+  transform: translate3d(0, -1px, 0); // the font size here is +2px, so the translate should be -2px as well but it looks odd
 }
 
 .BottomNavigation-menu--inverted {
