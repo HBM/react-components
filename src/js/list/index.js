@@ -2,7 +2,6 @@
 import React from 'react'
 import classNames from 'classnames'
 import keycode from 'keycode'
-import { NavLink } from 'react-router-dom'
 
 /**
  * List components
@@ -11,19 +10,6 @@ import { NavLink } from 'react-router-dom'
  *  - condensed
  */
 export const List = ({children, style}) => {
-  let hasLinks
-  React.Children.forEach(children, child => {
-    if (!hasLinks) {
-      hasLinks = child.props.linkTo !== undefined
-    }
-  })
-  if (hasLinks) {
-    return (
-      <div className='List' style={style}>
-        {children}
-      </div>
-    )
-  }
   return (
     <ol className='List' style={style}>
       {children}
@@ -35,7 +21,6 @@ export const Row = ({
   avatar,
   className,
   icon,
-  linkTo,
   onBlur,
   onClick,
   onFocus,
@@ -75,7 +60,6 @@ export const Row = ({
   const isSelectable = onFocus || onBlur
 
   const dynamicClasses = {
-    'List-row--islink': linkTo !== undefined,
     'List-row--oneline': (!secondary && !subheader),
     'List-row--twoline': (secondary && !subheader),
     'List-row--threeline': (secondary && subheader),
@@ -100,11 +84,7 @@ export const Row = ({
     onBlur,
     tabIndex: isSelectable ? '0' : null
   }
-  if (linkTo) {
-    return <NavLink to={linkTo} activeClassName='active' {...rowProps}>{rowContent}</NavLink>
-  } else {
-    return <li {...rowProps}>{rowContent}</li>
-  }
+  return <li {...rowProps}>{rowContent}</li>
 }
 
 const stringOrElement = () => {
@@ -125,7 +105,6 @@ Row.propTypes = {
     React.PropTypes.element,
     React.PropTypes.string
   ]),
-  linkTo: React.PropTypes.string,
   onBlur: React.PropTypes.func,
   onClick: React.PropTypes.func,
   onFocus: React.PropTypes.func,

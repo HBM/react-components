@@ -17,6 +17,10 @@
 }
 
 .List-row-text-primary {
+  a {
+    text-decoration: none; // no further default appearance (color -> client), but underline looks really odd as primary.
+  }
+
   font-size: 16px;
   margin: 0;
   margin-bottom: 6px;
@@ -28,21 +32,17 @@
   margin-bottom: 0;
 }
 
-.List-row--islink:focus,
-.List-row--selectable:hover,
-.List-row--islink:hover {
+.List-row--selectable:hover {
   background-color: #f5f5f5;
   transition: background-color 0.3s ease;
   outline: none;
 }
 
-.List-row--islink,
 .List-row--selectable {
   cursor: pointer;
 }
 
-.List-row:not(.List-row--islink):focus,
-.List-row--islink.active {
+.List-row:focus {
   background-color: #e9e9e9;
   outline: none;
 }

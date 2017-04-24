@@ -4,7 +4,6 @@ import assert from 'assert'
 import React from 'react'
 import { shallow, mount } from 'enzyme'
 import { List, Row } from '../'
-import {MemoryRouter} from 'react-router-dom'
 
 describe('List', () => {
   it('should work', () => {
@@ -21,7 +20,7 @@ describe('List', () => {
     assert.equal(wrapper.find('.List-row').length, 2)
   })
 
-  it('should render as <ol> <li> when no link is present', () => {
+  it('should render as <ol> <li>', () => {
     const wrapper = mount(
       <List>
         <Row primary='A' />
@@ -29,19 +28,6 @@ describe('List', () => {
       </List>)
     assert.equal(wrapper.find('ol').length, 1)
     assert.equal(wrapper.find('li.List-row').length, 2)
-  })
-
-  it('should render as <div> <a> when rows have linkTo prop', () => {
-    const wrapper = mount(
-      <MemoryRouter>
-        <List>
-          <Row primary='A' linkTo='foo' />
-          <Row primary='B' linkTo='bar' />
-        </List>
-      </MemoryRouter>
-    )
-    assert.equal(wrapper.find('div.List').length, 1)
-    assert.equal(wrapper.find('a.List-row.List-row--islink').length, 2)
   })
 
   describe('Row', () => {
