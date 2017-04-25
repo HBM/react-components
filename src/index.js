@@ -18,7 +18,7 @@ export Shell from './js/shell/index.js'
 export Select from './js/select/index.js'
 export Slider from './js/slider/index.js'
 export Snackbar from './js/snackbar/index.js'
-export {Stepper, StepperStepFooter} from './js/stepper/index.js'
+// export {Stepper, StepperStepFooter} from './js/stepper/index.js'
 export Switch from './js/switch/index.js'
 export {
   Table,

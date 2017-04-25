@@ -23,7 +23,7 @@ import RadiobuttonRoute from './radiobuttonRoute'
 import SelectRoute from './selectRoute'
 import SliderRoute from './sliderRoute'
 import SnackbarRoute from './snackbarRoute'
-import StepperRoute from './stepperRoute'
+// import StepperRoute from './stepperRoute'
 import SwitchRoute from './switchRoute'
 import TableRoute from './tableRoute'
 import TabsRoute from './tabsRoute'
@@ -74,7 +74,6 @@ class App extends React.Component {
       <NavLink to='/select' onClick={this.onLinkChange} >Select</NavLink>,
       <NavLink to='/slider' onClick={this.onLinkChange} >Slider</NavLink>,
       <NavLink to='/snackbar' onClick={this.onLinkChange} >Snackbar</NavLink>,
-      <NavLink to='/stepper' onClick={this.onLinkChange} >Stepper</NavLink>,
       <NavLink to='/switch' onClick={this.onLinkChange} >Switch</NavLink>,
       <NavLink to='/table' onClick={this.onLinkChange} >Table</NavLink>,
       <NavLink to='/tabs'>Tabs</NavLink>,
@@ -87,7 +86,6 @@ class App extends React.Component {
           links={links}
           title={this.state.title}
           subtitle={this.state.subtitle}
-          onChange={this.onChange}
         >
           <Route exact path='/' component={HomeRoute} />
           <Route path='/bottomnavigation' component={BottomNavigationRoute} />
@@ -106,7 +104,6 @@ class App extends React.Component {
           <Route path='/select' component={SelectRoute} />
           <Route path='/slider' component={SliderRoute} />
           <Route path='/snackbar' component={SnackbarRoute} />
-          <Route path='/stepper' component={StepperRoute} />
           <Route path='/switch' component={SwitchRoute} />
           <Route path='/table' component={TableRoute} />
           <Route path='/tabs' component={TabsRoute} />
@@ -119,4 +116,3 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.getElementById('root'))
-            // <Match pattern='/tooltip' component={TooltipRoute} />
