@@ -47,7 +47,7 @@ class NavigationGroup extends React.Component {
           {this.props.title}
           <ChevronRight className='Navigation-group-icon' />
         </span>
-        <ul ref={node => { this.listNode = node }} style={{maxHeight}}>
+        <ul className='Navigation-group-links' ref={node => { this.listNode = node }} style={{maxHeight}}>
           {children}
         </ul>
       </li>
@@ -88,14 +88,14 @@ class Navigation extends React.Component {
 
   render () {
     return (
-      <div>
-        <nav className={this.state.visible ? 'is-visible' : ''}>
+      <div className='Navigation'>
+        <nav className={classnames('Navigation-sidebar', {'is-visible': this.state.visible})}>
           <div className='Navigation-logo'>
             <a href='#' onClick={this.close}>
               <Logo fill='#A7A5A5' />
             </a>
           </div>
-          <ul className='Navigation' onClick={this.close} >
+          <ul className='Navigation-links' onClick={this.close} >
             {this.props.children}
           </ul>
         </nav>

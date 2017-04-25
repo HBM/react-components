@@ -3,7 +3,7 @@
  * http://www.google.com/design/spec/layout/structure.html#structure-app-bar
  */
 
-nav {
+.Navigation-sidebar {
   border-right: 1px solid rgba(0, 0, 0, 0.14);
   position: fixed;
   top: 0;
@@ -27,7 +27,7 @@ nav {
   }
 }
 
-nav.is-visible {
+.Navigation-sidebar.is-visible {
   visibility: visible;
   transform: translateX(0);
 
@@ -48,7 +48,7 @@ nav.is-visible {
   }
 }
 
-.Navigation {
+.Navigation-links {
   list-style: none;
   margin: 0;
   padding: 12px 0 10px;
@@ -60,7 +60,7 @@ $nav-link-height: 44px;
   cursor: pointer;
 }
 
-.Navigation a,
+.Navigation-links a,
 .Navigation-group-title {
   display: flex;
   align-items: center;
@@ -82,7 +82,7 @@ $nav-link-height: 44px;
   transition: transform 0.15s ease-in-out;
 }
 
-.Navigation-group ul {
+.Navigation-group-links {
   transition: max-height 0.15s ease-in-out;
   overflow: hidden;
   padding-left: 22px;
@@ -92,7 +92,7 @@ $nav-link-height: 44px;
   color: rgba(0, 0, 0, 0.54);
 }
 
-.Navigation a.active {
+.Navigation-links a.active {
   color: $color-primary--dark;
 }
 
