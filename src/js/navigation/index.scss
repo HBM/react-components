@@ -56,6 +56,10 @@ nav.is-visible {
 
 $nav-link-height: 44px;
 
+.Navigation-group-title {
+  cursor: pointer;
+}
+
 .Navigation a,
 .Navigation-group-title {
   display: flex;
@@ -65,24 +69,21 @@ $nav-link-height: 44px;
   padding-left: 22px;
   padding-right: 16px;
   height: $nav-link-height;
-  line-height: $nav-link-height;
   font-size: 14px;
   color: rgba(0, 0, 0, 0.87);
-  width: 100%;
-  vertical-align: middle;
 }
 
 .Navigation-group--opened .Navigation-group-icon {
-  transform: rotate(90deg);
+  transform: rotate(-90deg);
 }
 
 .Navigation-group-icon {
-  transform: rotate(-90deg);
+  transform: rotate(90deg);
   transition: transform 0.15s ease-in-out;
 }
 
 .Navigation-group ul {
-  transition: max-height 0.3s ease;
+  transition: max-height 0.15s ease-in-out;
   overflow: hidden;
   padding-left: 22px;
 }

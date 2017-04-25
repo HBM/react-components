@@ -86,13 +86,6 @@ class Navigation extends React.Component {
     })
   }
 
-  onLinkClick = event => {
-    this.props.onChange && this.props.onChange(event.target)
-    setTimeout(() => {
-      this.close()
-    }, 200)
-  }
-
   render () {
     return (
       <div>
@@ -102,7 +95,7 @@ class Navigation extends React.Component {
               <Logo fill='#A7A5A5' />
             </a>
           </div>
-          <ul ref={node => { this.navnode = node }} className='Navigation' onClick={this.onLinkClick} >
+          <ul className='Navigation' onClick={this.close} >
             {this.props.children}
           </ul>
         </nav>
