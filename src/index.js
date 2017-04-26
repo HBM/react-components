@@ -1,6 +1,4 @@
 
-import './css/index.scss'
-
 export BottomNavigation from './js/bottomnavigation/index.js'
 export Button from './js/button/index.js'
 export {Card, Title, Actions, Text, Content} from './js/card/index.js'
