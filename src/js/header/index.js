@@ -1,7 +1,7 @@
 
 import React from 'react'
 import classnames from 'classnames'
-import Icon from '../icon'
+import {ChevronRight} from '../icon'
 
 export default class Header extends React.Component {
   state = {
@@ -41,7 +41,7 @@ export default class Header extends React.Component {
           {
             subtitle &&
             <span className='Header-subtitle'>
-              <Icon.ChevronRight className='Header-chevron' />
+              <ChevronRight className='Header-chevron' />
               {subtitle}
             </span>
           }

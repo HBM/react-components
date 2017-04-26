@@ -2,21 +2,21 @@
 
 import assert from 'assert'
 import React from 'react'
-import Icon from '../'
+import {AlarmOff, Button} from '../'
 import {shallow} from 'enzyme'
 
 describe('Icon', () => {
-  it('should render Icon.AlarmOff', () => {
-    const wrapper = shallow(<Icon.AlarmOff />)
+  it('should render AlarmOff', () => {
+    const wrapper = shallow(<AlarmOff />)
     assert(wrapper.find('svg'))
   })
 
   it('should render icon button', () => {
     const onClick = () => {}
     const wrapper = shallow(
-      <Icon.Button onClick={onClick}>
-        <Icon.Person />
-      </Icon.Button>
+      <Button onClick={onClick}>
+        <AlarmOff />
+      </Button>
     )
     assert(wrapper.find('.IconButton'))
   })
@@ -24,9 +24,9 @@ describe('Icon', () => {
   it('should bubble up button onclick event', (done) => {
     const onClick = () => done()
     const wrapper = shallow(
-      <Icon.Button onClick={onClick}>
-        <Icon.Person />
-      </Icon.Button>
+      <Button onClick={onClick}>
+        <AlarmOff />
+      </Button>
     )
     wrapper.find('.IconButton').simulate('click')
   })

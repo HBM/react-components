@@ -1,7 +1,7 @@
 
 import React from 'react'
 import classnames from 'classnames'
-import Icon from '../icon/'
+import {Button, Edit, ArrowUpward, ChevronLeft, ChevronRight} from '../icon/'
 import Select from '../select/'
 import keycode from 'keycode'
 
@@ -68,7 +68,7 @@ export const TableHeadRow = ({children, className, ...rest}) => (
 
 // Arrow component is not exported and used internally for sorted columns.
 const Arrow = ({sorted}) => (
-  <Icon.ArrowUpward
+  <ArrowUpward
     width={16}
     height={16}
     className={classnames('Table-head-row-cell-button-arrow', {
@@ -133,7 +133,7 @@ export class TableBodyCell extends React.Component {
         { textfield
           ? <div className='Table-body-row-cell-edit-wrapper' onClick={this.show}>
             {children}
-            <Icon.Edit
+            <Edit
               className='Table-edit-icon'
               width={18}
               height={18}
@@ -160,11 +160,11 @@ export const TableFooter = (props) => (
     <span className='Table-footer-xOfY'>
       {props.labelXOfY}
     </span>
-    <Icon.Button onClick={props.onPaginateLeft}>
-      <Icon.ChevronLeft fill='rgba(0, 0, 0, 0.54)' />
-    </Icon.Button>
-    <Icon.Button onClick={props.onPaginateRight}>
-      <Icon.ChevronRight fill='rgba(0, 0, 0, 0.54)' />
-    </Icon.Button>
+    <Button onClick={props.onPaginateLeft}>
+      <ChevronLeft fill='rgba(0, 0, 0, 0.54)' />
+    </Button>
+    <Button onClick={props.onPaginateRight}>
+      <ChevronRight fill='rgba(0, 0, 0, 0.54)' />
+    </Button>
   </div>
 )

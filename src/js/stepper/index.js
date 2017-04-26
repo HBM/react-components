@@ -1,7 +1,7 @@
 
 import React from 'react'
 import classnames from 'classnames'
-import Icon from '../icon/'
+import {ReportProblem} from '../icon/'
 import Button from '../button/'
 import {NavLink, Route, withRouter} from 'react-router-dom'
 
@@ -50,7 +50,7 @@ const StepLink = ({index, step, isActive}) => (
         {'is-active': isActive}
       )}>
         {step.error
-          ? Icon['ReportProblem']()
+          ? <ReportProblem />
           : index + 1
         }
       </div>

@@ -1,6 +1,6 @@
 
 import React from 'react'
-import Icon from '../icon'
+import {Cancel} from '../icon'
 import keycode from 'keycode'
 
 const focusLeftOrRight = (event, leftKeys, rightKeys) => {
@@ -179,7 +179,7 @@ const Element = ({
               onDelete(event.currentTarget.parentElement, index)
             }}
           >
-            <Icon.Cancel style={{width: 22, height: 22, display: 'block'}} />
+            <Cancel style={{width: 22, height: 22, display: 'block'}} />
           </button>
         )
         : null
