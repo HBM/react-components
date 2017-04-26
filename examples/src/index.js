@@ -57,7 +57,7 @@ class App extends React.Component {
 
   render () {
     const links = [
-      <NavLink to='/' onClick={this.onLinkChange} >Home</NavLink>,
+      <NavLink to='/' exact onClick={this.onLinkChange} >Home</NavLink>,
       <NavLink to='/bottomnavigation' onClick={this.onLinkChange} >Bottom Navigation</NavLink>,
       <NavLink to='/button' onClick={this.onLinkChange} >Button</NavLink>,
       <NavLink to='/card' onClick={this.onLinkChange} >Card</NavLink>,
