@@ -94,6 +94,7 @@
   "standard": {
     "parser": "babel-eslint",
     "ignore": [
+      "es/",
       "src/js/icon/index.js",
       "build/"
     ]
