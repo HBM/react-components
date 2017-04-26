@@ -15,7 +15,7 @@ node_js:
 script:
   - npm test
   # build lib dir to make examples work
-  - npm run lib
+  - npm run build
   # - npm run selenium
 
 after_success:
