@@ -51,35 +51,38 @@ class App extends React.Component {
     })
   }
 
-  test = () => {
-    console.log('test')
+  componentDidMount () {
+    this.setState({
+      subtitle: document.querySelector('a.active').text
+    })
   }
 
   render () {
     const links = [
-      <NavLink to='/' exact onClick={this.onLinkChange} >Home</NavLink>,
-      <NavLink to='/bottomnavigation' onClick={this.onLinkChange} >Bottom Navigation</NavLink>,
-      <NavLink to='/button' onClick={this.onLinkChange} >Button</NavLink>,
-      <NavLink to='/card' onClick={this.onLinkChange} >Card</NavLink>,
-      <NavLink to='/checkbox' onClick={this.onLinkChange} >Checkbox</NavLink>,
-      <NavLink to='/chip' onClick={this.onLinkChange} >Chip</NavLink>,
-      <NavLink to='/header' onClick={this.onLinkChange} >Header</NavLink>,
-      <NavLink to='/icon' onClick={this.onLinkChange} >Icon</NavLink>,
-      <NavLink to='/list' onClick={this.onLinkChange} >List</NavLink>,
-      <NavLink to='/menu' onClick={this.onLinkChange} >Menu</NavLink>,
-      <NavLink to='/modal' onClick={this.onLinkChange} >Modal</NavLink>,
-      <NavLink to='/navigation' onClick={this.onLinkChange} >Navigation</NavLink>,
-      <NavLink to='/progress' onClick={this.onLinkChange} >Progress</NavLink>,
-      <NavLink to='/radiobutton' onClick={this.onLinkChange} >Radiobutton</NavLink>,
-      <NavLink to='/select' onClick={this.onLinkChange} >Select</NavLink>,
-      <NavLink to='/slider' onClick={this.onLinkChange} >Slider</NavLink>,
-      <NavLink to='/snackbar' onClick={this.onLinkChange} >Snackbar</NavLink>,
-      <NavLink to='/switch' onClick={this.onLinkChange} >Switch</NavLink>,
-      <NavLink to='/table' onClick={this.onLinkChange} >Table</NavLink>,
+      <NavLink to='/' exact >Home</NavLink>,
+      <NavLink to='/bottomnavigation' >Bottom Navigation</NavLink>,
+      <NavLink to='/button' >Button</NavLink>,
+      <NavLink to='/card' >Card</NavLink>,
+      <NavLink to='/checkbox' >Checkbox</NavLink>,
+      <NavLink to='/chip' >Chip</NavLink>,
+      <NavLink to='/header' >Header</NavLink>,
+      <NavLink to='/icon' >Icon</NavLink>,
+      <NavLink to='/list' >List</NavLink>,
+      <NavLink to='/menu' >Menu</NavLink>,
+      <NavLink to='/modal' >Modal</NavLink>,
+      <NavLink to='/navigation' >Navigation</NavLink>,
+      <NavLink to='/progress' >Progress</NavLink>,
+      <NavLink to='/radiobutton' >Radiobutton</NavLink>,
+      <NavLink to='/select' >Select</NavLink>,
+      <NavLink to='/slider' >Slider</NavLink>,
+      <NavLink to='/snackbar' >Snackbar</NavLink>,
+      <NavLink to='/switch' >Switch</NavLink>,
+      <NavLink to='/table' >Table</NavLink>,
       <NavLink to='/tabs'>Tabs</NavLink>,
-      <NavLink to='/textfield' onClick={this.onLinkChange} >Textfield</NavLink>,
-      <NavLink to='/textarea' onClick={this.onLinkChange} >Textarea</NavLink>
-    ]
+      <NavLink to='/textfield' >Textfield</NavLink>,
+      <NavLink to='/textarea' >Textarea</NavLink>
+    ].map(link => React.cloneElement(link, {onClick: this.onLinkChange}))
+
     return (
       <HashRouter>
         <Shell
