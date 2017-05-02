@@ -3,15 +3,16 @@
  * Variables
  */
 
-$wrapper-medium: 750px;
-$wrapper-large: 970px;
-$wrapper-xlarge: 1170px;
+$wrapper-medium: 95%;
+$wrapper-large: 90%;
+$wrapper-xlarge: 85%;
 
 $tabs-transition-duration: 0.25s;
 $tabs-transition-delay: 0.075s;
 $tabs-transition-function: cubic-bezier(0.35, 0, 0.25, 1);
 
 $navigation-width: 240px;
+$header-height: 64px;
 
 /**
  * Scaffolding
