@@ -4,6 +4,73 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [12.0.0] - 2017-05-02
+
+### Added
+
+- package.module: ES6 module entry point resulting in _smaller builds_
+- package.style: Compiled CSS styles are available as `@import "md-components/style.css";` when using SASS or other tools.
+
+### Changed
+
+- Router-agnostic navigation components: No assumptions about the used router framework. Tested with [react-router](https://github.com/ReactTraining/react-router) and [next.js router](https://github.com/zeit/next.js#routing). Active links must provide an 'active' class.
+- navigation: Router-agnostic. The `onChange` prop has been removed (must be handled by respective router framework)
+- tabs: Router-agnostic
+- list row: Router-agnostic
+- (Icon) 3dRotation: renamed to _3dRotation
+
+Old Navigation
+```jsx
+<Navigation links={[
+  {text: 'Foo', link: '/foo'},
+  {text: 'Bar', link: '/bar'}
+]} />
+```
+
+New Navigation
+```jsx
+<Navigation>
+  <NavLink to='/foo'>Foo</NavLink>
+  <NavLink to='/bar'>Bar</NavLink>
+</Navigation>
+```
+
+Old Tabs
+```jsx
+<Tabs tabs={[
+  {href: '/foo', text: 'Foo'},
+  {href: '/bar', text: 'Bar'}
+}] >
+  ...
+</Tabs>
+```
+
+New Tabs
+```jsx
+<Tabs tabs={[
+  <NavLink to='/foo'>Foo</NavLink>,
+  <NavLink to='/bar'>Bar</NavLink>
+}] >
+  ...
+</Tabs>
+```
+
+Old List (with links)
+```jsx
+<List>
+  <Row primary='One' linkTo='/list/one' />
+  <Row primary='Two' linkTo='/list/two' />
+</List>
+```
+
+New List (with links)
+```jsx
+<List>
+  <Row primary={<NavLink to='/list/one'>One</NavLink>} />
+  <Row primary={<NavLink to='/list/Two'>Two</NavLink>} />
+</List>
+```
+
 ## [11.1.0] - 2017-04-10
 
 ### Added
