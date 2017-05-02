@@ -25,6 +25,18 @@
   }
 }
 
+@include xlarge {
+  .Navigation + .BottomNavigation {
+    padding-left: $navigation-width;
+    width: calc(100vw - #{$navigation-width});
+    box-sizing: content-box;
+
+    main {
+      padding-left: 0;
+    }
+  }
+}
+
 .BottomNavigation-menu {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 -3px 7px rgba(0, 0, 0, 0.08);
   border-top: 1px solid #f1f1f1;
@@ -55,6 +67,28 @@
     border-top: none;
     border-right: 1px solid #f1f1f1;
     box-shadow: none;
+  }
+}
+
+@include medium {
+  .BottomNavigation-menu {
+    position: fixed; // prevent overflow scroll bounce movement
+  }
+
+  .BottomNavigation-content {
+    padding-left: 72px;
+  }
+  
+  .Header + .BottomNavigation, .Header + .Navigation + .BottomNavigation {
+    .BottomNavigation-menu {
+	top: $header-height;
+    }
+  }
+}
+
+@include xlarge {
+  .BottomNavigation-menu {
+    left: $navigation-width;
   }
 }
 

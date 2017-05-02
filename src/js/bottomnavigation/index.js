@@ -15,11 +15,18 @@ export class BottomNavigation extends React.Component {
   }
 
   onScroll = () => {
-    const scrollTop = this.contentNode.scrollTop
+    const scrollTop = Math.max(this.contentNode.scrollTop, 0)
     const lastScrollTop = this.lastScrollTop
     this.lastScrollTop = scrollTop
     if (this.scrollTimer) {
       clearTimeout(this.scrollTimer)
+    }
+    // reached bottom?
+    if ((this.contentNode.scrollHeight - window.innerHeight) < scrollTop) {
+      this.setState({
+        scrolling: false
+      })
+      return
     }
     /* only hide menu on scroll down */
     if (lastScrollTop >= scrollTop) {

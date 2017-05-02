@@ -22,7 +22,7 @@
   padding-right: 16px;
 
   @include medium {
-    height: 64px;
+    height: $header-height;
   }
 
   @include xlarge {
