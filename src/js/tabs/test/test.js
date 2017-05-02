@@ -4,7 +4,7 @@ import assert from 'assert'
 import React from 'react'
 import Tabs from '../'
 import {mount} from 'enzyme'
-import {MemoryRouter} from 'react-router-dom'
+import {MemoryRouter, NavLink} from 'react-router-dom'
 
 /**
  * Create parent component and include button.
@@ -91,10 +91,13 @@ describe('Tabs', () => {
   it('should make the first tab active by default', () => {
     const wrapper = mount(
       <MemoryRouter initialEntries={['/one']}>
-        <Tabs tabs={[{href: '/one', text: 'one'}, {href: '/two', text: 'two'}]} />
+        <Tabs tabs={[
+          <NavLink to='/one' />,
+          <NavLink to='/two' />
+        ]} />
       </MemoryRouter>
     )
-    assert(wrapper.find('.Tabs-Item').at(0).hasClass('active'))
+    assert(wrapper.find('.Tabs-Item a').at(0).hasClass('active'))
   })
 
   xit('should render given tabs', () => {

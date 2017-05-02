@@ -3,7 +3,7 @@
  * http://www.google.com/design/spec/layout/structure.html#structure-app-bar
  */
 
-nav {
+.Navigation-sidebar {
   border-right: 1px solid rgba(0, 0, 0, 0.14);
   position: fixed;
   top: 0;
@@ -27,7 +27,7 @@ nav {
   }
 }
 
-nav.is-visible {
+.Navigation-sidebar.is-visible {
   visibility: visible;
   transform: translateX(0);
 
@@ -48,41 +48,52 @@ nav.is-visible {
   }
 }
 
-.Navigation {
+.Navigation-links {
   list-style: none;
   margin: 0;
   padding: 12px 0 10px;
 }
 
-.Navigation-link {
+$nav-link-height: 44px;
+
+.Navigation-group-title {
+  cursor: pointer;
+}
+
+.Navigation-links a,
+.Navigation-group-title {
   display: flex;
   align-items: center;
   justify-content: space-between;
   text-decoration: none;
   padding-left: 22px;
   padding-right: 16px;
-  color: #333;
+  height: $nav-link-height;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.87);
 }
 
-.Navigation-link.active {
-  color: $blue-dark;
+.Navigation-group--opened .Navigation-group-icon {
+  transform: rotate(-90deg);
 }
 
-.Navigation-link:focus {
-  background-color: #eee;
-  outline: 0;
-}
-
-.Navigation-chevron {
-  // point down \/
+.Navigation-group-icon {
   transform: rotate(90deg);
   transition: transform 0.15s ease-in-out;
 }
 
-.Navigation-chevron.is-open {
-  // point up /\
-  // transition from down, right, up. NOT down, LEFT, up
-  transform: rotate(-90deg);
+.Navigation-group-links {
+  transition: max-height 0.15s ease-in-out;
+  overflow: hidden;
+  padding-left: 22px;
+}
+
+.Navigation-group a {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.Navigation-links a.active {
+  color: $color-primary--dark;
 }
 
 .Navigation-hamburger {
@@ -118,25 +129,3 @@ nav.is-visible {
   visibility: visible;
 }
 
-// make children in submenu grey
-.Navigation-item .Navigation-item > .Navigation-link {
-  color: rgba(0, 0, 0, 0.54);
-}
-
-// add frame (border-top and border-bottom) to those navigation items that have sub menus
-.Navigation-item.has-children {
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-}
-
-// revert grey color for those children that have children themselves
-.Navigation-item.has-children > .Navigation-link {
-  color: #333;
-}
-
-/**
- * Nested navigation
- */
-.Navigation .Navigation {
-  padding: 0;
-}

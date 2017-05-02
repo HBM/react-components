@@ -1,6 +1,6 @@
 
 import React from 'react'
-import {HashRouter} from 'react-router-dom'
+import {HashRouter, NavLink} from 'react-router-dom'
 import {Navigation} from '../../lib'
 
 export default class NavigationRoute extends React.Component {
@@ -17,53 +17,18 @@ export default class NavigationRoute extends React.Component {
           </p>
           <HashRouter>
             <div style={{position: 'relative'}}>
-              <Navigation links={[
-                {text: 'Home', link: '/navigation'},
-                {text: 'About', link: '/navigation/about'},
-                {
-                  text: 'Cars',
-                  link: '/navigation/cars',
-                  links: [
-                    {
-                      text: 'Tesla',
-                      link: '/tesla',
-                      links: [
-                        {
-                          text: 'Model S',
-                          link: '/model-s',
-                          links: [
-                            {text: '60', link: '/60'},
-                            {text: '60D', link: '/60d'},
-                            {text: '75', link: '/75'},
-                            {text: '75D', link: '/75d'},
-                            {text: '90D', link: '/90d'},
-                            {text: 'P100D', link: '/p100d'}
-                          ]
-                        },
-                        {
-                          text: 'Model X',
-                          link: '/model-x',
-                          links: [
-                            {text: 'Ultra White Seats', link: '/white'},
-                            {text: 'Tan Leather Seats', link: '/tan'},
-                            {text: 'Black Leather Seats', link: '/black'}
-                          ]
-                        },
-                        {
-                          text: 'Model 3',
-                          link: '/model-3',
-                          links: [
-                            {text: 'Hardware', link: '/hardware'},
-                            {text: 'Safety', link: '/safety'},
-                            {text: 'Range', link: '/range'}
-                          ]
-                        }
-                      ]
-                    },
-                    {text: 'Audi', link: '/audi'}
-                  ]
-                }
-              ]} />
+              <Navigation>
+                <NavLink to='/navigation/Overview'>Overview</NavLink>
+                <NavLink to='/navigation/about'>About</NavLink>
+                <Navigation.Group title='Cars'>
+                  <NavLink to='/navigation/tesla'>Tesla</NavLink>
+                  <NavLink to='/navigation/audi'>Audi</NavLink>
+                </Navigation.Group>
+                <Navigation.Group title='Countries'>
+                  <NavLink to='/navigation/italy'>Italy</NavLink>
+                  <NavLink to='/navigation/france'>France</NavLink>
+                </Navigation.Group>
+              </Navigation>
             </div>
           </HashRouter>
         </section>

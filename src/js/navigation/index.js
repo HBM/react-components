@@ -7,7 +7,6 @@
  */
 
 import React from 'react'
-import {NavLink, withRouter} from 'react-router-dom'
 import classnames from 'classnames'
 import {Logo, Button, Menu, ChevronRight} from '../icon/'
 
@@ -17,84 +16,40 @@ import {Logo, Button, Menu, ChevronRight} from '../icon/'
 // we have to know the overall height to animate between height 0 and height 480.
 // unfortunately we cannot animate between height 0 and height: auto.
 // that's why we cannot set the height in css.
-const height = 48
+const height = 44
 
-/**
- * Navigation item
- */
-class Item extends React.Component {
+class NavigationGroup extends React.Component {
   state = {
     isOpen: false
   }
 
-  onClick = (item, subItem, e) => {
+  toggleOpen = event => {
+    event.stopPropagation()
     this.setState({
       isOpen: !this.state.isOpen
     })
-    if ((item.links && !subItem) || (subItem && subItem.links)) {
-      // simply open submenu without notifying parent or changing url
-      if (e) {
-        e.preventDefault()
-      }
-      return
-    }
-    this.props.onClick(item, subItem, e)
   }
 
-  /**
-   * Update parent component and open submenu on initial render
-   */
   componentDidMount () {
-    if (this.props.match.isExact) {
-      this.onClick(this.props.item, this.props.subItem)
-    }
+    const children = Array.prototype.slice.call(this.listNode.children)
+    this.setState({
+      isOpen: children.find(child => child.classList.contains('active'))
+    })
   }
 
   render () {
-    const {index, link, text, onClick, links, item, subItem, match} = this.props
     const {isOpen} = this.state
+    const {children} = this.props
+    const maxHeight = isOpen ? React.Children.count(children) * height : 0
     return (
-      <li className={classnames('Navigation-item', {
-        'has-children': links && links.length
-      })}>
-        <NavLink
-          activeClassName='active'
-          to={link}
-          className='Navigation-link'
-          title={text}
-          style={{height}}
-          onClick={(e) => this.onClick(item, subItem, e)}
-        >
-          <span>{text}</span>
-          {
-            links
-            ? <ChevronRight className={classnames('Navigation-chevron', {
-              'is-open': isOpen
-            })} />
-            : null
-          }
-        </NavLink>
-        {
-          links &&
-          <ul className='Navigation' style={{
-            display: isOpen ? null : 'none'
-          }}>
-            {links.map((subItem, j) =>
-              <Item
-                index={index}
-                subIndex={j}
-                key={j}
-                onClick={subItem.links ? this.onClick : onClick}
-                text={subItem.text}
-                link={`${link}${subItem.link}`}
-                links={subItem.links}
-                item={item}
-                subItem={subItem}
-                match={match}
-              />
-            )}
-          </ul>
-        }
+      <li className='Navigation-group'>
+        <span className={classnames('Navigation-group-title', {'Navigation-group--opened': isOpen})} onClick={this.toggleOpen} >
+          {this.props.title}
+          <ChevronRight className='Navigation-group-icon' />
+        </span>
+        <ul className='Navigation-group-links' ref={node => { this.listNode = node }} style={{maxHeight}}>
+          {children}
+        </ul>
       </li>
     )
   }
@@ -104,23 +59,8 @@ class Item extends React.Component {
  * Navigation
  */
 class Navigation extends React.Component {
-  static propTypes = {
-    links: React.PropTypes.array,
-    onChange: React.PropTypes.func
-  }
-
-  static defaultProps = {
-    links: [],
-    onChange: () => {}
-  }
-
   state = {
     visible: false
-  }
-
-  onClick = (item, subItem, event) => {
-    this.props.onChange(item, subItem)
-    this.close()
   }
 
   /**
@@ -148,26 +88,15 @@ class Navigation extends React.Component {
 
   render () {
     return (
-      <div>
-        <nav className={this.state.visible ? 'is-visible' : ''}>
+      <div className='Navigation'>
+        <nav className={classnames('Navigation-sidebar', {'is-visible': this.state.visible})}>
           <div className='Navigation-logo'>
             <a href='#' onClick={this.close}>
               <Logo fill='#A7A5A5' />
             </a>
           </div>
-          <ul className='Navigation'>
-            {this.props.links.map((item, index) =>
-              <Item
-                index={index}
-                key={index}
-                onClick={this.onClick}
-                text={item.text}
-                link={item.link}
-                links={item.links}
-                item={item}
-                match={this.props.match}
-              />
-            )}
+          <ul className='Navigation-links' onClick={this.close} >
+            {this.props.children}
           </ul>
         </nav>
         <div className='Navigation-hamburger'>
@@ -187,4 +116,6 @@ class Navigation extends React.Component {
   }
 }
 
-export default withRouter(Navigation)
+Navigation.Group = NavigationGroup
+
+export default Navigation

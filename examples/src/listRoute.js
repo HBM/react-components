@@ -1,6 +1,6 @@
 import React from 'react'
 import { List, Row, Icon } from '../../lib'
-import {HashRouter, Route} from 'react-router-dom'
+import {HashRouter, Route, NavLink} from 'react-router-dom'
 
 const longText = 'This is sometimes a very lengthy text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ita graviter et severe voluptatem secrevit a bono. Aliter homines, aliter philosophos loqui putas oportere? Nunc haec primum fortasse audientis servire debemus'
 
@@ -220,18 +220,19 @@ export default class ListRoute extends React.Component {
           </List>
         </section>
         <section>
-          <h2>Link list (linkTo defined)</h2>
+          <h2>Link list</h2>
           <HashRouter>
             <div>
               <List>
-                <Row primary='One' linkTo='/list/one' />
-                <Row primary='Two' linkTo='/list/two' />
+                <Row primary={<NavLink to='/list/one'>One</NavLink>} />
+                <Row primary={<NavLink to='/list/Two'>Two</NavLink>} />
+                <Row primary={<NavLink to='/list'>Clear</NavLink>} />
               </List>
-              <Route exact pattern='/list' render={() => (
+              <Route exact path='/list' render={() => (
                 <span>Please select an item from the list.</span>
               )} />
-              <Route pattern='/list/one' component={One} />
-              <Route pattern='/list/two' component={Two} />
+              <Route path='/list/one' component={One} />
+              <Route path='/list/two' component={Two} />
             </div>
           </HashRouter>
         </section>

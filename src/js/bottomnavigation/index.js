@@ -1,8 +1,15 @@
 import React from 'react'
-import {NavLink, Route, withRouter} from 'react-router-dom'
 import classNames from 'classnames'
 
-class BottomNavigation extends React.Component {
+export class BottomNavigation extends React.Component {
+  static propTypes = {
+    scrollDuration: React.PropTypes.number
+  }
+
+  static defaultProps = {
+    scrollDuration: 800
+  }
+
   state = {
     scrolling: false
   }
@@ -30,7 +37,7 @@ class BottomNavigation extends React.Component {
       this.setState({
         scrolling: false
       })
-    }, 800)
+    }, this.props.scrollDuration)
   }
 
   componentWillMount () {
@@ -47,7 +54,7 @@ class BottomNavigation extends React.Component {
     if (!this.contentNode) {
       return
     }
-    const scrollDuration = 800
+    const scrollDuration = this.props.scrollDuration
     const cosParameter = this.contentNode.scrollTop / 2
     let scrollCount = 0
     const _window = this.props.window || window
@@ -73,6 +80,15 @@ class BottomNavigation extends React.Component {
     }
   }
 
+  scrollTopOrResetTop = event => {
+    const linkNode = event.currentTarget.firstElementChild
+    if (linkNode.classList.contains('active')) {
+      this.scrollTop()
+    } else {
+      this.resetScrollTop()
+    }
+  }
+
   updateContentNode = content => {
     if (!content) {
       return
@@ -82,30 +98,29 @@ class BottomNavigation extends React.Component {
     this.contentNode.scrollTop = scrollTop
   }
 
-  renderLink (link, key) {
-    return (
-      <Route path={link.link} key={key} children={({match}) => (
-        <NavLink to={link.link} className='BottomNavigation-menu-item' activeClassName='active' onClick={match ? this.scrollTop : this.resetScrollTop}>
-          {link.icon}
-          {(this.props.links.length < 4 || match) && <div className='BottomNavigation-menu-item-text'>{link.text}</div>}
-        </NavLink>
-      )} />
-    )
-  }
-
   render () {
     const {children, links, inverted} = this.props
+    const menuClassName = classNames('BottomNavigation-menu', {
+      'BottomNavigation-menu--inverted': inverted,
+      'BottomNavigation-menu--narrow': links.length > 3
+    })
     return (
       <div onScroll={this.onScroll} className={classNames('BottomNavigation', {scrolling: this.state.scrolling})}>
         <div ref={this.updateContentNode} className='BottomNavigation-content'>
           {children}
         </div>
-        <div className={classNames('BottomNavigation-menu', {'BottomNavigation-menu--inverted': inverted})}>
-          {links.map((link, index) => this.renderLink(link, index))}
+        <div className={menuClassName} >
+          {links.map((link, index) => {
+            return (
+              <div key={index} className='BottomNavigation-menu-item' onClick={this.scrollTopOrResetTop} >
+                {link}
+              </div>
+            )
+          })}
         </div>
       </div>
     )
   }
 }
 
-export default withRouter(BottomNavigation)
+export const BottomNavigationText = ({children}) => <div className='BottomNavigation-menu-item-text'>{children}</div>

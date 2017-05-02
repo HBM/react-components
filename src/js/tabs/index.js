@@ -1,6 +1,5 @@
 
 import React from 'react'
-import {NavLink, withRouter} from 'react-router-dom'
 
 class Tabs extends React.Component {
   static propTypes = {
@@ -21,7 +20,7 @@ class Tabs extends React.Component {
    * Handle click on tab
    */
   onClick = (index) => {
-    var direction = index > this.state.index ? 'right' : 'left'
+    const direction = index > this.state.index ? 'right' : 'left'
     this.setState({
       index,
       direction
@@ -40,14 +39,10 @@ class Tabs extends React.Component {
   }
 
   setInkBarPosition = (props) => {
-    var activeRouteIndex = -1
-    props.tabs.forEach((tab, index) => {
-      if (props.location.pathname === tab.href) {
-        activeRouteIndex = index
-      }
-    })
+    const tabs = Array.prototype.slice.call(this.tabRoot.children)
+    const index = tabs.findIndex(tab => tab.firstElementChild.classList.contains('active'))
     this.setState({
-      index: activeRouteIndex
+      index
     })
   }
 
@@ -55,22 +50,16 @@ class Tabs extends React.Component {
    * Render component
    */
   render () {
-    var width = 100 / this.props.tabs.length
-    var left = this.state.index * width
-    var right = (this.props.tabs.length - this.state.index - 1) * width
+    const width = 100 / this.props.tabs.length
+    const left = this.state.index * width
+    const right = (this.props.tabs.length - this.state.index - 1) * width
 
     return (
-      <div className='Tabs'>
+      <div ref={node => { this.tabRoot = node }} className='Tabs'>
         {this.props.tabs.map((tab, index) =>
-          <NavLink
-            key={index}
-            activeClassName='active'
-            to={tab.href}
-            className='Tabs-Item'
-            onClick={() => this.onClick(index)}
-          >
-            {tab.text}
-          </NavLink>
+          <div key={index} onClick={() => this.onClick(index)} className='Tabs-Item'>
+            {tab}
+          </div>
         )}
         {this.state.index === -1
           ? null
@@ -87,4 +76,4 @@ class Tabs extends React.Component {
   }
 }
 
-export default withRouter(Tabs)
+export default Tabs

@@ -2,8 +2,8 @@
 
 import assert from 'assert'
 import React from 'react'
-import {Route, MemoryRouter} from 'react-router-dom'
-import BottomNavigation from '../'
+import {Route, MemoryRouter, NavLink} from 'react-router-dom'
+import {BottomNavigation, BottomNavigationText} from '../'
 import {mount} from 'enzyme'
 
 const _window = {
@@ -14,6 +14,18 @@ const _window = {
     }, 100)
   }
 }
+
+describe('BottomNavigationText', () => {
+  it('should render the text', () => {
+    const wrapper = mount(<BottomNavigationText>foo</BottomNavigationText>)
+    assert.equal(wrapper.text(), 'foo')
+  })
+
+  it('should have the .BottomNavigation-menu-item-text', () => {
+    const wrapper = mount(<BottomNavigationText>foo</BottomNavigationText>)
+    assert(wrapper.hasClass('BottomNavigation-menu-item-text'))
+  })
+})
 
 describe('BottomNavigation', () => {
   it('should render', () => {
@@ -30,8 +42,8 @@ describe('BottomNavigation', () => {
       <MemoryRouter initialEntries={['/one']}>
         <BottomNavigation
           links={[
-            {link: '/one', text: 'one'},
-            {link: '/two', text: 'two'}
+            <NavLink to='/one' />,
+            <NavLink to='/two' />
           ]}
         >
           <Route path='/one' component={() => <h1>One</h1>} />
@@ -39,17 +51,18 @@ describe('BottomNavigation', () => {
         </BottomNavigation>
       </MemoryRouter>
     )
-    assert(wrapper.find('.BottomNavigation-menu-item').at(0).hasClass('active'))
+    assert(wrapper.find('.BottomNavigation-menu-item a').at(0).hasClass('active'))
   })
 
   it('should scroll top when clicking active item', function (done) {
-    this.slow(1300)
+    this.slow(200)
     const wrapper = mount(
       <MemoryRouter initialEntries={['/one']}>
         <BottomNavigation
+          scrollDuration={30}
           links={[
-            {link: '/one', text: 'one'},
-            {link: '/two', text: 'two'}
+            <NavLink to='/one' />,
+            <NavLink to='/two' />
           ]}
           window={_window}
         >
@@ -64,14 +77,19 @@ describe('BottomNavigation', () => {
     setTimeout(() => {
       assert.equal(node.scrollTop, 0)
       done()
-    }, 1000)
+    }, 100)
   })
 
   it('should show menu on scroll and hide after timeout', function (done) {
+    this.slow(200)
     const wrapper = mount(
       <MemoryRouter initialEntries={['/one']}>
         <BottomNavigation
-          links={[{link: '/one', text: 'one'}, {link: '/two', text: 'two'}]}
+          scrollDuration={30}
+          links={[
+            <NavLink to='/one' />,
+            <NavLink to='/two' />
+          ]}
           window={_window}
         >
           <Route path='/one' component={() => <h1>One</h1>} />
@@ -89,14 +107,19 @@ describe('BottomNavigation', () => {
     setTimeout(() => {
       assert(!wrapper.find('.BottomNavigation').at(0).hasClass('scrolling'))
       done()
-    }, 1000)
+    }, 50)
   })
 
   it('should show menu on scroll and hide after timeout', function (done) {
+    this.slow(200)
     const wrapper = mount(
       <MemoryRouter initialEntries={['/one']}>
         <BottomNavigation
-          links={[{link: '/one', text: 'one'}, {link: '/two', text: 'two'}]}
+          scrollDuration={30}
+          links={[
+            <NavLink to='/one' />,
+            <NavLink to='/two' />
+          ]}
           window={_window}
         >
           <Route path='/one' component={() => <h1>One</h1>} />
@@ -115,14 +138,17 @@ describe('BottomNavigation', () => {
     setTimeout(() => {
       assert(!wrapper.find('.BottomNavigation').at(0).hasClass('scrolling'))
       done()
-    }, 100)
+    }, 50)
   })
 
   it('should clear scroll timer on unmount', function () {
     const wrapper = mount(
       <MemoryRouter initialEntries={['/one']}>
         <BottomNavigation
-          links={[{link: '/one', text: 'one'}, {link: '/two', text: 'two'}]}
+          links={[
+            <NavLink to='/one' />,
+            <NavLink to='/two' />
+          ]}
           window={_window}
         >
           <Route path='/one' component={() => <h1>One</h1>} />
