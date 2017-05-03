@@ -45,6 +45,14 @@ ReactDOM.render(<App />, document.getElementById('root'))
 @import "../node_modules/md-components/css/base";
 ```
 
+## Fonts
+
+The 'Roboto' font must be provided separetely and is not part of the package, e.g.:
+
+```css
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700');
+```
+
 ## Custom colors / Theming
 
 md-components uses six colors:
