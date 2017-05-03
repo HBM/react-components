@@ -7,6 +7,7 @@ import {BottomNavigation, BottomNavigationText} from '../'
 import {mount} from 'enzyme'
 
 const _window = {
+  innerHeight: -2000, // this is a dirty trick that's required because faking scrollHeight is difficult
   performance: {now: () => Date.now()},
   requestAnimationFrame: (f) => {
     setTimeout(() => {
