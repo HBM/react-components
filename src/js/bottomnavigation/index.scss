@@ -78,10 +78,11 @@
   .BottomNavigation-content {
     padding-left: 72px;
   }
-  
-  .Header + .BottomNavigation, .Header + .Navigation + .BottomNavigation {
+
+  .Header + .BottomNavigation,
+  .Header + .Navigation + .BottomNavigation {
     .BottomNavigation-menu {
-	top: $header-height;
+      top: $header-height;
     }
   }
 }
