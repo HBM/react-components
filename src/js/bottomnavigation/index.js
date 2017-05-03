@@ -22,7 +22,8 @@ export class BottomNavigation extends React.Component {
       clearTimeout(this.scrollTimer)
     }
     // reached bottom?
-    if ((this.contentNode.scrollHeight - window.innerHeight) < scrollTop) {
+    const _window = this.props.window || window
+    if ((this.contentNode.scrollHeight - _window.innerHeight) < scrollTop) {
       this.setState({
         scrolling: false
       })
