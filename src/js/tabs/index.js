@@ -16,17 +16,6 @@ class Tabs extends React.Component {
     direction: ''
   }
 
-  /**
-   * Handle click on tab
-   */
-  onClick = (index) => {
-    const direction = index > this.state.index ? 'right' : 'left'
-    this.setState({
-      index,
-      direction
-    })
-  }
-
   componentDidMount () {
     this.setInkBarPosition(this.props)
   }
@@ -39,10 +28,11 @@ class Tabs extends React.Component {
   }
 
   setInkBarPosition = (props) => {
-    const tabs = Array.prototype.slice.call(this.tabRoot.children)
-    const index = tabs.findIndex(tab => tab.firstElementChild.classList.contains('active'))
+    const index = props.tabs.findIndex(tab => window.location.href.includes(tab.props.to))
+    const direction = index > this.state.index ? 'right' : 'left'
     this.setState({
-      index
+      index,
+      direction
     })
   }
 
@@ -55,9 +45,9 @@ class Tabs extends React.Component {
     const right = (this.props.tabs.length - this.state.index - 1) * width
 
     return (
-      <div ref={node => { this.tabRoot = node }} className='Tabs'>
+      <div className='Tabs'>
         {this.props.tabs.map((tab, index) =>
-          <div key={index} onClick={() => this.onClick(index)} className='Tabs-Item'>
+          <div key={index} className='Tabs-Item'>
             {tab}
           </div>
         )}
