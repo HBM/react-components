@@ -261,14 +261,14 @@ class List extends React.Component {
       >
         {options.map((item, i) =>
           <li key={i} className='Select-listItem'>
-            <a href
+            <div
               data-id={i}
               className='Select-listItemLink'
               onClick={this.onClick}
               style={{padding: `0 ${padding}px`}}
             >
               {item.label}
-            </a>
+            </div>
           </li>
         )}
       </ul>
