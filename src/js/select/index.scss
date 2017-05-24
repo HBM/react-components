@@ -1,11 +1,9 @@
-
 .Select {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-  font-size: 16px;
 
   /**
    * align text horizontally with textfields / text inputs
@@ -23,7 +21,7 @@
 /**
  * Select-body is of type <button />
  */
-.Select-body {
+button.Select-body {
   background: none;
   margin: 0;
   padding: 0;
@@ -32,6 +30,7 @@
   padding-bottom: 7px;
   text-align: left;
   outline: 0;
+  font-size: 16px;
 }
 
 // https://material.google.com/style/color.html#color-text-background-colors
@@ -67,6 +66,7 @@
   border-radius: 2px;
   box-shadow: 0 2px 40px rgba(0, 0, 0, 0.4);
   overflow-y: auto;
+  font-size: 16px;
 
   /**
    * max-height is equal to 5 elements + margin top and margin bottom
