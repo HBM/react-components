@@ -3,64 +3,57 @@ import React from 'react'
 
 class Tabs extends React.Component {
   static propTypes = {
-    tabs: React.PropTypes.array,
-    location: React.PropTypes.object
+    tabs: React.PropTypes.array
   }
 
   static defaultProps = {
     tabs: []
   }
 
-  state = {
-    index: -1,
-    direction: ''
-  }
-
   componentDidMount () {
-    this.setInkBarPosition(this.props)
+    this.setInkBarPosition()
   }
 
-  /**
-   * Make sure ink bar is removed when no active tab is found anymore.
-   */
-  componentWillReceiveProps (nextProps) {
-    this.setInkBarPosition(nextProps)
+  componentDidUpdate () {
+    // move inkbar AFTER nav/link children have been updated and reflect
+    // "activeClassName" (active). This cannot be done before.
+    this.setInkBarPosition()
   }
 
-  setInkBarPosition = (props) => {
-    const index = props.tabs.findIndex(tab => window.location.href.includes(tab.props.to))
-    const direction = index > this.state.index ? 'right' : 'left'
-    this.setState({
-      index,
-      direction
-    })
+  setInkBarPosition = () => {
+    const index = Array.prototype.slice.call(this.tabRoot.children)
+      .filter(element => !element.classList.contains('Tabs-InkBar'))
+      .findIndex(tab => tab.firstElementChild.classList.contains('active'))
+    this.inkbarNode.classList.remove('transition-right', 'transition-left')
+    if (index === -1) {
+      this.inkbarNode.style.display = 'none'
+    } else {
+      this.inkbarNode.style.display = 'initial'
+      const width = 100 / this.props.tabs.length
+      const prevIndex = this.inkbarNode.style.left ? Math.round(parseFloat(this.inkbarNode.style.left) / width) : -1
+      const direction = index > prevIndex ? 'right' : 'left'
+      const left = index * width
+      const right = (this.props.tabs.length - index - 1) * width
+      this.inkbarNode.style.left = `${left}%`
+      this.inkbarNode.style.right = `${right}%`
+      if (prevIndex !== -1) {
+        this.inkbarNode.classList.add(`transition-${direction}`)
+      }
+    }
   }
 
-  /**
-   * Render component
-   */
   render () {
-    const width = 100 / this.props.tabs.length
-    const left = this.state.index * width
-    const right = (this.props.tabs.length - this.state.index - 1) * width
-
     return (
-      <div className='Tabs'>
+      <div className='Tabs' ref={node => { this.tabRoot = node }}>
         {this.props.tabs.map((tab, index) =>
           <div key={index} className='Tabs-Item'>
             {tab}
           </div>
         )}
-        {this.state.index === -1
-          ? null
-          : <div
-            className={`Tabs-InkBar transition-${this.state.direction}`}
-            style={{
-              left: `${left}%`,
-              right: `${right}%`
-            }}
-          />
-        }
+        <div
+          ref={node => { this.inkbarNode = node }}
+          className='Tabs-InkBar'
+        />
       </div>
     )
   }
