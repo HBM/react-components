@@ -2,7 +2,6 @@
 
 import './index.css'
 import '../node_modules/md-components/style.css'
-import '../../style.css'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
