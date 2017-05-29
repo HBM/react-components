@@ -1,6 +1,6 @@
 
 import React from 'react'
-import {Header, Icon} from '../../lib'
+import {Header, Icon} from 'md-components'
 
 export default class HeaderRoute extends React.Component {
   render () {

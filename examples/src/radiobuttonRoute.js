@@ -1,6 +1,6 @@
 
 import React from 'react'
-import {Radiobutton} from '../../lib'
+import {Radiobutton} from 'md-components'
 
 export default class RadiobuttonRoute extends React.Component {
   state = {

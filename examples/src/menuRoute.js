@@ -1,6 +1,6 @@
 
 import React from 'react'
-import {Menu, Divider, Icon} from '../../lib'
+import {Menu, Divider, Icon} from 'md-components'
 
 export default class MenuRoute extends React.Component {
   state = {

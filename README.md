@@ -124,7 +124,11 @@ $color-accent-text--light: Black;
 
 ## Development
 
-The following tasks are available: 
+You have to [link](https://docs.npmjs.com/cli/link) `md-components` into the `./examples` folder. You cannot use a relative path from `./examples` to the `./src` since `create-react-app` will throw an error.
+
+> Module not found: You attempted to import ... which falls outside of the project src/ directory. Relative imports outside of src/ are not supported. You can either move it inside src/, or add a symlink to it from project's node_modules/.
+
+The following tasks are available:
 - `test` - Run tests & coverage report `npm run test`
 - `lib` - Build lib `npm run lib`
 - `lib:watch`- Watch `npm lib:watch`

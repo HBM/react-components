@@ -1,12 +1,13 @@
 /* global ga */
 
 import './index.css'
+import '../node_modules/md-components/style.css'
 import '../../style.css'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {Route, NavLink, HashRouter} from 'react-router-dom'
-import {Shell} from '../../lib'
+import {Shell} from 'md-components'
 import BottomNavigationRoute from './bottomnavigationRoute'
 import ButtonRoute from './buttonRoute'
 import CardRoute from './cardRoute'

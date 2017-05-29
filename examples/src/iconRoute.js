@@ -1,5 +1,5 @@
 import React from 'react'
-import {Icon} from '../../lib'
+import {Icon} from 'md-components'
 
 export default class IconRoute extends React.Component {
   render () {

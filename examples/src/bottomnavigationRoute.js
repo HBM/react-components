@@ -1,7 +1,7 @@
 
 import React from 'react'
 import {HashRouter, Route, NavLink} from 'react-router-dom'
-import {BottomNavigation, BottomNavigationText, Icon, List, Row} from '../../lib'
+import {BottomNavigation, BottomNavigationText, Icon, List, Row} from 'md-components'
 
 let links = [
   <NavLink to='/home'>

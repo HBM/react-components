@@ -1,5 +1,5 @@
 import React from 'react'
-import { List, Row, Icon } from '../../lib'
+import { List, Row, Icon } from 'md-components'
 import {HashRouter, Route, NavLink} from 'react-router-dom'
 
 const longText = 'This is sometimes a very lengthy text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ita graviter et severe voluptatem secrevit a bono. Aliter homines, aliter philosophos loqui putas oportere? Nunc haec primum fortasse audientis servire debemus'

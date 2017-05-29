@@ -1,6 +1,6 @@
 
 import React from 'react'
-import {Switch} from '../../lib'
+import {Switch} from 'md-components'
 
 export default class SwitchRoute extends React.Component {
   state = {

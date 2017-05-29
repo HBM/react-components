@@ -11,7 +11,7 @@ import {
   TableFooter,
   Select,
   Textfield
-} from '../../lib'
+} from 'md-components'
 
 export default class TableRoute extends React.Component {
   state = {

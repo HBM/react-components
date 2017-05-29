@@ -57,7 +57,7 @@
     "react-addons-test-utils": "^15.3.0",
     "react-dom": "^15.4.0",
     "react-router-dom": "^4.0.0",
-    "react-scripts": "^0.9.5",
+    "react-scripts": "^1.0.7",
     "react-transform-hmr": "^1.0.4",
     "rimraf": "^2.5.4",
     "sass-loader": "^6.0.3",
@@ -68,8 +68,7 @@
     "stylelint": "^7.3.1",
     "stylelint-config-standard": "^16.0.0",
     "tarball-extract": "0.0.3",
-    "uglifyjs": "^2.4.10",
-    "webpack": "^1.14.0"
+    "uglifyjs": "^2.4.10"
   },
   "nyc": {
     "reporter": [

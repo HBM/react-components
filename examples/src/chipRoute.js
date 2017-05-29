@@ -1,7 +1,7 @@
 
 import React from 'react'
 import classnames from 'classnames'
-import {Chip} from '../../lib'
+import {Chip} from 'md-components'
 
 export default class ChipRoute extends React.Component {
   state = {

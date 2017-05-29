@@ -1,6 +1,6 @@
 
 import React from 'react'
-import {Snackbar, Button} from '../../lib'
+import {Snackbar, Button} from 'md-components'
 
 export default class SnackbarRoute extends React.Component {
   state = {

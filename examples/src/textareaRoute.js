@@ -1,5 +1,5 @@
 import React from 'react'
-import {Textarea, Icon} from '../../lib'
+import {Textarea, Icon} from 'md-components'
 
 export default class TextfieldRoute extends React.Component {
   state = {

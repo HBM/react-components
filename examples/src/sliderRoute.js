@@ -1,6 +1,6 @@
 
 import React from 'react'
-import {Slider} from '../../lib'
+import {Slider} from 'md-components'
 
 export default class SliderRoute extends React.Component {
   state = {

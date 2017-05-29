@@ -1,6 +1,6 @@
 
 import React from 'react'
-import {Select} from '../../lib'
+import {Select} from 'md-components'
 
 export default class SelectRoute extends React.Component {
   state = {

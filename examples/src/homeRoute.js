@@ -1,6 +1,6 @@
 
 import React from 'react'
-import {Icon} from '../../lib'
+import {Icon} from 'md-components'
 
 export default class HomeRoute extends React.Component {
   render () {
@@ -19,6 +19,7 @@ export default class HomeRoute extends React.Component {
           </div>
           <div className='Hero-links'>
             <iframe
+              title='GitHub buttons'
               src='https://ghbtns.com/github-btn.html?user=hbm&repo=md-components&type=star&count=true&size=large'
               frameBorder='0'
               scrolling='0'

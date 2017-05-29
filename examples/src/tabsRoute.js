@@ -1,7 +1,7 @@
 
 import React from 'react'
 import {HashRouter, Route, NavLink} from 'react-router-dom'
-import {Tabs} from '../../lib'
+import {Tabs} from 'md-components'
 
 class Germany extends React.Component {
   render () {

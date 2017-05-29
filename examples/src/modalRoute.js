@@ -1,6 +1,6 @@
 
 import React from 'react'
-import {Modal, Button} from '../../lib'
+import {Modal, Button} from 'md-components'
 
 export default class ModalRoute extends React.Component {
   state = {

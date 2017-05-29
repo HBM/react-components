@@ -1,6 +1,6 @@
 
 import React from 'react'
-import {Button} from '../../lib'
+import {Button} from 'md-components'
 
 export default class ButtonRoute extends React.Component {
   render () {

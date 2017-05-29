@@ -1,6 +1,6 @@
 
 import React from 'react'
-import {Button, Card, Title, Text, Actions} from '../../lib'
+import {Button, Card, Title, Text, Actions} from 'md-components'
 
 export default class CardRoute extends React.Component {
   render () {

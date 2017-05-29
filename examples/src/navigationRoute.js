@@ -1,7 +1,7 @@
 
 import React from 'react'
 import {HashRouter, NavLink} from 'react-router-dom'
-import {Navigation} from '../../lib'
+import {Navigation} from 'md-components'
 
 export default class NavigationRoute extends React.Component {
   render () {

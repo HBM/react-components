@@ -1,6 +1,6 @@
 
 import React from 'react'
-import {Checkbox} from '../../lib'
+import {Checkbox} from 'md-components'
 
 export default class CheckboxRoute extends React.Component {
   state = {

@@ -1,6 +1,6 @@
 
 import React from 'react'
-import {Progress} from '../../lib'
+import {Progress} from 'md-components'
 
 export default class ProgressRoute extends React.Component {
   state = {
