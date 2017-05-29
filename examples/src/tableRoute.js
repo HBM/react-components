@@ -118,7 +118,7 @@ export default class TableRoute extends React.Component {
     this.setState({
       types: {
         ...this.state.types,
-        [key]: item.value
+        [key]: item.target.value
       }
     })
   }
