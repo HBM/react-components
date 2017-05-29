@@ -83,7 +83,7 @@ describe('Select', () => {
     wrapper.find('.Select-body').simulate('click')
     assert.equal(wrapper.find('.Select-list').length, 1)
     // click on list item
-    wrapper.find('.Select-listItemLink').at(1).simulate('click')
+    wrapper.find('.Select-listItem').at(1).simulate('click')
     var event = new window.MouseEvent('click')
     document.dispatchEvent(event)
     // make sure list is closed
@@ -109,10 +109,7 @@ describe('Select', () => {
     )
     // open list
     wrapper.find('.Select-body').simulate('click')
-    // single list item has height of 48px
-    // whole list has a padding top and bottom of 12px
-    // check the position for the second element => 48px + 12px = 60px
-    assert.equal(wrapper.find('.Select-list').node.style.top, '-60px')
+    assert.equal(wrapper.find('.Select-list').node.style.top, '-58px')
   })
 
   it('should render a list item always in the middle of the list when list is too large', () => {
@@ -135,12 +132,7 @@ describe('Select', () => {
     )
     // open list
     wrapper.find('.Select-body').simulate('click')
-    // single list item = 48px
-    // padding top = 8px
-    // sixth list item = 5 * 48px + 8px = 248px
-    // but!!!! list should not move all the way up -> keep list item centered and scroll
-    // element is on 'third' position -> 2 * 48px + 12px = 108px
-    assert.equal(wrapper.find('.Select-list').node.style.top, '-108px')
+    assert.equal(wrapper.find('.Select-list').node.style.top, '-106px')
   })
 
   it('should not show the second last item in the center of the list', () => {
@@ -162,7 +154,7 @@ describe('Select', () => {
       />
     )
     wrapper.find('.Select-body').simulate('click')
-    assert.equal(wrapper.find('.Select-list').node.style.top, '-156px')
+    assert.equal(wrapper.find('.Select-list').node.style.top, '-154px')
   })
 
   it('should show the last item at the end of the list', () => {
@@ -184,7 +176,7 @@ describe('Select', () => {
       />
     )
     wrapper.find('.Select-body').simulate('click')
-    assert.equal(wrapper.find('.Select-list').node.style.top, '-204px')
+    assert.equal(wrapper.find('.Select-list').node.style.top, '-202px')
   })
 
   it('should change its position top when inside a table', () => {
@@ -214,7 +206,7 @@ describe('Select', () => {
       </table>
     )
     wrapper.find('.Select-body').simulate('click')
-    assert.equal(wrapper.find('.Select-list').node.style.top, '-218px')
+    assert.equal(wrapper.find('.Select-list').node.style.top, '-209px')
   })
 
   it('specifies a name attribute for the button', () => {

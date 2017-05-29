@@ -204,7 +204,7 @@ describe('Table', () => {
     // open list
     wrapper.find('.Select-body').simulate('click')
     // click on list item to trigger change event
-    wrapper.find('.Select-listItemLink').at(1).simulate('click')
+    wrapper.find('.Select-listItem').at(1).simulate('click')
   })
 
   it('should show an edit icon when set to editable', () => {

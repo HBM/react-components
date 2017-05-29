@@ -2,7 +2,7 @@
 import React from 'react'
 import {Motion, spring} from 'react-motion'
 
-const PADDING_TOP_WITH_LABEL = -12
+const PADDING_TOP_WITH_LABEL = -14
 const PADDING_LEFT = 16
 const LIST_ITEM_HEIGHT = 48
 
@@ -201,14 +201,14 @@ class List extends React.Component {
    */
   render () {
     // CSS space
-    let PADDING_TOP = 12
+    let PADDING_TOP = 10
     if (this.props.isInsideTable) {
       // when select component is inside a table cell we have to remove
       // border bottom, padding top and padding bottom.
       // this changes the location of the text.
       // that leads to the list menu / overlay no being directly on top of the text.
       // we therefore have to modify the padding top to fix the overlay position.
-      PADDING_TOP = 26
+      PADDING_TOP = 17
     }
 
     const {options, selectedIndex} = this.props
@@ -239,7 +239,7 @@ class List extends React.Component {
     }
 
     let width = this.props.width + (2 * PADDING_LEFT)
-    let left = -16
+    let left = this.props.isInsideTable ? -17 : -16
     let padding = 16
 
     // check if select overlay is wider than window which would cause horizontal overflow
@@ -260,15 +260,13 @@ class List extends React.Component {
         style={Object.assign(style, this.props.style)}
       >
         {options.map((item, i) =>
-          <li key={i} className='Select-listItem'>
-            <div
-              data-id={i}
-              className='Select-listItemLink'
-              onClick={this.onClick}
-              style={{padding: `0 ${padding}px`}}
-            >
-              {item.label}
-            </div>
+          <li key={i}
+            className='Select-listItem'
+            data-id={i}
+            onClick={this.onClick}
+            style={{padding: `0 ${padding}px`}}
+          >
+            {item.label}
           </li>
         )}
       </ul>

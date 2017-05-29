@@ -74,6 +74,18 @@ button.Select-body {
   max-height: 256px;
 }
 
+.Table .Select-list {
+  font-size: 13px;
+  padding: 0;
+  border: 1px solid lightgray;
+  box-shadow: 0 3px 2px -1px rgba(0, 0, 0, 0.3);
+  background: #f9f9f9;
+}
+
+.Table button.Select-body {
+  font-size: 13px;
+}
+
 /**
  * Select-listItem is of type <li />
  */
@@ -81,12 +93,6 @@ button.Select-body {
   list-style: none;
   margin: 0;
   padding: 0;
-}
-
-/**
- * Select-listItemLink is of type <a />
- */
-.Select-listItemLink {
   color: initial;
   text-decoration: none;
   min-height: 48px;
