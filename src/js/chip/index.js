@@ -1,5 +1,6 @@
 
 import React from 'react'
+import PropTypes from 'prop-types'
 import {Cancel} from '../icon'
 import keycode from 'keycode'
 
@@ -23,14 +24,14 @@ const focusLeftOrRight = (event, leftKeys, rightKeys) => {
 // input fields which handles all logic
 export default class Chip extends React.Component {
   static propTypes = {
-    autoFocus: React.PropTypes.bool,
-    deletable: React.PropTypes.bool,
-    delimiters: React.PropTypes.arrayOf(React.PropTypes.number),
-    onBlur: React.PropTypes.func,
-    onChange: React.PropTypes.func,
-    onFocus: React.PropTypes.func,
-    placeholder: React.PropTypes.string,
-    value: React.PropTypes.arrayOf(React.PropTypes.object)
+    autoFocus: PropTypes.bool,
+    deletable: PropTypes.bool,
+    delimiters: PropTypes.arrayOf(PropTypes.number),
+    onBlur: PropTypes.func,
+    onChange: PropTypes.func,
+    onFocus: PropTypes.func,
+    placeholder: PropTypes.string,
+    value: PropTypes.arrayOf(PropTypes.object)
   }
 
   static defaultProps = {

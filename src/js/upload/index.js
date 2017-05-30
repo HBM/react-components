@@ -1,17 +1,18 @@
 
 import React from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import accept from 'attr-accept'
 import Button from '../button/'
 
 export default class Upload extends React.Component {
   static propTypes = {
-    accept: React.PropTypes.string,
-    disabled: React.PropTypes.bool,
-    onChange: React.PropTypes.func.isRequired,
-    buttonText: React.PropTypes.string,
-    textBefore: React.PropTypes.string,
-    textAfter: React.PropTypes.string
+    accept: PropTypes.string,
+    disabled: PropTypes.bool,
+    onChange: PropTypes.func.isRequired,
+    buttonText: PropTypes.string,
+    textBefore: PropTypes.string,
+    textAfter: PropTypes.string
   }
 
   static defaultProps = {

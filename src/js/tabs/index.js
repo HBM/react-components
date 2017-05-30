@@ -1,9 +1,10 @@
 
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class Tabs extends React.Component {
   static propTypes = {
-    tabs: React.PropTypes.array
+    tabs: PropTypes.array
   }
 
   static defaultProps = {

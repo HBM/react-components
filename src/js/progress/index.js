@@ -1,10 +1,11 @@
 
 import React from 'react'
+import PropTypes from 'prop-types'
 import {Motion, spring} from 'react-motion'
 
 class Linear extends React.Component {
   static propTypes = {
-    percentage: React.PropTypes.number
+    percentage: PropTypes.number
   }
 
   static defaultProps = {
@@ -43,7 +44,7 @@ class Linear extends React.Component {
 
 class Circular extends React.Component {
   static propTypes = {
-    percentage: React.PropTypes.number
+    percentage: PropTypes.number
   }
 
   static defaultProps = {

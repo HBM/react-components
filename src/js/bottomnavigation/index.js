@@ -1,9 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export class BottomNavigation extends React.Component {
   static propTypes = {
-    scrollDuration: React.PropTypes.number
+    scrollDuration: PropTypes.number
   }
 
   static defaultProps = {

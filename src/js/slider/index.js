@@ -1,5 +1,6 @@
 
 import React from 'react'
+import PropTypes from 'prop-types'
 
 /**
  * Slider
@@ -17,12 +18,12 @@ const clip = (v, min, max) => {
 
 export default class Slider extends React.Component {
   static propTypes = {
-    value: React.PropTypes.number,
-    min: React.PropTypes.number.isRequired,
-    max: React.PropTypes.number.isRequired,
-    step: React.PropTypes.number,
-    onChange: React.PropTypes.func,
-    onMove: React.PropTypes.func
+    value: PropTypes.number,
+    min: PropTypes.number.isRequired,
+    max: PropTypes.number.isRequired,
+    step: PropTypes.number,
+    onChange: PropTypes.func,
+    onMove: PropTypes.func
   }
 
   defaultProps = {

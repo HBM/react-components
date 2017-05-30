@@ -1,5 +1,6 @@
 /* globals getComputedStyle */
 import React from 'react'
+import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 const TextfieldWrapper = ({
@@ -78,14 +79,14 @@ export const Textfield = ({float, error, length, htmlFor, ...rest}) => (
 )
 
 Textfield.propTypes = {
-  error: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.bool
+  error: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool
   ]),
-  float: React.PropTypes.bool,
-  icon: React.PropTypes.element,
-  label: React.PropTypes.string,
-  length: React.PropTypes.number
+  float: PropTypes.bool,
+  icon: PropTypes.element,
+  label: PropTypes.string,
+  length: PropTypes.number
 }
 
 Textfield.defaultProps = {
@@ -177,30 +178,30 @@ export class Textarea extends React.Component {
 }
 
 Textarea.propTypes = {
-  autoFocus: React.PropTypes.bool,
-  defaultValue: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.number
+  autoFocus: PropTypes.bool,
+  defaultValue: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
   ]),
-  disabled: React.PropTypes.bool,
-  error: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.bool
+  disabled: PropTypes.bool,
+  error: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool
   ]),
-  float: React.PropTypes.bool,
-  icon: React.PropTypes.element,
-  label: React.PropTypes.string,
-  length: React.PropTypes.number,
-  maxRows: React.PropTypes.number,
-  name: React.PropTypes.string,
-  onChange: React.PropTypes.func,
-  readOnly: React.PropTypes.bool,
-  resizable: React.PropTypes.bool,
-  rows: React.PropTypes.number,
-  spellCheck: React.PropTypes.bool,
-  value: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.number
+  float: PropTypes.bool,
+  icon: PropTypes.element,
+  label: PropTypes.string,
+  length: PropTypes.number,
+  maxRows: PropTypes.number,
+  name: PropTypes.string,
+  onChange: PropTypes.func,
+  readOnly: PropTypes.bool,
+  resizable: PropTypes.bool,
+  rows: PropTypes.number,
+  spellCheck: PropTypes.bool,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
   ])
 }
 

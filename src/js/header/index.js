@@ -1,5 +1,6 @@
 
 import React from 'react'
+import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import {ChevronRight} from '../icon'
 
@@ -9,8 +10,8 @@ export default class Header extends React.Component {
   }
 
   static propTypes = {
-    title: React.PropTypes.string,
-    subtitle: React.PropTypes.string
+    title: PropTypes.string,
+    subtitle: PropTypes.string
   }
 
   componentDidMount () {

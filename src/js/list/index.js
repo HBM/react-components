@@ -1,5 +1,6 @@
 
 import React from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import keycode from 'keycode'
 
@@ -88,28 +89,28 @@ export const Row = ({
 }
 
 const stringOrElement = () => {
-  return React.PropTypes.oneOfType([
-    React.PropTypes.element,
-    React.PropTypes.arrayOf(React.PropTypes.element),
-    React.PropTypes.string
+  return PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element),
+    PropTypes.string
   ])
 }
 
 Row.propTypes = {
-  avatar: React.PropTypes.oneOfType([
-    React.PropTypes.element,
-    React.PropTypes.string
+  avatar: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.string
   ]),
-  className: React.PropTypes.string,
-  icon: React.PropTypes.oneOfType([
-    React.PropTypes.element,
-    React.PropTypes.string
+  className: PropTypes.string,
+  icon: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.string
   ]),
-  onBlur: React.PropTypes.func,
-  onClick: React.PropTypes.func,
-  onFocus: React.PropTypes.func,
+  onBlur: PropTypes.func,
+  onClick: PropTypes.func,
+  onFocus: PropTypes.func,
   primary: stringOrElement().isRequired,
   secondary: stringOrElement(),
-  style: React.PropTypes.object,
+  style: PropTypes.object,
   subheader: stringOrElement()
 }

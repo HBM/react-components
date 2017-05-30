@@ -1,5 +1,6 @@
 
 import React from 'react'
+import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 /**
@@ -10,8 +11,8 @@ export default class Tooltip extends React.Component {
    * Property types
    */
   static propTypes = {
-    content: React.PropTypes.string,
-    visible: React.PropTypes.bool
+    content: PropTypes.string,
+    visible: PropTypes.bool
   }
 
   /**

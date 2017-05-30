@@ -1,5 +1,6 @@
 
 import React from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 /**
@@ -32,11 +33,11 @@ var Modal = ({header, body, footer, visible, toggle}) => (
 )
 
 Modal.propTypes = {
-  header: React.PropTypes.element,
-  body: React.PropTypes.element,
-  footer: React.PropTypes.element,
-  visible: React.PropTypes.bool,
-  toggle: React.PropTypes.func
+  header: PropTypes.element,
+  body: PropTypes.element,
+  footer: PropTypes.element,
+  visible: PropTypes.bool,
+  toggle: PropTypes.func
 }
 
 Modal.defaultProps = {

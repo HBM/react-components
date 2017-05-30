@@ -1,5 +1,6 @@
 
 import React from 'react'
+import PropTypes from 'prop-types'
 import {Motion, spring} from 'react-motion'
 
 export const Divider = 'DIVIDER'
@@ -65,9 +66,9 @@ export function Menu ({items, children, visible, onClick, transformX, transformY
  * Property types
  */
 Menu.propTypes = {
-  items: React.PropTypes.array,
-  onClick: React.PropTypes.func.isRequired,
-  visible: React.PropTypes.bool
+  items: PropTypes.array,
+  onClick: PropTypes.func.isRequired,
+  visible: PropTypes.bool
 }
 
 /**

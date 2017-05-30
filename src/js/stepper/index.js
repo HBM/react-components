@@ -1,5 +1,6 @@
 
 import React from 'react'
+import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import {ReportProblem} from '../icon/'
 import Button from '../button/'
@@ -145,13 +146,13 @@ class StepperComponent extends React.Component {
 export const Stepper = withRouter(StepperComponent)
 
 Stepper.propTypes = {
-  steps: React.PropTypes.arrayOf(React.PropTypes.shape({
-    title: React.PropTypes.string.isRequired,
-    href: React.PropTypes.string.isRequired,
-    component: React.PropTypes.func.isRequired,
-    optional: React.PropTypes.string
+  steps: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    href: PropTypes.string.isRequired,
+    component: PropTypes.func.isRequired,
+    optional: PropTypes.string
   })).isRequired,
-  horizontal: React.PropTypes.bool,
-  onCancel: React.PropTypes.func,
-  onError: React.PropTypes.func
+  horizontal: PropTypes.bool,
+  onCancel: PropTypes.func,
+  onError: PropTypes.func
 }

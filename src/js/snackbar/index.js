@@ -1,5 +1,6 @@
 
 import React from 'react'
+import PropTypes from 'prop-types'
 import {Motion, spring} from 'react-motion'
 
 /**
@@ -48,10 +49,10 @@ var Snackbar = ({text, action, onAction, visible}) => (
  * Snackbar property types
  */
 Snackbar.propTypes = {
-  text: React.PropTypes.string,
-  action: React.PropTypes.string,
-  onAction: React.PropTypes.func,
-  visible: React.PropTypes.bool
+  text: PropTypes.string,
+  action: PropTypes.string,
+  onAction: PropTypes.func,
+  visible: PropTypes.bool
 }
 
 /**

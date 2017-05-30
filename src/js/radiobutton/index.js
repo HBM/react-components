@@ -1,5 +1,6 @@
 
 import React from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import keycode from 'keycode'
 import {RadioButtonChecked, RadioButtonUnchecked} from '../icon'
@@ -71,10 +72,10 @@ class RadioButton extends React.Component {
 }
 
 RadioButton.propTypes = {
-  name: React.PropTypes.string.isRequired,
-  selectedValue: React.PropTypes.string,
-  items: React.PropTypes.array,
-  onChange: React.PropTypes.func.isRequired
+  name: PropTypes.string.isRequired,
+  selectedValue: PropTypes.string,
+  items: PropTypes.array,
+  onChange: PropTypes.func.isRequired
 }
 
 RadioButton.defaultProps = {

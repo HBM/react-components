@@ -1,5 +1,6 @@
 
 import React from 'react'
+import PropTypes from 'prop-types'
 import {Motion, spring} from 'react-motion'
 
 const PADDING_TOP_WITH_LABEL = -14
@@ -14,12 +15,12 @@ const MAX_LIST_LENGTH = 5
  */
 export default class Select extends React.Component {
   static propTypes = {
-    disabled: React.PropTypes.bool,
-    label: React.PropTypes.string,
-    options: React.PropTypes.array,
-    placeholder: React.PropTypes.string,
-    onChange: React.PropTypes.func.isRequired,
-    name: React.PropTypes.string
+    disabled: PropTypes.bool,
+    label: PropTypes.string,
+    options: PropTypes.array,
+    placeholder: PropTypes.string,
+    onChange: PropTypes.func.isRequired,
+    name: PropTypes.string
   }
 
   static defaultProps = {
@@ -163,12 +164,12 @@ export default class Select extends React.Component {
  */
 class List extends React.Component {
   static propTypes = {
-    hasLabel: React.PropTypes.bool,
-    options: React.PropTypes.array.isRequired,
-    isInsideTable: React.PropTypes.bool,
-    selectedIndex: React.PropTypes.number.isRequired,
-    onClick: React.PropTypes.func.isRequired,
-    width: React.PropTypes.number
+    hasLabel: PropTypes.bool,
+    options: PropTypes.array.isRequired,
+    isInsideTable: PropTypes.bool,
+    selectedIndex: PropTypes.number.isRequired,
+    onClick: PropTypes.func.isRequired,
+    width: PropTypes.number
   }
 
   /**

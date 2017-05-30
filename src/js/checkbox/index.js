@@ -1,5 +1,6 @@
 
 import React from 'react'
+import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import {CheckBox, CheckBoxOutlineBlank} from '../icon'
 
@@ -50,11 +51,11 @@ export default class Checkbox extends React.Component {
 }
 
 Checkbox.propTypes = {
-  checked: React.PropTypes.bool,
-  defaultChecked: React.PropTypes.bool,
-  disabled: React.PropTypes.bool,
-  label: React.PropTypes.string,
-  onChange: React.PropTypes.func
+  checked: PropTypes.bool,
+  defaultChecked: PropTypes.bool,
+  disabled: PropTypes.bool,
+  label: PropTypes.string,
+  onChange: PropTypes.func
 }
 
 Checkbox.defaultProps = {

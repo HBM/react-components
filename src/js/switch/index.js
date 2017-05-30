@@ -1,5 +1,6 @@
 
 import React from 'react'
+import PropTypes from 'prop-types'
 
 /**
  * Switch component
@@ -24,10 +25,10 @@ var Switch = ({checked, disabled, name, onChange}) => (
  * Property types
  */
 Switch.propTypes = {
-  checked: React.PropTypes.bool,
-  disabled: React.PropTypes.bool,
-  name: React.PropTypes.string.isRequired,
-  onChange: React.PropTypes.func.isRequired
+  checked: PropTypes.bool,
+  disabled: PropTypes.bool,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired
 }
 
 /**

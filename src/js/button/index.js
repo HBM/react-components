@@ -1,5 +1,6 @@
 
 import React from 'react'
+import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 const Button = ({children, className, filled, raised, dense, ...rest}) => (
@@ -16,10 +17,10 @@ const Button = ({children, className, filled, raised, dense, ...rest}) => (
 )
 
 Button.propTypes = {
-  className: React.PropTypes.string,
-  dense: React.PropTypes.bool,
-  filled: React.PropTypes.bool,
-  raised: React.PropTypes.bool
+  className: PropTypes.string,
+  dense: PropTypes.bool,
+  filled: PropTypes.bool,
+  raised: PropTypes.bool
 }
 
 Button.defaultProps = {
