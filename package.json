@@ -5,9 +5,10 @@
   "main": "lib/index.js",
   "module": "es/index.js",
   "style": "style.css",
+  "files": ["scss"],
   "scripts": {
-    "stylelint": "stylelint src/css/*.scss src/js/**/*.scss",
-    "build:css": "node-sass src/css/index.scss style.css",
+    "stylelint": "stylelint scss/*.scss",
+    "build:css": "node-sass scss/index.scss style.css",
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
     "build": "npm run build:css && npm run build:commonjs && npm run build:es",
