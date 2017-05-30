@@ -17,6 +17,11 @@ describe('Button', () => {
     assert.ok(wrapper.find('.Button').hasClass('Button--raised'))
   })
 
+  it('should have `Button--dense` class when dense property is true', () => {
+    const wrapper = shallow(<Button onClick={() => {}} dense />)
+    assert.ok(wrapper.find('.Button').hasClass('Button--dense'))
+  })
+
   it('should be disabled when told so', () => {
     const wrapper = shallow(<Button onClick={() => {}} disabled />)
     assert.ok(wrapper.find('.Button').props().disabled)
