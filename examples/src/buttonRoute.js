@@ -31,6 +31,12 @@ export default class ButtonRoute extends React.Component {
           </Button>
         </section>
         <section>
+          <h2>Dense & Filled Button</h2>
+          <Button name='DenseFilledButton' onClick={e => console.log(e)} dense filled>
+            Button
+          </Button>
+        </section>
+        <section>
           <h2>Disabled Button</h2>
           <Button name='DisabledButton' onClick={e => console.log(e)} disabled>
             Button
