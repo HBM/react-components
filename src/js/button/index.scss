@@ -1,12 +1,12 @@
 /* http://www.google.com/design/spec/components/buttons.html#buttons-usage */
 
 .Button {
-  font-size: 13px;
+  font-size: 14px;
   min-width: 88px;
   height: 36px;
   background: none;
   border: none;
-  padding: 0 8px;
+  padding: 0 16px;
   text-transform: uppercase;
   border-radius: 2px;
   outline: none;
@@ -27,6 +27,12 @@
   &:disabled {
     color: rgba($color-accent, 0.5);
     background: none;
+  }
+
+  &--dense {
+    padding: 0 16px;
+    font-size: 13px;
+    height: 32px;
   }
 
   &--filled {
