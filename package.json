@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "module": "es/index.js",
   "style": "style.css",
-  "files": ["scss"],
+  "files": ["scss", "lib", "es", "style.css"],
   "scripts": {
     "stylelint": "stylelint src/scss/*.scss",
     "build:css": "node-sass src/scss/index.scss style.css",
