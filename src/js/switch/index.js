@@ -6,17 +6,17 @@ import PropTypes from 'prop-types'
  * Switch component
  */
 var Switch = ({checked, disabled, name, onChange}) => (
-  <label className='Switch'>
+  <label className='mdc-Switch'>
     <input
       checked={checked}
-      className='Switch-input'
+      className='mdc-Switch-input'
       disabled={disabled}
       name={name}
       onChange={onChange}
       type='checkbox'
     />
-    <div className='Switch-track' >
-      <div className='Switch-thumb' />
+    <div className='mdc-Switch-track' >
+      <div className='mdc-Switch-thumb' />
     </div>
   </label>
 )

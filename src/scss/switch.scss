@@ -17,19 +17,19 @@ $track-border-radius: 8px;
 $transition-duration: 0.15s;
 $transition-function: ease;
 
-.Switch {
+.mdc-Switch {
   height: 48px;
   display: flex;
   align-items: center;
 }
 
-.Switch-input {
+.mdc-Switch-input {
   position: absolute;
   opacity: 0;
   z-index: -1; /* Put the input behind the label so it doesn't overlay text */
 }
 
-.Switch-track {
+.mdc-Switch-track {
   position: relative;
   width: $track-width;
   height: $track-height;
@@ -38,7 +38,7 @@ $transition-function: ease;
   transition: background $transition-duration $transition-function;
 }
 
-.Switch-thumb {
+.mdc-Switch-thumb {
   position: absolute;
   top: -($thumb-size - $track-height) / 2;
   left: 0;
@@ -53,22 +53,22 @@ $transition-function: ease;
 /**
  * focus
  */
-.Switch-input:checked.Switch-input:focus ~ .Switch-track .Switch-thumb {
+.mdc-Switch-input:checked.mdc-Switch-input:focus ~ .mdc-Switch-track .mdc-Switch-thumb {
   box-shadow: 0 0 0 15px rgba($color-accent--light, 0.5);
 }
 
-.Switch-input:not(:checked).Switch-input:focus ~ .Switch-track .Switch-thumb {
+.mdc-Switch-input:not(:checked).mdc-Switch-input:focus ~ .mdc-Switch-track .mdc-Switch-thumb {
   box-shadow: 0 0 0 15px rgba(0, 0, 0, 0.12);
 }
 
 /**
  * checked
  */
-.Switch-input:checked ~ .Switch-track {
+.mdc-Switch-input:checked ~ .mdc-Switch-track {
   background: $track-on;
 }
 
-.Switch-input:checked ~ .Switch-track .Switch-thumb {
+.mdc-Switch-input:checked ~ .mdc-Switch-track .mdc-Switch-thumb {
   left: $track-width - $thumb-size;
   background: $thumb-on;
 }
@@ -77,10 +77,10 @@ $transition-function: ease;
  * disabled
  */
 
-.Switch-input:disabled ~ .Switch-track {
+.mdc-Switch-input:disabled ~ .mdc-Switch-track {
   background: $track-disabled;
 }
 
-.Switch-input:disabled ~ .Switch-track .Switch-thumb {
+.mdc-Switch-input:disabled ~ .mdc-Switch-track .mdc-Switch-thumb {
   background: $thumb-disabled;
 }
