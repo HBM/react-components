@@ -5,16 +5,16 @@ import React from 'react'
 import Modal from '../'
 import {mount} from 'enzyme'
 
-describe('Modal', () => {
+describe('mdc-Modal', () => {
   it('should work', () => {
     const wrapper = mount(<Modal visible />)
-    assert.equal(wrapper.find('.Modal').length, 1)
+    assert.equal(wrapper.find('.mdc-Modal').length, 1)
   })
 
   it('should be hidden by default', () => {
     const wrapper = mount(<Modal />)
-    assert.equal(wrapper.find('.Modal').length, 1)
-    assert.equal(wrapper.find('.Modal--visible').length, 0)
+    assert.equal(wrapper.find('.mdc-Modal').length, 1)
+    assert.equal(wrapper.find('.mdc-Modal--visible').length, 0)
   })
 
   it('should callback when clicking on dark background', (done) => {
@@ -23,7 +23,7 @@ describe('Modal', () => {
       done()
     }
     const wrapper = mount(<Modal visible toggle={callback} />)
-    wrapper.find('.Modal-overlay').simulate('click')
+    wrapper.find('.mdc-Modal-overlay').simulate('click')
   })
 
   it('should callback when touching dark background', (done) => {
@@ -32,24 +32,24 @@ describe('Modal', () => {
       done()
     }
     const wrapper = mount(<Modal visible toggle={callback} />)
-    wrapper.find('.Modal-overlay').simulate('touchend')
+    wrapper.find('.mdc-Modal-overlay').simulate('touchend')
   })
 
   it('should have a custom header', () => {
     const header = <p>my custom header</p>
     const wrapper = mount(<Modal visible header={header} />)
-    assert.equal(wrapper.find('.Modal-header').text(), 'my custom header')
+    assert.equal(wrapper.find('.mdc-Modal-header').text(), 'my custom header')
   })
 
   it('should have a custom body', () => {
     const body = <p>my custom body</p>
     const wrapper = mount(<Modal visible body={body} />)
-    assert.equal(wrapper.find('.Modal-body').text(), 'my custom body')
+    assert.equal(wrapper.find('.mdc-Modal-body').text(), 'my custom body')
   })
 
   it('should have a custom footer', () => {
     const footer = <p>my custom footer</p>
     const wrapper = mount(<Modal visible footer={footer} />)
-    assert.equal(wrapper.find('.Modal-footer').text(), 'my custom footer')
+    assert.equal(wrapper.find('.mdc-Modal-footer').text(), 'my custom footer')
   })
 })

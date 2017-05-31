@@ -5,8 +5,8 @@
 $padding: 24px;
 $border-color: #e5e5e5;
 
-.Modal-overlay.is-visible,
-.Modal.is-visible {
+.mdc-Modal-overlay.is-visible,
+.mdc-Modal.is-visible {
   opacity: 1;
   pointer-events: initial;
 }
@@ -14,7 +14,7 @@ $border-color: #e5e5e5;
 /**
  * Styles
  */
-.Modal-overlay {
+.mdc-Modal-overlay {
   position: fixed;
   top: 0;
   right: 0;
@@ -31,7 +31,7 @@ $border-color: #e5e5e5;
   transition: opacity 0.5s ease;
 }
 
-.Modal {
+.mdc-Modal {
   pointer-events: none;
   opacity: 0;
   position: relative;
@@ -51,17 +51,17 @@ $border-color: #e5e5e5;
   }
 }
 
-.Modal-content {
+.mdc-Modal-content {
   padding: $padding;
 }
 
-.Modal-header {
+.mdc-Modal-header {
   color: #0d0d0d;
   font-size: 20px;
   margin-bottom: 20px;
 }
 
-.Modal-footer {
+.mdc-Modal-footer {
   padding: 8px;
   display: flex;
   align-items: center;
@@ -71,7 +71,7 @@ $border-color: #e5e5e5;
 /**
  * Fix button styles
  */
-.Modal .mdc-Button {
+.mdc-Modal .mdc-Button {
   margin-left: 8px;
   margin-right: 0;
 }
