@@ -23,7 +23,7 @@ class Tabs extends React.Component {
 
   setInkBarPosition = () => {
     const index = Array.prototype.slice.call(this.tabRoot.children)
-      .filter(element => !element.classList.contains('Tabs-InkBar'))
+      .filter(element => !element.classList.contains('mdc-Tabs-InkBar'))
       .findIndex(tab => tab.firstElementChild.classList.contains('active'))
     this.inkbarNode.classList.remove('transition-right', 'transition-left')
     if (index === -1) {
@@ -45,15 +45,15 @@ class Tabs extends React.Component {
 
   render () {
     return (
-      <div className='Tabs' ref={node => { this.tabRoot = node }}>
+      <div className='mdc-Tabs' ref={node => { this.tabRoot = node }}>
         {this.props.tabs.map((tab, index) =>
-          <div key={index} className='Tabs-Item'>
+          <div key={index} className='mdc-Tabs-Item'>
             {tab}
           </div>
         )}
         <div
           ref={node => { this.inkbarNode = node }}
-          className='Tabs-InkBar'
+          className='mdc-Tabs-InkBar'
         />
       </div>
     )

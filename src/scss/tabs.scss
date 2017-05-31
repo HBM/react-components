@@ -7,7 +7,7 @@ $transition-duration: 0.25s;
 $transition-delay: 0.075s;
 $transition-function: cubic-bezier(0.35, 0, 0.25, 1);
 
-.Tabs {
+.mdc-Tabs {
   position: relative;
   display: flex;
   font-size: 14px;
@@ -16,7 +16,7 @@ $transition-function: cubic-bezier(0.35, 0, 0.25, 1);
   border-bottom: 1px solid #eee;
 }
 
-.Tabs-Item {
+.mdc-Tabs-Item {
   flex: 1;
   text-align: center;
   overflow: hidden;
@@ -31,11 +31,11 @@ $transition-function: cubic-bezier(0.35, 0, 0.25, 1);
   }
 }
 
-.Tabs-Item .active {
+.mdc-Tabs-Item .active {
   color: $blue-dark;
 }
 
-.Tabs-InkBar {
+.mdc-Tabs-InkBar {
   position: absolute;
   bottom: -1px;
   height: 2px;
@@ -43,13 +43,13 @@ $transition-function: cubic-bezier(0.35, 0, 0.25, 1);
   will-change: left, right;
 }
 
-.Tabs-InkBar.transition-left {
+.mdc-Tabs-InkBar.transition-left {
   transition:
     left $transition-duration $transition-function,
     right $transition-duration $transition-function $transition-delay;
 }
 
-.Tabs-InkBar.transition-right {
+.mdc-Tabs-InkBar.transition-right {
   transition:
     right $transition-duration $transition-function,
     left $transition-duration $transition-function $transition-delay;
