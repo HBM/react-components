@@ -12,7 +12,7 @@ import keycode from 'keycode'
  */
 export const List = ({children, style}) => {
   return (
-    <ol className='List' style={style}>
+    <ol className='mdc-List' style={style}>
       {children}
     </ol>
   )
@@ -42,42 +42,42 @@ export const Row = ({
 
   const avatarElement =
     avatar &&
-    <div className='List-row-avatar' key='avatar'>
+    <div className='mdc-List-row-avatar' key='avatar'>
       {(typeof avatar === 'string' ? <img src={avatar} /> : avatar)}
     </div>
 
   const iconLeftElement =
     !avatar && icon &&
-    <div className='List-row-icon-left' key='icon-left'>
+    <div className='mdc-List-row-icon-left' key='icon-left'>
       {icon}
     </div>
 
   const iconRightElement =
     avatar && icon &&
-    <div className='List-row-icon-right' key='icon-right'>
+    <div className='mdc-List-row-icon-right' key='icon-right'>
       {icon}
     </div>
 
   const isSelectable = onFocus || onBlur
 
   const dynamicClasses = {
-    'List-row--oneline': (!secondary && !subheader),
-    'List-row--twoline': (secondary && !subheader),
-    'List-row--threeline': (secondary && subheader),
-    'List-row--selectable': isSelectable
+    'mdc-List-row--oneline': (!secondary && !subheader),
+    'mdc-List-row--twoline': (secondary && !subheader),
+    'mdc-List-row--threeline': (secondary && subheader),
+    'mdc-List-row--selectable': isSelectable
   }
 
   const textElement = (
-    <div className='List-row-text' key='text'>
-      <div className='List-row-text-primary'>{primary}</div>
-      {subheader && <div className='List-row-text-subheader'>{subheader}</div>}
-      {secondary && <span className='List-row-text-secondary'>{secondary}</span>}
+    <div className='mdc-List-row-text' key='text'>
+      <div className='mdc-List-row-text-primary'>{primary}</div>
+      {subheader && <div className='mdc-List-row-text-subheader'>{subheader}</div>}
+      {secondary && <span className='mdc-List-row-text-secondary'>{secondary}</span>}
     </div>
   )
 
   const rowContent = [avatarElement, iconLeftElement, textElement, iconRightElement]
   const rowProps = {
-    className: classNames('List-row', dynamicClasses, className),
+    className: classNames('mdc-List-row', dynamicClasses, className),
     onClick,
     style,
     onKeyDown,
