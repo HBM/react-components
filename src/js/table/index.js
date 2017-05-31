@@ -39,8 +39,8 @@ class EditDialog extends React.Component {
 
   render () {
     return (
-      <div className='Table-edit' ref={c => { this.c = c }}>
-        <form onSubmit={this.onSubmit} className='Table-edit-container'>
+      <div className='mdc-Table-edit' ref={c => { this.c = c }}>
+        <form onSubmit={this.onSubmit} className='mdc-Table-edit-container'>
           {this.props.children}
         </form>
       </div>
@@ -49,19 +49,19 @@ class EditDialog extends React.Component {
 }
 
 export const Table = ({children, className, ...rest}) => (
-  <table className='Table' {...rest}>
+  <table className='mdc-Table' {...rest}>
     {children}
   </table>
 )
 
 export const TableHead = ({children, className, ...rest}) => (
-  <thead className={classnames('Table-head')}>
+  <thead className={classnames('mdc-Table-head')}>
     {children}
   </thead>
 )
 
 export const TableHeadRow = ({children, className, ...rest}) => (
-  <tr className={classnames('Table-head-row', className)} {...rest}>
+  <tr className={classnames('mdc-Table-head-row', className)} {...rest}>
     {children}
   </tr>
 )
@@ -71,18 +71,18 @@ const Arrow = ({sorted}) => (
   <ArrowUpward
     width={16}
     height={16}
-    className={classnames('Table-head-row-cell-button-arrow', {
-      'Table-head-row-cell-button-arrow--descending': sorted === 'desc',
-      'Table-head-row-cell-button-arrow--ascending': sorted === 'asc'
+    className={classnames('mdc-Table-head-row-cell-button-arrow', {
+      'mdc-Table-head-row-cell-button-arrow--descending': sorted === 'desc',
+      'mdc-Table-head-row-cell-button-arrow--ascending': sorted === 'asc'
     })}
   />
 )
 
 export const TableHeadCell = ({children, className, sorted, onClick, ...rest}) => (
-  <th className={classnames('Table-head-row-cell', className)} {...rest}>
+  <th className={classnames('mdc-Table-head-row-cell', className)} {...rest}>
     {sorted
       ? (
-        <button className='Table-head-row-cell-button' onClick={onClick}>
+        <button className='mdc-Table-head-row-cell-button' onClick={onClick}>
           <Arrow sorted={sorted} />
           {children}
         </button>
@@ -94,13 +94,13 @@ export const TableHeadCell = ({children, className, sorted, onClick, ...rest}) =
 )
 
 export const TableBody = ({children, className, ...rest}) => (
-  <tbody className={classnames('Table-body', className)} {...rest}>
+  <tbody className={classnames('mdc-Table-body', className)} {...rest}>
     {children}
   </tbody>
 )
 
 export const TableBodyRow = ({children, className, ...rest}) => (
-  <tr className={classnames('Table-body-row', className)} {...rest}>
+  <tr className={classnames('mdc-Table-body-row', className)} {...rest}>
     {children}
   </tr>
 )
@@ -125,16 +125,16 @@ export class TableBodyCell extends React.Component {
   render () {
     const {children, className, textfield, ...rest} = this.props
     return (
-      <td className={classnames('Table-body-row-cell', className)} {...rest}>
+      <td className={classnames('mdc-Table-body-row-cell', className)} {...rest}>
         {this.state.isEditing
           ? <EditDialog onClose={this.hide}>{textfield}</EditDialog>
           : null
         }
         { textfield
-          ? <div className='Table-body-row-cell-edit-wrapper' onClick={this.show}>
+          ? <div className='mdc-Table-body-row-cell-edit-wrapper' onClick={this.show}>
             {children}
             <Edit
-              className='Table-edit-icon'
+              className='mdc-Table-edit-icon'
               width={18}
               height={18}
               fill='rgba(0, 0, 0, 0.54)'
@@ -148,8 +148,8 @@ export class TableBodyCell extends React.Component {
 }
 
 export const TableFooter = (props) => (
-  <div className='Table-footer'>
-    <span className='Table-footer-rowsPerPage'>
+  <div className='mdc-Table-footer'>
+    <span className='mdc-Table-footer-rowsPerPage'>
       {props.labelRowsPerPage}
     </span>
     <Select
@@ -157,7 +157,7 @@ export const TableFooter = (props) => (
       onChange={props.onChangeRowsPerPage}
       value={props.rowsPerPageIndex}
     />
-    <span className='Table-footer-xOfY'>
+    <span className='mdc-Table-footer-xOfY'>
       {props.labelXOfY}
     </span>
     <Button onClick={props.onPaginateLeft}>

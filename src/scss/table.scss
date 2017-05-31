@@ -1,9 +1,9 @@
 
-.Table-edit {
+.mdc-Table-edit {
   position: relative;
 }
 
-.Table-edit-container {
+.mdc-Table-edit-container {
   background-color: #fafafa;
   position: absolute;
   left: 0;
@@ -13,22 +13,22 @@
   padding: 0 24px;
 }
 
-.Table-body-row-cell-edit-wrapper {
+.mdc-Table-body-row-cell-edit-wrapper {
   display: flex;
   align-items: center;
   cursor: pointer;
 }
 
-.Table-edit-icon {
+.mdc-Table-edit-icon {
   margin-left: auto;
 }
 
 // override textfield font size
-.Table-edit-container .Textfield-input {
+.mdc-Table-edit-container .Textfield-input {
   font-size: 13px;
 }
 
-.Table {
+.mdc-Table {
   width: 100%;
   border-collapse: collapse;
 
@@ -141,13 +141,13 @@
 }
 
 // Select / dropdown inside table cell
-.Table .mdc-Select {
+.mdc-Table .mdc-Select {
   font-size: inherit;
   padding-top: 0;
   padding-bottom: 0;
 }
 
-.Table .mdc-Select-body {
+.mdc-Table .mdc-Select-body {
   border-bottom: none;
   padding-bottom: 0;
 }

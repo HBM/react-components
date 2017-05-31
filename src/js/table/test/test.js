@@ -14,7 +14,7 @@ import {
   TableFooter
 } from '../'
 
-describe('Table', () => {
+describe('mdc-Table', () => {
   it('should render the table component with children', () => {
     const table = (
       <Table>
@@ -151,8 +151,8 @@ describe('Table', () => {
       onChangeRowsPerPage={() => {}}
     />
     const wrapper = mount(footer)
-    assert.equal(wrapper.find('.Table-footer-rowsPerPage').text(), 'Rows per page:')
-    assert.equal(wrapper.find('.Table-footer-xOfY').text(), '1-5 of 10')
+    assert.equal(wrapper.find('.mdc-Table-footer-rowsPerPage').text(), 'Rows per page:')
+    assert.equal(wrapper.find('.mdc-Table-footer-xOfY').text(), '1-5 of 10')
   })
 
   it('should call back on paginate left', (done) => {
@@ -220,7 +220,7 @@ describe('Table', () => {
       </table>
     )
     const wrapper = mount(table)
-    assert(wrapper.find('.Table-edit-icon'))
+    assert(wrapper.find('.mdc-Table-edit-icon'))
   })
 
   it('should show an overlay when editable cell is clicked', () => {
@@ -236,8 +236,8 @@ describe('Table', () => {
       </table>
     )
     const wrapper = mount(table)
-    wrapper.find('.Table-body-row-cell-edit-wrapper').simulate('click')
-    assert(wrapper.find('.Table-edit'))
+    wrapper.find('.mdc-Table-body-row-cell-edit-wrapper').simulate('click')
+    assert(wrapper.find('.mdc-Table-edit'))
   })
 
   it('should return the new value on change', (done) => {
@@ -257,7 +257,7 @@ describe('Table', () => {
       </table>
     )
     const wrapper = mount(table)
-    wrapper.find('.Table-body-row-cell-edit-wrapper').simulate('click')
+    wrapper.find('.mdc-Table-body-row-cell-edit-wrapper').simulate('click')
     // enter some new text
     wrapper.find('.Textfield-input').simulate('change', {
       target: {
@@ -279,13 +279,13 @@ describe('Table', () => {
       </table>
     )
     const wrapper = mount(table)
-    wrapper.find('.Table-body-row-cell-edit-wrapper').simulate('click')
+    wrapper.find('.mdc-Table-body-row-cell-edit-wrapper').simulate('click')
     // simulate esc key
     document.dispatchEvent(new window.KeyboardEvent('keyup', {
       which: 27
     }))
     // make sure overlay isn't visible anymore
-    assert.equal(wrapper.find('.Table-edit').length, 0)
+    assert.equal(wrapper.find('.mdc-Table-edit').length, 0)
   })
 
   it('should hide the overlay when mouse click happened outside of edit dialog', () => {
@@ -301,11 +301,11 @@ describe('Table', () => {
       </table>
     )
     const wrapper = mount(table)
-    wrapper.find('.Table-body-row-cell-edit-wrapper').simulate('click')
+    wrapper.find('.mdc-Table-body-row-cell-edit-wrapper').simulate('click')
     // simulate click outside of component
     document.dispatchEvent(new window.Event('click'))
     // make sure overlay isn't visible anymore
-    assert.equal(wrapper.find('.Table-edit').length, 0)
+    assert.equal(wrapper.find('.mdc-Table-edit').length, 0)
   })
 
   it('should hide the overlay when enter key is pressed', () => {
@@ -321,10 +321,10 @@ describe('Table', () => {
       </table>
     )
     const wrapper = mount(table)
-    wrapper.find('.Table-body-row-cell-edit-wrapper').simulate('click')
+    wrapper.find('.mdc-Table-body-row-cell-edit-wrapper').simulate('click')
     // simulate enter key
-    wrapper.find('.Table-edit-container').simulate('submit')
+    wrapper.find('.mdc-Table-edit-container').simulate('submit')
     // make sure overlay isn't visible anymore
-    assert.equal(wrapper.find('.Table-edit').length, 0)
+    assert.equal(wrapper.find('.mdc-Table-edit').length, 0)
   })
 })
