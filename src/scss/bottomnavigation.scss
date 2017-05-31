@@ -26,7 +26,7 @@
 }
 
 @include xlarge {
-  .Navigation + .mdc-BottomNavigation {
+  .mdc-Navigation + .mdc-BottomNavigation {
     padding-left: $navigation-width;
     width: calc(100vw - #{$navigation-width});
     box-sizing: content-box;
@@ -80,7 +80,7 @@
   }
 
   .mdc-Header + .mdc-BottomNavigation,
-  .mdc-Header + .Navigation + .mdc-BottomNavigation {
+  .mdc-Header + .mdc-Navigation + .mdc-BottomNavigation {
     .mdc-BottomNavigation-menu {
       top: $header-height;
     }

@@ -3,7 +3,7 @@
  * http://www.google.com/design/spec/layout/structure.html#structure-app-bar
  */
 
-.Navigation-sidebar {
+.mdc-Navigation-sidebar {
   border-right: 1px solid rgba(0, 0, 0, 0.14);
   position: fixed;
   top: 0;
@@ -27,7 +27,7 @@
   }
 }
 
-.Navigation-sidebar.is-visible {
+.mdc-Navigation-sidebar.is-visible {
   visibility: visible;
   transform: translateX(0);
 
@@ -37,7 +37,7 @@
   transition-delay: 0.1s;
 }
 
-.Navigation-logo {
+.mdc-Navigation-logo {
   height: 48px;
   padding: 12px 24px 10px 2px;
   border-bottom: 1px solid #e0e0e0;
@@ -48,7 +48,7 @@
   }
 }
 
-.Navigation-links {
+.mdc-Navigation-links {
   list-style: none;
   margin: 0;
   padding: 12px 0 10px;
@@ -56,12 +56,12 @@
 
 $nav-link-height: 44px;
 
-.Navigation-group-title {
+.mdc-Navigation-group-title {
   cursor: pointer;
 }
 
-.Navigation-links a,
-.Navigation-group-title {
+.mdc-Navigation-links a,
+.mdc-Navigation-group-title {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -73,30 +73,30 @@ $nav-link-height: 44px;
   color: rgba(0, 0, 0, 0.87);
 }
 
-.Navigation-group--opened .Navigation-group-icon {
+.mdc-Navigation-group--opened .mdc-Navigation-group-icon {
   transform: rotate(-90deg);
 }
 
-.Navigation-group-icon {
+.mdc-Navigation-group-icon {
   transform: rotate(90deg);
   transition: transform 0.15s ease-in-out;
 }
 
-.Navigation-group-links {
+.mdc-Navigation-group-links {
   transition: max-height 0.15s ease-in-out;
   overflow: hidden;
   padding-left: 22px;
 }
 
-.Navigation-group a {
+.mdc-Navigation-group a {
   color: rgba(0, 0, 0, 0.54);
 }
 
-.Navigation-links a.active {
+.mdc-Navigation-links a.active {
   color: $color-primary--dark;
 }
 
-.Navigation-hamburger {
+.mdc-Navigation-hamburger {
   fill: #fff;
   position: fixed;
   z-index: 102;
@@ -112,7 +112,7 @@ $nav-link-height: 44px;
   }
 }
 
-.Navigation-overlay {
+.mdc-Navigation-overlay {
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   z-index: 103;
@@ -124,7 +124,7 @@ $nav-link-height: 44px;
   opacity: 0;
 }
 
-.Navigation-overlay.is-visible {
+.mdc-Navigation-overlay.is-visible {
   opacity: 1;
   visibility: visible;
 }

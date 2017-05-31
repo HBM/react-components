@@ -42,12 +42,12 @@ class NavigationGroup extends React.Component {
     const {children} = this.props
     const maxHeight = isOpen ? React.Children.count(children) * height : 0
     return (
-      <li className='Navigation-group'>
-        <span className={classnames('Navigation-group-title', {'Navigation-group--opened': isOpen})} onClick={this.toggleOpen} >
+      <li className='mdc-Navigation-group'>
+        <span className={classnames('mdc-Navigation-group-title', {'mdc-Navigation-group--opened': isOpen})} onClick={this.toggleOpen} >
           {this.props.title}
-          <ChevronRight className='Navigation-group-icon' />
+          <ChevronRight className='mdc-Navigation-group-icon' />
         </span>
-        <ul className='Navigation-group-links' ref={node => { this.listNode = node }} style={{maxHeight}}>
+        <ul className='mdc-Navigation-group-links' ref={node => { this.listNode = node }} style={{maxHeight}}>
           {children}
         </ul>
       </li>
@@ -88,24 +88,24 @@ class Navigation extends React.Component {
 
   render () {
     return (
-      <div className='Navigation'>
-        <nav className={classnames('Navigation-sidebar', {'is-visible': this.state.visible})}>
-          <div className='Navigation-logo'>
+      <div className='mdc-Navigation'>
+        <nav className={classnames('mdc-Navigation-sidebar', {'is-visible': this.state.visible})}>
+          <div className='mdc-Navigation-logo'>
             <a href='#' onClick={this.close}>
               <Logo fill='#A7A5A5' />
             </a>
           </div>
-          <ul className='Navigation-links' onClick={this.close} >
+          <ul className='mdc-Navigation-links' onClick={this.close} >
             {this.props.children}
           </ul>
         </nav>
-        <div className='Navigation-hamburger'>
+        <div className='mdc-Navigation-hamburger'>
           <Button onClick={this.open}>
             <Menu />
           </Button>
         </div>
         <div
-          className={classnames('Navigation-overlay', {
+          className={classnames('mdc-Navigation-overlay', {
             'is-visible': this.state.visible
           })}
           onClick={this.closeOverlay}
