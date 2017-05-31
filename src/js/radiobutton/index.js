@@ -35,7 +35,7 @@ class RadioButton extends React.Component {
     const shouldFocus = kbPressed && items.indexOf(selectedValue) < 0
     const focusIndex = kbPressed === 'shift' ? items.length - 1 : 0
     return (
-      <div className={classNames('RadioButton', {'RadioButton--keyboard': kbPressed})}
+      <div className={classNames('mdc-RadioButton', {'mdc-RadioButton--keyboard': kbPressed})}
         onKeyUp={this.setKbPressed}
         onClick={this.resetKbPressed}
         onBlur={this.resetKbPressed}
@@ -44,23 +44,23 @@ class RadioButton extends React.Component {
           var checked = item.toLowerCase() === selectedValue.toLowerCase()
           return (
             <label key={index}
-              className={classNames('RadioButton-item', {'RadioButton-item--keyboard': index === focusIndex && shouldFocus})}
+              className={classNames('mdc-RadioButton-item', {'mdc-RadioButton-item--keyboard': index === focusIndex && shouldFocus})}
               >
               <input
                 checked={checked}
-                className='RadioButton-input'
+                className='mdc-RadioButton-input'
                 name={name}
                 onChange={onChange.bind(this, item)}
                 type='radio'
                 value={item}
               />
-              <div className='RadioButton-icon'>
+              <div className='mdc-RadioButton-icon'>
                 {checked
                   ? <RadioButtonChecked />
                   : <RadioButtonUnchecked />
                 }
               </div>
-              <span className='RadioButton-label'>
+              <span className='mdc-RadioButton-label'>
                 {item}
               </span>
             </label>

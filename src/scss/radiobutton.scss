@@ -7,37 +7,37 @@
  * Implementation from http://wtfforms.com/
  */
 
-.RadioButton {
+.mdc-RadioButton {
   display: flex;
   flex-direction: column;
 }
 
-.RadioButton-item {
+.mdc-RadioButton-item {
   display: flex;
   align-items: center;
   flex: 0 1 48px;
   position: relative;
 }
 
-.RadioButton-input {
+.mdc-RadioButton-input {
   position: absolute;
   opacity: 0;
   z-index: -1;
 }
 
-.RadioButton-label {
+.mdc-RadioButton-label {
   color: rgba(0, 0, 0, 0.54);
   margin-left: 10px;
 }
 
-.RadioButton-icon {
+.mdc-RadioButton-icon {
   line-height: 0;
   fill: rgba(0, 0, 0, 0.54);
   transition: all 0.15s ease;
 }
 
-.RadioButton--keyboard .RadioButton-input:checked ~ .RadioButton-icon,
-.RadioButton-item--keyboard .RadioButton-icon {
+.mdc-RadioButton--keyboard .mdc-RadioButton-input:checked ~ .mdc-RadioButton-icon,
+.mdc-RadioButton-item--keyboard .mdc-RadioButton-icon {
   box-shadow: 0 0 0 8px rgba(27, 50, 95, 0.12);
   border-radius: 100%;
   background-color: rgba(27, 50, 95, 0.12);
@@ -46,8 +46,8 @@
 /**
  * checked
  */
-.RadioButton-input:checked ~ .RadioButton-icon,
-.RadioButton-input:checked ~ .RadioButton-label {
+.mdc-RadioButton-input:checked ~ .mdc-RadioButton-icon,
+.mdc-RadioButton-input:checked ~ .mdc-RadioButton-label {
   color: $blue-dark;
   fill: $blue-dark;
 }
@@ -55,8 +55,8 @@
 /**
  * disabled
  */
-.RadioButton-input:disabled ~ .RadioButton-icon,
-.RadioButton-input:disabled ~ .RadioButton-label {
+.mdc-RadioButton-input:disabled ~ .mdc-RadioButton-icon,
+.mdc-RadioButton-input:disabled ~ .mdc-RadioButton-label {
   fill: rgba(0, 0, 0, 0.26);
   color: rgba(0, 0, 0, 0.26);
 }
