@@ -44,7 +44,7 @@
 /**
  * Fix left alignment for Checkbox component 10px + 3px
  */
-.mdc-Card-text > .Checkbox {
+.mdc-Card-text > .mdc-Checkbox {
   margin-left: -13px;
 
   @include medium {

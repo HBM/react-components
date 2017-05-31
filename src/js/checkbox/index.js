@@ -25,24 +25,24 @@ export default class Checkbox extends React.Component {
 
   render () {
     return (
-      <label className='Checkbox' title={this.props.label} onKeyUp={this.onKeyUp} onBlur={this.onCleanUp}>
+      <label className='mdc-Checkbox' title={this.props.label} onKeyUp={this.onKeyUp} onBlur={this.onCleanUp}>
         <input
           checked={this.props.checked}
-          className={classnames('Checkbox-input', {'Checkbox-input--keyboard': this.state.active})}
+          className={classnames('mdc-Checkbox-input', {'mdc-Checkbox-input--keyboard': this.state.active})}
           defaultChecked={this.props.defaultChecked}
           disabled={this.props.disabled}
           name={this.props.name}
           onChange={this.props.onChange}
           type='checkbox'
         />
-        <div className='Checkbox-focus' />
-        <div className='Checkbox-icon'>
+        <div className='mdc-Checkbox-focus' />
+        <div className='mdc-Checkbox-icon'>
           {this.props.checked || this.props.defaultChecked
             ? <CheckBox />
             : <CheckBoxOutlineBlank />
           }
         </div>
-        <span className='Checkbox-label'>
+        <span className='mdc-Checkbox-label'>
           {this.props.label}
         </span>
       </label>

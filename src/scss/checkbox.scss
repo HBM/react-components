@@ -3,8 +3,8 @@
  * http://www.google.com/design/spec/components/switches.html#switches-checkbox
  */
 
-.Checkbox {
-  /* for absolute positioned .Checkbox-focus div */
+.mdc-Checkbox {
+  /* for absolute positioned .mdc-Checkbox-focus div */
   position: relative;
   height: 48px;
   display: flex;
@@ -18,7 +18,7 @@
     /**
      * checked
      */
-    &:checked ~ .Checkbox {
+    &:checked ~ .mdc-Checkbox {
       &-icon,
       &-label {
         color: $blue-dark;
@@ -26,13 +26,13 @@
       }
     }
 
-    &:checked.Checkbox-input--keyboard ~ .Checkbox-focus {
+    &:checked.mdc-Checkbox-input--keyboard ~ .mdc-Checkbox-focus {
       box-shadow: 0 0 0 8px rgba($blue-dark, 0.12);
       background-color: rgba($blue-dark, 0.12);
       display: block;
     }
 
-    &:not(:checked).Checkbox-input--keyboard ~ .Checkbox-focus {
+    &:not(:checked).mdc-Checkbox-input--keyboard ~ .mdc-Checkbox-focus {
       box-shadow: 0 0 0 8px rgba(0, 0, 0, 0.12);
       background-color: rgba(0, 0, 0, 0.12);
       display: block;
@@ -41,7 +41,7 @@
     /**
     * disabled
     */
-    &:disabled ~ .Checkbox {
+    &:disabled ~ .mdc-Checkbox {
       &-icon,
       &-label {
         fill: rgba(0, 0, 0, 0.26);
