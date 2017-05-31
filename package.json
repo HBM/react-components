@@ -7,14 +7,14 @@
   "style": "style.css",
   "files": ["scss"],
   "scripts": {
-    "stylelint": "stylelint scss/*.scss",
-    "build:css": "node-sass scss/index.scss style.css",
+    "stylelint": "stylelint src/scss/*.scss",
+    "build:css": "node-sass src/scss/index.scss style.css",
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
     "build": "npm run build:css && npm run build:commonjs && npm run build:es",
     "examples": "cd examples && react-scripts start",
     "test": "standard && npm run stylelint && nyc mocha src/js/**/test/test.js",
-    "prepublish": "npm run build && cpx ./src/css/**/* ./lib/css"
+    "prepublish": "npm run build && cpx './src/scss/*.*' ./scss"
   },
   "repository": {
     "type": "git",
