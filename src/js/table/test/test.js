@@ -191,7 +191,7 @@ describe('Table', () => {
       onChangeRowsPerPage={() => {}}
     />
     const wrapper = mount(footer)
-    assert.equal(wrapper.find('.Select-body').text(), '50')
+    assert.equal(wrapper.find('.mdc-Select-body').text(), '50')
   })
 
   it('should call back on changing rows count per page', (done) => {
@@ -202,9 +202,9 @@ describe('Table', () => {
     const wrapper = mount(footer)
     // tests from select component
     // open list
-    wrapper.find('.Select-body').simulate('click')
+    wrapper.find('.mdc-Select-body').simulate('click')
     // click on list item to trigger change event
-    wrapper.find('.Select-listItem').at(1).simulate('click')
+    wrapper.find('.mdc-Select-listItem').at(1).simulate('click')
   })
 
   it('should show an edit icon when set to editable', () => {

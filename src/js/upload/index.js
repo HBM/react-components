@@ -18,7 +18,7 @@ export default class Upload extends React.Component {
   static defaultProps = {
     accept: '*',
     disabled: false,
-    buttonText: 'Select File',
+    buttonText: 'mdc-Select File',
     textBefore: '',
     textAfter: 'or drag file in this area'
   }

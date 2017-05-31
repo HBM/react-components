@@ -125,16 +125,16 @@ export default class Select extends React.Component {
     const text = empty ? this.props.placeholder : this.props.options[selectedIndex].label
 
     return (
-      <div className='Select' ref={(c) => { this.ref = c }}>
+      <div className='mdc-Select' ref={(c) => { this.ref = c }}>
         {
           label &&
-          <span className='Select-label'>{this.props.label}</span>
+          <span className='mdc-Select-label'>{this.props.label}</span>
         }
-        <button name={name} className='Select-body' onClick={this.open} disabled={disabled}>
-          <span className={empty ? 'Select-placeholder' : ''}>
+        <button name={name} className='mdc-Select-body' onClick={this.open} disabled={disabled}>
+          <span className={empty ? 'mdc-Select-placeholder' : ''}>
             {text}
           </span>
-          <span className='Select-caret' />
+          <span className='mdc-Select-caret' />
         </button>
         <Motion style={{
           opacity: spring(open ? 1 : 0)
@@ -257,12 +257,12 @@ class List extends React.Component {
     return (
       <ul
         ref={(c) => { this.ref = c }}
-        className='Select-list'
+        className='mdc-Select-list'
         style={Object.assign(style, this.props.style)}
       >
         {options.map((item, i) =>
           <li key={i}
-            className='Select-listItem'
+            className='mdc-Select-listItem'
             data-id={i}
             onClick={this.onClick}
             style={{padding: `0 ${padding}px`}}

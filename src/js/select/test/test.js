@@ -7,26 +7,26 @@ import Select from '../'
 
 const noop = () => {}
 
-describe('Select', () => {
+describe('mdc-Select', () => {
   it('should render a simple example', () => {
     const wrapper = mount(<Select onChange={noop} />)
-    assert(wrapper.find('.Select'))
+    assert(wrapper.find('.mdc-Select'))
   })
 
   it('should render some default items', () => {
     const wrapper = mount(<Select onChange={noop} />)
-    wrapper.find('.Select-body').simulate('click')
-    assert.equal(wrapper.find('.Select-listItem').length, 3)
+    wrapper.find('.mdc-Select-body').simulate('click')
+    assert.equal(wrapper.find('.mdc-Select-listItem').length, 3)
   })
 
   it('should render a default placeholder', () => {
     const wrapper = mount(<Select onChange={noop} />)
-    assert.equal(wrapper.find('.Select-placeholder').text(), 'Placeholder')
+    assert.equal(wrapper.find('.mdc-Select-placeholder').text(), 'Placeholder')
   })
 
   it('should allow disabling the button', () => {
     const wrapper = mount(<Select onChange={noop} disabled />)
-    assert(wrapper.find('.Select-body').props().disabled)
+    assert(wrapper.find('.mdc-Select-body').props().disabled)
   })
 
   it('should render a given value instead of placeholder', () => {
@@ -41,30 +41,30 @@ describe('Select', () => {
         ]}
       />
     )
-    assert.equal(wrapper.find('.Select-body').text(), 'Dog')
+    assert.equal(wrapper.find('.mdc-Select-body').text(), 'Dog')
   })
 
   it('should render a label', () => {
     const wrapper = mount(<Select label='Animals' onChange={noop} />)
-    assert.equal(wrapper.find('.Select-label').text(), 'Animals')
+    assert.equal(wrapper.find('.mdc-Select-label').text(), 'Animals')
   })
 
   it('should open the list when clicked', () => {
     const wrapper = mount(<Select onChange={noop} />)
-    wrapper.find('.Select-body').simulate('click')
-    assert(wrapper.find('.Select-list'))
+    wrapper.find('.mdc-Select-body').simulate('click')
+    assert(wrapper.find('.mdc-Select-list'))
   })
 
   it('should close the list when it is open and click outside happenend', () => {
     const wrapper = mount(<Select onChange={noop} />)
     // open list
-    wrapper.find('.Select-body').simulate('click')
-    assert.equal(wrapper.find('.Select-list').length, 1)
+    wrapper.find('.mdc-Select-body').simulate('click')
+    assert.equal(wrapper.find('.mdc-Select-list').length, 1)
     // simulate click somewhere
     var event = new window.MouseEvent('click')
     document.dispatchEvent(event)
     // make sure list is closed
-    assert.equal(wrapper.find('.Select-list').length, 0)
+    assert.equal(wrapper.find('.mdc-Select-list').length, 0)
   })
 
   it('should close the list on click on an item', () => {
@@ -80,14 +80,14 @@ describe('Select', () => {
       />
     )
     // open list
-    wrapper.find('.Select-body').simulate('click')
-    assert.equal(wrapper.find('.Select-list').length, 1)
+    wrapper.find('.mdc-Select-body').simulate('click')
+    assert.equal(wrapper.find('.mdc-Select-list').length, 1)
     // click on list item
-    wrapper.find('.Select-listItem').at(1).simulate('click')
+    wrapper.find('.mdc-Select-listItem').at(1).simulate('click')
     var event = new window.MouseEvent('click')
     document.dispatchEvent(event)
     // make sure list is closed
-    assert.equal(wrapper.find('.Select-list').length, 0)
+    assert.equal(wrapper.find('.mdc-Select-list').length, 0)
   })
 
   it('should render the list directly above the selected item', () => {
@@ -108,8 +108,8 @@ describe('Select', () => {
       />
     )
     // open list
-    wrapper.find('.Select-body').simulate('click')
-    assert.equal(wrapper.find('.Select-list').node.style.top, '-58px')
+    wrapper.find('.mdc-Select-body').simulate('click')
+    assert.equal(wrapper.find('.mdc-Select-list').node.style.top, '-58px')
   })
 
   it('should render a list item always in the middle of the list when list is too large', () => {
@@ -131,8 +131,8 @@ describe('Select', () => {
       />
     )
     // open list
-    wrapper.find('.Select-body').simulate('click')
-    assert.equal(wrapper.find('.Select-list').node.style.top, '-106px')
+    wrapper.find('.mdc-Select-body').simulate('click')
+    assert.equal(wrapper.find('.mdc-Select-list').node.style.top, '-106px')
   })
 
   it('should not show the second last item in the center of the list', () => {
@@ -153,8 +153,8 @@ describe('Select', () => {
         onChange={noop}
       />
     )
-    wrapper.find('.Select-body').simulate('click')
-    assert.equal(wrapper.find('.Select-list').node.style.top, '-154px')
+    wrapper.find('.mdc-Select-body').simulate('click')
+    assert.equal(wrapper.find('.mdc-Select-list').node.style.top, '-154px')
   })
 
   it('should show the last item at the end of the list', () => {
@@ -175,8 +175,8 @@ describe('Select', () => {
         onChange={noop}
       />
     )
-    wrapper.find('.Select-body').simulate('click')
-    assert.equal(wrapper.find('.Select-list').node.style.top, '-202px')
+    wrapper.find('.mdc-Select-body').simulate('click')
+    assert.equal(wrapper.find('.mdc-Select-list').node.style.top, '-202px')
   })
 
   it('should change its position top when inside a table', () => {
@@ -205,8 +205,8 @@ describe('Select', () => {
         </tbody>
       </table>
     )
-    wrapper.find('.Select-body').simulate('click')
-    assert.equal(wrapper.find('.Select-list').node.style.top, '-209px')
+    wrapper.find('.mdc-Select-body').simulate('click')
+    assert.equal(wrapper.find('.mdc-Select-list').node.style.top, '-209px')
   })
 
   it('specifies a name attribute for the button', () => {

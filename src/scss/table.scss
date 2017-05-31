@@ -118,7 +118,7 @@
     color: rgba(0, 0, 0, 0.54);
 
     // override Select component styles explicitly
-    .Select {
+    .mdc-Select {
       font-size: 12px;
       flex: none;
       color: rgba(0, 0, 0, 0.54);
@@ -141,13 +141,13 @@
 }
 
 // Select / dropdown inside table cell
-.Table .Select {
+.Table .mdc-Select {
   font-size: inherit;
   padding-top: 0;
   padding-bottom: 0;
 }
 
-.Table .Select-body {
+.Table .mdc-Select-body {
   border-bottom: none;
   padding-bottom: 0;
 }

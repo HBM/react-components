@@ -1,4 +1,4 @@
-.Select {
+.mdc-Select {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -12,7 +12,7 @@
   padding-bottom: 8px;
 }
 
-.Select-label {
+.mdc-Select-label {
   font-size: 12px;
   padding: 0 0 8px;
   color: rgba($blue-dark, 0.6);
@@ -21,7 +21,7 @@
 /**
  * Select-body is of type <button />
  */
-button.Select-body {
+button.mdc-Select-body {
   background: none;
   margin: 0;
   padding: 0;
@@ -34,15 +34,15 @@ button.Select-body {
 }
 
 // https://material.google.com/style/color.html#color-text-background-colors
-.Select-body:disabled {
+.mdc-Select-body:disabled {
   color: rgba(0, 0, 0, 0.38);
 }
 
-.Select-placeholder {
+.mdc-Select-placeholder {
   color: rgba(0, 0, 0, 0.54);
 }
 
-.Select-caret {
+.mdc-Select-caret {
   display: inline-block;
   width: 0;
   height: 0;
@@ -57,7 +57,7 @@ button.Select-body {
 /**
  * Select-list is of type <ul />
  */
-.Select-list {
+.mdc-Select-list {
   margin: 0;
   z-index: 1;
   position: absolute;
@@ -74,7 +74,7 @@ button.Select-body {
   max-height: 256px;
 }
 
-.Table .Select-list {
+.Table .mdc-Select-list {
   font-size: 13px;
   padding: 0;
   border: 1px solid lightgray;
@@ -82,14 +82,14 @@ button.Select-body {
   background: #f9f9f9;
 }
 
-.Table button.Select-body {
+.Table button.mdc-Select-body {
   font-size: 13px;
 }
 
 /**
  * Select-listItem is of type <li />
  */
-.Select-listItem {
+.mdc-Select-listItem {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -100,6 +100,6 @@ button.Select-body {
   align-items: center;
 }
 
-.Select-listItem:hover {
+.mdc-Select-listItem:hover {
   background: #eee;
 }
