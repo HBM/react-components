@@ -1,29 +1,29 @@
 
 // wrapper is needed to allow progress bar grow from bottom upwards
-.Progress-linear {
+.mdc-Progress-linear {
   height: 4px;
   display: flex;
   align-items: flex-end;
 }
 
-.Progress-linear-background {
+.mdc-Progress-linear-background {
   background-color: rgba(63, 81, 181, 0.3);
   flex: 1;
 }
 
-.Progress-linear-inner {
+.mdc-Progress-linear-inner {
   height: inherit;
   background-color: #3f51b5;
   // https://github.com/google/material-design-lite/blob/master/src/_variables.scss#L497
   transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.Progress-circular {
+.mdc-Progress-circular {
   transform-origin: center;
   transform: rotate(-90deg);
 }
 
-.Progress-circular-path {
+.mdc-Progress-circular-path {
   stroke: #3f51b5;
   transition: stroke-dashoffset 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }

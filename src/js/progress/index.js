@@ -31,9 +31,9 @@ class Linear extends React.Component {
       <Motion defaultStyle={{x: 0}} style={{x: spring(this.state.isDone ? 0 : 4)}}>
         {
           (value) => value.x !== 0 &&
-          <div className='Progress-linear'>
-            <div className='Progress-linear-background' style={{height: value.x}}>
-              <div className='Progress-linear-inner' style={{width: `${this.props.percentage}%`}} />
+          <div className='mdc-Progress-linear'>
+            <div className='mdc-Progress-linear-background' style={{height: value.x}}>
+              <div className='mdc-Progress-linear-inner' style={{width: `${this.props.percentage}%`}} />
             </div>
           </div>
         }
@@ -66,14 +66,14 @@ class Circular extends React.Component {
     }
     return (
       <svg
-        className='Progress-circular'
+        className='mdc-Progress-circular'
         width={svgSize}
         height={svgSize}
         viewBox={viewBox}
       >
         <circle
           style={style}
-          className='Progress-circular-path'
+          className='mdc-Progress-circular-path'
           fill='none'
           cx={center}
           cy={center}
