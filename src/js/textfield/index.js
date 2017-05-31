@@ -26,29 +26,29 @@ const TextfieldWrapper = ({
   }
   const showCounter = valueLength > length
   return (
-    <label className={classnames('Textfield', {'Textfield--nolabel': !label})} htmlFor={htmlFor}>
-      <div className='Textfield-icon-wrapper'>
+    <label className={classnames('mdc-Textfield', {'mdc-Textfield--nolabel': !label})} htmlFor={htmlFor}>
+      <div className='mdc-Textfield-icon-wrapper'>
         {
           icon
-          ? <div className='Textfield-icon'>{icon}</div>
+          ? <div className='mdc-Textfield-icon'>{icon}</div>
           : null
         }
-        <div className='Textfield-wrapper'>
+        <div className='mdc-Textfield-wrapper'>
           {children}
           <span
-            className={classnames('Textfield-label', {
-              'Textfield-label--floatup': (!float || !empty)},
-              {'Textfield-error': showCounter}
+            className={classnames('mdc-Textfield-label', {
+              'mdc-Textfield-label--floatup': (!float || !empty)},
+              {'mdc-Textfield-error': showCounter}
             )}
           >
             {label}
           </span>
-          <div className='Textfield-states'>
-            <span className='Textfield-error'>{error}</span>
+          <div className='mdc-Textfield-states'>
+            <span className='mdc-Textfield-error'>{error}</span>
             {
               length
-              ? <span className={classnames('Textfield-char-counter', {
-                'Textfield-error': showCounter})}>{valueLength} / {length}</span>
+              ? <span className={classnames('mdc-Textfield-char-counter', {
+                'mdc-Textfield-error': showCounter})}>{valueLength} / {length}</span>
               : null
             }
           </div>
@@ -70,8 +70,8 @@ export const Textfield = ({float, error, length, htmlFor, ...rest}) => (
     htmlFor={htmlFor}
   >
     <input
-      className={classnames('Textfield-input', {
-        'Textfield-input--error': error
+      className={classnames('mdc-Textfield-input', {
+        'mdc-Textfield-input--error': error
       })}
       {...rest}
     />
@@ -157,8 +157,8 @@ export class Textarea extends React.Component {
       >
         <textarea
           autoFocus={autoFocus}
-          className={classnames('Textfield-input', {
-            'Textfield-input--error': error
+          className={classnames('mdc-Textfield-input', {
+            'mdc-Textfield-input--error': error
           })}
           defaultValue={defaultValue}
           disabled={disabled}

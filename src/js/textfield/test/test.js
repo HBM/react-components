@@ -5,15 +5,15 @@ import React from 'react'
 import {Textfield, Textarea} from '../'
 import {mount} from 'enzyme'
 
-describe('Textfield', () => {
+describe('mdc-Textfield', () => {
   it('should be empty by default', () => {
     const wrapper = mount(<Textfield />)
-    assert.equal(wrapper.find('.Textfield-input').node.value, '')
+    assert.equal(wrapper.find('.mdc-Textfield-input').node.value, '')
   })
 
   it('should be able to set a custom value', () => {
     const wrapper = mount(<Textfield value='my custom value' onChange={() => {}} />)
-    assert.equal(wrapper.find('.Textfield-input').node.value, 'my custom value')
+    assert.equal(wrapper.find('.mdc-Textfield-input').node.value, 'my custom value')
   })
 
   it('should be able to set a custom label', () => {
@@ -23,39 +23,39 @@ describe('Textfield', () => {
 
   it('should be able to set a custom icon', () => {
     const wrapper = mount(<Textfield icon={<span>ICON</span>} />)
-    assert.equal(wrapper.find('.Textfield-icon').text(), 'ICON')
+    assert.equal(wrapper.find('.mdc-Textfield-icon').text(), 'ICON')
   })
 
   it('should not show label floated up when value is empty', () => {
     const wrapper = mount(<Textfield label='foo' />)
-    assert.equal(wrapper.find('.Textfield-label--floatup').length, 0)
+    assert.equal(wrapper.find('.mdc-Textfield-label--floatup').length, 0)
   })
 
   it('should show label floated up when value is not empty', () => {
     const noop = () => {}
     const wrapper = mount(<Textfield label='foo' defaultValue='bar' onChange={noop} />)
-    assert.equal(wrapper.find('.Textfield-label--floatup').length, 1)
+    assert.equal(wrapper.find('.mdc-Textfield-label--floatup').length, 1)
   })
 
   it('should show label floated up when defaultValue is not empty', () => {
     const noop = () => {}
     const wrapper = mount(<Textfield label='foo' value='bar' onChange={noop} />)
-    assert.equal(wrapper.find('.Textfield-label--floatup').length, 1)
+    assert.equal(wrapper.find('.mdc-Textfield-label--floatup').length, 1)
   })
 
   it('should show label floated up when value is empty and float=false', () => {
     const wrapper = mount(<Textfield label='foo' float={false} />)
-    assert.equal(wrapper.find('.Textfield-label--floatup').length, 1)
+    assert.equal(wrapper.find('.mdc-Textfield-label--floatup').length, 1)
   })
 
   it('should be able to set to disabled', () => {
     const wrapper = mount(<Textfield disabled />)
-    assert(wrapper.find('.Textfield-input').node.disabled)
+    assert(wrapper.find('.mdc-Textfield-input').node.disabled)
   })
 
   it('should be able to set to readOnly', () => {
     const wrapper = mount(<Textfield readOnly />)
-    assert(wrapper.find('.Textfield-input').node.readOnly)
+    assert(wrapper.find('.mdc-Textfield-input').node.readOnly)
   })
 
   it('should callback upon typing', (done) => {
@@ -64,7 +64,7 @@ describe('Textfield', () => {
       done()
     }
     const wrapper = mount(<Textfield onChange={callback} />)
-    wrapper.find('.Textfield-input').simulate('change', {
+    wrapper.find('.mdc-Textfield-input').simulate('change', {
       target: {
         value: 'hello world'
       }
@@ -73,17 +73,17 @@ describe('Textfield', () => {
 
   it('should show an error message', () => {
     const wrapper = mount(<Textfield error='username or password incorrect' />)
-    assert.equal(wrapper.find('.Textfield-error').text(), 'username or password incorrect')
+    assert.equal(wrapper.find('.mdc-Textfield-error').text(), 'username or password incorrect')
   })
 
   it('should apply error styles', () => {
     const wrapper = mount(<Textfield error='username or password incorrect' />)
-    assert(wrapper.find('.Textfield-input').hasClass('Textfield-input--error'))
+    assert(wrapper.find('.mdc-Textfield-input').hasClass('mdc-Textfield-input--error'))
   })
 
   it('should have the right type', () => {
     const wrapper = mount(<Textfield type='password' />)
-    assert.equal(wrapper.find('.Textfield-input').node.type, 'password')
+    assert.equal(wrapper.find('.mdc-Textfield-input').node.type, 'password')
   })
 
   it('should allow setting the htmlFor attribute on label element', () => {
@@ -95,7 +95,7 @@ describe('Textfield', () => {
 describe('Textarea', () => {
   it('should be empty by default', () => {
     const wrapper = mount(<Textarea />)
-    assert.equal(wrapper.find('.Textfield-input').node.value, '')
+    assert.equal(wrapper.find('.mdc-Textfield-input').node.value, '')
   })
 
   it('should render value as text content of textarea', () => {

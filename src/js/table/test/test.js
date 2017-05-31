@@ -249,7 +249,7 @@ describe('mdc-Table', () => {
       <table>
         <tbody>
           <tr>
-            <TableBodyCell textfield={<input className='Textfield-input' type='text' onChange={onChange} />}>
+            <TableBodyCell textfield={<input className='mdc-Textfield-input' type='text' onChange={onChange} />}>
               hello world
             </TableBodyCell>
           </tr>
@@ -259,7 +259,7 @@ describe('mdc-Table', () => {
     const wrapper = mount(table)
     wrapper.find('.mdc-Table-body-row-cell-edit-wrapper').simulate('click')
     // enter some new text
-    wrapper.find('.Textfield-input').simulate('change', {
+    wrapper.find('.mdc-Textfield-input').simulate('change', {
       target: {
         value: 'beep bopp'
       }

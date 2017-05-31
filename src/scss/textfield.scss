@@ -9,29 +9,29 @@ $transition-function: cubic-bezier(0.25, 0.8, 0.25, 1);
 $transition-duration: 0.25s;
 $error-color: rgb(244, 67, 54);
 
-.Textfield {
+.mdc-Textfield {
   display: block;
 }
 
-.Textfield--nolabel .Textfield-label {
+.mdc-Textfield--nolabel .mdc-Textfield-label {
   display: none;
 }
 
-.Textfield--nolabel .Textfield-input {
+.mdc-Textfield--nolabel .mdc-Textfield-input {
   margin-top: 14px;
 }
 
-.Textfield-icon-wrapper {
+.mdc-Textfield-icon-wrapper {
   display: flex;
 }
 
-.Textfield-wrapper {
+.mdc-Textfield-wrapper {
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-.Textfield-icon {
+.mdc-Textfield-icon {
   width: 48px;
   height: 48px;
   display: flex;
@@ -41,11 +41,11 @@ $error-color: rgb(244, 67, 54);
   margin-top: 22px;
 }
 
-.Textfield--nolabel .Textfield-icon {
+.mdc-Textfield--nolabel .mdc-Textfield-icon {
   margin-top: 0;
 }
 
-.Textfield-label {
+.mdc-Textfield-label {
   order: 1;
   display: block;
   font-size: $font-big;
@@ -60,7 +60,7 @@ $error-color: rgb(244, 67, 54);
   margin-bottom: 6px;
 }
 
-.Textfield-input {
+.mdc-Textfield-input {
   background: transparent;
   order: 2;
   width: 100%;
@@ -79,57 +79,57 @@ $error-color: rgb(244, 67, 54);
   margin-bottom: 8px;
 }
 
-.Textfield-input:focus {
+.mdc-Textfield-input:focus {
   border-bottom-color: $blue-dark;
   box-shadow: 0 1px 0 0 $blue-dark;
 }
 
-.Textfield:not(.Textfield--nolabel) .Textfield-input:not(:focus)::-webkit-input-placeholder {
+.mdc-Textfield:not(.mdc-Textfield--nolabel) .mdc-Textfield-input:not(:focus)::-webkit-input-placeholder {
   color: transparent;
 }
 
-.Textfield:not(.Textfield--nolabel) .Textfield-input:not(:focus)::-moz-placeholder {
+.mdc-Textfield:not(.mdc-Textfield--nolabel) .mdc-Textfield-input:not(:focus)::-moz-placeholder {
   color: transparent;
 }
 
-.Textfield:not(.Textfield--nolabel) .Textfield-input:not(:focus):-ms-input-placeholder {
+.mdc-Textfield:not(.mdc-Textfield--nolabel) .mdc-Textfield-input:not(:focus):-ms-input-placeholder {
   color: transparent;
 }
 
-.Textfield-input--error {
+.mdc-Textfield-input--error {
   border-bottom-color: $error-color;
 }
 
-.Textfield-input--error:focus {
+.mdc-Textfield-input--error:focus {
   border-bottom-color: $error-color;
   box-shadow: 0 1px 0 0 $error-color;
 }
 
-.Textfield-input:focus ~ .Textfield-label,
-.Textfield-label--floatup {
+.mdc-Textfield-input:focus ~ .mdc-Textfield-label,
+.mdc-Textfield-label--floatup {
   transform: translate3d(0, 0, 0);
   font-size: $font-small;
 }
 
-.Textfield-label--floatup {
+.mdc-Textfield-label--floatup {
   color: rgba($blue-dark, 0.6);
 }
 
-.Textfield-input:focus ~ .Textfield-label:not(.Textfield-error) {
+.mdc-Textfield-input:focus ~ .mdc-Textfield-label:not(.mdc-Textfield-error) {
   color: $blue-dark;
 }
 
-.Textfield-input:disabled {
+.mdc-Textfield-input:disabled {
   background-color: transparent;
   color: rgba($blue-dark, 0.6);
   border-bottom: 1px dotted rgba($blue-dark, 0.3);
 }
 
-.Textfield-char-counter {
+.mdc-Textfield-char-counter {
   color: rgba($blue-dark, 0.6);
 }
 
-.Textfield-states {
+.mdc-Textfield-states {
   order: 3;
   display: flex;
   flex-wrap: nowrap;
@@ -138,6 +138,6 @@ $error-color: rgb(244, 67, 54);
   min-height: 16px;
 }
 
-.Textfield-error {
+.mdc-Textfield-error {
   color: $error-color;
 }
