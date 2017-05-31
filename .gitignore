@@ -10,3 +10,7 @@ npm-debug.log*
 
 # ignore auto generated es5 directory
 lib/
+es/
+style.css
+scss/
+.nyc_output/
