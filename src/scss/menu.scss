@@ -9,13 +9,13 @@ $item-height: 32px;
 $item-padding-mobile: 16px;
 $item-padding: 24px;
 
-.Menu {
+.mdc-Menu {
   position: relative;
   font-size: 13px;
   display: inline-block;
 }
 
-.Menu-list {
+.mdc-Menu-list {
   margin: 0;
   padding: 0;
   z-index: 1;
@@ -31,7 +31,7 @@ $item-padding: 24px;
   }
 }
 
-.Menu-list-item {
+.mdc-Menu-list-item {
   color: #333;
   display: block;
   white-space: nowrap;
@@ -40,7 +40,7 @@ $item-padding: 24px;
 /**
  * Menu-list-item-link is of type <a href="#" ...>...</a>
  */
-.Menu-list-item-link {
+.mdc-Menu-list-item-link {
   text-decoration: none;
   color: initial;
   height: $item-height-mobile;
@@ -55,17 +55,17 @@ $item-padding: 24px;
   }
 }
 
-.Menu-list-item-link:hover {
+.mdc-Menu-list-item-link:hover {
   background-color: rgba(0, 0, 0, 0.025);
 }
 
-.Menu-divider {
+.mdc-Menu-divider {
   height: 1px;
   margin: 7px 0;
   background-color: rgba(0, 0, 0, 0.12);
 }
 
-.Menu-icon {
+.mdc-Menu-icon {
   display: inline-block;
   margin-right: 16px;
   min-width: 24px;

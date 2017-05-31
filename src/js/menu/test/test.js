@@ -7,24 +7,24 @@ import {mount} from 'enzyme'
 
 function noop () {}
 
-describe('Menu', () => {
+describe('mdc-Menu', () => {
   it('should work', () => {
     const wrapper = mount(<Menu onClick={noop} />)
-    assert.equal(wrapper.find('.Menu').length, 1)
+    assert.equal(wrapper.find('.mdc-Menu').length, 1)
   })
 
   it('should use initial items', () => {
     const wrapper = mount(
       <Menu onClick={noop} visible items={['Dog', 'Cat', 'Mouse']} />
     )
-    assert.equal(wrapper.find('.Menu').text(), 'DogCatMouse')
+    assert.equal(wrapper.find('.mdc-Menu').text(), 'DogCatMouse')
   })
 
   it('should render the list closed', () => {
     const wrapper = mount(
       <Menu onClick={noop} items={['Dog', 'Cat', 'Mouse']} />
     )
-    assert.equal(wrapper.find('.Menu-list').length, 0)
+    assert.equal(wrapper.find('.mdc-Menu-list').length, 0)
   })
 
   it('should notify on item click', (done) => {
@@ -35,6 +35,6 @@ describe('Menu', () => {
     const wrapper = mount(
       <Menu onClick={onClick} visible items={['Dog', 'Cat', 'Mouse']} />
     )
-    wrapper.find('.Menu-list-item-link').at(1).simulate('click')
+    wrapper.find('.mdc-Menu-list-item-link').at(1).simulate('click')
   })
 })

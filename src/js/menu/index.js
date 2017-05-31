@@ -19,13 +19,13 @@ export function Menu ({items, children, visible, onClick, transformX, transformY
   }
 
   return (
-    <div className='Menu'>
+    <div className='mdc-Menu'>
       {children}
       <Motion style={{val: spring(visible ? 1 : 0)}}>
         {style => {
           if (!visible) { return <span /> }
           return (
-            <ul className='Menu-list' style={{
+            <ul className='mdc-Menu-list' style={{
               top: transformY === 'top' ? 0 : null,
               bottom: transformY === 'bottom' ? 0 : null,
               left: transformX === 'left' ? 0 : null,
@@ -35,17 +35,17 @@ export function Menu ({items, children, visible, onClick, transformX, transformY
             }}>
               {items.map((item, index) => {
                 if (item === Divider) {
-                  return <li key={index} className='Menu-divider' />
+                  return <li key={index} className='mdc-Menu-divider' />
                 }
                 return (
-                  <li key={index} className='Menu-list-item' style={{opacity: style.val}}>
-                    <a href='#' className='Menu-list-item-link' onClick={e => {
+                  <li key={index} className='mdc-Menu-list-item' style={{opacity: style.val}}>
+                    <a href='#' className='mdc-Menu-list-item-link' onClick={e => {
                       e.preventDefault()
                       onClick(item)
                     }}>
                       {
                         hasIcon &&
-                        <div className='Menu-icon'>
+                        <div className='mdc-Menu-icon'>
                           {item.icon}
                         </div>
                       }
