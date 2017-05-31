@@ -11,8 +11,8 @@ const container = (name) => ({children, className}) => (
   </div>
 )
 
-export const Card = container('Card')
-export const Actions = container('Card-actions')
-export const Title = container('Card-title')
-export const Text = container('Card-text')
-export const Content = container('Card-content')
+export const Card = container('mdc-Card')
+export const Actions = container('mdc-Card-actions')
+export const Title = container('mdc-Card-title')
+export const Text = container('mdc-Card-text')
+export const Content = container('mdc-Card-content')
