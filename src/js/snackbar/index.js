@@ -7,9 +7,9 @@ import {Motion, spring} from 'react-motion'
  * Snackbar component
  */
 
-// 1. 'Snackbar' makes sure all children are centered on page
-// 2. 'Snackbar-background' creates dark background
-// 3. 'Snackbar-content' wraps content so it can animate opacity independently from background
+// 1. 'mdc-Snackbar' makes sure all children are centered on page
+// 2. 'mdc-Snackbar-background' creates dark background
+// 3. 'mdc-Snackbar-content' wraps content so it can animate opacity independently from background
 var Snackbar = ({text, action, onAction, visible}) => (
   <Motion style={{
     transform: spring(visible ? 0 : 48),
@@ -18,21 +18,21 @@ var Snackbar = ({text, action, onAction, visible}) => (
     {style => {
       if (style.opacity === 0) { return <span /> }
       return (
-        <div className='Snackbar' style={{
+        <div className='mdc-Snackbar' style={{
           transform: `translate3d(0, ${style.transform}px, 0)`
         }}>
-          <div className='Snackbar-background'>
-            <div className='Snackbar-content' style={{
+          <div className='mdc-Snackbar-background'>
+            <div className='mdc-Snackbar-content' style={{
               opacity: style.opacity
             }}>
-              <span className='Snackbar-text'>
+              <span className='mdc-Snackbar-text'>
                 {text}
               </span>
               {
                 action &&
                 <input
                   type='button'
-                  className='Snackbar-action'
+                  className='mdc-Snackbar-action'
                   onClick={onAction}
                   value={action}
                 />
