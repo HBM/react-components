@@ -16,7 +16,7 @@ const _window = {
   }
 }
 
-describe('BottomNavigationText', () => {
+describe('mdc-BottomNavigationText', () => {
   it('should render the text', () => {
     const wrapper = mount(<BottomNavigationText>foo</BottomNavigationText>)
     assert.equal(wrapper.text(), 'foo')
@@ -24,18 +24,18 @@ describe('BottomNavigationText', () => {
 
   it('should have the .BottomNavigation-menu-item-text', () => {
     const wrapper = mount(<BottomNavigationText>foo</BottomNavigationText>)
-    assert(wrapper.hasClass('BottomNavigation-menu-item-text'))
+    assert(wrapper.hasClass('mdc-BottomNavigation-menu-item-text'))
   })
 })
 
-describe('BottomNavigation', () => {
+describe('mdc-BottomNavigation', () => {
   it('should render', () => {
     const wrapper = mount(
       <MemoryRouter>
         <BottomNavigation links={[]} />
       </MemoryRouter>
     )
-    assert.equal(wrapper.find('.BottomNavigation').length, 1)
+    assert.equal(wrapper.find('.mdc-BottomNavigation').length, 1)
   })
 
   it('should apply active class to selected link', () => {
@@ -52,7 +52,7 @@ describe('BottomNavigation', () => {
         </BottomNavigation>
       </MemoryRouter>
     )
-    assert(wrapper.find('.BottomNavigation-menu-item a').at(0).hasClass('active'))
+    assert(wrapper.find('.mdc-BottomNavigation-menu-item a').at(0).hasClass('active'))
   })
 
   it('should scroll top when clicking active item', function (done) {
@@ -72,9 +72,9 @@ describe('BottomNavigation', () => {
         </BottomNavigation>
       </MemoryRouter>
     )
-    const node = wrapper.find('.BottomNavigation-content').at(0).node
+    const node = wrapper.find('.mdc-BottomNavigation-content').at(0).node
     node.scrollTop = 40
-    wrapper.find('.BottomNavigation-menu-item').at(0).simulate('click', {})
+    wrapper.find('.mdc-BottomNavigation-menu-item').at(0).simulate('click', {})
     setTimeout(() => {
       assert.equal(node.scrollTop, 0)
       done()
@@ -98,15 +98,15 @@ describe('BottomNavigation', () => {
         </BottomNavigation>
       </MemoryRouter>
     )
-    const node = wrapper.find('.BottomNavigation-content').at(0).node
+    const node = wrapper.find('.mdc-BottomNavigation-content').at(0).node
     node.scrollTop = 40
-    wrapper.find('.BottomNavigation').at(0).simulate('scroll', {})
+    wrapper.find('.mdc-BottomNavigation').at(0).simulate('scroll', {})
     setTimeout(() => {
-      wrapper.find('.BottomNavigation').at(0).simulate('scroll', {})
+      wrapper.find('.mdc-BottomNavigation').at(0).simulate('scroll', {})
     }, 10)
-    assert(wrapper.find('.BottomNavigation').at(0).hasClass('scrolling'))
+    assert(wrapper.find('.mdc-BottomNavigation').at(0).hasClass('scrolling'))
     setTimeout(() => {
-      assert(!wrapper.find('.BottomNavigation').at(0).hasClass('scrolling'))
+      assert(!wrapper.find('.mdc-BottomNavigation').at(0).hasClass('scrolling'))
       done()
     }, 50)
   })
@@ -128,16 +128,16 @@ describe('BottomNavigation', () => {
         </BottomNavigation>
       </MemoryRouter>
     )
-    const node = wrapper.find('.BottomNavigation-content').at(0).node
+    const node = wrapper.find('.mdc-BottomNavigation-content').at(0).node
     node.scrollTop = 40
-    wrapper.find('.BottomNavigation').at(0).simulate('scroll', {})
+    wrapper.find('.mdc-BottomNavigation').at(0).simulate('scroll', {})
     setTimeout(() => {
       node.scrollTop = 20
-      wrapper.find('.BottomNavigation').at(0).simulate('scroll', {})
+      wrapper.find('.mdc-BottomNavigation').at(0).simulate('scroll', {})
     }, 10)
-    assert(wrapper.find('.BottomNavigation').at(0).hasClass('scrolling'))
+    assert(wrapper.find('.mdc-BottomNavigation').at(0).hasClass('scrolling'))
     setTimeout(() => {
-      assert(!wrapper.find('.BottomNavigation').at(0).hasClass('scrolling'))
+      assert(!wrapper.find('.mdc-BottomNavigation').at(0).hasClass('scrolling'))
       done()
     }, 50)
   })
@@ -157,11 +157,11 @@ describe('BottomNavigation', () => {
         </BottomNavigation>
       </MemoryRouter>
       )
-    const node = wrapper.find('.BottomNavigation-content').at(0).node
+    const node = wrapper.find('.mdc-BottomNavigation-content').at(0).node
     node.scrollTop = 40
-    wrapper.find('.BottomNavigation').at(0).simulate('scroll', {})
+    wrapper.find('.mdc-BottomNavigation').at(0).simulate('scroll', {})
 
-    wrapper.find('.BottomNavigation').at(0).simulate('scroll', {})
+    wrapper.find('.mdc-BottomNavigation').at(0).simulate('scroll', {})
     try {
       wrapper.unmount()
     } catch (_) {

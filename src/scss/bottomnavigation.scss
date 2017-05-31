@@ -1,6 +1,6 @@
 @import "./base";
 
-.BottomNavigation {
+.mdc-BottomNavigation {
   position: relative;
   overflow: hidden;
   height: 100%;
@@ -12,7 +12,7 @@
   }
 }
 
-.BottomNavigation-content {
+.mdc-BottomNavigation-content {
   height: 100%;
   padding-bottom: 56px;
   overflow-y: scroll;
@@ -26,7 +26,7 @@
 }
 
 @include xlarge {
-  .Navigation + .BottomNavigation {
+  .Navigation + .mdc-BottomNavigation {
     padding-left: $navigation-width;
     width: calc(100vw - #{$navigation-width});
     box-sizing: content-box;
@@ -37,7 +37,7 @@
   }
 }
 
-.BottomNavigation-menu {
+.mdc-BottomNavigation-menu {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 -3px 7px rgba(0, 0, 0, 0.08);
   border-top: 1px solid #f1f1f1;
   position: absolute;
@@ -71,29 +71,29 @@
 }
 
 @include medium {
-  .BottomNavigation-menu {
+  .mdc-BottomNavigation-menu {
     position: fixed; // prevent overflow scroll bounce movement
   }
 
-  .BottomNavigation-content {
+  .mdc-BottomNavigation-content {
     padding-left: 72px;
   }
 
-  .Header + .BottomNavigation,
-  .Header + .Navigation + .BottomNavigation {
-    .BottomNavigation-menu {
+  .Header + .mdc-BottomNavigation,
+  .Header + .Navigation + .mdc-BottomNavigation {
+    .mdc-BottomNavigation-menu {
       top: $header-height;
     }
   }
 }
 
 @include xlarge {
-  .BottomNavigation-menu {
+  .mdc-BottomNavigation-menu {
     left: $navigation-width;
   }
 }
 
-.BottomNavigation.scrolling .BottomNavigation-menu {
+.mdc-BottomNavigation.scrolling .mdc-BottomNavigation-menu {
   transform: translate3d(0, 110%, 0);
 
   @include medium {
@@ -101,11 +101,11 @@
   }
 }
 
-.BottomNavigation-menu--narrow .BottomNavigation-menu-item > *:not(.active) .BottomNavigation-menu-item-text {
+.mdc-BottomNavigation-menu--narrow .mdc-BottomNavigation-menu-item > *:not(.active) .mdc-BottomNavigation-menu-item-text {
   display: none;
 }
 
-.BottomNavigation-menu-item {
+.mdc-BottomNavigation-menu-item {
   min-width: 80px;
   font-size: 12px;
   padding: 8px 12px 10px;
@@ -140,13 +140,13 @@
     height: 56px;
     min-width: 72px;
 
-    .BottomNavigation-menu-item-text {
+    .mdc-BottomNavigation-menu-item-text {
       display: none;
     }
   }
 }
 
-.BottomNavigation-menu-item > .active {
+.mdc-BottomNavigation-menu-item > .active {
   svg {
     fill: $blue-dark;
   }
@@ -156,8 +156,8 @@
   transform: translate3d(0, -1px, 0); // the font size here is +2px, so the translate should be -2px as well but it looks odd
 }
 
-.BottomNavigation-menu--inverted {
-  .BottomNavigation-menu-item {
+.mdc-BottomNavigation-menu--inverted {
+  .mdc-BottomNavigation-menu-item {
     background-color: $blue-dark;
 
     svg {
@@ -167,7 +167,7 @@
     color: rgba(255, 255, 255, 0.73);
   }
 
-  .BottomNavigation-menu-item.active {
+  .mdc-BottomNavigation-menu-item.active {
     svg {
       fill: white;
     }

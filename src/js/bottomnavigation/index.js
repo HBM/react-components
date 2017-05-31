@@ -109,19 +109,19 @@ export class BottomNavigation extends React.Component {
 
   render () {
     const {children, links, inverted} = this.props
-    const menuClassName = classNames('BottomNavigation-menu', {
-      'BottomNavigation-menu--inverted': inverted,
-      'BottomNavigation-menu--narrow': links.length > 3
+    const menuClassName = classNames('mdc-BottomNavigation-menu', {
+      'mdc-BottomNavigation-menu--inverted': inverted,
+      'mdc-BottomNavigation-menu--narrow': links.length > 3
     })
     return (
-      <div onScroll={this.onScroll} className={classNames('BottomNavigation', {scrolling: this.state.scrolling})}>
-        <div ref={this.updateContentNode} className='BottomNavigation-content'>
+      <div onScroll={this.onScroll} className={classNames('mdc-BottomNavigation', {scrolling: this.state.scrolling})}>
+        <div ref={this.updateContentNode} className='mdc-BottomNavigation-content'>
           {children}
         </div>
         <div className={menuClassName} >
           {links.map((link, index) => {
             return (
-              <div key={index} className='BottomNavigation-menu-item' onClick={this.scrollTopOrResetTop} >
+              <div key={index} className='mdc-BottomNavigation-menu-item' onClick={this.scrollTopOrResetTop} >
                 {link}
               </div>
             )
@@ -132,4 +132,4 @@ export class BottomNavigation extends React.Component {
   }
 }
 
-export const BottomNavigationText = ({children}) => <div className='BottomNavigation-menu-item-text'>{children}</div>
+export const BottomNavigationText = ({children}) => <div className='mdc-BottomNavigation-menu-item-text'>{children}</div>
