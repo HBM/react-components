@@ -79,8 +79,8 @@
     padding-left: 72px;
   }
 
-  .Header + .mdc-BottomNavigation,
-  .Header + .Navigation + .mdc-BottomNavigation {
+  .mdc-Header + .mdc-BottomNavigation,
+  .mdc-Header + .Navigation + .mdc-BottomNavigation {
     .mdc-BottomNavigation-menu {
       top: $header-height;
     }

@@ -6,7 +6,7 @@
 /**
  * HTML5 header element
  */
-.Header {
+.mdc-Header {
   height: 48px;
   background: $blue-dark;
   color: #fff;
@@ -33,16 +33,16 @@
 /**
  * Add shadow to header when scrolling down.
  */
-.Header.has--shadow {
+.mdc-Header.has--shadow {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
 }
 
-.Header-block {
+.mdc-Header-block {
   display: flex;
   align-items: center;
 }
 
-.Header-title {
+.mdc-Header-title {
   margin-left: 40px;
   font-size: 20px;
   display: none;
@@ -53,7 +53,7 @@
   }
 }
 
-.Header-chevron {
+.mdc-Header-chevron {
   fill: #fff;
   margin: 0 10px;
   width: 30px;
@@ -65,7 +65,7 @@
   }
 }
 
-.Header-subtitle {
+.mdc-Header-subtitle {
   margin-left: 56px;
   font-size: 20px;
   display: flex;

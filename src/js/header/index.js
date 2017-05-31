@@ -30,24 +30,24 @@ export default class Header extends React.Component {
 
   render () {
     const {title, subtitle, children, className} = this.props
-    const klass = classnames('Header', {
+    const klass = classnames('mdc-Header', {
       'has--shadow': this.state.hasShadow
     }, className)
     return (
       <header className={klass}>
-        <div className='Header-block'>
-          <span className='Header-title'>
+        <div className='mdc-Header-block'>
+          <span className='mdc-Header-title'>
             {title}
           </span>
           {
             subtitle &&
-            <span className='Header-subtitle'>
-              <ChevronRight className='Header-chevron' />
+            <span className='mdc-Header-subtitle'>
+              <ChevronRight className='mdc-Header-chevron' />
               {subtitle}
             </span>
           }
         </div>
-        <div className='Header-block'>
+        <div className='mdc-Header-block'>
           {children}
         </div>
       </header>
