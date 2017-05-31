@@ -1,18 +1,18 @@
 
-.Chip-wrapper {
+.mdc-Chip-wrapper {
   cursor: text;
   display: flex;
   flex-wrap: wrap;
 }
 
-.Chip-input {
+.mdc-Chip-input {
   outline: none;
   background: none;
   border: none;
   margin-bottom: 5px;
 }
 
-.Chip {
+.mdc-Chip {
   display: inline-flex;
   align-items: center;
   background: rgb(224, 224, 224);
@@ -26,14 +26,14 @@
   cursor: default;
 }
 
-.Chip:focus,
-.Chip:hover {
+.mdc-Chip:focus,
+.mdc-Chip:hover {
   color: #fff;
   background-color: rgba(0, 0, 0, 0.54);
   outline: none;
 }
 
-.Chip-delete {
+.mdc-Chip-delete {
   padding: 0;
   border: 0;
   outline: none;
@@ -41,16 +41,16 @@
   margin: 0 4px;
 }
 
-.Chip svg {
+.mdc-Chip svg {
   fill: rgba(0, 0, 0, 0.26);
 }
 
-.Chip:focus svg,
-.Chip:hover svg {
+.mdc-Chip:focus svg,
+.mdc-Chip:hover svg {
   fill: #fff;
 }
 
-.Chip-icon {
+.mdc-Chip-icon {
   width: 32px;
   height: 32px;
 }

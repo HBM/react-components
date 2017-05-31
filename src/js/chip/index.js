@@ -105,7 +105,7 @@ export default class Chip extends React.Component {
   render () {
     return (
       <div
-        className='Chip-wrapper'
+        className='mdc-Chip-wrapper'
         onClick={this.onWrapperClick}
       >
         {this.props.value.map((chip, i) =>
@@ -120,7 +120,7 @@ export default class Chip extends React.Component {
           />
         )}
         {this.props.onChange && <input
-          className='Chip-input'
+          className='mdc-Chip-input'
           type='text'
           onKeyPress={this.onKeyPress}
           onKeyDown={this.onKeyDown}
@@ -160,13 +160,13 @@ const Element = ({
 
   return (
     <div
-      className='Chip'
+      className='mdc-Chip'
       tabIndex='0'
       onFocus={onFocus}
       onBlur={onBlur}
       onKeyDown={onKeyDown}
     >
-      {icon ? <div className='Chip-icon'>{icon}</div> : null}
+      {icon ? <div className='mdc-Chip-icon'>{icon}</div> : null}
       <span style={textStyle}>
         {text}
       </span>
@@ -175,7 +175,7 @@ const Element = ({
           <button
             type='button'
             tabIndex='-1'
-            className='Chip-delete'
+            className='mdc-Chip-delete'
             onClick={(event) => {
               onDelete(event.currentTarget.parentElement, index)
             }}
