@@ -144,9 +144,9 @@ export default class Slider extends React.Component {
     const position = (this.state.value - this.props.min) * this.state.ratio
 
     return (
-      <label className='Slider'>
+      <label className='mdc-Slider'>
         <input
-          className='Slider-input'
+          className='mdc-Slider-input'
           max={this.props.max}
           min={this.props.min}
           onChange={this.onChange}
@@ -155,7 +155,7 @@ export default class Slider extends React.Component {
           step={this.props.step}
         />
         <div
-          className='Slider-track'
+          className='mdc-Slider-track'
           onMouseDown={this.onMouseDown}
           onTouchStart={this.onMouseDown}
           onMouseMove={this.onMouseMove}
@@ -163,11 +163,11 @@ export default class Slider extends React.Component {
           onClick={this.onClick}
           ref={(c) => { this.c = c }}
         >
-          <div className='Slider-track-off'>
-            <div className='Slider-track-on' style={{width: `${position}px`}} />
+          <div className='mdc-Slider-track-off'>
+            <div className='mdc-Slider-track-on' style={{width: `${position}px`}} />
           </div>
           <div
-            className={`Slider-thumb${this.state.value === this.props.min ? ' is-zero' : ''}`}
+            className={`mdc-Slider-thumb${this.state.value === this.props.min ? ' is-zero' : ''}`}
             style={{left: `${position}px`}}
           />
         </div>
