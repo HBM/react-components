@@ -92,7 +92,7 @@ describe('mdc-Textfield', () => {
   })
 })
 
-describe('Textarea', () => {
+describe('mdc-Textarea', () => {
   it('should be empty by default', () => {
     const wrapper = mount(<Textarea />)
     assert.equal(wrapper.find('.mdc-Textfield-input').node.value, '')
