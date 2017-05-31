@@ -27,7 +27,7 @@ describe('mdc-List', () => {
         <Row primary='B' />
       </List>)
     assert.equal(wrapper.find('ol').length, 1)
-    assert.equal(wrapper.find('li.List-row').length, 2)
+    assert.equal(wrapper.find('li.mdc-List-row').length, 2)
   })
 
   describe('Row', () => {
