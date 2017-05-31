@@ -32,7 +32,7 @@ describe('Upload', () => {
   it('should propagate disabled property to input type file and button', () => {
     const wrapper = mount(<Upload disabled onChange={noop} />)
     assert(wrapper.find('.Upload-fileInput').props().disabled)
-    assert(wrapper.find('.Button').props().disabled)
+    assert(wrapper.find('.mdc-Button').props().disabled)
   })
 
   it('should ignore drag and drop events when disabled', () => {
@@ -124,7 +124,7 @@ describe('Upload', () => {
     // simulate click event on top level node which is the div
     wrapper.find('.Upload-fileInput').simulate('click')
     assert.equal(clicked, false)
-    wrapper.find('.Button').simulate('click')
+    wrapper.find('.mdc-Button').simulate('click')
     assert(clicked)
   })
 

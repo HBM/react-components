@@ -25,13 +25,13 @@
 /**
  * Align left most button text with title and card text
  */
-.Card-actions > .Button {
+.Card-actions > .mdc-Button {
   margin: 0;
   text-align: left;
   min-width: 0;
 }
 
-.Card-actions .Button + .Button {
+.Card-actions .mdc-Button + .mdc-Button {
   margin-left: 8px;
 }
 

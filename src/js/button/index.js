@@ -5,10 +5,10 @@ import classnames from 'classnames'
 
 const Button = ({children, className, filled, raised, dense, ...rest}) => (
   <button
-    className={classnames('Button', {
-      'Button--raised': raised,
-      'Button--filled': filled,
-      'Button--dense': dense
+    className={classnames('mdc-Button', {
+      'mdc-Button--raised': raised,
+      'mdc-Button--filled': filled,
+      'mdc-Button--dense': dense
     }, className)}
     {...rest}
   >
