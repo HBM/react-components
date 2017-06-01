@@ -6,7 +6,7 @@ import Navigation from '../'
 import {mount, shallow} from 'enzyme'
 import {HashRouter} from 'react-router-dom'
 
-describe('mdc-Navigation', () => {
+describe('Navigation', () => {
   it('should render as nav', () => {
     const wrapper = shallow(<Navigation />)
     assert(wrapper.find('nav'))

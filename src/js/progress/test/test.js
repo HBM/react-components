@@ -5,7 +5,7 @@ import React from 'react'
 import {mount} from 'enzyme'
 import Progress from '../'
 
-describe('mdc-Progress', () => {
+describe('Progress', () => {
   describe('Linear', () => {
     it('should work', (done) => {
       const wrapper = mount(<Progress.Linear />)

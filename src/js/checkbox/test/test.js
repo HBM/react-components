@@ -5,7 +5,7 @@ import React from 'react'
 import {shallow} from 'enzyme'
 import Checkbox from '../'
 
-describe('mdc-Checkbox', () => {
+describe('Checkbox', () => {
   it('should render a simple example', () => {
     const wrapper = shallow(<Checkbox onChange={() => {}} />)
     assert.equal(wrapper.find('.mdc-Checkbox').length, 1)

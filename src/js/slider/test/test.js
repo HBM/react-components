@@ -5,7 +5,7 @@ import React from 'react'
 import Slider from '../'
 import {mount} from 'enzyme'
 
-describe('mdc-Slider', () => {
+describe('Slider', () => {
   it('should have a default value of 0', () => {
     const wrapper = mount(<Slider min={0} max={3} />)
     assert.equal(wrapper.find('.mdc-Slider-input').node.value, '0')

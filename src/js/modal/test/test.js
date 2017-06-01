@@ -5,7 +5,7 @@ import React from 'react'
 import Modal from '../'
 import {mount} from 'enzyme'
 
-describe('mdc-Modal', () => {
+describe('Modal', () => {
   it('should work', () => {
     const wrapper = mount(<Modal visible />)
     assert.equal(wrapper.find('.mdc-Modal').length, 1)

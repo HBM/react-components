@@ -7,7 +7,7 @@ import {mount} from 'enzyme'
 
 function noop () {}
 
-describe('mdc-Menu', () => {
+describe('Menu', () => {
   it('should work', () => {
     const wrapper = mount(<Menu onClick={noop} />)
     assert.equal(wrapper.find('.mdc-Menu').length, 1)

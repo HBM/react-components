@@ -16,7 +16,7 @@ const _window = {
   }
 }
 
-describe('mdc-BottomNavigationText', () => {
+describe('BottomNavigationText', () => {
   it('should render the text', () => {
     const wrapper = mount(<BottomNavigationText>foo</BottomNavigationText>)
     assert.equal(wrapper.text(), 'foo')
@@ -28,7 +28,7 @@ describe('mdc-BottomNavigationText', () => {
   })
 })
 
-describe('mdc-BottomNavigation', () => {
+describe('BottomNavigation', () => {
   it('should render', () => {
     const wrapper = mount(
       <MemoryRouter>

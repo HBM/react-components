@@ -5,7 +5,7 @@ import React from 'react'
 import {shallow} from 'enzyme'
 import Button from '../'
 
-describe('mdc-Button', () => {
+describe('Button', () => {
   it('should bubble up click events', (done) => {
     const click = () => done()
     const wrapper = shallow(<Button onClick={click} />)

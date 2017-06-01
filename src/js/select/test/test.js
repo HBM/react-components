@@ -7,7 +7,7 @@ import Select from '../'
 
 const noop = () => {}
 
-describe('mdc-Select', () => {
+describe('Select', () => {
   it('should render a simple example', () => {
     const wrapper = mount(<Select onChange={noop} />)
     assert(wrapper.find('.mdc-Select'))

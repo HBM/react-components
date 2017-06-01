@@ -78,7 +78,7 @@ import {MemoryRouter, NavLink} from 'react-router-dom'
 //   </Router>
 // )
 
-describe('mdc-Tabs', () => {
+describe('Tabs', () => {
   it('should work', () => {
     const wrapper = mount(
       <MemoryRouter>

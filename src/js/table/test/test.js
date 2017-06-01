@@ -14,7 +14,7 @@ import {
   TableFooter
 } from '../'
 
-describe('mdc-Table', () => {
+describe('Table', () => {
   it('should render the table component with children', () => {
     const table = (
       <Table>

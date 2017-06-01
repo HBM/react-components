@@ -5,7 +5,7 @@ import React from 'react'
 import {Textfield, Textarea} from '../'
 import {mount} from 'enzyme'
 
-describe('mdc-Textfield', () => {
+describe('Textfield', () => {
   it('should be empty by default', () => {
     const wrapper = mount(<Textfield />)
     assert.equal(wrapper.find('.mdc-Textfield-input').node.value, '')
@@ -92,7 +92,7 @@ describe('mdc-Textfield', () => {
   })
 })
 
-describe('mdc-Textarea', () => {
+describe('Textarea', () => {
   it('should be empty by default', () => {
     const wrapper = mount(<Textarea />)
     assert.equal(wrapper.find('.mdc-Textfield-input').node.value, '')

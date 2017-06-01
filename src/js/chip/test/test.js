@@ -8,7 +8,7 @@ import Chip from '../'
 
 const noop = () => {}
 
-describe('mdc-Chip', () => {
+describe('Chip', () => {
   it('should render an input field', () => {
     const wrapper = mount(<Chip onChange={noop} />)
     assert.equal(wrapper.find('.mdc-Chip-input').length, 1)

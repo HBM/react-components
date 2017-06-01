@@ -5,7 +5,7 @@ import React from 'react'
 import Switch from '../'
 import {mount} from 'enzyme'
 
-describe('mdc-Switch', () => {
+describe('Switch', () => {
   it('should be off by default', () => {
     const wrapper = mount(<Switch name='' onChange={() => {}} />)
     assert.equal(wrapper.find('.mdc-Switch-input').props().checked, false)

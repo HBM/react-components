@@ -5,7 +5,7 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 import { List, Row } from '../'
 
-describe('mdc-List', () => {
+describe('List', () => {
   it('should work', () => {
     const wrapper = shallow(<List />)
     assert.equal(wrapper.find('.mdc-List').length, 1)

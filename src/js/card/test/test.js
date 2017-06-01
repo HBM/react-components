@@ -5,7 +5,7 @@ import React from 'react'
 import {shallow} from 'enzyme'
 import {Card, Title} from '../'
 
-describe('mdc-Card', () => {
+describe('Card', () => {
   it('should work', () => {
     const wrapper = shallow(<Card />)
     assert.equal(wrapper.find('.mdc-Card').length, 1)

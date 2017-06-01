@@ -5,7 +5,7 @@ import React from 'react'
 import {shallow} from 'enzyme'
 import Header from '../'
 
-describe('mdc-Header', () => {
+describe('Header', () => {
   it('should have a title', () => {
     const wrapper = shallow(<Header title='some title' />)
     assert.equal(wrapper.find('.mdc-Header-title').text(), 'some title')

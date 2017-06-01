@@ -5,7 +5,7 @@ import React from 'react'
 import Snackbar from '../'
 import {mount} from 'enzyme'
 
-describe('mdc-Snackbar', () => {
+describe('Snackbar', () => {
   it('should be empty by default', () => {
     const wrapper = mount(<Snackbar visible />)
     assert.equal(wrapper.find('.mdc-Snackbar').text(), '')
