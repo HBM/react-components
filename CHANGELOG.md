@@ -4,6 +4,25 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [13.0.0] - 2017-06-01
+
+### Added
+
+- `mdc-` prefix for all class names
+- Button: add dense variant
+- Select: add dedicated style when used inside `<Table>`
+
+### Changed
+
+- deploy all sass files flat to `scss` dir
+- examples: Use create-react-app 2
+
+### Fixed
+
+- Use prop-types package
+- fix ES6 babel configuration
+- Select: fix font-size and alignment
+
 ## [12.1.0] - 2017-05-04
 
 ### Added
@@ -12,7 +31,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ### Changed
 
-- case.scss: use percentages for `<main>` width
+- base.scss: use percentages for `<main>` width
 
 ### Fixed
 
