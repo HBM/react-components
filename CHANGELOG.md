@@ -8,12 +8,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ### Added
 
-- `mdc-` prefix for all class names
 - Button: add dense variant
 - Select: add dedicated style when used inside `<Table>`
 
 ### Changed
 
+- `mdc-` prefix for all class names
 - deploy all sass files flat to `scss` dir
 - examples: Use create-react-app 2
 
