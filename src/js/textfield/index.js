@@ -58,7 +58,7 @@ const TextfieldWrapper = ({
   )
 }
 
-export const Textfield = ({float, error, length, htmlFor, ...rest}) => (
+export const Textfield = ({float, error, length, htmlFor, inputRef, ...rest}) => (
   <TextfieldWrapper
     defaultValue={rest.defaultValue}
     error={error}
@@ -73,6 +73,7 @@ export const Textfield = ({float, error, length, htmlFor, ...rest}) => (
       className={classnames('mdc-Textfield-input', {
         'mdc-Textfield-input--error': error
       })}
+      ref={inputRef}
       {...rest}
     />
   </TextfieldWrapper>

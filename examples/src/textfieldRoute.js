@@ -18,6 +18,10 @@ export default class TextfieldRoute extends React.Component {
     })
   }
 
+  componentDidMount () {
+    this.inputElement.focus()
+  }
+
   render () {
     return (
       <div>
@@ -79,6 +83,19 @@ export default class TextfieldRoute extends React.Component {
             float={false}
             value={this.state.nonfloat}
             onChange={this.onChange}
+          />
+        </section>
+        <section>
+          <h2>Textfield with reference to underlying input element</h2>
+          <p>
+            Having access to the underlying input element allows you to set the focus in lifecycle methods. For more information see <a href='https://facebook.github.io/react/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components'>Exposing DOM Refs to Parent Components</a>.
+          </p>
+          <Textfield
+            label='Non floating'
+            name='nonfloat'
+            value={this.state.nonfloat}
+            onChange={this.onChange}
+            inputRef={el => { this.inputElement = el }}
           />
         </section>
         <section>

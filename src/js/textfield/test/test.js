@@ -90,6 +90,14 @@ describe('Textfield', () => {
     const wrapper = mount(<Textfield htmlFor='foo' />)
     assert.equal(wrapper.find('label').node.htmlFor, 'foo')
   })
+
+  it('should allow access to the underlying input element', done => {
+    const ref = c => {
+      assert.equal(c.nodeName, 'INPUT')
+      done()
+    }
+    mount(<Textfield inputRef={ref} />)
+  })
 })
 
 describe('Textarea', () => {
