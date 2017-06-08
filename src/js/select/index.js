@@ -130,7 +130,7 @@ export default class Select extends React.Component {
           label &&
           <span className='mdc-Select-label'>{this.props.label}</span>
         }
-        <button name={name} className='mdc-Select-body' onClick={this.open} disabled={disabled}>
+        <button type='button' name={name} className='mdc-Select-body' onClick={this.open} disabled={disabled}>
           <span className={empty ? 'mdc-Select-placeholder' : ''}>
             {text}
           </span>
