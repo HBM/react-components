@@ -2,17 +2,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {Motion, spring} from 'react-motion'
+import keycode from 'keycode'
+import classnames from 'classnames'
 
-const PADDING_TOP_WITH_LABEL = -14
+const PADDING_TOP_WITH_LABEL = -12
 const PADDING_LEFT = 16
 const LIST_ITEM_HEIGHT = 48
 
 // list length
 const MAX_LIST_LENGTH = 5
 
-/**
- * Select component
- */
 export default class Select extends React.Component {
   static propTypes = {
     disabled: PropTypes.bool,
@@ -37,9 +36,14 @@ export default class Select extends React.Component {
     open: false
   }
 
-  /**
-   * Show list
-   */
+  onKeyDown = event => {
+    if (event.which === keycode('enter') || event.which === keycode('space')) {
+      // prevent page scroll and space
+      event.preventDefault()
+      this.open()
+    }
+  }
+
   open = () => {
     this.setState({
       open: true
@@ -47,9 +51,6 @@ export default class Select extends React.Component {
     document.addEventListener('click', this.close)
   }
 
-  /**
-   * Hide list
-   */
   close = () => {
     this.setState({
       open: false
@@ -57,9 +58,6 @@ export default class Select extends React.Component {
     document.removeEventListener('click', this.close)
   }
 
-  /**
-   * Check if Select component is inside table.
-   */
   findTableTag = (node) => {
     while (node.parentNode) {
       node = node.parentNode
@@ -70,9 +68,6 @@ export default class Select extends React.Component {
     return false
   }
 
-  /**
-   * Make dropdown list as wide as parent placeholder including caret
-   */
   componentDidMount () {
     const selectRect = this.ref.getBoundingClientRect()
 
@@ -97,19 +92,30 @@ export default class Select extends React.Component {
     })
   }
 
-  onChange = (item) => this.props.onChange({
-    target: {
-      name: this.props.name,
-      ...item
-    }
-  })
+  onChange = (item) => {
+    this.props.onChange({
+      target: {
+        name: this.props.name,
+        ...item
+      }
+    })
+  }
 
-  /**
-   * Component should not update when it is open. In that case it should
-   * only update when open state changes.
-   * It should not update itself when list is open and value comes in again.
-   * This would causes scrolling and that would irritate the user.
-   */
+  onEnter = item => {
+    this.props.onChange({
+      target: {
+        name: this.props.name,
+        ...item
+      }
+    })
+    this.onEscape()
+  }
+
+  onEscape = () => {
+    this.close()
+    this.button.focus()
+  }
+
   shouldComponentUpdate (nextProps, nextState) {
     if (this.state.open && (nextState.open === this.state.open)) {
       return false
@@ -118,24 +124,36 @@ export default class Select extends React.Component {
   }
 
   render () {
-    const {label, disabled, options, value, name} = this.props
+    const {label, disabled, options, value} = this.props
     const {open} = this.state
     const selectedIndex = options.findIndex(option => option.value === value)
     const empty = selectedIndex === -1
     const text = empty ? this.props.placeholder : this.props.options[selectedIndex].label
 
     return (
-      <div className='mdc-Select' ref={(c) => { this.ref = c }}>
+      <div
+        className={classnames('mdc-Select', {
+          'is-insideTable': this.state.isInsideTable
+        })}
+        ref={(c) => { this.ref = c }}
+      >
         {
           label &&
           <span className='mdc-Select-label'>{this.props.label}</span>
         }
-        <button type='button' name={name} className='mdc-Select-body' onClick={this.open} disabled={disabled}>
+        <div
+          tabIndex='0'
+          ref={elem => { this.button = elem }}
+          className='mdc-Select-body'
+          disabled={disabled}
+          onClick={this.open}
+          onKeyDown={this.onKeyDown}
+        >
           <span className={empty ? 'mdc-Select-placeholder' : ''}>
             {text}
           </span>
           <span className='mdc-Select-caret' />
-        </button>
+        </div>
         <Motion style={{
           opacity: spring(open ? 1 : 0)
         }}>
@@ -149,8 +167,10 @@ export default class Select extends React.Component {
               options={this.props.options}
               selectedIndex={selectedIndex}
               onClick={this.onChange}
+              onEnter={this.onEnter}
               width={this.state.width}
               isInsideTable={this.state.isInsideTable}
+              onEscape={this.onEscape}
             />
           }
         </Motion>
@@ -159,9 +179,6 @@ export default class Select extends React.Component {
   }
 }
 
-/**
- * List component
- */
 class List extends React.Component {
   static propTypes = {
     hasLabel: PropTypes.bool,
@@ -172,9 +189,6 @@ class List extends React.Component {
     width: PropTypes.number
   }
 
-  /**
-   * Scroll to correct list item
-   */
   componentDidMount () {
     const index = this.props.selectedIndex
 
@@ -186,23 +200,48 @@ class List extends React.Component {
       const scrollTop = (LIST_ITEM_HEIGHT * (index - 2))
       this.ref.scrollTop = scrollTop
     }
+
+    const focus = index >= 0 ? index : 0
+    this[`li${focus}`].focus()
   }
 
-  /**
-   * Handle click on list item
-   */
-  onClick = (event) => {
+  onClick = event => {
     const index = parseInt(event.target.getAttribute('data-id'))
-    event.preventDefault()
     this.props.onClick(this.props.options[index])
   }
 
-  /**
-   * Render list component
-   */
+  onBlur = event => {
+    // close list when focus is outside of list
+    if (event.relatedTarget && !event.relatedTarget.classList.contains('mdc-Select-listItem')) {
+      this.props.onEscape()
+    }
+  }
+
+  onKeyDown = event => {
+    const index = parseInt(event.target.getAttribute('data-id'))
+    if (event.which === keycode('enter')) {
+      return this.props.onEnter(this.props.options[index])
+    }
+    if (event.which === keycode('escape')) {
+      return this.props.onEscape()
+    }
+    if (event.which === keycode('down')) {
+      event.preventDefault()
+      if (event.target.nextSibling) {
+        return event.target.nextSibling.focus()
+      }
+    }
+    if (event.which === keycode('up')) {
+      event.preventDefault()
+      if (event.target.previousSibling) {
+        return event.target.previousSibling.focus()
+      }
+    }
+  }
+
   render () {
     // CSS space
-    let PADDING_TOP = 10
+    let PADDING_TOP = 12
     if (this.props.isInsideTable) {
       // when select component is inside a table cell we have to remove
       // border bottom, padding top and padding bottom.
@@ -262,10 +301,14 @@ class List extends React.Component {
       >
         {options.map((item, i) =>
           <li key={i}
+            tabIndex='0'
             className='mdc-Select-listItem'
             data-id={i}
             onClick={this.onClick}
             style={{padding: `0 ${padding}px`}}
+            onKeyDown={this.onKeyDown}
+            onBlur={this.onBlur}
+            ref={elem => { this[`li${i}`] = elem }}
           >
             {item.label}
           </li>

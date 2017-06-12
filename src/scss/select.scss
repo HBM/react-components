@@ -21,16 +21,17 @@
 /**
  * Select-body is of type <button />
  */
-button.mdc-Select-body {
-  background: none;
-  margin: 0;
-  padding: 0;
-  border: none;
+.mdc-Select-body {
   border-bottom: 1px solid $black-012;
   padding-bottom: 7px;
   text-align: left;
   outline: 0;
   font-size: 16px;
+}
+
+.mdc-Select-body:focus {
+  border-bottom-color: $blue-dark;
+  box-shadow: 0 1px 0 0 $blue-dark;
 }
 
 // https://material.google.com/style/color.html#color-text-background-colors
@@ -74,7 +75,12 @@ button.mdc-Select-body {
   max-height: 256px;
 }
 
-.mdc-Table .mdc-Select-list {
+.mdc-Select.is-insideTable {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.mdc-Select.is-insideTable .mdc-Select-list {
   font-size: 13px;
   padding: 0;
   border: 1px solid lightgray;
@@ -82,8 +88,14 @@ button.mdc-Select-body {
   background: #f9f9f9;
 }
 
-.mdc-Table button.mdc-Select-body {
+.mdc-Select.is-insideTable .mdc-Select-body {
+  border-bottom: none;
   font-size: 13px;
+  padding-bottom: 0;
+}
+
+.mdc-Select.is-insideTable .mdc-Select-body:focus {
+  box-shadow: none;
 }
 
 /**
@@ -98,8 +110,11 @@ button.mdc-Select-body {
   min-height: 48px;
   display: flex;
   align-items: center;
+  outline: 0;
 }
 
-.mdc-Select-listItem:hover {
+.mdc-Select-listItem.is-focused,
+.mdc-Select-listItem:hover,
+.mdc-Select-listItem:focus {
   background: #eee;
 }
