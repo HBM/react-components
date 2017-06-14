@@ -8,7 +8,7 @@ import keycode from 'keycode'
 
 const noop = () => {}
 
-describe('xxx Select', () => {
+describe('Select', () => {
   it('should render a simple example', () => {
     const wrapper = mount(<Select onChange={noop} />)
     assert(wrapper.find('.mdc-Select'))
