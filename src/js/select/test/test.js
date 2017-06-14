@@ -8,7 +8,7 @@ import keycode from 'keycode'
 
 const noop = () => {}
 
-describe('Select', () => {
+describe('xxx Select', () => {
   it('should render a simple example', () => {
     const wrapper = mount(<Select onChange={noop} />)
     assert(wrapper.find('.mdc-Select'))
@@ -25,9 +25,11 @@ describe('Select', () => {
     assert.equal(wrapper.find('.mdc-Select-placeholder').text(), 'Placeholder')
   })
 
-  it('should allow disabling the button', () => {
+  it('should allow disabling the component', () => {
     const wrapper = mount(<Select onChange={noop} disabled />)
-    assert(wrapper.find('.mdc-Select-body').props().disabled)
+    assert(wrapper.find('.mdc-Select-input').props().disabled)
+    wrapper.find('.mdc-Select-body').simulate('click')
+    assert.equal(wrapper.find('.mdc-Select-listItem').length, 0)
   })
 
   it('should render a given value instead of placeholder', () => {
@@ -324,7 +326,7 @@ describe('Select', () => {
         onChange={noop}
       />
     )
-    wrapper.find('.mdc-Select-body').simulate('keydown', {
+    wrapper.find('.mdc-Select-input').simulate('keydown', {
       which: keycode('space')
     })
     assert.equal(wrapper.find('.mdc-Select-listItem').length, 3)
@@ -341,9 +343,135 @@ describe('Select', () => {
         onChange={noop}
       />
     )
-    wrapper.find('.mdc-Select-body').simulate('keydown', {
+    wrapper.find('.mdc-Select-input').simulate('keydown', {
       which: keycode('enter')
     })
     assert.equal(wrapper.find('.mdc-Select-listItem').length, 3)
+  })
+
+  it('should toggle through the values on key down when list is closed', done => {
+    const onChange = ({target}) => {
+      assert.equal(target.value, 'fox')
+      assert.equal(target.label, 'Fox')
+      done()
+    }
+    const wrapper = mount(
+      <Select
+        options={[
+          {value: 'fox', label: 'Fox'},
+          {value: 'rabbit', label: 'Rabbit'},
+          {value: 'dog', label: 'Dog'}
+        ]}
+        onChange={onChange}
+      />
+    )
+    wrapper.find('.mdc-Select-input').simulate('keydown', {
+      which: keycode('down')
+    })
+  })
+
+  it('should toggle through the values on key right when list is closed', done => {
+    const onChange = ({target}) => {
+      assert.equal(target.value, 'fox')
+      assert.equal(target.label, 'Fox')
+      done()
+    }
+    const wrapper = mount(
+      <Select
+        options={[
+          {value: 'fox', label: 'Fox'},
+          {value: 'rabbit', label: 'Rabbit'},
+          {value: 'dog', label: 'Dog'}
+        ]}
+        onChange={onChange}
+      />
+    )
+    wrapper.find('.mdc-Select-input').simulate('keydown', {
+      which: keycode('right')
+    })
+  })
+
+  it('should toggle through the values on key up when list is closed', done => {
+    const onChange = ({target}) => {
+      assert.equal(target.value, 'fox')
+      assert.equal(target.label, 'Fox')
+      done()
+    }
+    const wrapper = mount(
+      <Select
+        options={[
+          {value: 'fox', label: 'Fox'},
+          {value: 'rabbit', label: 'Rabbit'},
+          {value: 'dog', label: 'Dog'}
+        ]}
+        onChange={onChange}
+        value={'rabbit'}
+      />
+    )
+    wrapper.find('.mdc-Select-input').simulate('keydown', {
+      which: keycode('up')
+    })
+  })
+
+  it('should toggle through the values on key left when list is closed', done => {
+    const onChange = ({target}) => {
+      assert.equal(target.value, 'fox')
+      assert.equal(target.label, 'Fox')
+      done()
+    }
+    const wrapper = mount(
+      <Select
+        options={[
+          {value: 'fox', label: 'Fox'},
+          {value: 'rabbit', label: 'Rabbit'},
+          {value: 'dog', label: 'Dog'}
+        ]}
+        onChange={onChange}
+        value={'rabbit'}
+      />
+    )
+    wrapper.find('.mdc-Select-input').simulate('keydown', {
+      which: keycode('left')
+    })
+  })
+
+  it('should toggle through the values on key up/left when list is closed without cycling', () => {
+    const onChange = () => {
+      assert.fail()
+    }
+    const wrapper = mount(
+      <Select
+        options={[
+          {value: 'fox', label: 'Fox'},
+          {value: 'rabbit', label: 'Rabbit'},
+          {value: 'dog', label: 'Dog'}
+        ]}
+        onChange={onChange}
+        value={'fox'}
+      />
+    )
+    wrapper.find('.mdc-Select-input').simulate('keydown', {
+      which: keycode('left')
+    })
+  })
+
+  it('should toggle through the values on key down/right when list is closed without cycling', () => {
+    const onChange = () => {
+      assert.fail()
+    }
+    const wrapper = mount(
+      <Select
+        options={[
+          {value: 'fox', label: 'Fox'},
+          {value: 'rabbit', label: 'Rabbit'},
+          {value: 'dog', label: 'Dog'}
+        ]}
+        onChange={onChange}
+        value={'dog'}
+      />
+    )
+    wrapper.find('.mdc-Select-input').simulate('keydown', {
+      which: keycode('down')
+    })
   })
 })

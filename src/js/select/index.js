@@ -38,13 +38,42 @@ export default class Select extends React.Component {
 
   onKeyDown = event => {
     if (event.which === keycode('enter') || event.which === keycode('space')) {
-      // prevent page scroll and space
       event.preventDefault()
       this.open()
+      return
+    }
+    if (event.which === keycode('up') || event.which === keycode('left')) {
+      event.preventDefault()
+      const {options, value} = this.props
+      const i = options.findIndex(option => option.value === value)
+      if (i > 0) {
+        const prev = options[i - 1]
+        return this.props.onChange({
+          target: {
+            name: this.props.name,
+            ...prev
+          }
+        })
+      }
+    }
+    if (event.which === keycode('down') || event.which === keycode('right')) {
+      event.preventDefault()
+      const {options, value} = this.props
+      const i = options.findIndex(option => option.value === value)
+      if (i < options.length - 1) {
+        const next = options[i + 1]
+        return this.props.onChange({
+          target: {
+            name: this.props.name,
+            ...next
+          }
+        })
+      }
     }
   }
 
   open = () => {
+    if (this.props.disabled) { return }
     this.setState({
       open: true
     })
@@ -69,15 +98,12 @@ export default class Select extends React.Component {
   }
 
   componentDidMount () {
-    const selectRect = this.ref.getBoundingClientRect()
-
-    const isInsideTable = this.findTableTag(this.ref)
-
+    const selectRect = this.refWrapper.getBoundingClientRect()
+    const isInsideTable = this.findTableTag(this.refWrapper)
     this.setState({
       isInsideTable,
       width: selectRect.width
     })
-
     window.addEventListener('resize', this.resize)
   }
 
@@ -86,7 +112,7 @@ export default class Select extends React.Component {
   }
 
   resize = () => {
-    const {width} = this.ref.getBoundingClientRect()
+    const {width} = this.refWrapper.getBoundingClientRect()
     this.setState({
       width
     })
@@ -113,7 +139,7 @@ export default class Select extends React.Component {
 
   onEscape = () => {
     this.close()
-    this.button.focus()
+    this.refInput.focus()
   }
 
   shouldComponentUpdate (nextProps, nextState) {
@@ -124,9 +150,7 @@ export default class Select extends React.Component {
   }
 
   render () {
-    const {label, disabled, options, value} = this.props
-    const {open} = this.state
-    const selectedIndex = options.findIndex(option => option.value === value)
+    const selectedIndex = this.props.options.findIndex(option => option.value === this.props.value)
     const empty = selectedIndex === -1
     const text = empty ? this.props.placeholder : this.props.options[selectedIndex].label
 
@@ -135,19 +159,23 @@ export default class Select extends React.Component {
         className={classnames('mdc-Select', {
           'is-insideTable': this.state.isInsideTable
         })}
-        ref={(c) => { this.ref = c }}
+        ref={(c) => { this.refWrapper = c }}
       >
+        <input
+          className='mdc-Select-input'
+          name={this.props.name}
+          value={this.props.value}
+          disabled={this.props.disabled}
+          onKeyDown={this.onKeyDown}
+          ref={elem => { this.refInput = elem }}
+          readOnly
+        />
         {
-          label &&
-          <span className='mdc-Select-label'>{this.props.label}</span>
+          this.props.label && <span className='mdc-Select-label'>{this.props.label}</span>
         }
         <div
-          tabIndex='0'
-          ref={elem => { this.button = elem }}
           className='mdc-Select-body'
-          disabled={disabled}
           onClick={this.open}
-          onKeyDown={this.onKeyDown}
         >
           <span className={empty ? 'mdc-Select-placeholder' : ''}>
             {text}
@@ -155,10 +183,10 @@ export default class Select extends React.Component {
           <span className='mdc-Select-caret' />
         </div>
         <Motion style={{
-          opacity: spring(open ? 1 : 0)
+          opacity: spring(this.state.open ? 1 : 0)
         }}>
           {style =>
-            open &&
+            this.state.open &&
             <List
               style={{
                 opacity: style.opacity

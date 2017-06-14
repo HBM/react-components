@@ -29,7 +29,13 @@
   font-size: 16px;
 }
 
-.mdc-Select-body:focus {
+.mdc-Select-input {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+
+.mdc-Select-input:focus ~ .mdc-Select-body {
   border-bottom-color: $blue-dark;
   box-shadow: 0 1px 0 0 $blue-dark;
 }
