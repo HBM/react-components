@@ -92,6 +92,11 @@ $nav-link-height: 44px;
   color: rgba(0, 0, 0, 0.54);
 }
 
+.mdc-Navigation a:focus {
+  outline: none;
+  color: rgba(0, 0, 0, 0.5);
+}
+
 .mdc-Navigation-links a.active {
   color: $color-primary--dark;
 }
