@@ -74,8 +74,7 @@
     "style-loader": "^0.15.0",
     "stylelint": "^7.3.1",
     "stylelint-config-standard": "^16.0.0",
-    "tarball-extract": "0.0.3",
-    "uglifyjs": "^2.4.10"
+    "tarball-extract": "0.0.3"
   },
   "nyc": {
     "reporter": [
@@ -96,8 +95,7 @@
     "classnames": "^2.2.4",
     "keycode": "^2.1.8",
     "prop-types": "^15.5.10",
-    "react-motion": "^0.4.3",
-    "react-test-renderer": "^15.6.1"
+    "react-motion": "^0.4.3"
   },
   "standard": {
     "parser": "babel-eslint",
