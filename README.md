@@ -126,16 +126,20 @@ $color-accent-text--light: Black;
 
 ## Development
 
-You have to [link](https://docs.npmjs.com/cli/link) `md-components` into the `./examples` folder. You cannot use a relative path from `./examples` to the `./src` since `create-react-app` will throw an error.
+1.  You have to [link](https://docs.npmjs.com/cli/link) `md-components` into the `./examples` folder. You cannot use a relative path from `./examples` to the `./src` since `create-react-app` will throw an error.
+    ```
+    $ cd examples && npm link ../ && cd ..
+    ```
+2.  To start "compilation" while watching for changes run
+    ```
+    $ npm run dev
+    ```
+3.  Run the examples project which uses all components
+    ```
+    $ npm run examples
+    ```
 
-> Module not found: You attempted to import ... which falls outside of the project src/ directory. Relative imports outside of src/ are not supported. You can either move it inside src/, or add a symlink to it from project's node_modules/.
 
-The following tasks are available:
-- `test` - Run tests & coverage report `npm run test`
-- `lib` - Build lib `npm run lib`
-- `lib:watch`- Watch `npm lib:watch`
-- `examples` - Run examples `npm run examples`
-- `stylelint` - Runs `npm run stylelint`
 
 # More Documents
 - [Google Material Design](https://www.google.com/design/spec/material-design/introduction.html)
