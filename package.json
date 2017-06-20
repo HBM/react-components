@@ -17,6 +17,10 @@
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
     "build": "npm run build:css && npm run build:commonjs && npm run build:es",
+    "watch:css": "node-sass -w src/scss/index.scss style.css",
+    "watch:es": "cross-env BABEL_ENV=es babel -w src --out-dir es",
+    "watch:commonjs": "cross-env BABEL_ENV=commonjs babel -w src --out-dir lib",
+    "dev": "npm-run-all --parallel watch:*",
     "examples": "cd examples && react-scripts start",
     "test": "standard && npm run stylelint && nyc mocha src/js/**/test/test.js",
     "prepublish": "npm run build && cpx './src/scss/*.*' ./scss"
@@ -58,6 +62,7 @@
     "jsdom": "^9.12.0",
     "mocha": "^3.0.2",
     "node-sass": "^4.5.0",
+    "npm-run-all": "^4.0.2",
     "nyc": "^10.1.2",
     "react": "^15.6.1",
     "react-addons-test-utils": "^15.6.0",
