@@ -63,7 +63,7 @@
     "mocha": "^3.0.2",
     "node-sass": "^4.5.0",
     "npm-run-all": "^4.0.2",
-    "nyc": "^10.1.2",
+    "nyc": "^11.0.3",
     "react": "^15.6.1",
     "react-addons-test-utils": "^15.6.0",
     "react-dom": "^15.6.1",
