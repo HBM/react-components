@@ -1,10 +1,10 @@
+import * as Icon from './js/icon/index.js'
 export {BottomNavigation, BottomNavigationText} from './js/bottomnavigation/index.js'
 export {default as Button} from './js/button/index.js'
 export {Card, Title, Actions, Text, Content} from './js/card/index.js'
 export {default as Checkbox} from './js/checkbox/index.js'
 export {default as Chip} from './js/chip/index.js'
 export {default as Header} from './js/header/index.js'
-import * as Icon from './js/icon/index.js'
 export {Icon}
 export {List, Row} from './js/list/index.js'
 export {Menu, Divider} from './js/menu/index.js'
