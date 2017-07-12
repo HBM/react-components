@@ -98,6 +98,23 @@ describe('Textfield', () => {
     }
     mount(<Textfield inputRef={ref} />)
   })
+
+  it('should onFocus', (done) => {
+    const onFocus = (event) => {
+      done()
+    }
+    const wrapper = mount(<Textfield onFocus={onFocus} />)
+    wrapper.find('.mdc-Textfield-input').simulate('focus')
+  })
+
+  it('should onBlur', (done) => {
+    const onBlur = (event) => {
+      done()
+    }
+    const wrapper = mount(<Textfield onFocus={() => {}} onBlur={onBlur} />)
+    wrapper.find('.mdc-Textfield-input').simulate('focus')
+    wrapper.find('.mdc-Textfield-input').simulate('blur')
+  })
 })
 
 describe('Textarea', () => {
@@ -185,5 +202,22 @@ describe('Textarea', () => {
   it('should allow setting the htmlFor attribute on label element', () => {
     const wrapper = mount(<Textarea htmlFor='foo' />)
     assert.equal(wrapper.find('label').node.htmlFor, 'foo')
+  })
+
+  it('should onFocus', (done) => {
+    const onFocus = (event) => {
+      done()
+    }
+    const wrapper = mount(<Textarea onFocus={onFocus} />)
+    wrapper.find('.mdc-Textfield-input').simulate('focus')
+  })
+
+  it('should onBlur', (done) => {
+    const onBlur = (event) => {
+      done()
+    }
+    const wrapper = mount(<Textarea onFocus={() => {}} onBlur={onBlur} />)
+    wrapper.find('.mdc-Textfield-input').simulate('focus')
+    wrapper.find('.mdc-Textfield-input').simulate('blur')
   })
 })
