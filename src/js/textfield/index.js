@@ -126,23 +126,16 @@ export class Textarea extends React.Component {
 
   render () {
     const {
-      autoFocus,
       defaultValue,
-      disabled,
       error,
       float,
       icon,
       label,
       length,
-      name,
-      onChange,
-      placeholder,
-      readOnly,
       resizable,
-      rows,
-      spellCheck,
       value,
-      htmlFor
+      htmlFor,
+      ...rest
     } = this.props
 
     return (
@@ -157,21 +150,14 @@ export class Textarea extends React.Component {
         htmlFor={htmlFor}
       >
         <textarea
-          autoFocus={autoFocus}
           className={classnames('mdc-Textfield-input', {
             'mdc-Textfield-input--error': error
           })}
           defaultValue={defaultValue}
-          disabled={disabled}
-          name={name}
-          onChange={onChange}
           onInput={this.handleInput}
-          placeholder={placeholder}
-          readOnly={readOnly}
-          rows={rows}
           style={{resize: resizable ? 'vertical' : 'none', boxSizing: 'border-box', overflowY: 'hidden'}}
-          spellCheck={spellCheck}
           value={value}
+          {...rest}
         />
       </TextfieldWrapper>
     )
