@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-class Tabs extends React.Component {
+class Tabs extends React.PureComponent {
   static propTypes = {
     tabs: PropTypes.array
   }
