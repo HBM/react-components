@@ -29,7 +29,7 @@ class Tabs extends React.PureComponent {
     if (index === -1) {
       this.inkbarNode.style.display = 'none'
     } else {
-      this.inkbarNode.style.display = 'initial'
+      this.inkbarNode.style.display = '' // semantically this means 'initial'. but this does not work in ie10 / ie11
       const width = 100 / this.props.tabs.length
       const prevIndex = this.inkbarNode.style.left ? Math.round(parseFloat(this.inkbarNode.style.left) / width) : -1
       const direction = index > prevIndex ? 'right' : 'left'
