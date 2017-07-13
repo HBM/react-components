@@ -79,7 +79,7 @@ $error-color: rgb(244, 67, 54);
   margin-bottom: 8px;
 }
 
-.mdc-Textfield-input:focus {
+.mdc-Textfield-input:not([readonly]):focus {
   border-bottom-color: $blue-dark;
   box-shadow: 0 1px 0 0 $blue-dark;
 }
@@ -115,7 +115,7 @@ $error-color: rgb(244, 67, 54);
   color: rgba($blue-dark, 0.6);
 }
 
-.mdc-Textfield-input:focus ~ .mdc-Textfield-label:not(.mdc-Textfield-error) {
+.mdc-Textfield-input:not([readonly]):focus ~ .mdc-Textfield-label:not(.mdc-Textfield-error) {
   color: $blue-dark;
 }
 
