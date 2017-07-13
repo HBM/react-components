@@ -139,7 +139,19 @@ $color-accent-text--light: Black;
     $ npm run examples
     ```
 
+# IE11
 
+If you want to support IE11, you need to supply an `Array.prototype.findIndex` polyfill with [babel-polyfill](https://babeljs.io/docs/usage/polyfill/) or [core-js](https://github.com/zloirock/core-js). E.g with core-js:
+
+```shell
+npm i core-js --save
+```
+
+```js
+// your entry point e.g. index.js
+import 'core-js/fn/array/find-index'
+import ...
+```
 
 # More Documents
 - [Google Material Design](https://www.google.com/design/spec/material-design/introduction.html)
