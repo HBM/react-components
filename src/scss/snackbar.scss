@@ -8,15 +8,21 @@
   z-index: 500;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: -48px;
   display: flex;
   align-items: center;
   justify-content: center;
   pointer-events: none;
+  transition: transform 400ms ease-in-out;
+  will-change: transform;
 
   @include xlarge {
     left: $navigation-width;
   }
+}
+
+.mdc-Snackbar.is-visible {
+  transform: translate3d(0, -48px, 0);
 }
 
 .mdc-Snackbar-background {
@@ -46,6 +52,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  will-change: opacity;
+  opacity: 0;
+  transition: 250ms opacity ease-in-out;
+}
+
+.mdc-Snackbar-content.is-visible {
+  transition: 250ms opacity 150ms ease-in-out;
+  opacity: 1;
 }
 
 .mdc-Snackbar-text {
