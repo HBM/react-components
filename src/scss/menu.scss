@@ -24,6 +24,8 @@ $item-padding: 24px;
   border-radius: 2px;
   box-shadow: 0 2px 40px rgba(0, 0, 0, 0.4);
   overflow: hidden;
+  will-change: transform;
+  transform: scale(0);
 
   @include medium {
     padding-top: $padding;
@@ -31,10 +33,22 @@ $item-padding: 24px;
   }
 }
 
+.mdc-Menu-list.is-visible {
+  transition: transform 400ms ease-out;
+  transform: scale(1);
+}
+
 .mdc-Menu-list-item {
   color: #333;
   display: block;
   white-space: nowrap;
+  will-change: opacity;
+  opacity: 0;
+}
+
+.mdc-Menu-list-item.is-visible {
+  transition: opacity 400ms ease-out;
+  opacity: 1;
 }
 
 /**
