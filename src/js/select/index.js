@@ -1,7 +1,6 @@
 
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Motion, spring} from 'react-motion'
 import keycode from 'keycode'
 import classnames from 'classnames'
 
@@ -182,26 +181,19 @@ export default class Select extends React.Component {
           </span>
           <span className='mdc-Select-caret' />
         </div>
-        <Motion style={{
-          opacity: spring(this.state.open ? 1 : 0)
-        }}>
-          {style =>
-            this.state.open &&
-            <List
-              style={{
-                opacity: style.opacity
-              }}
-              hasLabel={!!this.props.label}
-              options={this.props.options}
-              selectedIndex={selectedIndex}
-              onClick={this.onChange}
-              onEnter={this.onEnter}
-              width={this.state.width}
-              isInsideTable={this.state.isInsideTable}
-              onEscape={this.onEscape}
-            />
-          }
-        </Motion>
+        {
+          this.state.open &&
+          <List
+            hasLabel={!!this.props.label}
+            options={this.props.options}
+            selectedIndex={selectedIndex}
+            onClick={this.onChange}
+            onEnter={this.onEnter}
+            width={this.state.width}
+            isInsideTable={this.state.isInsideTable}
+            onEscape={this.onEscape}
+          />
+        }
       </div>
     )
   }
@@ -325,7 +317,7 @@ class List extends React.Component {
       <ul
         ref={(c) => { this.ref = c }}
         className='mdc-Select-list'
-        style={Object.assign(style, this.props.style)}
+        style={style}
       >
         {options.map((item, i) =>
           <li key={i}
