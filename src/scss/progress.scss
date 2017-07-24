@@ -4,11 +4,21 @@
   height: 4px;
   display: flex;
   align-items: flex-end;
+  overflow: hidden;
 }
 
 .mdc-Progress-linear-background {
   background-color: rgba(63, 81, 181, 0.3);
   flex: 1;
+  height: 4px;
+  will-change: transform;
+  transform: translate3d(0, 4px, 0);
+  transition: 250ms transform 150ms ease-in-out;
+}
+
+.mdc-Progress-linear-background.is-active {
+  transition: transform 250ms ease-in-out;
+  transform: translate3d(0, 0, 0);
 }
 
 .mdc-Progress-linear-inner {

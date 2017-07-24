@@ -1,7 +1,7 @@
 
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Motion, spring} from 'react-motion'
+import classnames from 'classnames'
 
 class Linear extends React.Component {
   static propTypes = {
@@ -28,16 +28,13 @@ class Linear extends React.Component {
 
   render () {
     return (
-      <Motion defaultStyle={{x: 0}} style={{x: spring(this.state.isDone ? 0 : 4)}}>
-        {
-          (value) => value.x !== 0 &&
-          <div className='mdc-Progress-linear'>
-            <div className='mdc-Progress-linear-background' style={{height: value.x}}>
-              <div className='mdc-Progress-linear-inner' style={{width: `${this.props.percentage}%`}} />
-            </div>
-          </div>
-        }
-      </Motion>
+      <div className='mdc-Progress-linear'>
+        <div className={classnames('mdc-Progress-linear-background', {
+          'is-active': 0 < this.props.percentage && this.props.percentage < 99
+        })}>
+          <div className='mdc-Progress-linear-inner' style={{width: `${this.props.percentage}%`}} />
+        </div>
+      </div>
     )
   }
 }
