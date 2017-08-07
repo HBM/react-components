@@ -8,9 +8,15 @@ import {mount} from 'enzyme'
 function noop () {}
 
 describe('Menu', () => {
-  it('should work', () => {
+  it('should render hidden by default', () => {
     const wrapper = mount(<Menu onClick={noop} />)
     assert.equal(wrapper.find('.mdc-Menu').length, 1)
+    assert.equal(wrapper.find('.mdc-Menu-list.is-visible').length, 0)
+  })
+
+  it('should render with class is-visible when visible prop is set', () => {
+    const wrapper = mount(<Menu onClick={noop} visible />)
+    assert.equal(wrapper.find('.mdc-Menu .mdc-Menu-list.is-visible').length, 1)
   })
 
   it('should use initial items', () => {
@@ -24,7 +30,7 @@ describe('Menu', () => {
     const wrapper = mount(
       <Menu onClick={noop} items={['Dog', 'Cat', 'Mouse']} />
     )
-    assert.equal(wrapper.find('.mdc-Menu-list').length, 0)
+    assert.equal(wrapper.find('.mdc-Menu-list.is-visible').length, 0)
   })
 
   it('should notify on item click', (done) => {
