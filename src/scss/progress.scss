@@ -1,4 +1,3 @@
-
 // wrapper is needed to allow progress bar grow from bottom upwards
 .mdc-Progress-linear {
   height: 4px;
@@ -10,9 +9,9 @@
 .mdc-Progress-linear-background {
   background-color: rgba(63, 81, 181, 0.3);
   flex: 1;
-  height: 4px;
+  height: 100%;
   will-change: transform;
-  transform: translate3d(0, 4px, 0);
+  transform: translate3d(0, 100%, 0);
   transition: 250ms transform 150ms ease-in-out;
 }
 
