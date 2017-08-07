@@ -7,52 +7,31 @@ import Progress from '../'
 
 describe('Progress', () => {
   describe('Linear', () => {
-    it('should work', (done) => {
+    it('should work', () => {
       const wrapper = mount(<Progress.Linear />)
-      // use setTimeout to make component is rendered
-      window.setTimeout(() => {
-        assert.equal(wrapper.find('.mdc-Progress-linear').length, 1)
-        done()
-      }, 100)
+      assert.equal(wrapper.find('.mdc-Progress-linear').length, 1)
     })
 
-    it('should render a progress bar with given percentage', (done) => {
+    it('should render inactive if percentage === 0', () => {
+      const wrapper = mount(<Progress.Linear percentage={0} />)
+      assert.equal(wrapper.find('.mdc-Progress-linear-background.is-active').length, 0)
+      assert.equal(wrapper.find('.mdc-Progress-linear-background').length, 1)
+    })
+
+    it('should render inactive if percentage === 100', () => {
+      const wrapper = mount(<Progress.Linear percentage={100} />)
+      assert.equal(wrapper.find('.mdc-Progress-linear-background.is-active').length, 0)
+      assert.equal(wrapper.find('.mdc-Progress-linear-background').length, 1)
+    })
+
+    it('should render active if percentage === 1', () => {
+      const wrapper = mount(<Progress.Linear percentage={1} />)
+      assert.equal(wrapper.find('.mdc-Progress-linear-background.is-active').length, 1)
+    })
+
+    it('should render a progress bar with given percentage', () => {
       const wrapper = mount(<Progress.Linear percentage={50} />)
-      window.setTimeout(() => {
-        assert.equal(wrapper.find('.mdc-Progress-linear-inner').node.style.width, '50%')
-        done()
-      }, 100)
-    })
-
-    it('should remove itself from the DOM when done', (done) => {
-      const wrapper = mount(<Progress.Linear />)
-      window.setTimeout(() => {
-        assert.equal(wrapper.find('.mdc-Progress-linear').length, 1)
-        // let it be done
-        wrapper.setProps({
-          percentage: 100
-        })
-        window.setTimeout(() => {
-          assert.equal(wrapper.find('.mdc-Progress-linear').length, 0)
-          done()
-        }, 1500)
-      }, 100)
-    }, 10000)
-
-    // make sure else path is taken for test coverage
-    it('should not remove itself from the DOM when below 100 percent', (done) => {
-      const wrapper = mount(<Progress.Linear />)
-      window.setTimeout(() => {
-        assert.equal(wrapper.find('.mdc-Progress-linear').length, 1)
-        wrapper.setProps({
-          percentage: 99
-        })
-        window.setTimeout(() => {
-          // different to test above
-          assert.equal(wrapper.find('.mdc-Progress-linear').length, 1)
-          done()
-        }, 1500)
-      }, 100)
+      assert.equal(wrapper.find('.mdc-Progress-linear-inner').node.style.width, '50%')
     })
   })
 

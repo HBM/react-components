@@ -3,6 +3,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
+const isActive = percentage => (percentage > 0) && (percentage < 99)
+
 class Linear extends React.Component {
   static propTypes = {
     percentage: PropTypes.number
@@ -12,25 +14,11 @@ class Linear extends React.Component {
     percentage: 75
   }
 
-  state = {
-    isDone: false
-  }
-
-  componentWillReceiveProps (nextProps) {
-    if (nextProps.percentage >= 100) {
-      window.setTimeout(() => {
-        this.setState({
-          isDone: true
-        })
-      }, 500)
-    }
-  }
-
   render () {
     return (
       <div className='mdc-Progress-linear'>
         <div className={classnames('mdc-Progress-linear-background', {
-          'is-active': 0 < this.props.percentage && this.props.percentage < 99
+          'is-active': isActive(this.props.percentage)
         })}>
           <div className='mdc-Progress-linear-inner' style={{width: `${this.props.percentage}%`}} />
         </div>
