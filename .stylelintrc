@@ -1,3 +1,15 @@
 {
-  "extends": "stylelint-config-standard"
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "at-rule-no-unknown": [true, {
+      "ignoreAtRules": [
+        "content",
+        "for",
+        "function",
+        "include",
+        "mixin",
+        "return"
+      ]
+    }]
+  }
 }
