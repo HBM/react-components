@@ -66,8 +66,8 @@
  */
 .mdc-Select-list {
   margin: 0;
-  z-index: 1;
-  position: absolute;
+  z-index: 105;
+  position: fixed;
   background: #fff;
   padding: 8px 0;
   border-radius: 2px;

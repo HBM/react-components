@@ -97,22 +97,28 @@ export default class Select extends React.Component {
   }
 
   componentDidMount () {
-    const selectRect = this.refWrapper.getBoundingClientRect()
+    const {left, top, width} = this.refWrapper.getBoundingClientRect()
     const isInsideTable = this.findTableTag(this.refWrapper)
     this.setState({
       isInsideTable,
-      width: selectRect.width
+      left,
+      top,
+      width
     })
     window.addEventListener('resize', this.resize)
+    window.addEventListener('scroll', this.resize)
   }
 
   componentWillUnmount () {
     window.removeEventListener('resize', this.resize)
+    window.removeEventListener('scroll', this.resize)
   }
 
   resize = () => {
-    const {width} = this.refWrapper.getBoundingClientRect()
+    const {left, top, width} = this.refWrapper.getBoundingClientRect()
     this.setState({
+      left,
+      top,
       width
     })
   }
@@ -143,6 +149,9 @@ export default class Select extends React.Component {
 
   shouldComponentUpdate (nextProps, nextState) {
     if (this.state.open && (nextState.open === this.state.open)) {
+      if (nextState.top !== this.state.top) {
+        return true
+      }
       return false
     }
     return true
@@ -190,6 +199,8 @@ export default class Select extends React.Component {
             onClick={this.onChange}
             onEnter={this.onEnter}
             width={this.state.width}
+            top={this.state.top}
+            left={this.state.left}
             isInsideTable={this.state.isInsideTable}
             onEscape={this.onEscape}
           />
@@ -206,6 +217,8 @@ class List extends React.Component {
     isInsideTable: PropTypes.bool,
     selectedIndex: PropTypes.number.isRequired,
     onClick: PropTypes.func.isRequired,
+    left: PropTypes.number,
+    top: PropTypes.number,
     width: PropTypes.number
   }
 
@@ -311,6 +324,19 @@ class List extends React.Component {
       padding = 8
     }
 
+    // select component is position fixed
+    // add top and left from select component
+    top = top + this.props.top
+    left = left + this.props.left
+
+    // check if select outside the window
+    const innerHeight = window.innerHeight
+    const listHeight = LIST_ITEM_HEIGHT * options.length + PADDING_TOP
+    if (top < 0) {
+      top = 0
+    } else if (top + listHeight > innerHeight) {
+      top = Math.max(0, innerHeight - listHeight)
+    }
     const style = {top, width, left}
 
     return (
