@@ -7,11 +7,23 @@ import Select from '../'
 import keycode from 'keycode'
 
 const noop = () => {}
+const initState = {
+  top: 300,
+  left: 10,
+  width: 100
+}
 
 describe('Select', () => {
   it('should render a simple example', () => {
     const wrapper = mount(<Select onChange={noop} />)
-    assert(wrapper.find('.mdc-Select'))
+    assert.equal(wrapper.find(Select).length, 1)
+    assert(wrapper.find(Select))
+  })
+
+  it('should unmount a simple example', () => {
+    const wrapper = mount(<Select onChange={noop} />)
+    wrapper.unmount()
+    assert.equal(wrapper.find(Select).length, 0)
   })
 
   it('should render some default items', () => {
@@ -70,6 +82,16 @@ describe('Select', () => {
     assert.equal(wrapper.find('.mdc-Select-list').length, 0)
   })
 
+  it('should again open the list when it is opened', () => {
+    const wrapper = mount(<Select onChange={noop} />)
+    // open list
+    wrapper.find('.mdc-Select-body').simulate('click')
+    assert.equal(wrapper.find('.mdc-Select-list').length, 1)
+    // open again list
+    wrapper.find('.mdc-Select-body').simulate('click')
+    assert.equal(wrapper.find('.mdc-Select-list').length, 1)
+  })
+
   it('should close the list on click on an item', () => {
     const callback = () => {}
     const wrapper = mount(
@@ -110,9 +132,10 @@ describe('Select', () => {
         onChange={noop}
       />
     )
+    wrapper.setState(initState)
     // open list
     wrapper.find('.mdc-Select-body').simulate('click')
-    assert.equal(wrapper.find('.mdc-Select-list').node.style.top, '-60px')
+    assert.equal(wrapper.find('.mdc-Select-list').node.style.top, `${initState.top - 60}px`)
   })
 
   it('should render a list item always in the middle of the list when list is too large', () => {
@@ -133,9 +156,10 @@ describe('Select', () => {
         onChange={noop}
       />
     )
+    wrapper.setState(initState)
     // open list
     wrapper.find('.mdc-Select-body').simulate('click')
-    assert.equal(wrapper.find('.mdc-Select-list').node.style.top, '-108px')
+    assert.equal(wrapper.find('.mdc-Select-list').node.style.top, `${initState.top - 108}px`)
   })
 
   it('should not show the second last item in the center of the list', () => {
@@ -156,8 +180,9 @@ describe('Select', () => {
         onChange={noop}
       />
     )
+    wrapper.setState(initState)
     wrapper.find('.mdc-Select-body').simulate('click')
-    assert.equal(wrapper.find('.mdc-Select-list').node.style.top, '-156px')
+    assert.equal(wrapper.find('.mdc-Select-list').node.style.top, `${initState.top - 156}px`)
   })
 
   it('should show the last item at the end of the list', () => {
@@ -178,8 +203,9 @@ describe('Select', () => {
         onChange={noop}
       />
     )
+    wrapper.setState(initState)
     wrapper.find('.mdc-Select-body').simulate('click')
-    assert.equal(wrapper.find('.mdc-Select-list').node.style.top, '-204px')
+    assert.equal(wrapper.find('.mdc-Select-list').node.style.top, `${initState.top - 204}px`)
   })
 
   it('should change its position top when inside a table', () => {
@@ -208,14 +234,37 @@ describe('Select', () => {
         </tbody>
       </table>
     )
+    wrapper.find(Select).get(0).setState(initState)
     wrapper.find('.mdc-Select-body').simulate('click')
-    assert.equal(wrapper.find('.mdc-Select-list').node.style.top, '-209px')
+    assert.equal(wrapper.find('.mdc-Select-list').node.style.top, `${initState.top - 209}px`)
   })
 
-  // it('specifies a name attribute for the button', () => {
-  //   const wrapper = mount(<Select name='donald' onChange={noop} />)
-  //   assert.equal(wrapper.find('button').node.name, 'donald')
-  // })
+  it('should render the list at the top', () => {
+    const wrapper = mount(
+      <Select
+        value='rabbit'
+        options={[
+          {value: 'fox', label: 'Fox'},
+          {value: 'rabbit', label: 'Rabbit'},
+          {value: 'dog', label: 'Dog'},
+          {value: 'horse', label: 'Horse'},
+          {value: 'mouse', label: 'mouse'},
+          {value: 'dragon', label: 'Dragon'},
+          {value: 'unicorn', label: 'Unicorn'},
+          {value: 'wookiee', label: 'Wookiee'}
+        ]}
+        onChange={noop}
+      />
+    )
+    wrapper.setState({
+      top: 50,
+      left: 10,
+      width: 100
+    })
+    // open list
+    wrapper.find('.mdc-Select-body').simulate('click')
+    assert.equal(wrapper.find('.mdc-Select-list').node.style.top, '0px')
+  })
 
   it('should handle window resize events', () => {
     const wrapper = mount(<Select onChange={noop} />)

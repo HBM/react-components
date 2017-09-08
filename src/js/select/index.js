@@ -148,10 +148,7 @@ export default class Select extends React.Component {
   }
 
   shouldComponentUpdate (nextProps, nextState) {
-    if (this.state.open && (nextState.open === this.state.open)) {
-      if (nextState.top !== this.state.top) {
-        return true
-      }
+    if (this.state.open && nextState.open) {
       return false
     }
     return true
