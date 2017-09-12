@@ -206,6 +206,35 @@ describe('Select', () => {
     assert.equal(wrapper.find('.mdc-Select-list').node.style.top, `${initState.top - 204}px`)
   })
 
+  it('should render the Select inside a table', () => {
+    const wrapper = mount(
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <Select
+                value='wookiee'
+                options={[
+                  {value: 'fox', label: 'Fox'},
+                  {value: 'cat', label: 'Cat'},
+                  {value: 'rabbit', label: 'Rabbit'},
+                  {value: 'dog', label: 'Dog'},
+                  {value: 'horse', label: 'Horse'},
+                  {value: 'mouse', label: 'mouse'},
+                  {value: 'dragon', label: 'Dragon'},
+                  {value: 'unicorn', label: 'Unicorn'},
+                  {value: 'wookiee', label: 'Wookiee'}
+                ]}
+                onChange={noop}
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    )
+    assert.equal(wrapper.find(Select).length, 1)
+  })
+
   it('should change its position top when inside a table', () => {
     const wrapper = mount(
       <table>
