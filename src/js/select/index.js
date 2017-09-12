@@ -97,29 +97,9 @@ export default class Select extends React.Component {
   }
 
   componentDidMount () {
-    const {left, top, width} = this.refWrapper.getBoundingClientRect()
     const isInsideTable = this.findTableTag(this.refWrapper)
     this.setState({
-      isInsideTable,
-      left,
-      top,
-      width
-    })
-    window.addEventListener('resize', this.resize)
-    window.addEventListener('scroll', this.resize)
-  }
-
-  componentWillUnmount () {
-    window.removeEventListener('resize', this.resize)
-    window.removeEventListener('scroll', this.resize)
-  }
-
-  resize = () => {
-    const {left, top, width} = this.refWrapper.getBoundingClientRect()
-    this.setState({
-      left,
-      top,
-      width
+      isInsideTable
     })
   }
 
@@ -195,9 +175,7 @@ export default class Select extends React.Component {
             selectedIndex={selectedIndex}
             onClick={this.onChange}
             onEnter={this.onEnter}
-            width={this.state.width}
-            top={this.state.top}
-            left={this.state.left}
+            refWrapper={this.refWrapper}
             isInsideTable={this.state.isInsideTable}
             onEscape={this.onEscape}
           />
@@ -214,9 +192,13 @@ class List extends React.Component {
     isInsideTable: PropTypes.bool,
     selectedIndex: PropTypes.number.isRequired,
     onClick: PropTypes.func.isRequired,
-    left: PropTypes.number,
-    top: PropTypes.number,
-    width: PropTypes.number
+    refWrapper: PropTypes.object.isRequired
+  }
+
+  state = {
+    left: this.props.refWrapper.getBoundingClientRect().left,
+    top: this.props.refWrapper.getBoundingClientRect().top,
+    width: this.props.refWrapper.getBoundingClientRect().width
   }
 
   componentDidMount () {
@@ -233,6 +215,21 @@ class List extends React.Component {
 
     const focus = index >= 0 ? index : 0
     this[`li${focus}`].focus()
+
+    window.addEventListener('resize', this.resize)
+  }
+
+  componentWillUnmount () {
+    window.removeEventListener('resize', this.resize)
+  }
+
+  resize = () => {
+    const {left, top, width} = this.props.refWrapper.getBoundingClientRect()
+    this.setState({
+      left,
+      top,
+      width
+    })
   }
 
   onClick = event => {
@@ -308,7 +305,7 @@ class List extends React.Component {
       }
     }
 
-    let width = this.props.width + (2 * PADDING_LEFT)
+    let width = this.state.width + (2 * PADDING_LEFT)
     let left = this.props.isInsideTable ? -17 : -16
     let padding = 16
 
@@ -316,17 +313,20 @@ class List extends React.Component {
     // if so decrease padding left and right from 16px to 8px
     // adjust absolute position left and inner link padding accordingly
     if (width > document.body.clientWidth) {
-      width = this.props.width + PADDING_LEFT
+      width = this.state.width + PADDING_LEFT
       left = -8
       padding = 8
     }
 
     // select component is position fixed
     // add top and left from select component
-    top = top + this.props.top
-    left = left + this.props.left
+    top = top + this.state.top
+    left = left + this.state.left
 
-    // check if select outside the window
+    // Checks that the attempted overlay position will fit within the viewport.
+    // If it will not fit, tries to adjust the position 'top' so the panel can open fully on-screen.
+    // If the select panel is very bottom, tries to adjust the position 'top' so the panel can open fully on-screen.
+    // If it still won't fit, sets the offset back to 0 to allow the fallback position to take over.
     const innerHeight = window.innerHeight
     const listHeight = LIST_ITEM_HEIGHT * options.length + PADDING_TOP
     if (top < 0) {
