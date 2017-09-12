@@ -185,7 +185,7 @@ export default class Select extends React.Component {
   }
 }
 
-class List extends React.Component {
+export class List extends React.Component {
   static propTypes = {
     hasLabel: PropTypes.bool,
     options: PropTypes.array.isRequired,
