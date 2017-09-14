@@ -17,6 +17,10 @@ export default class SelectRoute extends React.Component {
   }
 
   render () {
+    let bigOptionList = []
+    for (var i = 1; i <= 100; i++) {
+      bigOptionList.push({value: i, label: `Item ${i}`})
+    }
     return (
       <div>
         <section>
@@ -46,6 +50,15 @@ export default class SelectRoute extends React.Component {
               {value: 'black', label: 'Black'},
               {value: 'white', label: 'White'}
             ]}
+            value={this.state.first}
+          />
+        </section>
+        <section>
+          <h2>Select with scrolling big list</h2>
+          <Select
+            name='first'
+            onChange={this.onChange}
+            options={bigOptionList}
             value={this.state.first}
           />
         </section>
