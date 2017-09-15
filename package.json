@@ -13,7 +13,7 @@
     "watch:es": "cross-env BABEL_ENV=es babel -w src --out-dir es",
     "watch:commonjs": "cross-env BABEL_ENV=commonjs babel -w src --out-dir lib",
     "dev": "npm-run-all --parallel watch:*",
-    "examples": "cd examples && react-scripts start",
+    "examples": "cd examples && npm run start",
     "test": "standard && npm run stylelint && nyc mocha src/js/**/test/test.js",
     "prepublish": "npm run build && cpx './src/scss/*.*' ./scss"
   },
