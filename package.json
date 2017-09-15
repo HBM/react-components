@@ -47,7 +47,6 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "^1.0.13",
     "react-test-renderer": "^15.6.1",
     "standard": "^10.0.3",
     "stylelint": "^8.1.1",
@@ -66,7 +65,7 @@
     ],
     "exclude": [
       "**/test.js",
-      "text"
+      "test"
     ]
   },
   "dependencies": {
