@@ -3,6 +3,14 @@
   "version": "14.0.0",
   "description": "Material Design React components",
   "main": "lib/index.js",
+  "module": "es/index.js",
+  "style": "style.css",
+  "files": [
+    "scss",
+    "lib",
+    "es",
+    "style.css"
+  ],
   "scripts": {
     "stylelint": "stylelint src/scss/*.scss",
     "build:css": "node-sass src/scss/index.scss style.css",
@@ -71,12 +79,15 @@
   "dependencies": {
     "attr-accept": "^1.1.0",
     "classnames": "^2.2.5",
-    "keycode": "^2.1.9"
+    "keycode": "^2.1.9",
+    "prop-types": "^15.5.10"
   },
   "standard": {
     "parser": "babel-eslint",
     "ignore": [
-      "src/js/icon/index.js"
+      "es/",
+      "src/js/icon/index.js",
+      "build/"
     ]
   }
 }
