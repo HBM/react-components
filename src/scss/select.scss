@@ -69,7 +69,7 @@
   z-index: 105;
   position: fixed;
   background: #fff;
-  padding: 8px 0;
+  padding: 0;
   border-radius: 2px;
   box-shadow: 0 2px 40px rgba(0, 0, 0, 0.4);
   overflow-y: auto;
@@ -79,6 +79,18 @@
    * max-height is equal to 5 elements + margin top and margin bottom
    */
   max-height: 256px;
+
+  /**
+   * fix: Firefox ignores padding when using overflow:scroll
+   * https://stackoverflow.com/questions/29986977/firefox-ignores-padding-when-using-overflowscroll
+   */
+  :first-child {
+    margin: 8px 0 0;
+  }
+
+  :last-child {
+    margin: 0 0 8px;
+  }
 }
 
 .mdc-Select.is-insideTable {
