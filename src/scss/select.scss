@@ -85,11 +85,11 @@
    * https://stackoverflow.com/questions/29986977/firefox-ignores-padding-when-using-overflowscroll
    */
   :first-child {
-    margin: 8px 0 0;
+    margin-top: 8px;
   }
 
   :last-child {
-    margin: 0 0 8px;
+    margin-bottom: 8px;
   }
 }
 
