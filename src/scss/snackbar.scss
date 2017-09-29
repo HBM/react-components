@@ -8,21 +8,33 @@
   z-index: 500;
   left: 0;
   right: 0;
-  bottom: -48px;
+  bottom: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   pointer-events: none;
-  transition: transform 400ms ease-in-out;
-  will-change: transform;
 
   @include xlarge {
     left: $navigation-width;
   }
 }
 
-.mdc-Snackbar.is-visible {
-  transform: translate3d(0, -48px, 0);
+.mdc-Snackbar.fade-enter {
+  transform: translate3d(0, 48px, 0);
+}
+
+.mdc-Snackbar.fade-enter.fade-enter-active {
+  transform: translate3d(0, 0, 0);
+  transition: transform 500ms ease-in-out;
+}
+
+.mdc-Snackbar.fade-exit {
+  transform: translate3d(0, 0, 0);
+}
+
+.mdc-Snackbar.fade-exit.fade-exit-active {
+  transform: translate3d(0, 48px, 0);
+  transition: transform 500ms ease-in-out;
 }
 
 .mdc-Snackbar-background {
@@ -45,6 +57,7 @@
 /**
  * Start opacity animation slightly after translate animation.
  * Also make it shorter so they both end at the same time.
+ * When exiting start immediately.
  */
 .mdc-Snackbar-content {
   min-width: 100%;
@@ -53,13 +66,25 @@
   align-items: center;
   justify-content: space-between;
   will-change: opacity;
-  opacity: 0;
-  transition: 250ms opacity ease-in-out;
 }
 
-.mdc-Snackbar-content.is-visible {
-  transition: 250ms opacity 150ms ease-in-out;
+.mdc-Snackbar.fade-enter .mdc-Snackbar-content {
+  opacity: 0;
+}
+
+.mdc-Snackbar.fade-enter.fade-enter-active .mdc-Snackbar-content {
   opacity: 1;
+  transition: 350ms opacity 150ms ease-in-out;
+}
+
+.mdc-Snackbar.fade-exit .mdc-Snackbar-content {
+  opacity: 1;
+}
+
+.mdc-Snackbar.fade-exit.fade-exit-active .mdc-Snackbar-content {
+  opacity: 0;
+  // attention: no delay
+  transition: 350ms opacity ease-in-out;
 }
 
 .mdc-Snackbar-text {
