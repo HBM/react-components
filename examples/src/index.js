@@ -13,6 +13,7 @@ import ButtonRoute from './buttonRoute'
 import CardRoute from './cardRoute'
 import CheckboxRoute from './checkboxRoute'
 import ChipRoute from './chipRoute'
+import ExpansionPanelRoute from './expansionpanelRoute'
 import HeaderRoute from './headerRoute'
 import HomeRoute from './homeRoute'
 import IconRoute from './iconRoute'
@@ -61,28 +62,29 @@ class App extends React.Component {
 
   render () {
     const links = [
-      <NavLink to='/' exact >Home</NavLink>,
-      <NavLink to='/bottomnavigation' >Bottom Navigation</NavLink>,
-      <NavLink to='/button' >Button</NavLink>,
-      <NavLink to='/card' >Card</NavLink>,
-      <NavLink to='/checkbox' >Checkbox</NavLink>,
-      <NavLink to='/chip' >Chip</NavLink>,
-      <NavLink to='/header' >Header</NavLink>,
-      <NavLink to='/icon' >Icon</NavLink>,
-      <NavLink to='/list' >List</NavLink>,
-      <NavLink to='/menu' >Menu</NavLink>,
-      <NavLink to='/modal' >Modal</NavLink>,
-      <NavLink to='/navigation' >Navigation</NavLink>,
-      <NavLink to='/progress' >Progress</NavLink>,
-      <NavLink to='/radiobutton' >Radiobutton</NavLink>,
-      <NavLink to='/select' >Select</NavLink>,
-      <NavLink to='/slider' >Slider</NavLink>,
-      <NavLink to='/snackbar' >Snackbar</NavLink>,
-      <NavLink to='/switch' >Switch</NavLink>,
-      <NavLink to='/table' >Table</NavLink>,
+      <NavLink to='/' exact>Home</NavLink>,
+      <NavLink to='/bottomnavigation'>Bottom Navigation</NavLink>,
+      <NavLink to='/button'>Button</NavLink>,
+      <NavLink to='/card'>Card</NavLink>,
+      <NavLink to='/checkbox'>Checkbox</NavLink>,
+      <NavLink to='/chip'>Chip</NavLink>,
+      <NavLink to='/expansionpanel'>Expansion Panel</NavLink>,
+      <NavLink to='/header'>Header</NavLink>,
+      <NavLink to='/icon'>Icon</NavLink>,
+      <NavLink to='/list'>List</NavLink>,
+      <NavLink to='/menu'>Menu</NavLink>,
+      <NavLink to='/modal'>Modal</NavLink>,
+      <NavLink to='/navigation'>Navigation</NavLink>,
+      <NavLink to='/progress'>Progress</NavLink>,
+      <NavLink to='/radiobutton'>Radiobutton</NavLink>,
+      <NavLink to='/select'>Select</NavLink>,
+      <NavLink to='/slider'>Slider</NavLink>,
+      <NavLink to='/snackbar'>Snackbar</NavLink>,
+      <NavLink to='/switch'>Switch</NavLink>,
+      <NavLink to='/table'>Table</NavLink>,
       <NavLink to='/tabs'>Tabs</NavLink>,
-      <NavLink to='/textfield' >Textfield</NavLink>,
-      <NavLink to='/textarea' >Textarea</NavLink>
+      <NavLink to='/textfield'>Textfield</NavLink>,
+      <NavLink to='/textarea'>Textarea</NavLink>
     ].map(link => React.cloneElement(link, {onClick: this.onLinkChange}))
 
     return (
@@ -98,6 +100,7 @@ class App extends React.Component {
           <Route path='/card' component={CardRoute} />
           <Route path='/checkbox' component={CheckboxRoute} />
           <Route path='/chip' component={ChipRoute} />
+          <Route path='/expansionpanel' component={ExpansionPanelRoute} />
           <Route path='/header' component={HeaderRoute} />
           <Route path='/icon' component={IconRoute} />
           <Route path='/list' component={ListRoute} />

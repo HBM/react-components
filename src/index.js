@@ -4,6 +4,7 @@ export {default as Button} from './js/button/index.js'
 export {Card, Title, Actions, Text, Content} from './js/card/index.js'
 export {default as Checkbox} from './js/checkbox/index.js'
 export {default as Chip} from './js/chip/index.js'
+export {default as ExpansionPanel} from './js/expansionpanel/index.js'
 export {default as Header} from './js/header/index.js'
 export {Icon}
 export {List, Row} from './js/list/index.js'
