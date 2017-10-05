@@ -1,0 +1,74 @@
+
+.mdc-ExpansionPanel-previous {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.mdc-ExpansionPanel {
+  background-color: white;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+  transition: margin ease-in-out 200ms;
+  border-radius: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  will-change: margin;
+}
+
+.mdc-ExpansionPanel + .mdc-ExpansionPanel {
+  border-top: none;
+}
+
+.mdc-ExpansionPanel.is-open {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+  border-radius: 2px;
+  border: none;
+}
+
+.mdc-ExpansionPanel-toggle {
+  display: flex;
+  align-items: center;
+  border: none;
+  background: none;
+  margin: 0;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+
+  &:hover {
+    background-color: #eee;
+  }
+}
+
+.mdc-ExpansionPanel-chevron {
+  transform: rotate(90deg);
+  transition: transform ease-in-out 200ms;
+  fill: rgba(0, 0, 0, 0.38);
+  margin-left: auto;
+}
+
+.mdc-ExpansionPanel-chevron.is-open {
+  transform: rotate(-90deg);
+}
+
+.mdc-ExpansionPanel-content {
+  display: none;
+}
+
+.mdc-ExpansionPanel-content.is-open {
+  display: block;
+}
+
+.mdc-ExpansionPanel + .mdc-Card {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+}
+
+.mdc-ExpansionPanel.is-open + .mdc-Card {
+  border-top-right-radius: 2px;
+  border-top-left-radius: 2px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+}
