@@ -37,6 +37,12 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
 }
 
+.mdc-Header-left {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
 .mdc-Header-block {
   display: flex;
   align-items: center;
@@ -70,9 +76,16 @@
   font-size: 20px;
   display: flex;
   align-items: center;
+  min-width: 0;
 
   @include medium {
     font-size: 24px;
     margin-left: 0;
   }
+}
+
+.mdc-Header-subtitle-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

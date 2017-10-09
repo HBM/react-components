@@ -35,7 +35,7 @@ export default class Header extends React.Component {
     }, className)
     return (
       <header className={klass}>
-        <div className='mdc-Header-block'>
+        <div className='mdc-Header-left'>
           <span className='mdc-Header-title'>
             {title}
           </span>
@@ -43,7 +43,7 @@ export default class Header extends React.Component {
             subtitle &&
             <span className='mdc-Header-subtitle'>
               <ChevronRight className='mdc-Header-chevron' />
-              {subtitle}
+              <div className='mdc-Header-subtitle-text'>{subtitle}</div>
             </span>
           }
         </div>
