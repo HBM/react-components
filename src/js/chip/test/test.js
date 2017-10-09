@@ -63,7 +63,7 @@ describe('Chip', () => {
       }
     })
     // make sure input has new value / state
-    assert.equal(wrapper.find('input').node.value, 'hello')
+    assert.equal(wrapper.find('input').instance().value, 'hello')
     // simulate enter
     wrapper.find('input').simulate('keypress', {
       which: keycode('enter')
@@ -82,7 +82,7 @@ describe('Chip', () => {
       }
     })
     // make sure input has new value / state
-    assert.equal(wrapper.find('input').node.value, '')
+    assert.equal(wrapper.find('input').instance().value, '')
     // simulate enter
     wrapper.find('input').simulate('keypress', {
       which: keycode('enter')
@@ -96,7 +96,7 @@ describe('Chip', () => {
     wrapper.find('input').simulate('keydown', {
       which: keycode('left')
     })
-    assert.equal(wrapper.find('.mdc-Chip').node, document.activeElement)
+    assert.equal(wrapper.find('.mdc-Chip').instance(), document.activeElement)
   })
 
   it('should focus the last chip when backspace is pressed inside input the field', () => {
@@ -104,7 +104,7 @@ describe('Chip', () => {
     wrapper.find('input').simulate('keydown', {
       which: keycode('backspace')
     })
-    assert.equal(wrapper.find('.mdc-Chip').node, document.activeElement)
+    assert.equal(wrapper.find('.mdc-Chip').instance(), document.activeElement)
   })
 
   it('should focus the first chip when right arrow is pressed inside input the field', () => {
@@ -112,7 +112,7 @@ describe('Chip', () => {
     wrapper.find('input').simulate('keydown', {
       which: keycode('right')
     })
-    assert.equal(wrapper.find('.mdc-Chip').node, document.activeElement)
+    assert.equal(wrapper.find('.mdc-Chip').instance(), document.activeElement)
   })
 
   it('should cycle left when chip is selected and left arrow is clicked', () => {
@@ -128,7 +128,7 @@ describe('Chip', () => {
     wrapper.find('.mdc-Chip').simulate('keydown', {
       which: keycode('left')
     })
-    assert.equal(wrapper.find('.mdc-Chip-input').node, document.activeElement)
+    assert.equal(wrapper.find('.mdc-Chip-input').instance(), document.activeElement)
   })
 
   it('should cycle right when chip is selected and right arrow is clicked', () => {
@@ -144,19 +144,19 @@ describe('Chip', () => {
     wrapper.find('.mdc-Chip').simulate('keydown', {
       which: keycode('right')
     })
-    assert.equal(wrapper.find('.mdc-Chip-input').node, document.activeElement)
+    assert.equal(wrapper.find('.mdc-Chip-input').instance(), document.activeElement)
   })
 
   it('should focus the input field on click on wrapper', () => {
     const wrapper = mount(<Chip value={[{text: 'one'}]} onChange={noop} />)
     wrapper.find('.mdc-Chip-wrapper').simulate('click')
-    assert.equal(wrapper.find('.mdc-Chip-input').node, document.activeElement)
+    assert.equal(wrapper.find('.mdc-Chip-input').instance(), document.activeElement)
   })
 
   it('should not focus the input field on click on chip', () => {
     const wrapper = mount(<Chip value={[{text: 'one'}]} onChange={noop} />)
     wrapper.find('.mdc-Chip').simulate('click')
-    assert.notEqual(wrapper.find('.mdc-Chip-input').node, document.activeElement)
+    assert.notEqual(wrapper.find('.mdc-Chip-input').instance(), document.activeElement)
   })
 
   it('should remove focused chip on backspace', (done) => {
@@ -193,7 +193,7 @@ describe('Chip', () => {
   it('should focus the input field when last chip is removed', () => {
     const wrapper = mount(<Chip value={[{text: 'one'}]} onChange={noop} />)
     wrapper.find('.mdc-Chip-delete').simulate('click')
-    assert.equal(wrapper.find('.mdc-Chip-input').node, document.activeElement)
+    assert.equal(wrapper.find('.mdc-Chip-input').instance(), document.activeElement)
   })
 
   it('should focus chip to the left when last chip is removed', () => {
@@ -216,7 +216,7 @@ describe('Chip', () => {
       }
     })
     // make sure input has new value / state
-    assert.equal(wrapper.find('input').node.value, 'hello')
+    assert.equal(wrapper.find('input').instance().value, 'hello')
     // simulate enter
     wrapper.find('input').simulate('keypress', {
       which: keycode('space')

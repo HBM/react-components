@@ -24,7 +24,7 @@ describe('BottomNavigationText', () => {
 
   it('should have the .BottomNavigation-menu-item-text', () => {
     const wrapper = mount(<BottomNavigationText>foo</BottomNavigationText>)
-    assert(wrapper.hasClass('mdc-BottomNavigation-menu-item-text'))
+    assert(wrapper.render().hasClass('mdc-BottomNavigation-menu-item-text'))
   })
 })
 
@@ -72,7 +72,7 @@ describe('BottomNavigation', () => {
         </BottomNavigation>
       </MemoryRouter>
     )
-    const node = wrapper.find('.mdc-BottomNavigation-content').at(0).node
+    const node = wrapper.find('.mdc-BottomNavigation-content').at(0).instance()
     node.scrollTop = 40
     wrapper.find('.mdc-BottomNavigation-menu-item').at(0).simulate('click', {})
     setTimeout(() => {
@@ -98,7 +98,7 @@ describe('BottomNavigation', () => {
         </BottomNavigation>
       </MemoryRouter>
     )
-    const node = wrapper.find('.mdc-BottomNavigation-content').at(0).node
+    const node = wrapper.find('.mdc-BottomNavigation-content').at(0).instance()
     node.scrollTop = 40
     wrapper.find('.mdc-BottomNavigation').at(0).simulate('scroll', {})
     setTimeout(() => {
@@ -128,7 +128,7 @@ describe('BottomNavigation', () => {
         </BottomNavigation>
       </MemoryRouter>
     )
-    const node = wrapper.find('.mdc-BottomNavigation-content').at(0).node
+    const node = wrapper.find('.mdc-BottomNavigation-content').at(0).instance()
     node.scrollTop = 40
     wrapper.find('.mdc-BottomNavigation').at(0).simulate('scroll', {})
     setTimeout(() => {
@@ -157,7 +157,7 @@ describe('BottomNavigation', () => {
         </BottomNavigation>
       </MemoryRouter>
       )
-    const node = wrapper.find('.mdc-BottomNavigation-content').at(0).node
+    const node = wrapper.find('.mdc-BottomNavigation-content').at(0).instance()
     node.scrollTop = 40
     wrapper.find('.mdc-BottomNavigation').at(0).simulate('scroll', {})
 

@@ -285,6 +285,7 @@ describe('Table', () => {
       which: 27
     }))
     // make sure overlay isn't visible anymore
+    wrapper.update()
     assert.equal(wrapper.find('.mdc-Table-edit').length, 0)
   })
 
@@ -305,6 +306,7 @@ describe('Table', () => {
     // simulate click outside of component
     document.dispatchEvent(new window.Event('click'))
     // make sure overlay isn't visible anymore
+    wrapper.update()
     assert.equal(wrapper.find('.mdc-Table-edit').length, 0)
   })
 

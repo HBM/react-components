@@ -8,12 +8,12 @@ import {mount} from 'enzyme'
 describe('Textfield', () => {
   it('should be empty by default', () => {
     const wrapper = mount(<Textfield />)
-    assert.equal(wrapper.find('.mdc-Textfield-input').node.value, '')
+    assert.equal(wrapper.find('.mdc-Textfield-input').instance().value, '')
   })
 
   it('should be able to set a custom value', () => {
     const wrapper = mount(<Textfield value='my custom value' onChange={() => {}} />)
-    assert.equal(wrapper.find('.mdc-Textfield-input').node.value, 'my custom value')
+    assert.equal(wrapper.find('.mdc-Textfield-input').instance().value, 'my custom value')
   })
 
   it('should be able to set a custom label', () => {
@@ -50,12 +50,12 @@ describe('Textfield', () => {
 
   it('should be able to set to disabled', () => {
     const wrapper = mount(<Textfield disabled />)
-    assert(wrapper.find('.mdc-Textfield-input').node.disabled)
+    assert(wrapper.find('.mdc-Textfield-input').instance().disabled)
   })
 
   it('should be able to set to readOnly', () => {
     const wrapper = mount(<Textfield readOnly />)
-    assert(wrapper.find('.mdc-Textfield-input').node.readOnly)
+    assert(wrapper.find('.mdc-Textfield-input').instance().readOnly)
   })
 
   it('should callback upon typing', (done) => {
@@ -83,12 +83,12 @@ describe('Textfield', () => {
 
   it('should have the right type', () => {
     const wrapper = mount(<Textfield type='password' />)
-    assert.equal(wrapper.find('.mdc-Textfield-input').node.type, 'password')
+    assert.equal(wrapper.find('.mdc-Textfield-input').instance().type, 'password')
   })
 
   it('should allow setting the htmlFor attribute on label element', () => {
     const wrapper = mount(<Textfield htmlFor='foo' />)
-    assert.equal(wrapper.find('label').node.htmlFor, 'foo')
+    assert.equal(wrapper.find('label').instance().htmlFor, 'foo')
   })
 
   it('should allow access to the underlying input element', done => {
@@ -120,32 +120,32 @@ describe('Textfield', () => {
 describe('Textarea', () => {
   it('should be empty by default', () => {
     const wrapper = mount(<Textarea />)
-    assert.equal(wrapper.find('.mdc-Textfield-input').node.value, '')
+    assert.equal(wrapper.find('.mdc-Textfield-input').instance().value, '')
   })
 
   it('should render value as text content of textarea', () => {
     const wrapper = mount(<Textarea value='foo bar' onChange={() => {}} />)
-    assert.equal(wrapper.find('textarea').node.textContent, 'foo bar')
+    assert.equal(wrapper.find('textarea').instance().textContent, 'foo bar')
   })
 
   it('should have style resize default to "none"', () => {
     const wrapper = mount(<Textarea />)
-    assert.equal(wrapper.find('textarea').node.style.resize, 'none')
+    assert.equal(wrapper.find('textarea').instance().style.resize, 'none')
   })
 
   it('should accept resizable attribute and set style resize to "vertical"', () => {
     const wrapper = mount(<Textarea resizable />)
-    assert.equal(wrapper.find('textarea').node.style.resize, 'vertical')
+    assert.equal(wrapper.find('textarea').instance().style.resize, 'vertical')
   })
 
   it('should default rows = 2', () => {
     const wrapper = mount(<Textarea value={'foo'} onChange={() => {}} />)
-    assert.equal(wrapper.find('textarea').node.rows, 2)
+    assert.equal(wrapper.find('textarea').instance().rows, 2)
   })
 
   it('should allow setting rows', () => {
     const wrapper = mount(<Textarea value={'foo'} rows={1} onChange={() => {}} />)
-    assert.equal(wrapper.find('textarea').node.rows, 1)
+    assert.equal(wrapper.find('textarea').instance().rows, 1)
   })
 
   it('should resize', () => {
@@ -201,7 +201,7 @@ describe('Textarea', () => {
 
   it('should allow setting the htmlFor attribute on label element', () => {
     const wrapper = mount(<Textarea htmlFor='foo' />)
-    assert.equal(wrapper.find('label').node.htmlFor, 'foo')
+    assert.equal(wrapper.find('label').instance().htmlFor, 'foo')
   })
 
   it('should onFocus', (done) => {

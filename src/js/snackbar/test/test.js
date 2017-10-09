@@ -18,7 +18,7 @@ describe('Snackbar', () => {
 
   it('should render with text and action button', () => {
     const wrapper = mount(<Snackbar visible text='all good' action='undo' />)
-    assert.equal(wrapper.find('.mdc-Snackbar-action').node.value, 'undo')
+    assert.equal(wrapper.find('.mdc-Snackbar-action').instance().value, 'undo')
   })
 
   it('should trigger an event when clicking on action button', (done) => {

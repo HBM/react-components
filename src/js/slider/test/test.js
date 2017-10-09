@@ -8,7 +8,7 @@ import {mount} from 'enzyme'
 describe('Slider', () => {
   it('should have a default value of 0', () => {
     const wrapper = mount(<Slider min={0} max={3} />)
-    assert.equal(wrapper.find('.mdc-Slider-input').node.value, '0')
+    assert.equal(wrapper.find('.mdc-Slider-input').instance().value, '0')
   })
 
   it('should reflect changes made to input type range', () => {
@@ -18,19 +18,19 @@ describe('Slider', () => {
         value: 2.1
       }
     })
-    assert.equal(wrapper.find('.mdc-Slider-input').node.value, '2.1')
+    assert.equal(wrapper.find('.mdc-Slider-input').instance().value, '2.1')
   })
 
   it('should reflect changes made to the value prop', () => {
     const wrapper = mount(<Slider min={0} max={3} value={1} />)
     wrapper.setProps({value: 2.3})
-    assert.equal(wrapper.find('.mdc-Slider-input').node.value, '2.3')
+    assert.equal(wrapper.find('.mdc-Slider-input').instance().value, '2.3')
   })
 
   it('should skip other changes in props', () => {
     const wrapper = mount(<Slider min={0} max={3} value={1} />)
     wrapper.setProps({foo: 2.3})
-    assert.equal(wrapper.find('.mdc-Slider-input').node.value, '1')
+    assert.equal(wrapper.find('.mdc-Slider-input').instance().value, '1')
   })
 
   it('should fade out the thumb when value is min', () => {
@@ -50,7 +50,7 @@ describe('Slider', () => {
         value: -2
       }
     })
-    assert.equal(wrapper.find('.mdc-Slider-input').node.value, '-1')
+    assert.equal(wrapper.find('.mdc-Slider-input').instance().value, '-1')
   })
 
   it('should clip value > max', () => {
@@ -60,7 +60,7 @@ describe('Slider', () => {
         value: 5
       }
     })
-    assert.equal(wrapper.find('.mdc-Slider-input').node.value, '3')
+    assert.equal(wrapper.find('.mdc-Slider-input').instance().value, '3')
   })
 
   it('.getValueFromSlider should work :)', () => {
@@ -124,26 +124,26 @@ describe('Slider', () => {
   it.skip('should work with keyboard arrow keys', () => {
     const wrapper = mount(<Slider min={3} max={7} value={5} />)
     // make sure default value is 5
-    assert.equal(wrapper.find('.mdc-Slider-input').node.value, '5')
+    assert.equal(wrapper.find('.mdc-Slider-input').instance().value, '5')
     wrapper.find('.mdc-Slider-input').simulate('keypress', {
       key: 'ArrowLeft',
       keyCode: 37
     })
-    assert.equal(wrapper.find('.mdc-Slider-input').node.value, '4')
+    assert.equal(wrapper.find('.mdc-Slider-input').instance().value, '4')
     wrapper.find('.mdc-Slider-input').simulate('keypress', {
       key: 'ArrowRight',
       keyCode: 39
     })
-    assert.equal(wrapper.find('.mdc-Slider-input').node.value, '5')
+    assert.equal(wrapper.find('.mdc-Slider-input').instance().value, '5')
   })
 
   it.skip('should work with custom step', () => {
     const wrapper = mount(<Slider step={10.1} min={1.3} max={20} value={1.3} />)
-    assert.equal(wrapper.find('.mdc-Slider-input').node.value, '1.3')
+    assert.equal(wrapper.find('.mdc-Slider-input').instance().value, '1.3')
     wrapper.find('.mdc-Slider-input').simulate('keypress', {
       key: 'ArrowRight',
       keyCode: 39
     })
-    assert.equal(wrapper.find('.mdc-Slider-input').node.value, '11.4')
+    assert.equal(wrapper.find('.mdc-Slider-input').instance().value, '11.4')
   })
 })

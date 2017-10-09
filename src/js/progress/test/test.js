@@ -31,7 +31,7 @@ describe('Progress', () => {
 
     it('should render a progress bar with given percentage', () => {
       const wrapper = mount(<Progress.Linear percentage={50} />)
-      assert.equal(wrapper.find('.mdc-Progress-linear-inner').node.style.width, '50%')
+      assert.equal(wrapper.find('.mdc-Progress-linear-inner').instance().style.width, '50%')
     })
   })
 
@@ -44,8 +44,8 @@ describe('Progress', () => {
     it('should render circular progress with given percentage', () => {
       const wrapper = mount(<Progress.Circular percentage={50} />)
       const inner = wrapper.find('.mdc-Progress-circular-path')
-      assert.equal(parseFloat(inner.node.style.strokeDasharray), 2 * Math.PI * 30)
-      assert.equal(inner.node.style.strokeDashoffset, Math.PI * 30)
+      assert.equal(parseFloat(inner.instance().style.strokeDasharray), 2 * Math.PI * 30)
+      assert.equal(inner.instance().style.strokeDashoffset, Math.PI * 30)
     })
   })
 })

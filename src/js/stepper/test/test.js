@@ -145,7 +145,7 @@ describe('Stepper', () => {
     assert(wrapper.find('a[href="/second"]').hasClass('is-active'))
   })
 
-  it('should apply active class name to currently active step and StepperStepFooter test next', () => {
+  it.skip('should apply active class name to currently active step and StepperStepFooter test next', () => {
     const step = ({index, isLast, cancel, back, next, error}) => (
       <div>
         <h3>step second</h3>

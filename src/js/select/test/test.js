@@ -83,6 +83,7 @@ describe('Select', () => {
     var event = new window.MouseEvent('click')
     document.dispatchEvent(event)
     // make sure list is closed
+    wrapper.update()
     assert.equal(wrapper.find('.mdc-Select-list').length, 0)
   })
 
@@ -116,6 +117,7 @@ describe('Select', () => {
     var event = new window.MouseEvent('click')
     document.dispatchEvent(event)
     // make sure list is closed
+    wrapper.update()
     assert.equal(wrapper.find('.mdc-Select-list').length, 0)
   })
 
@@ -137,7 +139,7 @@ describe('Select', () => {
         refWrapper={refWrapper}
       />
     )
-    assert.equal(wrapper.find('.mdc-Select-list').node.style.top, `${initState.top - 60}px`)
+    assert.equal(wrapper.find('.mdc-Select-list').instance().style.top, `${initState.top - 60}px`)
   })
 
   it('should render a list item always in the middle of the list when list is too large', () => {
@@ -159,7 +161,7 @@ describe('Select', () => {
         refWrapper={refWrapper}
       />
     )
-    assert.equal(wrapper.find('.mdc-Select-list').node.style.top, `${initState.top - 108}px`)
+    assert.equal(wrapper.find('.mdc-Select-list').instance().style.top, `${initState.top - 108}px`)
   })
 
   it('should not show the second last item in the center of the list', () => {
@@ -181,7 +183,7 @@ describe('Select', () => {
         refWrapper={refWrapper}
       />
     )
-    assert.equal(wrapper.find('.mdc-Select-list').node.style.top, `${initState.top - 156}px`)
+    assert.equal(wrapper.find('.mdc-Select-list').instance().style.top, `${initState.top - 156}px`)
   })
 
   it('should show the last item at the end of the list', () => {
@@ -203,7 +205,7 @@ describe('Select', () => {
         refWrapper={refWrapper}
       />
     )
-    assert.equal(wrapper.find('.mdc-Select-list').node.style.top, `${initState.top - 204}px`)
+    assert.equal(wrapper.find('.mdc-Select-list').instance().style.top, `${initState.top - 204}px`)
   })
 
   it('should render the Select inside a table', () => {
@@ -263,7 +265,7 @@ describe('Select', () => {
         </tbody>
       </table>
     )
-    assert.equal(wrapper.find('.mdc-Select-list').node.style.top, `${initState.top - 209}px`)
+    assert.equal(wrapper.find('.mdc-Select-list').instance().style.top, `${initState.top - 209}px`)
   })
 
   it('should render the list at the top', () => {
@@ -290,7 +292,7 @@ describe('Select', () => {
     })
     // open list
     wrapper.find('.mdc-Select-body').simulate('click')
-    assert.equal(wrapper.find('.mdc-Select-list').node.style.top, '0px')
+    assert.equal(wrapper.find('.mdc-Select-list').instance().style.top, '0px')
   })
 
   it('should handle window resize events', () => {
@@ -324,7 +326,7 @@ describe('Select', () => {
     const event = new window.Event('resize')
     window.dispatchEvent(event)
 
-    assert.equal(wrapper.find('.mdc-Select-list').node.style.width, '26px')
+    assert.equal(wrapper.find('.mdc-Select-list').instance().style.width, '26px')
   })
 
   it('should scroll down on arrow down', done => {
