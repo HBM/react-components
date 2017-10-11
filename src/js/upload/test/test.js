@@ -1,4 +1,4 @@
-/* global describe, it */
+/* global describe, it, before, after */
 
 import assert from 'assert'
 import React from 'react'
@@ -106,19 +106,25 @@ describe('Upload', () => {
   })
 
   it('should remove dragleave event listener when component is unmounted', done => {
+    let tmp
+    before(() => {
+      tmp = document.removeEventListener
+    })
+
+    after(() => {
+      document.removeEventListener = tmp
+    })
     const wrapper = mount(<Upload onChange={noop} />)
     // const instance =
     document.dispatchEvent(new window.Event('dragenter'))
     // make sure component has correct class
     wrapper.update()
     assert(wrapper.find('.Upload').hasClass('is-over-window'))
-    const tmp = document.removeEventListener
     let names = []
     document.removeEventListener = name => {
       names.push(name)
       if (names.length === 2) {
         assert.deepEqual(['dragenter', 'dragleave'], names)
-        document.removeEventListener = tmp
         done()
       }
     }
