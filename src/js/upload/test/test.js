@@ -115,7 +115,6 @@ describe('Upload', () => {
       document.removeEventListener = tmp
     })
     const wrapper = mount(<Upload onChange={noop} />)
-    // const instance =
     document.dispatchEvent(new window.Event('dragenter'))
     // make sure component has correct class
     wrapper.update()
