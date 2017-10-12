@@ -19,21 +19,19 @@ export default class ExpansionPanel extends React.Component {
       <div className={classnames('mdc-ExpansionPanel', {
         'is-open': this.state.isOpen
       })}>
-        <div>
-          <button
-            className='mdc-ExpansionPanel-toggle'
-            onClick={this.toggle}
-          >
-            {this.props.top}
-            <ChevronRight className={classnames('mdc-ExpansionPanel-chevron', {
-              'is-open': this.state.isOpen
-            })} />
-          </button>
-          <div className={classnames('mdc-ExpansionPanel-content', {
+        <button
+          className='mdc-ExpansionPanel-toggle'
+          onClick={this.toggle}
+        >
+          {this.props.top}
+          <ChevronRight className={classnames('mdc-ExpansionPanel-chevron', {
             'is-open': this.state.isOpen
-          })}>
-            {this.props.children}
-          </div>
+          })} />
+        </button>
+        <div className={classnames('mdc-ExpansionPanel-content', {
+          'is-open': this.state.isOpen
+        })}>
+          {this.props.children}
         </div>
       </div>
     )
