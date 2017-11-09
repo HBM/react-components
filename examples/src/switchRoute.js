@@ -19,7 +19,9 @@ export default class SwitchRoute extends React.Component {
       <div>
         <section>
           <h2>Switch</h2>
+          <label htmlFor='switch'>my switch</label>
           <Switch
+            id='switch'
             name='switch'
             checked={this.state.switch}
             onChange={this.onChange}
