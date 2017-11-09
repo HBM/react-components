@@ -233,7 +233,7 @@ export class List extends React.Component {
   }
 
   onClick = event => {
-    const index = parseInt(event.target.getAttribute('data-id'))
+    const index = parseInt(event.currentTarget.getAttribute('data-id'))
     this.props.onClick(this.props.options[index])
   }
 
@@ -245,7 +245,7 @@ export class List extends React.Component {
   }
 
   onKeyDown = event => {
-    const index = parseInt(event.target.getAttribute('data-id'))
+    const index = parseInt(event.currentTarget.getAttribute('data-id'))
     if (event.which === keycode('enter')) {
       return this.props.onEnter(this.props.options[index])
     }
