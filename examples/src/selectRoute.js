@@ -77,6 +77,20 @@ export default class SelectRoute extends React.Component {
           />
         </section>
         <section>
+          <h2>Select with JSX label</h2>
+          <Select
+            label='Some label'
+            name='first'
+            onChange={this.onChange}
+            options={[
+              {value: 'blue', label: <span style={{color: 'blue'}}>Blue</span>},
+              {value: 'red', label: <span style={{color: 'red'}}>Red</span>},
+              {value: 'green', label: <span style={{color: 'green'}}>Green</span>}
+            ]}
+            value={this.state.first}
+          />
+        </section>
+        <section>
           <h2>Disabled select</h2>
           <div style={{display: 'flex'}}>
             <Select
