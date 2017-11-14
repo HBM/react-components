@@ -30,7 +30,7 @@ const Snackbar = ({text, action, onAction, visible}) => (
 )
 
 Snackbar.propTypes = {
-  text: PropTypes.string,
+  text: PropTypes.node,
   action: PropTypes.string,
   onAction: PropTypes.func,
   visible: PropTypes.bool
