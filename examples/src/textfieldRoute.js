@@ -9,7 +9,8 @@ export default class TextfieldRoute extends React.Component {
     email: '',
     name: 'peter',
     animal: 'Dog',
-    nonfloat: ''
+    nonfloat: '',
+    weight: ''
   }
 
   onChange = (event) => {
@@ -63,6 +64,10 @@ export default class TextfieldRoute extends React.Component {
             error={!this.state.name.match(/^[A-Z]/) && 'The name must start with capital letter.'}
             length={10}
           />
+        </section>
+        <section>
+          <h2>Textfield with suffix</h2>
+          <Textfield label='Weight' name='weight' placeholder='120' value={this.state.weight} onChange={this.onChange} suffix='lbs' />
         </section>
         <section>
           <h2>Read only textfield</h2>
