@@ -7,7 +7,7 @@ $font-small: 12px;
 $padding: 4px;
 $transition-function: cubic-bezier(0.25, 0.8, 0.25, 1);
 $transition-duration: 0.25s;
-$error-color: rgb(244, 67, 54);
+$error-color: $color-textfield-error;
 
 .mdc-Textfield {
   display: block;
@@ -29,6 +29,15 @@ $error-color: rgb(244, 67, 54);
   flex: 1;
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+.mdc-Textfield-suffix {
+  position: absolute;
+  top: 37px;
+  right: 0;
+  font-size: $font-big;
+  color: $color-textfield-suffix;
 }
 
 .mdc-Textfield-icon {
@@ -49,7 +58,7 @@ $error-color: rgb(244, 67, 54);
   order: 1;
   display: block;
   font-size: $font-big;
-  color: rgba($blue-dark, 0.6);
+  color: $color-textfield-label;
   transform: translate3d(0, 24px, 0);
   transform-origin: left top;
   transition: $transition-function $transition-duration;
@@ -58,18 +67,20 @@ $error-color: rgb(244, 67, 54);
   text-overflow: ellipsis;
   margin-top: 14px;
   margin-bottom: 6px;
+  height: 18px;
 }
 
 .mdc-Textfield-input {
   background: transparent;
   order: 2;
+  color: $color-textfield-input;
   width: 100%;
   display: block;
   border-radius: 0;
   font-size: $font-big;
   outline: 0;
   border: none;
-  border-bottom: 1px solid $black-012;
+  border-bottom: 1px solid $color-textfield-border;
   transition: border-bottom-color $transition-duration;
   padding: 0;
   line-height: 22px;
@@ -80,8 +91,8 @@ $error-color: rgb(244, 67, 54);
 }
 
 .mdc-Textfield-input:not([readonly]):focus {
-  border-bottom-color: $blue-dark;
-  box-shadow: 0 1px 0 0 $blue-dark;
+  border-bottom-color: $color-textfield-border--focus;
+  box-shadow: 0 1px 0 0 $color-textfield-border--focus;
 }
 
 .mdc-Textfield:not(.mdc-Textfield--nolabel) .mdc-Textfield-input:not(:focus)::-webkit-input-placeholder {
@@ -112,21 +123,21 @@ $error-color: rgb(244, 67, 54);
 }
 
 .mdc-Textfield-label--floatup {
-  color: rgba($blue-dark, 0.6);
+  color: $color-textfield-label--floatup;
 }
 
 .mdc-Textfield-input:not([readonly]):focus ~ .mdc-Textfield-label:not(.mdc-Textfield-error) {
-  color: $blue-dark;
+  color: $color-textfield-input--focus;
 }
 
 .mdc-Textfield-input:disabled {
   background-color: transparent;
-  color: rgba($blue-dark, 0.6);
-  border-bottom: 1px dotted rgba($blue-dark, 0.3);
+  color: $color-textfield-input--disabled;
+  border-bottom: 1px dotted $color-textfield-border--disabled;
 }
 
 .mdc-Textfield-char-counter {
-  color: rgba($blue-dark, 0.6);
+  color: $color-textfield-charcounter;
 }
 
 .mdc-Textfield-states {

@@ -44,6 +44,18 @@ $color-accent-text--dark: White;
 $color-accent--light: #f8bbd0;
 $color-accent-text--light: Black;
 
+$color-textfield-input: #333;
+$color-textfield-label: rgba($color-primary, 0.6);
+$color-textfield-label--floatup: rgba($color-primary, 0.6);
+$color-textfield-error: rgb(244, 67, 54);
+$color-textfield-border: text-color(Black, Dividers);
+$color-textfield-border--focus: $color-primary;
+$color-textfield-input--focus: $color-primary;
+$color-textfield-input--disabled: rgba($color-primary, 0.6);
+$color-textfield-border--disabled: rgba($color-primary, 0.3);
+$color-textfield-charcounter: rgba($color-primary, 0.6);
+$color-textfield-suffix: gray;
+
 /* deprecated */
 $blue-dark: $color-primary;
 $black-012: text-color(Black, Dividers);

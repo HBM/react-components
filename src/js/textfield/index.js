@@ -12,7 +12,8 @@ const TextfieldWrapper = ({
   label,
   value,
   length,
-  htmlFor
+  htmlFor,
+  suffix
 }) => {
   const isValueEmpty = value === undefined || value === ''
   const isDefaultValueEmpty = defaultValue === undefined || defaultValue === ''
@@ -34,6 +35,11 @@ const TextfieldWrapper = ({
           : null
         }
         <div className='mdc-Textfield-wrapper'>
+          {
+            suffix
+            ? <div className='mdc-Textfield-suffix'>{suffix}</div>
+            : null
+          }
           {children}
           <span
             className={classnames('mdc-Textfield-label', {
@@ -58,7 +64,7 @@ const TextfieldWrapper = ({
   )
 }
 
-export const Textfield = ({float, error, length, htmlFor, inputRef, ...rest}) => (
+export const Textfield = ({float, error, length, htmlFor, inputRef, suffix, ...rest}) => (
   <TextfieldWrapper
     defaultValue={rest.defaultValue}
     error={error}
@@ -68,6 +74,7 @@ export const Textfield = ({float, error, length, htmlFor, inputRef, ...rest}) =>
     value={rest.value}
     length={length}
     htmlFor={htmlFor}
+    suffix={suffix}
   >
     <input
       className={classnames('mdc-Textfield-input', {
