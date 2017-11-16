@@ -13,7 +13,8 @@ const TextfieldWrapper = ({
   value,
   length,
   htmlFor,
-  suffix
+  suffix,
+  onSuffixSize
 }) => {
   const isValueEmpty = value === undefined || value === ''
   const isDefaultValueEmpty = defaultValue === undefined || defaultValue === ''
@@ -37,7 +38,7 @@ const TextfieldWrapper = ({
         <div className='mdc-Textfield-wrapper'>
           {
             suffix
-            ? <div className='mdc-Textfield-suffix'>{suffix}</div>
+            ? <div className='mdc-Textfield-suffix' ref={node => node && onSuffixSize(node.getClientRects()[0])} >{suffix}</div>
             : null
           }
           {children}
@@ -64,27 +65,45 @@ const TextfieldWrapper = ({
   )
 }
 
-export const Textfield = ({float, error, length, htmlFor, inputRef, suffix, ...rest}) => (
-  <TextfieldWrapper
-    defaultValue={rest.defaultValue}
-    error={error}
-    float={float}
-    icon={rest.icon}
-    label={rest.label}
-    value={rest.value}
-    length={length}
-    htmlFor={htmlFor}
-    suffix={suffix}
-  >
-    <input
-      className={classnames('mdc-Textfield-input', {
-        'mdc-Textfield-input--error': error
-      })}
-      ref={inputRef}
-      {...rest}
-    />
-  </TextfieldWrapper>
-)
+export const Textfield = ({float, error, length, htmlFor, inputRef, suffix, ...rest}) => {
+  let inputNode
+  let suffixRect
+  const patchInputPadding = _suffixRect => {
+    suffixRect = _suffixRect
+  }
+  const ref = node => {
+    inputNode = node
+    if (inputRef) {
+      inputRef(node)
+    }
+    if (suffixRect && inputNode) {
+      inputNode.style.paddingRight = `${suffixRect.width + 12}px`
+      inputNode.style.boxSizing = 'border-box'
+    }
+  }
+  return (
+    <TextfieldWrapper
+      defaultValue={rest.defaultValue}
+      error={error}
+      float={float}
+      icon={rest.icon}
+      label={rest.label}
+      value={rest.value}
+      length={length}
+      htmlFor={htmlFor}
+      suffix={suffix}
+      onSuffixSize={patchInputPadding}
+    >
+      <input
+        className={classnames('mdc-Textfield-input', {
+          'mdc-Textfield-input--error': error
+        })}
+        ref={ref}
+        {...rest}
+      />
+    </TextfieldWrapper>
+  )
+}
 
 Textfield.propTypes = {
   error: PropTypes.oneOfType([
