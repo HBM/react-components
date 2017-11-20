@@ -1,0 +1,42 @@
+
+.mdc-Selectnative {
+  display: block;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.mdc-Selectnative.is-focused {
+  border-bottom-color: #1b325f;
+  box-shadow: 0 1px 0 0 #1b325f;
+}
+
+.mdc-Selectnative-label {
+  color: rgba(27, 50, 95, 0.6);
+  font-size: 12px;
+  margin-top: 14px;
+  margin-bottom: 6px;
+}
+
+.mdc-Selectnative-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.mdc-Selectnative-select {
+  border: none;
+  outline: none;
+  font-size: 16px;
+  appearance: none;
+  background: none;
+  padding: 0;
+  height: 22px;
+}
+
+.mdc-Selectnative-select::-ms-expand {
+  display: none;
+}
+
+.mdc-Selectnative-helper {
+  margin-top: 8px;
+  font-size: 12px;
+}
