@@ -26,7 +26,9 @@ export default class Selectnative extends React.Component {
         <label className={classnames('mdc-Selectnative', {
           'is-focused': this.state.focus
         })}>
-          <div className='mdc-Selectnative-label'>
+          <div className={classnames('mdc-Selectnative-label', {
+            'is-focused': this.state.focus
+          })}>
             {this.props.label}
           </div>
           <div className='mdc-Selectnative-wrapper'>
