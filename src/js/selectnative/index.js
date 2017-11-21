@@ -40,7 +40,12 @@ export default class Selectnative extends React.Component {
             >
               {this.props.children}
             </select>
-            <ArrowDropDown width={22} height={22} fill='rgba(0, 0, 0, 0.24)' />
+            <ArrowDropDown
+              className='mdc-Selectnative-icon'
+              width={22}
+              height={22}
+              fill='rgba(0, 0, 0, 0.24)'
+            />
           </div>
         </label>
         <div className={classnames('mdc-Selectnative-helper', {

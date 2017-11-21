@@ -30,7 +30,8 @@
 }
 
 .mdc-Selectnative-wrapper {
-  display: flex;
+  position: relative;
+  display: inline-flex;
   align-items: center;
   margin-bottom: 8px;
 }
@@ -43,10 +44,18 @@
   background: none;
   padding: 0;
   height: 22px;
+  padding-right: 22px;
 }
 
 .mdc-Selectnative-select::-ms-expand {
   display: none;
+}
+
+.mdc-Selectnative-icon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  pointer-events: none;
 }
 
 .mdc-Selectnative-helper,
