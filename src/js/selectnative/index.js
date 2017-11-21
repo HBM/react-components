@@ -37,6 +37,8 @@ export default class Selectnative extends React.Component {
               className='mdc-Selectnative-select'
               onFocus={this.onFocus}
               onBlur={this.onBlur}
+              onChange={this.props.onChange}
+              value={this.props.value}
             >
               {this.props.children}
             </select>

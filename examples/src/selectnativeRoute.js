@@ -3,26 +3,43 @@ import React from 'react'
 import {Selectnative, Textfield, Select} from 'md-components'
 
 export default class SelectRoute extends React.Component {
+  state = {
+    value: 'germany'
+  }
+
+  onChange = event => {
+    this.setState({
+      value: event.target.value
+    })
+  }
+
   render () {
     return (
       <div>
         <section>
           <h2>Plain Selectnative</h2>
-          <Selectnative label='first label'>
-            <option>one</option>
-            <option>two</option>
-            <option>three</option>
+          <Selectnative
+            label='first label'
+            onChange={this.onChange}
+            value={this.state.value}
+          >
+            <option value='germany'>Germany</option>
+            <option value='spain'>Spain</option>
+            <option value='italy'>Italy</option>
           </Selectnative>
+          <p>{this.state.value}</p>
         </section>
         <section>
           <h2>Selectnative with helper</h2>
           <Selectnative
             label='first label'
             helper='some helper text'
+            onChange={this.onChange}
+            value={this.state.value}
           >
-            <option>one</option>
-            <option>two</option>
-            <option>three</option>
+            <option value='germany'>Germany</option>
+            <option value='spain'>Spain</option>
+            <option value='italy'>Italy</option>
           </Selectnative>
         </section>
         <section>
@@ -30,10 +47,12 @@ export default class SelectRoute extends React.Component {
           <Selectnative
             label='first label'
             error='Please select something'
+            onChange={this.onChange}
+            value={this.state.value}
           >
-            <option>one</option>
-            <option>two</option>
-            <option>three</option>
+            <option value='germany'>Germany</option>
+            <option value='spain'>Spain</option>
+            <option value='italy'>Italy</option>
           </Selectnative>
         </section>
         <section>
@@ -41,10 +60,12 @@ export default class SelectRoute extends React.Component {
           <div style={{display: 'flex'}}>
             <Selectnative
               label='Country'
+              onChange={this.onChange}
+              value={this.state.value}
             >
-              <option>one</option>
-              <option>two</option>
-              <option>some long option</option>
+              <option value='germany'>Germany</option>
+              <option value='spain'>Spain</option>
+              <option value='usa'>United States of America</option>
             </Selectnative>
             <Textfield
               label='Country'
