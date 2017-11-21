@@ -7,9 +7,29 @@ export default class SelectRoute extends React.Component {
     return (
       <div>
         <section>
+          <h2>Plain Selectnative</h2>
+          <Selectnative label='first label'>
+            <option>one</option>
+            <option>two</option>
+            <option>three</option>
+          </Selectnative>
+        </section>
+        <section>
+          <h2>Selectnative with helper</h2>
           <Selectnative
             label='first label'
             helper='some helper text'
+          >
+            <option>one</option>
+            <option>two</option>
+            <option>three</option>
+          </Selectnative>
+        </section>
+        <section>
+          <h2>Selectnative with error</h2>
+          <Selectnative
+            label='first label'
+            error='Please select something'
           >
             <option>one</option>
             <option>two</option>

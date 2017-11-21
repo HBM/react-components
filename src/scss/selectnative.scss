@@ -4,9 +4,18 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
+.mdc-Selectnative--error {
+  border-bottom: 1px solid #f44336;
+}
+
 .mdc-Selectnative.is-focused {
   border-bottom-color: #1b325f;
   box-shadow: 0 1px 0 0 #1b325f;
+}
+
+.mdc-Selectnative--error.is-focused {
+  border-bottom: 1px solid #f44336;
+  box-shadow: 0 1px 0 0 #f44336;
 }
 
 .mdc-Selectnative-label {
@@ -40,7 +49,12 @@
   display: none;
 }
 
-.mdc-Selectnative-helper {
+.mdc-Selectnative-helper,
+.mdc-Selectnative-error {
   margin-top: 8px;
   font-size: 12px;
+}
+
+.mdc-Selectnative-helper--error {
+  color: #f44336;
 }

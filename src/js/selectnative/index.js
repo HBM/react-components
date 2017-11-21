@@ -24,6 +24,7 @@ export default class Selectnative extends React.Component {
     return (
       <div>
         <label className={classnames('mdc-Selectnative', {
+          'mdc-Selectnative--error': this.props.error,
           'is-focused': this.state.focus
         })}>
           <div className={classnames('mdc-Selectnative-label', {
@@ -42,8 +43,10 @@ export default class Selectnative extends React.Component {
             <ArrowDropDown width={22} height={22} fill='rgba(0, 0, 0, 0.24)' />
           </div>
         </label>
-        <div className='mdc-Selectnative-helper'>
-          {this.props.helper}
+        <div className={classnames('mdc-Selectnative-helper', {
+          'mdc-Selectnative-helper--error': this.props.error
+        })}>
+          {this.props.error || this.props.helper}
         </div>
       </div>
     )
