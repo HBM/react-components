@@ -1,6 +1,6 @@
 
 import React from 'react'
-import {Selectnative, Textfield, Select} from 'md-components'
+import {SelectNative, Textfield, Select} from 'md-components'
 
 export default class SelectRoute extends React.Component {
   state = {
@@ -17,8 +17,8 @@ export default class SelectRoute extends React.Component {
     return (
       <div>
         <section>
-          <h2>Plain Selectnative</h2>
-          <Selectnative
+          <h2>Plain SelectNative</h2>
+          <SelectNative
             label='first label'
             onChange={this.onChange}
             value={this.state.value}
@@ -26,12 +26,12 @@ export default class SelectRoute extends React.Component {
             <option value='germany'>Germany</option>
             <option value='spain'>Spain</option>
             <option value='italy'>Italy</option>
-          </Selectnative>
+          </SelectNative>
           <p>{this.state.value}</p>
         </section>
         <section>
-          <h2>Selectnative with helper</h2>
-          <Selectnative
+          <h2>SelectNative with helper</h2>
+          <SelectNative
             label='first label'
             helper='some helper text'
             onChange={this.onChange}
@@ -40,11 +40,11 @@ export default class SelectRoute extends React.Component {
             <option value='germany'>Germany</option>
             <option value='spain'>Spain</option>
             <option value='italy'>Italy</option>
-          </Selectnative>
+          </SelectNative>
         </section>
         <section>
-          <h2>Selectnative with error</h2>
-          <Selectnative
+          <h2>SelectNative with error</h2>
+          <SelectNative
             label='first label'
             error='Please select something'
             onChange={this.onChange}
@@ -53,12 +53,12 @@ export default class SelectRoute extends React.Component {
             <option value='germany'>Germany</option>
             <option value='spain'>Spain</option>
             <option value='italy'>Italy</option>
-          </Selectnative>
+          </SelectNative>
         </section>
         <section>
-          <h2>Selectnative next to Textfield</h2>
+          <h2>SelectNative next to Textfield</h2>
           <div style={{display: 'flex'}}>
-            <Selectnative
+            <SelectNative
               label='Country'
               onChange={this.onChange}
               value={this.state.value}
@@ -66,7 +66,7 @@ export default class SelectRoute extends React.Component {
               <option value='germany'>Germany</option>
               <option value='spain'>Spain</option>
               <option value='usa'>United States of America</option>
-            </Selectnative>
+            </SelectNative>
             <Textfield
               label='Country'
               name='country'
@@ -76,16 +76,16 @@ export default class SelectRoute extends React.Component {
           </div>
         </section>
         <section>
-          <h2>Selectnative next to Textfield (with helper / error message)</h2>
+          <h2>SelectNative next to Textfield (with helper / error message)</h2>
           <div style={{display: 'flex'}}>
-            <Selectnative
+            <SelectNative
               label='Country'
               helper='some helper text'
             >
               <option>one</option>
               <option>two</option>
               <option>some long option</option>
-            </Selectnative>
+            </SelectNative>
             <Textfield
               label='Country'
               name='country'
@@ -96,15 +96,15 @@ export default class SelectRoute extends React.Component {
           </div>
         </section>
         <section>
-          <h2>Selectnative next to Select</h2>
+          <h2>SelectNative next to Select</h2>
           <div style={{display: 'flex'}}>
-            <Selectnative
+            <SelectNative
               label='Country'
             >
               <option>one</option>
               <option>two</option>
               <option>some long option</option>
-            </Selectnative>
+            </SelectNative>
             <Select
               label='Country'
               name='first'

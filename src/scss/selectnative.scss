@@ -1,42 +1,42 @@
 
-.mdc-Selectnative {
+.mdc-SelectNative {
   display: block;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
-.mdc-Selectnative--error {
+.mdc-SelectNative--error {
   border-bottom: 1px solid #f44336;
 }
 
-.mdc-Selectnative.is-focused {
+.mdc-SelectNative.is-focused {
   border-bottom-color: #1b325f;
   box-shadow: 0 1px 0 0 #1b325f;
 }
 
-.mdc-Selectnative--error.is-focused {
+.mdc-SelectNative--error.is-focused {
   border-bottom: 1px solid #f44336;
   box-shadow: 0 1px 0 0 #f44336;
 }
 
-.mdc-Selectnative-label {
+.mdc-SelectNative-label {
   color: rgba(27, 50, 95, 0.6);
   font-size: 12px;
   margin-top: 14px;
   margin-bottom: 6px;
 }
 
-.mdc-Selectnative-label.is-focused {
+.mdc-SelectNative-label.is-focused {
   color: #1b325f;
 }
 
-.mdc-Selectnative-wrapper {
+.mdc-SelectNative-wrapper {
   position: relative;
   display: inline-flex;
   align-items: center;
   margin-bottom: 8px;
 }
 
-.mdc-Selectnative-select {
+.mdc-SelectNative-select {
   border: none;
   outline: none;
   font-size: 16px;
@@ -47,23 +47,23 @@
   padding-right: 22px;
 }
 
-.mdc-Selectnative-select::-ms-expand {
+.mdc-SelectNative-select::-ms-expand {
   display: none;
 }
 
-.mdc-Selectnative-icon {
+.mdc-SelectNative-icon {
   position: absolute;
   right: 0;
   top: 0;
   pointer-events: none;
 }
 
-.mdc-Selectnative-helper,
-.mdc-Selectnative-error {
+.mdc-SelectNative-helper,
+.mdc-SelectNative-error {
   margin-top: 8px;
   font-size: 12px;
 }
 
-.mdc-Selectnative-helper--error {
+.mdc-SelectNative-helper--error {
   color: #f44336;
 }

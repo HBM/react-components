@@ -3,7 +3,7 @@ import React from 'react'
 import {ArrowDropDown} from '../icon'
 import classnames from 'classnames'
 
-export default class Selectnative extends React.Component {
+export default class SelectNative extends React.Component {
   state = {
     focus: false
   }
@@ -23,18 +23,18 @@ export default class Selectnative extends React.Component {
   render () {
     return (
       <div>
-        <label className={classnames('mdc-Selectnative', {
-          'mdc-Selectnative--error': this.props.error,
+        <label className={classnames('mdc-SelectNative', {
+          'mdc-SelectNative--error': this.props.error,
           'is-focused': this.state.focus
         })}>
-          <div className={classnames('mdc-Selectnative-label', {
+          <div className={classnames('mdc-SelectNative-label', {
             'is-focused': this.state.focus
           })}>
             {this.props.label}
           </div>
-          <div className='mdc-Selectnative-wrapper'>
+          <div className='mdc-SelectNative-wrapper'>
             <select
-              className='mdc-Selectnative-select'
+              className='mdc-SelectNative-select'
               onFocus={this.onFocus}
               onBlur={this.onBlur}
               onChange={this.props.onChange}
@@ -43,15 +43,15 @@ export default class Selectnative extends React.Component {
               {this.props.children}
             </select>
             <ArrowDropDown
-              className='mdc-Selectnative-icon'
+              className='mdc-SelectNative-icon'
               width={22}
               height={22}
               fill='rgba(0, 0, 0, 0.24)'
             />
           </div>
         </label>
-        <div className={classnames('mdc-Selectnative-helper', {
-          'mdc-Selectnative-helper--error': this.props.error
+        <div className={classnames('mdc-SelectNative-helper', {
+          'mdc-SelectNative-helper--error': this.props.error
         })}>
           {this.props.error || this.props.helper}
         </div>

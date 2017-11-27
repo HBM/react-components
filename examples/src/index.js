@@ -24,7 +24,7 @@ import NavigationRoute from './navigationRoute'
 import ProgressRoute from './progressRoute'
 import RadiobuttonRoute from './radiobuttonRoute'
 import SelectRoute from './selectRoute'
-import SelectnativeRoute from './selectnativeRoute'
+import SelectNativeRoute from './selectnativeRoute'
 import SliderRoute from './sliderRoute'
 import SnackbarRoute from './snackbarRoute'
 // import StepperRoute from './stepperRoute'
@@ -112,7 +112,7 @@ class App extends React.Component {
           <Route path='/progress' component={ProgressRoute} />
           <Route path='/radiobutton' component={RadiobuttonRoute} />
           <Route path='/select' component={SelectRoute} />
-          <Route path='/selectnative' component={SelectnativeRoute} />
+          <Route path='/selectnative' component={SelectNativeRoute} />
           <Route path='/slider' component={SliderRoute} />
           <Route path='/snackbar' component={SnackbarRoute} />
           <Route path='/switch' component={SwitchRoute} />
