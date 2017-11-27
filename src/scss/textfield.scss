@@ -79,6 +79,15 @@ $error-color: rgb(244, 67, 54);
   margin-bottom: 8px;
 }
 
+.mdc-Textfield-input[readonly] {
+  color: rgba(0, 0, 0, 0.38);
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.42);
+}
+
+.mdc-Textfield-input[readonly] ~ .mdc-Textfield-label {
+  color: rgba(0, 0, 0, 0.38);
+}
+
 .mdc-Textfield-input:not([readonly]):focus {
   border-bottom-color: $blue-dark;
   box-shadow: 0 1px 0 0 $blue-dark;
