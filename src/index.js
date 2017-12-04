@@ -30,6 +30,7 @@ export {
   TableFooter
 } from './js/table/index.js'
 export {default as Tabs} from './js/tabs/index.js'
+export {default as TabsControlled} from './js/tabscontrolled/index.js'
 export {Textarea, Textfield} from './js/textfield/index.js'
 export {default as Tooltip} from './js/tooltip/index.js'
 // export Upload from './components/upload/'

@@ -30,6 +30,7 @@ import SnackbarRoute from './snackbarRoute'
 import SwitchRoute from './switchRoute'
 import TableRoute from './tableRoute'
 import TabsRoute from './tabsRoute'
+import TabsControlledRoute from './tabscontrolledRoute'
 import TextfieldRoute from './textfieldRoute'
 import TextareaRoute from './textareaRoute'
 // import TooltipRoute from './tooltipRoute'
@@ -83,6 +84,7 @@ class App extends React.Component {
       <NavLink to='/switch'>Switch</NavLink>,
       <NavLink to='/table'>Table</NavLink>,
       <NavLink to='/tabs'>Tabs</NavLink>,
+      <NavLink to='/tabscontrolled'>TabsControlled</NavLink>,
       <NavLink to='/textfield'>Textfield</NavLink>,
       <NavLink to='/textarea'>Textarea</NavLink>
     ].map(link => React.cloneElement(link, {onClick: this.onLinkChange}))
@@ -115,6 +117,7 @@ class App extends React.Component {
           <Route path='/switch' component={SwitchRoute} />
           <Route path='/table' component={TableRoute} />
           <Route path='/tabs' component={TabsRoute} />
+          <Route path='/tabscontrolled' component={TabsControlledRoute} />
           <Route path='/textfield' component={TextfieldRoute} />
           <Route path='/textarea' component={TextareaRoute} />
         </Shell>

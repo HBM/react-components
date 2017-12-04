@@ -1,0 +1,27 @@
+
+/**
+ * http://www.google.com/design/spec/components/tabs.html#tabs-specs
+ */
+
+.mdc-TabsControlled {
+  height: 48px;
+  display: flex;
+  text-transform: uppercase;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.mdc-TabsControlled-item {
+  flex: 1;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba($blue-dark, 0.6);
+}
+
+.mdc-TabsControlled-item.is-active {
+  color: $blue-dark;
+}
