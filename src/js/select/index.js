@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import keycode from 'keycode'
 import classnames from 'classnames'
 
-const PADDING_TOP_WITH_LABEL = -12
 const PADDING_LEFT = 16
 const LIST_ITEM_HEIGHT = 48
 
@@ -170,7 +169,6 @@ export default class Select extends React.Component {
         {
           this.state.open &&
           <List
-            hasLabel={!!this.props.label}
             options={this.props.options}
             selectedIndex={selectedIndex}
             onClick={this.onChange}
@@ -187,7 +185,6 @@ export default class Select extends React.Component {
 
 export class List extends React.Component {
   static propTypes = {
-    hasLabel: PropTypes.bool,
     options: PropTypes.array.isRequired,
     isInsideTable: PropTypes.bool,
     selectedIndex: PropTypes.number.isRequired,
@@ -268,20 +265,20 @@ export class List extends React.Component {
 
   render () {
     // CSS space
-    let PADDING_TOP = 12
+    let PADDING_TOP = -22
     if (this.props.isInsideTable) {
       // when select component is inside a table cell we have to remove
       // border bottom, padding top and padding bottom.
       // this changes the location of the text.
       // that leads to the list menu / overlay no being directly on top of the text.
       // we therefore have to modify the padding top to fix the overlay position.
-      PADDING_TOP = 17
+      PADDING_TOP = 24
     }
 
     const {options, selectedIndex} = this.props
 
     // handle list absolute position top
-    const paddingTop = this.props.hasLabel ? PADDING_TOP_WITH_LABEL : PADDING_TOP
+    const paddingTop = PADDING_TOP
 
     let top
     if (selectedIndex === -1) {

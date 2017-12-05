@@ -10,11 +10,11 @@
   padding-bottom: 8px;
 }
 
-.mdc-Select .mdc-Select-input + .mdc-Select-body {
+.mdc-Select-input + .mdc-Select-body {
   margin-top: 42px;
 }
 
-.mdc-Select .mdc-Select-input + .mdc-Select-label {
+.mdc-Select-input + .mdc-Select-label {
   margin-top: 16px;
 }
 
@@ -106,6 +106,10 @@
 .mdc-Select.is-insideTable {
   padding-top: 0;
   padding-bottom: 0;
+}
+
+.mdc-Select.is-insideTable .mdc-Select-input + .mdc-Select-body {
+  margin-top: 0;
 }
 
 .mdc-Select.is-insideTable .mdc-Select-list {
