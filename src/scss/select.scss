@@ -2,14 +2,20 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   position: relative;
 
   /**
    * align text horizontally with textfields / text inputs
    */
-  padding-top: 16px;
   padding-bottom: 8px;
+}
+
+.mdc-Select .mdc-Select-input + .mdc-Select-body {
+  margin-top: 42px;
+}
+
+.mdc-Select .mdc-Select-input + .mdc-Select-label {
+  margin-top: 16px;
 }
 
 .mdc-Select-label {

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Textfield, Icon} from 'md-components'
+import {Textfield, Icon, Select} from 'md-components'
 
 export default class TextfieldRoute extends React.Component {
   state = {
@@ -10,7 +10,8 @@ export default class TextfieldRoute extends React.Component {
     name: 'peter',
     animal: 'Dog',
     nonfloat: '',
-    weight: ''
+    weight: '',
+    select: ''
   }
 
   onChange = (event) => {
@@ -64,6 +65,62 @@ export default class TextfieldRoute extends React.Component {
             error={!this.state.name.match(/^[A-Z]/) && 'The name must start with capital letter.'}
             length={10}
           />
+        </section>
+        <section>
+          <h2>2 Textfields</h2>
+          <div style={{display: 'flex'}}>
+            <Textfield
+              label='Name'
+              name='name'
+              value={this.state.name}
+              onChange={this.onChange}
+              error={!this.state.name.match(/^[A-Z]/) && 'The name must start with capital letter.'}
+              length={10}
+            />
+            <span style={{minWidth: 10}} />
+            <Textfield
+              label='Country'
+              name='country'
+              value={this.state.country}
+              onChange={this.onChange}
+            />
+          </div>
+        </section>
+        <section>
+          <h2>Textfields and Select</h2>
+          <div style={{display: 'flex'}}>
+            <Textfield
+              label='Name'
+              name='name'
+              value={this.state.name}
+              onChange={this.onChange}
+              error={!this.state.name.match(/^[A-Z]/) && 'The name must start with capital letter.'}
+              length={10}
+            />
+            <span style={{minWidth: 10}} />
+            <Select
+              name='select'
+              onChange={this.onChange}
+              options={[
+                {value: 'blue', label: 'Blue'},
+                {value: 'red', label: 'Red'},
+                {value: 'green', label: 'Green'}
+              ]}
+              value={this.state.select}
+            />
+            <span style={{minWidth: 10}} />
+            <Select
+              label='Color'
+              name='select'
+              onChange={this.onChange}
+              options={[
+                {value: 'blue', label: 'Blue'},
+                {value: 'red', label: 'Red'},
+                {value: 'green', label: 'Green'}
+              ]}
+              value={this.state.select}
+            />
+          </div>
         </section>
         <section>
           <h2>Textfield with suffix</h2>
