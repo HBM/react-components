@@ -4,7 +4,7 @@
  */
 $font-big: 16px;
 $font-small: 12px;
-$padding: 4px;
+$margin-top: 16px;
 $transition-function: cubic-bezier(0.25, 0.8, 0.25, 1);
 $transition-duration: 0.25s;
 $error-color: $color-textfield-error;
@@ -18,7 +18,7 @@ $error-color: $color-textfield-error;
 }
 
 .mdc-Textfield--nolabel .mdc-Textfield-input {
-  margin-top: 14px;
+  margin-top: $margin-top;
 }
 
 .mdc-Textfield-icon-wrapper {
@@ -65,7 +65,7 @@ $error-color: $color-textfield-error;
   pointer-events: none;
   white-space: nowrap;
   text-overflow: ellipsis;
-  margin-top: 14px;
+  margin-top: $margin-top;
   margin-bottom: 6px;
   height: 18px;
 }
