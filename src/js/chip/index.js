@@ -180,7 +180,7 @@ const Element = ({
               onDelete(event.currentTarget.parentElement, index)
             }}
           >
-            <Cancel style={{width: 22, height: 22, display: 'block'}} />
+            <Cancel className='mdc-Chip-delete-icon' />
           </button>
         )
         : null

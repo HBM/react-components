@@ -41,12 +41,15 @@
   margin: 0 4px;
 }
 
-.mdc-Chip svg {
+.mdc-Chip-delete-icon {
+  width: 22px;
+  height: 22px;
+  display: block;
   fill: rgba(0, 0, 0, 0.26);
 }
 
-.mdc-Chip:focus svg,
-.mdc-Chip:hover svg {
+.mdc-Chip:focus .mdc-Chip-delete-icon,
+.mdc-Chip:hover .mdc-Chip-delete-icon {
   fill: #fff;
 }
 
