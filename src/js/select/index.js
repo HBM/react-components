@@ -325,7 +325,12 @@ export class List extends React.Component {
     // If the select panel is very bottom, tries to adjust the position 'top' so the panel can open fully on-screen.
     // If it still won't fit, sets the offset back to 0 to allow the fallback position to take over.
     const innerHeight = window.innerHeight
-    const listHeight = LIST_ITEM_HEIGHT * Math.min(MAX_LIST_LENGTH, options.length) + PADDING_TOP
+    let listHeight = LIST_ITEM_HEIGHT * Math.min(MAX_LIST_LENGTH, options.length)
+    if (this.props.isInsideTable) {
+      listHeight += PADDING_TOP
+    } else {
+      listHeight -= PADDING_TOP
+    }
     if (top < 0) {
       top = 0
     } else if (top + listHeight > innerHeight) {
