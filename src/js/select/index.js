@@ -261,6 +261,17 @@ export class List extends React.Component {
         return event.target.previousSibling.focus()
       }
     }
+
+    const {options, selectedIndex} = this.props
+    const filterValue = event.key
+    const findIndex = options.findIndex(({label, value}, index) => {
+      let testValue = label.toLowerCase()
+      return testValue.indexOf(filterValue.toLowerCase()) >= 0
+    })
+    if (findIndex !== -1) {
+      event.preventDefault()
+      this[`li${findIndex}`].focus()
+    }
   }
 
   render () {
