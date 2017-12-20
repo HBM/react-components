@@ -264,15 +264,9 @@ export class List extends React.Component {
 
     const {options} = this.props
     const filterValue = event.key.toLowerCase()
-    let findIndex = options.findIndex(({label}, i) => {
-      let testValue = label.toLowerCase()
-      return i > index && testValue.indexOf(filterValue) >= 0
-    })
+    let findIndex = options.findIndex(({label}, i) => (i > index && label.toLowerCase().indexOf(filterValue) >= 0))
     if (findIndex === -1) {
-      findIndex = options.findIndex(({label}) => {
-        let testValue = label.toLowerCase()
-        return testValue.indexOf(filterValue) >= 0
-      })
+      findIndex = options.findIndex(({label}) => (label.toLowerCase().indexOf(filterValue) >= 0))
     }
     if (findIndex !== -1) {
       event.preventDefault()
