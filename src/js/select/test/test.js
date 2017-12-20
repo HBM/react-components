@@ -379,6 +379,36 @@ describe('Select', () => {
     })
   })
 
+  it('should find on keydown', done => {
+    const onChange = ({target}) => {
+      assert.equal(target.value, 'dog')
+      assert.equal(target.label, 'Dog')
+      done()
+    }
+    const wrapper = mount(
+      <Select
+        options={[
+          {value: 'fox', label: 'Fox'},
+          {value: 'rabbit', label: 'Rabbit'},
+          {value: 'dog', label: 'Dog'}
+        ]}
+        onChange={onChange}
+      />
+    )
+    wrapper.find('.mdc-Select-body').simulate('click')
+    wrapper.find('.mdc-Select-listItem').at(0).simulate('keydown', {
+      which: keycode('o'),
+      key: 'o'
+    })
+    wrapper.find('.mdc-Select-listItem').at(0).simulate('keydown', {
+      which: keycode('o'),
+      key: 'o'
+    })
+    wrapper.find('.mdc-Select-listItem').at(2).simulate('keydown', {
+      which: keycode('enter')
+    })
+  })
+
   it('should close the list on blur', () => {
     const wrapper = mount(
       <Select
