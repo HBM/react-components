@@ -397,11 +397,9 @@ describe('Select', () => {
     )
     wrapper.find('.mdc-Select-body').simulate('click')
     wrapper.find('.mdc-Select-listItem').at(0).simulate('keydown', {
-      which: keycode('o'),
       key: 'o'
     })
     wrapper.find('.mdc-Select-listItem').at(0).simulate('keydown', {
-      which: keycode('o'),
       key: 'o'
     })
     wrapper.find('.mdc-Select-listItem').at(2).simulate('keydown', {
@@ -565,7 +563,6 @@ describe('Select', () => {
       />
     )
     wrapper.find('.mdc-Select-input').simulate('keydown', {
-      which: keycode('d'),
       key: 'd'
     })
   })

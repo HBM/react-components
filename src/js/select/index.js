@@ -217,10 +217,6 @@ export class List extends React.Component {
     findIndex: PropTypes.func
   }
 
-  static defaultProps = {
-    findIndex: defaultFindIndex
-  }
-
   state = {
     left: this.props.refWrapper.getBoundingClientRect().left,
     top: this.props.refWrapper.getBoundingClientRect().top,
