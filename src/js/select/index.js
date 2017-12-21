@@ -12,9 +12,9 @@ const MAX_LIST_LENGTH = 5
 
 const defaultFindIndex = (options, filterValue, startIndex) => {
   filterValue = filterValue.toLowerCase()
-  let findIndex = options.findIndex(({label}, i) => (i > startIndex && label.toLowerCase().startsWith(filterValue)))
+  let findIndex = options.findIndex(({label}, i) => (i > startIndex && label.toLowerCase().substr(0, filterValue.length) === filterValue))
   if (findIndex === -1) {
-    findIndex = options.findIndex(({label}) => (label.toLowerCase().startsWith(filterValue)))
+    findIndex = options.findIndex(({label}) => (label.toLowerCase().substr(0, filterValue.length) === filterValue))
   }
   return findIndex
 }
