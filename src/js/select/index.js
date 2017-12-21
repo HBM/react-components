@@ -10,6 +10,15 @@ const LIST_ITEM_HEIGHT = 48
 // list length
 const MAX_LIST_LENGTH = 5
 
+const defaultFindIndex = (options, filterValue, startIndex) => {
+  filterValue = filterValue.toLowerCase()
+  let findIndex = options.findIndex(({label}, i) => (i > startIndex && label.toLowerCase().startsWith(filterValue)))
+  if (findIndex === -1) {
+    findIndex = options.findIndex(({label}) => (label.toLowerCase().startsWith(filterValue)))
+  }
+  return findIndex
+}
+
 export default class Select extends React.Component {
   static propTypes = {
     disabled: PropTypes.bool,
@@ -28,7 +37,8 @@ export default class Select extends React.Component {
       {value: 'three', label: 'three'}
     ],
     placeholder: 'Placeholder',
-    value: ''
+    value: '',
+    findIndex: defaultFindIndex
   }
 
   state = {
@@ -69,7 +79,7 @@ export default class Select extends React.Component {
     }
 
     if (event.key) {
-      const findIndex = this.onFindIndexOptions(options, event.key, index)
+      const findIndex = this.props.findIndex(options, event.key, index)
       if (findIndex !== -1) {
         event.preventDefault()
         const next = options[findIndex]
@@ -146,18 +156,6 @@ export default class Select extends React.Component {
     return true
   }
 
-  onFindIndexOptions = (options, filterValue, startIndex) => {
-    if (this.props.findIndex && typeof this.props.findIndex === 'function') {
-      return this.props.findIndex(options, filterValue, startIndex)
-    }
-    filterValue = filterValue.toLowerCase()
-    let findIndex = options.findIndex(({label}, i) => (i > startIndex && label.toLowerCase().startsWith(filterValue)))
-    if (findIndex === -1) {
-      findIndex = options.findIndex(({label}) => (label.toLowerCase().startsWith(filterValue)))
-    }
-    return findIndex
-  }
-
   render () {
     const selectedIndex = this.props.options.findIndex(option => option.value === this.props.value)
     const empty = selectedIndex === -1
@@ -201,7 +199,7 @@ export default class Select extends React.Component {
             refWrapper={this.refWrapper}
             isInsideTable={this.state.isInsideTable}
             onEscape={this.onEscape}
-            findIndex={this.onFindIndexOptions}
+            findIndex={this.props.findIndex}
           />
         }
       </div>
@@ -217,6 +215,10 @@ export class List extends React.Component {
     onClick: PropTypes.func.isRequired,
     refWrapper: PropTypes.object.isRequired,
     findIndex: PropTypes.func
+  }
+
+  static defaultProps = {
+    findIndex: defaultFindIndex
   }
 
   state = {
