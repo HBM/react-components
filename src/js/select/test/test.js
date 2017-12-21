@@ -523,6 +523,53 @@ describe('Select', () => {
     })
   })
 
+  it('should find on "Dog" when the list is closed', done => {
+    const onChange = ({target}) => {
+      assert.equal(target.value, 'dog')
+      assert.equal(target.label, 'Dog')
+      done()
+    }
+    const wrapper = mount(
+      <Select
+        options={[
+          {value: 'fox', label: 'Fox'},
+          {value: 'rabbit', label: 'Rabbit'},
+          {value: 'dog', label: 'Dog'}
+        ]}
+        onChange={onChange}
+      />
+    )
+    wrapper.find('.mdc-Select-input').simulate('keydown', {
+      which: keycode('d'),
+      key: 'd'
+    })
+  })
+
+  it('should custom findIndex', done => {
+    const propOptions = [
+      {value: 'fox', label: 'Fox'},
+      {value: 'rabbit', label: 'Rabbit'},
+      {value: 'dog', label: 'Dog'}
+    ]
+    const findIndex = (options, filterValue, startIndex) => {
+      assert.deepEqual(propOptions, options)
+      assert.equal(filterValue, 'd')
+      assert.equal(startIndex, -1)
+      done()
+    }
+    const wrapper = mount(
+      <Select
+        options={propOptions}
+        findIndex={findIndex}
+        onChange={noop}
+      />
+    )
+    wrapper.find('.mdc-Select-input').simulate('keydown', {
+      which: keycode('d'),
+      key: 'd'
+    })
+  })
+
   it('should toggle through the values on key up when list is closed', done => {
     const onChange = ({target}) => {
       assert.equal(target.value, 'fox')
