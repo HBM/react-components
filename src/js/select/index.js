@@ -264,9 +264,9 @@ export class List extends React.Component {
 
     const {options} = this.props
     const filterValue = event.key.toLowerCase()
-    let findIndex = options.findIndex(({label}, i) => (i > index && label.toLowerCase().indexOf(filterValue) >= 0))
+    let findIndex = options.findIndex(({label}, i) => (i > index && label.toLowerCase().startsWith(filterValue)))
     if (findIndex === -1) {
-      findIndex = options.findIndex(({label}) => (label.toLowerCase().indexOf(filterValue) >= 0))
+      findIndex = options.findIndex(({label}) => (label.toLowerCase().startsWith(filterValue)))
     }
     if (findIndex !== -1) {
       event.preventDefault()
