@@ -77,17 +77,17 @@ export default class ListRoute extends React.Component {
               primary='Alice'
               secondary='This is Alice.'
               avatar='img/alice.jpg'
-              />
+            />
             <Row
               primary='John'
               secondary='This is John.'
               avatar='img/john.jpg'
-              />
+            />
             <Row
               primary='Steve'
               secondary={'This is Steve.'}
               avatar='img/steve.jpg'
-              />
+            />
           </List>
         </section>
         <section>

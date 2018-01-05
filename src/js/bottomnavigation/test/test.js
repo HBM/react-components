@@ -156,7 +156,7 @@ describe('BottomNavigation', () => {
           <Route path='/two' component={() => <h1>Two</h1>} />
         </BottomNavigation>
       </MemoryRouter>
-      )
+    )
     const node = wrapper.find('.mdc-BottomNavigation-content').at(0).instance()
     node.scrollTop = 40
     wrapper.find('.mdc-BottomNavigation').at(0).simulate('scroll', {})

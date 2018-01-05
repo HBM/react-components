@@ -80,10 +80,12 @@ export default class Tooltip extends React.Component {
             ref: 'content'
           })
         )}
-        <div className={classnames(
-          'Tooltip',
-          {'is-active': this.state.visible})}
-          ref={(component) => { this.tooltipRef = component }} style={{left}}
+        <div
+          className={classnames('Tooltip', {
+            'is-active': this.state.visible
+          })}
+          ref={(component) => { this.tooltipRef = component }}
+          style={{left}}
         >
           {this.props.content}
         </div>

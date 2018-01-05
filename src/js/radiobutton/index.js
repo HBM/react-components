@@ -39,13 +39,13 @@ class RadioButton extends React.Component {
         onKeyUp={this.setKbPressed}
         onClick={this.resetKbPressed}
         onBlur={this.resetKbPressed}
-        >
+      >
         {items.map((item, index) => {
           var checked = item.toLowerCase() === selectedValue.toLowerCase()
           return (
             <label key={index}
               className={classNames('mdc-RadioButton-item', {'mdc-RadioButton-item--keyboard': index === focusIndex && shouldFocus})}
-              >
+            >
               <input
                 checked={checked}
                 className='mdc-RadioButton-input'

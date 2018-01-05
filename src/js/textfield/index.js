@@ -32,21 +32,21 @@ const TextfieldWrapper = ({
       <div className='mdc-Textfield-icon-wrapper'>
         {
           icon
-          ? <div className='mdc-Textfield-icon'>{icon}</div>
-          : null
+            ? <div className='mdc-Textfield-icon'>{icon}</div>
+            : null
         }
         <div className='mdc-Textfield-wrapper'>
           {
             suffix
-            ? <div className='mdc-Textfield-suffix' ref={node => node && onSuffixSize(node.getClientRects()[0])} >{suffix}</div>
-            : null
+              ? <div className='mdc-Textfield-suffix' ref={node => node && onSuffixSize(node.getClientRects()[0])} >{suffix}</div>
+              : null
           }
           {children}
           <span
             className={classnames('mdc-Textfield-label', {
-              'mdc-Textfield-label--floatup': (!float || !empty)},
-              {'mdc-Textfield-error': showCounter}
-            )}
+              'mdc-Textfield-label--floatup': (!float || !empty),
+              'mdc-Textfield-error': showCounter
+            })}
           >
             {label}
           </span>
@@ -54,9 +54,9 @@ const TextfieldWrapper = ({
             <span className='mdc-Textfield-error'>{error}</span>
             {
               length
-              ? <span className={classnames('mdc-Textfield-char-counter', {
-                'mdc-Textfield-error': showCounter})}>{valueLength} / {length}</span>
-              : null
+                ? <span className={classnames('mdc-Textfield-char-counter', {
+                  'mdc-Textfield-error': showCounter})}>{valueLength} / {length}</span>
+                : null
             }
           </div>
         </div>

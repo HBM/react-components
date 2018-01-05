@@ -29,7 +29,7 @@ export const Row = ({
   secondary,
   style,
   subheader
-  }) => {
+}) => {
   const onKeyDown = (event) => {
     if (event.which === keycode('down') && event.target.nextSibling) {
       event.preventDefault()

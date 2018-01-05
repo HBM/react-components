@@ -58,7 +58,7 @@
     "react-dom": "^15.6.1",
     "react-router-dom": "^4.2.2",
     "react-test-renderer": "^15.6.1",
-    "standard": "^10.0.3",
+    "standard": "^11.0.0-beta.0",
     "stylelint": "^8.2.0",
     "stylelint-config-recommended-scss": "^2.0.0",
     "stylelint-config-standard": "^17.0.0",
@@ -91,7 +91,8 @@
     "ignore": [
       "es/",
       "src/js/icon/index.js",
-      "build/"
+      "build/",
+      "bin/gen.js"
     ]
   }
 }

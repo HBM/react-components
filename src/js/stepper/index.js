@@ -57,10 +57,9 @@ const StepLink = ({index, step, isActive}) => (
       </div>
       <StepLine />
     </div>
-    <div className={classnames(
-        'Stepper-title-text-wrapper',
-        {'Stepper--error': step.error}
-      )}>
+    <div className={classnames('Stepper-title-text-wrapper', {
+      'Stepper--error': step.error
+    })}>
       <div className='Stepper-title-text'>
         {step.title}
       </div>

@@ -138,14 +138,14 @@ export default class Chip extends React.Component {
 }
 
 const Element = ({
-    autoFocus,
-    icon,
-    index,
-    onBlur,
-    onDelete,
-    onFocus,
-    text
-  }) => {
+  autoFocus,
+  icon,
+  index,
+  onBlur,
+  onDelete,
+  onFocus,
+  text
+}) => {
   const textStyle = {
     marginLeft: icon ? 8 : 12,
     marginRight: onDelete ? 0 : 12
