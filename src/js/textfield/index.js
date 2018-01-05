@@ -14,7 +14,8 @@ const TextfieldWrapper = ({
   length,
   htmlFor,
   suffix,
-  onSuffixSize
+  onSuffixSize,
+  dense
 }) => {
   const isValueEmpty = value === undefined || value === ''
   const isDefaultValueEmpty = defaultValue === undefined || defaultValue === ''
@@ -44,6 +45,7 @@ const TextfieldWrapper = ({
           {children}
           <span
             className={classnames('mdc-Textfield-label', {
+              'mdc-Textfield-label--dense': dense,
               'mdc-Textfield-label--floatup': (!float || !empty),
               'mdc-Textfield-error': showCounter
             })}
@@ -65,7 +67,7 @@ const TextfieldWrapper = ({
   )
 }
 
-export const Textfield = ({float, error, length, htmlFor, inputRef, suffix, ...rest}) => {
+export const Textfield = ({float, error, length, htmlFor, inputRef, suffix, dense, ...rest}) => {
   let inputNode
   let suffixRect
   const patchInputPadding = _suffixRect => {
@@ -93,9 +95,11 @@ export const Textfield = ({float, error, length, htmlFor, inputRef, suffix, ...r
       htmlFor={htmlFor}
       suffix={suffix}
       onSuffixSize={patchInputPadding}
+      dense={dense}
     >
       <input
         className={classnames('mdc-Textfield-input', {
+          'mdc-Textfield-input--dense': dense,
           'mdc-Textfield-input--error': error
         })}
         ref={ref}

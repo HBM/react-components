@@ -161,6 +161,16 @@ export default class TextfieldRoute extends React.Component {
           />
         </section>
         <section>
+          <h2>Dense textfield</h2>
+          <Textfield
+            label='Dense'
+            name='nonfloat'
+            value={this.state.nonfloat}
+            onChange={this.onChange}
+            dense
+          />
+        </section>
+        <section>
           <h2>Default textfield</h2>
           <input
             type='text'

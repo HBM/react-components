@@ -70,6 +70,11 @@ $error-color: $color-textfield-error;
   height: 18px;
 }
 
+.mdc-Textfield-label--dense {
+  margin-top: 8px;
+  margin-bottom: 4px;
+}
+
 .mdc-Textfield-input {
   background: transparent;
   order: 2;
@@ -88,6 +93,10 @@ $error-color: $color-textfield-error;
   box-sizing: content-box;
   padding-bottom: 8px;
   margin-bottom: 8px;
+}
+
+.mdc-Textfield-input--dense {
+  margin-bottom: 4px;
 }
 
 .mdc-Textfield-input[readonly] {
