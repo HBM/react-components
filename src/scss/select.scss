@@ -10,10 +10,16 @@
   padding-bottom: 8px;
 }
 
+.mdc-Select--dense {
+  padding-bottom: 4px;
+}
+
+// no label
 .mdc-Select-input + .mdc-Select-body {
   margin-top: 42px;
 }
 
+// with label
 .mdc-Select-input + .mdc-Select-label {
   margin-top: 16px;
 }
@@ -24,15 +30,28 @@
   color: rgba($blue-dark, 0.6);
 }
 
-/**
- * Select-body is of type <button />
- */
+// with label
+.mdc-Select--dense > .mdc-Select-input + .mdc-Select-label {
+  margin-top: 8px;
+  padding-bottom: 4px;
+}
+
+// no label
+.mdc-Select--dense > .mdc-Select-input + .mdc-Select-body {
+  // -8px and -4px
+  margin-top: 30px;
+}
+
 .mdc-Select-body {
   border-bottom: 1px solid $black-012;
   padding-bottom: 4px;
   text-align: left;
   outline: 0;
   font-size: 16px;
+}
+
+.mdc-Select--dense .mdc-Select-body {
+  font-size: 13px;
 }
 
 .mdc-Select-input {
@@ -103,6 +122,12 @@
   }
 }
 
+.mdc-Select--dense .mdc-Select-list {
+  font-size: 13px;
+
+  max-height: 196px;
+}
+
 .mdc-Select.is-insideTable {
   padding-top: 0;
   padding-bottom: 0;
@@ -143,6 +168,10 @@
   display: flex;
   align-items: center;
   outline: 0;
+}
+
+.mdc-Select--dense .mdc-Select-listItem {
+  height: 36px;
 }
 
 .mdc-Select-listItem.is-focused,

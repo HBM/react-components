@@ -5,7 +5,7 @@ import keycode from 'keycode'
 import classnames from 'classnames'
 
 const PADDING_LEFT = 16
-const LIST_ITEM_HEIGHT = 48
+let LIST_ITEM_HEIGHT = 48
 
 // list length
 const MAX_LIST_LENGTH = 5
@@ -27,7 +27,8 @@ export default class Select extends React.Component {
     placeholder: PropTypes.string,
     onChange: PropTypes.func.isRequired,
     name: PropTypes.string,
-    findIndex: PropTypes.func
+    findIndex: PropTypes.func,
+    dense: PropTypes.bool
   }
 
   static defaultProps = {
@@ -38,7 +39,8 @@ export default class Select extends React.Component {
     ],
     placeholder: 'Placeholder',
     value: '',
-    findIndex: defaultFindIndex
+    findIndex: defaultFindIndex,
+    dense: false
   }
 
   state = {
@@ -164,6 +166,7 @@ export default class Select extends React.Component {
     return (
       <div
         className={classnames('mdc-Select', {
+          'mdc-Select--dense': this.props.dense,
           'is-insideTable': this.state.isInsideTable
         })}
         ref={(c) => { this.refWrapper = c }}
@@ -200,6 +203,7 @@ export default class Select extends React.Component {
             isInsideTable={this.state.isInsideTable}
             onEscape={this.onEscape}
             findIndex={this.props.findIndex}
+            dense={this.props.dense}
           />
         }
       </div>
@@ -224,6 +228,7 @@ export class List extends React.Component {
   }
 
   componentDidMount () {
+    LIST_ITEM_HEIGHT = this.props.dense ? 36 : LIST_ITEM_HEIGHT
     const index = this.props.selectedIndex
 
     // create boolean helper variables
@@ -295,6 +300,7 @@ export class List extends React.Component {
   }
 
   render () {
+    LIST_ITEM_HEIGHT = this.props.dense ? 36 : LIST_ITEM_HEIGHT
     // CSS space
     let PADDING_TOP = -22
     if (this.props.isInsideTable) {
@@ -304,6 +310,10 @@ export class List extends React.Component {
       // that leads to the list menu / overlay no being directly on top of the text.
       // we therefore have to modify the padding top to fix the overlay position.
       PADDING_TOP = 24
+    }
+
+    if (this.props.dense) {
+      PADDING_TOP = -13
     }
 
     const {options, selectedIndex} = this.props

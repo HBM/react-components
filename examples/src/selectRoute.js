@@ -1,12 +1,13 @@
 
 import React from 'react'
-import {Select} from 'md-components'
+import {Select, Textfield} from 'md-components'
 
 export default class SelectRoute extends React.Component {
   state = {
     first: '',
     second: '',
-    third: ''
+    third: '',
+    textfield: 'hello'
   }
 
   onChange = (item) => {
@@ -115,6 +116,44 @@ export default class SelectRoute extends React.Component {
               ]}
               value={this.state.third}
               disabled={this.state.second === ''}
+            />
+          </div>
+        </section>
+        <section>
+          <h2>Textfields and Select</h2>
+          <div style={{display: 'flex'}}>
+            <Textfield
+              dense
+              label='Name'
+              name='textfield'
+              value={this.state.textfield}
+              onChange={this.onChange}
+              error={this.state.textfield === 'aa' ? 'nope' : null}
+            />
+            <span style={{minWidth: 10}} />
+            <Select
+              dense
+              name='select'
+              onChange={this.onChange}
+              options={[
+                {value: 'blue', label: 'Blue'},
+                {value: 'red', label: 'Red'},
+                {value: 'green', label: 'Green'}
+              ]}
+              value={this.state.select}
+            />
+            <span style={{minWidth: 10}} />
+            <Select
+              dense
+              label='Color'
+              name='select'
+              onChange={this.onChange}
+              options={[
+                {value: 'blue', label: 'Blue'},
+                {value: 'red', label: 'Red'},
+                {value: 'green', label: 'Green'}
+              ]}
+              value={this.state.select}
             />
           </div>
         </section>
