@@ -131,7 +131,7 @@ $error-color: $color-textfield-error;
   border-bottom-color: $error-color;
 }
 
-.mdc-Textfield-input--error:focus {
+.mdc-Textfield-input--error:not([readonly]):focus {
   border-bottom-color: $error-color;
   box-shadow: 0 1px 0 0 $error-color;
 }
