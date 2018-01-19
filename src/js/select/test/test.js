@@ -139,7 +139,7 @@ describe('Select', () => {
         refWrapper={refWrapper}
       />
     )
-    assert.equal(wrapper.find('.mdc-Select-list').instance().style.top, `${initState.top - 26}px`)
+    assert.equal(wrapper.find('.mdc-Select-list').instance().style.top, `${initState.top - 28}px`)
   })
 
   it('should render a list item always in the middle of the list when list is too large', () => {
@@ -161,7 +161,7 @@ describe('Select', () => {
         refWrapper={refWrapper}
       />
     )
-    assert.equal(wrapper.find('.mdc-Select-list').instance().style.top, `${initState.top - 74}px`)
+    assert.equal(wrapper.find('.mdc-Select-list').instance().style.top, `${initState.top - 76}px`)
   })
 
   it('should not show the second last item in the center of the list', () => {
@@ -183,7 +183,7 @@ describe('Select', () => {
         refWrapper={refWrapper}
       />
     )
-    assert.equal(wrapper.find('.mdc-Select-list').instance().style.top, `${initState.top - 122}px`)
+    assert.equal(wrapper.find('.mdc-Select-list').instance().style.top, `${initState.top - 124}px`)
   })
 
   it('should show the last item at the end of the list', () => {
@@ -205,7 +205,7 @@ describe('Select', () => {
         refWrapper={refWrapper}
       />
     )
-    assert.equal(wrapper.find('.mdc-Select-list').instance().style.top, `${initState.top - 170}px`)
+    assert.equal(wrapper.find('.mdc-Select-list').instance().style.top, `${initState.top - 172}px`)
   })
 
   it('should render the Select inside a table', () => {
