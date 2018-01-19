@@ -28,29 +28,57 @@ export default class ExpansionPanelRoute extends React.Component {
     const t1 = <div>Fruits: {selection.length} selected</div>
     return (
       <div>
-        <Card className='ExpansionPanel-previous'>
-          <Text>
-            Top card content
-          </Text>
-        </Card>
-        <ExpansionPanel top={t1}>
-          <div style={{padding: 16}}>
-            {this.state.selected.map(s => (
-              <Checkbox
-                key={s.name}
-                onChange={this.onChange}
-                checked={s.checked}
-                name={s.name}
-                label={s.name}
-              />
-            ))}
-          </div>
-        </ExpansionPanel>
-        <Card>
-          <Text>
-            Bottom card content
-          </Text>
-        </Card>
+        <section>
+          <Card className='ExpansionPanel-previous'>
+            <Text>
+              Top card content
+            </Text>
+          </Card>
+          <ExpansionPanel top={t1}>
+            <div style={{padding: 16}}>
+              {this.state.selected.map(s => (
+                <Checkbox
+                  key={s.name}
+                  onChange={this.onChange}
+                  checked={s.checked}
+                  name={s.name}
+                  label={s.name}
+                />
+              ))}
+            </div>
+          </ExpansionPanel>
+          <Card>
+            <Text>
+              Bottom card content
+            </Text>
+          </Card>
+        </section>
+        <section>
+          <h2>Dense</h2>
+          <Card className='ExpansionPanel-previous'>
+            <Text>
+              Top card content
+            </Text>
+          </Card>
+          <ExpansionPanel top={t1} dense>
+            <div style={{padding: 16}}>
+              {this.state.selected.map(s => (
+                <Checkbox
+                  key={s.name}
+                  onChange={this.onChange}
+                  checked={s.checked}
+                  name={s.name}
+                  label={s.name}
+                />
+              ))}
+            </div>
+          </ExpansionPanel>
+          <Card>
+            <Text>
+              Bottom card content
+            </Text>
+          </Card>
+        </section>
       </div>
     )
   }

@@ -42,6 +42,10 @@
   }
 }
 
+.mdc-ExpansionPanel-toggle--dense {
+  padding: 12px;
+}
+
 .mdc-ExpansionPanel-chevron {
   transform: rotate(90deg);
   transition: transform ease-in-out 200ms;

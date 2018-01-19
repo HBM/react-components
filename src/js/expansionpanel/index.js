@@ -20,7 +20,9 @@ export default class ExpansionPanel extends React.Component {
         'is-open': this.state.isOpen
       })}>
         <button
-          className='mdc-ExpansionPanel-toggle'
+          className={classnames('mdc-ExpansionPanel-toggle', {
+            'mdc-ExpansionPanel-toggle--dense': this.props.dense
+          })}
           onClick={this.toggle}
         >
           {this.props.top}
