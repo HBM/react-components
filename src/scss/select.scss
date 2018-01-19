@@ -16,12 +16,12 @@
 
 // no label
 .mdc-Select-input + .mdc-Select-body {
-  margin-top: 42px;
+  margin-top: 40px;
 }
 
 // with label
 .mdc-Select-input + .mdc-Select-label {
-  margin-top: 16px;
+  margin-top: 14px;
 }
 
 .mdc-Select-label {
@@ -38,7 +38,6 @@
 
 // no label
 .mdc-Select--dense > .mdc-Select-input + .mdc-Select-body {
-  // -8px and -4px
   margin-top: 30px;
 }
 

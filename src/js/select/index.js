@@ -302,7 +302,7 @@ export class List extends React.Component {
   render () {
     LIST_ITEM_HEIGHT = this.props.dense ? 36 : LIST_ITEM_HEIGHT
     // CSS space
-    let PADDING_TOP = -22
+    let PADDING_TOP = -20
     if (this.props.isInsideTable) {
       // when select component is inside a table cell we have to remove
       // border bottom, padding top and padding bottom.

@@ -34,7 +34,7 @@ $error-color: $color-textfield-error;
 
 .mdc-Textfield-suffix {
   position: absolute;
-  top: 37px;
+  top: 40px;
   right: 0;
   font-size: $font-big;
   color: $color-textfield-suffix;
@@ -82,6 +82,7 @@ $error-color: $color-textfield-error;
 }
 
 .mdc-Textfield-input {
+  line-height: 1.5;
   background: transparent;
   order: 2;
   color: $color-textfield-input;
@@ -95,7 +96,7 @@ $error-color: $color-textfield-error;
   transition: border-bottom-color $transition-duration;
   padding: 0;
   box-sizing: content-box;
-  padding-bottom: 8px;
+  padding-bottom: 4px;
   margin-bottom: 8px;
 }
 
