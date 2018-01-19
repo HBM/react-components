@@ -163,10 +163,11 @@ export default class TextfieldRoute extends React.Component {
         <section>
           <h2>Dense textfield</h2>
           <Textfield
-            label='Dense'
+            label='Dqense'
             name='nonfloat'
             value={this.state.nonfloat}
             onChange={this.onChange}
+            suffix='pcats'
             dense
           />
         </section>

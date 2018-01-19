@@ -39,7 +39,14 @@ const TextfieldWrapper = ({
         <div className='mdc-Textfield-wrapper'>
           {
             suffix
-              ? <div className='mdc-Textfield-suffix' ref={node => node && onSuffixSize(node.getClientRects()[0])} >{suffix}</div>
+              ? <div
+                className={classnames('mdc-Textfield-suffix', {
+                  'mdc-Textfield-suffix--dense': dense
+                })}
+                ref={node => node && onSuffixSize(node.getClientRects()[0])}
+              >
+                {suffix}
+              </div>
               : null
           }
           {children}

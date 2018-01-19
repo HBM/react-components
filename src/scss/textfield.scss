@@ -40,6 +40,11 @@ $error-color: $color-textfield-error;
   color: $color-textfield-suffix;
 }
 
+.mdc-Textfield-suffix--dense {
+  top: 28px;
+  font-size: 13px;
+}
+
 .mdc-Textfield-icon {
   width: 48px;
   height: 48px;
@@ -59,7 +64,7 @@ $error-color: $color-textfield-error;
   display: block;
   font-size: $font-big;
   color: $color-textfield-label;
-  transform: translate3d(0, 24px, 0);
+  transform: translate3d(0, 20px, 0);
   transform-origin: left top;
   transition: $transition-function $transition-duration;
   pointer-events: none;
@@ -89,7 +94,6 @@ $error-color: $color-textfield-error;
   border-bottom: 1px solid $color-textfield-border;
   transition: border-bottom-color $transition-duration;
   padding: 0;
-  line-height: 22px;
   box-sizing: content-box;
   padding-bottom: 8px;
   margin-bottom: 8px;
@@ -97,7 +101,6 @@ $error-color: $color-textfield-error;
 
 .mdc-Textfield-input--dense {
   font-size: 13px;
-  line-height: inherit;
   margin-bottom: 4px;
   padding-bottom: 4px;
 }
