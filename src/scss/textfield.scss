@@ -64,7 +64,7 @@ $error-color: $color-textfield-error;
   display: block;
   font-size: $font-big;
   color: $color-textfield-label;
-  transform: translate3d(0, 20px, 0);
+  transform: translate3d(0, 24px, 0);
   transform-origin: left top;
   transition: $transition-function $transition-duration;
   pointer-events: none;
@@ -79,6 +79,7 @@ $error-color: $color-textfield-error;
   margin-top: 8px;
   margin-bottom: 4px;
   font-size: 13px;
+  transform: translate3d(0, 22px, 0);
 }
 
 .mdc-Textfield-input {
