@@ -41,6 +41,37 @@ describe('Select', () => {
     assert.equal(wrapper.find('.mdc-Select-placeholder').text(), 'Placeholder')
   })
 
+  it('should render a helper message', () => {
+    const wrapper = mount(
+      <Select
+        onChange={noop}
+        helper='helper'
+      />
+    )
+    assert.equal(wrapper.find('.mdc-Select-helper').text(), 'helper')
+  })
+
+  it('should render an error message', () => {
+    const wrapper = mount(
+      <Select
+        onChange={noop}
+        error='error'
+      />
+    )
+    assert.equal(wrapper.find('.mdc-Select-helper--error').text(), 'error')
+  })
+
+  it('should give the error message higher priority than the helper message', () => {
+    const wrapper = mount(
+      <Select
+        onChange={noop}
+        helper='helper'
+        error='error'
+      />
+    )
+    assert.equal(wrapper.find('.mdc-Select-helper').text(), 'error')
+  })
+
   it('should allow disabling the component', () => {
     const wrapper = mount(<Select onChange={noop} disabled />)
     assert(wrapper.find('.mdc-Select-input').props().disabled)

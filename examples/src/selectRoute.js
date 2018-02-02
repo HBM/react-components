@@ -158,8 +158,74 @@ export default class SelectRoute extends React.Component {
           </div>
         </section>
         <section>
+          <h2>Select with helper message</h2>
+          <Select
+            name='first'
+            onChange={this.onChange}
+            helper='some helper text'
+            options={[
+              {value: 'blue', label: 'Blue'},
+              {value: 'red', label: 'Red'},
+              {value: 'green', label: 'Green'}
+            ]}
+            value={this.state.first}
+          />
+        </section>
+        <section>
+          <h2>Select with error next to Textfield</h2>
+          <div style={{display: 'flex'}}>
+            <Select
+              name='first'
+              error='Please select something'
+              onChange={this.onChange}
+              value={this.state.first}
+              options={[
+                {value: 'blue', label: 'Blue'},
+                {value: 'red', label: 'Red'},
+                {value: 'green', label: 'Green'}
+              ]}
+            />
+            <Textfield
+              label='Country'
+              name='country'
+              value={'awesome'}
+              onChange={() => {}}
+              error='oh noes'
+            />
+          </div>
+        </section>
+        <section>
+          <h2>Select with error next to Textfield (dense)</h2>
+          <div style={{display: 'flex'}}>
+            <Select
+              label='Country'
+              dense
+              name='first'
+              error='Please select something'
+              onChange={this.onChange}
+              value={this.state.first}
+              options={[
+                {value: 'blue', label: 'Blue'},
+                {value: 'red', label: 'Red'},
+                {value: 'green', label: 'Green'}
+              ]}
+            />
+            <Textfield
+              dense
+              label='Country'
+              name='country'
+              value={'awesome'}
+              onChange={() => {}}
+              error='oh noes'
+            />
+          </div>
+        </section>
+        <section>
           <h2>Default select</h2>
-          <select>
+          <label htmlFor='default'>
+            label
+          </label>
+          <select id='default'>
             <option>one</option>
             <option>two</option>
             <option>three</option>

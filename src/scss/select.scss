@@ -177,3 +177,17 @@
 .mdc-Select-listItem:focus {
   background: #eee;
 }
+
+.mdc-Select-helper {
+  min-height: 18px;
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.mdc-Select-helper--dense {
+  margin-top: 4px;
+}
+
+.mdc-Select-helper--error {
+  color: #f44336;
+}

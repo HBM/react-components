@@ -206,6 +206,12 @@ export default class Select extends React.Component {
             dense={this.props.dense}
           />
         }
+        <div className={classnames('mdc-Select-helper', {
+          'mdc-Select-helper--error': this.props.error,
+          'mdc-Select-helper--dense': this.props.dense
+        })}>
+          {this.props.error || this.props.helper}
+        </div>
       </div>
     )
   }
