@@ -1,6 +1,7 @@
 
 import React from 'react'
 import {
+  TableResponsive,
   Table,
   TableHead,
   TableHeadRow,
@@ -396,6 +397,63 @@ export default class TableRoute extends React.Component {
             </TableBody>
           </Table>
         </section>
+
+        <section>
+          <h2>Responsive Table</h2>
+          <TableResponsive>
+            <Table>
+              <TableHead>
+                <TableHeadRow>
+                  {head.map((d, i) => (
+                    <TableHeadCell key={i}>
+                      {d}
+                    </TableHeadCell>
+                  ))}
+                </TableHeadRow>
+              </TableHead>
+              <TableBody>
+                {simple.map((d, i) => (
+                  <TableBodyRow key={i}>
+                    {d.map((d, j) => (
+                      <TableBodyCell key={j}>
+                        {d}
+                      </TableBodyCell>
+                    ))}
+                  </TableBodyRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableResponsive>
+        </section>
+
+        <section>
+          <h2>Dense Table</h2>
+          <div style={{background: '#fff'}}>
+            <Table dense>
+              <TableHead>
+                <TableHeadRow>
+                  {head.map((d, i) => (
+                    <TableHeadCell key={i}>
+                      {d}
+                    </TableHeadCell>
+                  ))}
+                </TableHeadRow>
+              </TableHead>
+              <TableBody>
+                {simple.map((d, i) => (
+                  <TableBodyRow key={i} selected={i === 1}>
+                    {d.map((d, j) => (
+                      <TableBodyCell key={j}>
+                        {d}
+                      </TableBodyCell>
+                    ))}
+                  </TableBodyRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+        </section>
+
         <section>
           <p>Specification</p>
           <a href='https://material.google.com/components/data-tables.html'>

@@ -5,6 +5,7 @@ import React from 'react'
 import {mount} from 'enzyme'
 import {
   Table,
+  TableResponsive,
   TableHead,
   TableHeadRow,
   TableHeadCell,
@@ -328,5 +329,33 @@ describe('Table', () => {
     wrapper.find('.mdc-Table-edit-container').simulate('submit')
     // make sure overlay isn't visible anymore
     assert.equal(wrapper.find('.mdc-Table-edit').length, 0)
+  })
+
+  it('should render a dense table', () => {
+    const table = (
+      <Table dense />
+    )
+    const wrapper = mount(table)
+    assert.equal(wrapper.find('.mdc-Table--dense').length, 1)
+  })
+
+  it('should render a responsive table', () => {
+    const table = (
+      <TableResponsive />
+    )
+    const wrapper = mount(table)
+    assert.equal(wrapper.find('.mdc-Table-responsive').length, 1)
+  })
+
+  it('should render a table with selected row', () => {
+    const table = (
+      <Table>
+        <TableBody>
+          <TableBodyRow selected />
+        </TableBody>
+      </Table>
+    )
+    const wrapper = mount(table)
+    assert.equal(wrapper.find('.mdc-Table-body-row.is-selected').length, 1)
   })
 })

@@ -48,10 +48,21 @@ class EditDialog extends React.Component {
   }
 }
 
-export const Table = ({children, className, ...rest}) => (
-  <table className='mdc-Table' {...rest}>
+export const Table = ({children, className, dense, ...rest}) => (
+  <table
+    className={classnames('mdc-Table', className, {
+      'mdc-Table--dense': dense
+    })}
+    {...rest}
+  >
     {children}
   </table>
+)
+
+export const TableResponsive = ({children, className, ...rest}) => (
+  <div className='mdc-Table-responsive' {...rest}>
+    {children}
+  </div>
 )
 
 export const TableHead = ({children, className, ...rest}) => (
@@ -99,8 +110,13 @@ export const TableBody = ({children, className, ...rest}) => (
   </tbody>
 )
 
-export const TableBodyRow = ({children, className, ...rest}) => (
-  <tr className={classnames('mdc-Table-body-row', className)} {...rest}>
+export const TableBodyRow = ({children, className, selected, ...rest}) => (
+  <tr
+    className={classnames('mdc-Table-body-row', className, {
+      'is-selected': selected
+    })}
+    {...rest}
+  >
     {children}
   </tr>
 )

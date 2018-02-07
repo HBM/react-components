@@ -21,6 +21,7 @@ export {default as Snackbar} from './js/snackbar/index.js'
 // export {Stepper, StepperStepFooter} from './js/stepper/index.js'
 export {default as Switch} from './js/switch/index.js'
 export {
+  TableResponsive,
   Table,
   TableHead,
   TableHeadRow,

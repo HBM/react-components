@@ -1,4 +1,13 @@
 
+.mdc-Table-responsive {
+  // https://github.com/twbs/bootstrap/blob/9057d8da164bed683f49d30c6414753dad41de3e/scss/_tables.scss#L175-L179
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
 .mdc-Table-edit {
   position: relative;
 }
@@ -38,10 +47,11 @@
 
     &-row {
       height: 56px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 
       &-cell {
+        font-weight: 500;
         padding: 0 28px;
+        border-bottom: 1px solid #e1e1e1;
 
         &:first-child {
           padding-left: 24px;
@@ -88,14 +98,19 @@
 
     &-row {
       height: 48px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 
-      &:hover {
+      &.is-selected {
+        background-color: #f5f5f5;
+      }
+
+      &:hover,
+      &.is-selected:hover {
         background-color: #eee;
       }
 
       &-cell {
         padding: 0 28px;
+        border-top: 1px solid #e1e1e1;
 
         &:first-child {
           padding-left: 24px;
@@ -138,4 +153,20 @@
       margin-right: 40px;
     }
   }
+}
+
+.mdc-Table--dense .mdc-Table-head-row {
+  height: 48px;
+}
+
+.mdc-Table--dense .mdc-Table-body-row {
+  height: 40px;
+}
+
+.mdc-Table--dense .mdc-Checkbox {
+  height: 40px;
+}
+
+.mdc-Table--dense .mdc-Checkbox-icon {
+  padding: 0;
 }
