@@ -41,4 +41,9 @@ describe('ExpansionPanel', () => {
     wrapper.find('.mdc-ExpansionPanel-toggle').simulate('click')
     assert(wrapper.find('.mdc-ExpansionPanel-content').hasClass('is-open'))
   })
+
+  it('should add a custom css class name', () => {
+    const wrapper = mount(<ExpansionPanel className='foo' />)
+    assert(wrapper.find('.mdc-ExpansionPanel').hasClass('foo'))
+  })
 })

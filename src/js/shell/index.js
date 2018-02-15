@@ -5,7 +5,7 @@ import Navigation from '../navigation'
 
 const Shell = ({title, subtitle, links, children}) => (
   <div>
-    <Header title={title} subtitle={subtitle} />
+    <Header title={title} subtitle={subtitle} shadowOnScroll />
     <Navigation>
       {links.map((link, index) => React.cloneElement(link, {key: index}))}
     </Navigation>

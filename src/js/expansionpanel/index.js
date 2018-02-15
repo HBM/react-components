@@ -18,7 +18,7 @@ export default class ExpansionPanel extends React.Component {
     return (
       <div className={classnames('mdc-ExpansionPanel', {
         'is-open': this.state.isOpen
-      })}>
+      }, this.props.className)}>
         <button
           className={classnames('mdc-ExpansionPanel-toggle', {
             'mdc-ExpansionPanel-toggle--dense': this.props.dense
