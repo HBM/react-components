@@ -13,52 +13,6 @@ $error-color: $color-textfield-error;
   display: block;
 }
 
-.mdc-Textfield--nolabel .mdc-Textfield-label {
-  display: none;
-}
-
-.mdc-Textfield--nolabel .mdc-Textfield-input {
-  margin-top: $margin-top;
-}
-
-.mdc-Textfield-icon-wrapper {
-  display: flex;
-}
-
-.mdc-Textfield-wrapper {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.mdc-Textfield-suffix {
-  position: absolute;
-  top: 40px;
-  right: 0;
-  font-size: $font-big;
-  color: $color-textfield-suffix;
-}
-
-.mdc-Textfield-suffix--dense {
-  top: 30px;
-  font-size: 13px;
-}
-
-.mdc-Textfield-icon {
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 16px;
-  margin-top: 22px;
-}
-
-.mdc-Textfield--nolabel .mdc-Textfield-icon {
-  margin-top: 0;
-}
-
 .mdc-Textfield-label {
   order: 1;
   display: block;
@@ -105,6 +59,58 @@ $error-color: $color-textfield-error;
   font-size: 13px;
   margin-bottom: 4px;
   padding-bottom: 4px;
+}
+
+.mdc-Textfield-input:disabled {
+  background-color: transparent;
+  color: $color-textfield-input--disabled;
+  border-bottom: 1px dotted $color-textfield-border--disabled;
+}
+
+.mdc-Textfield--nolabel .mdc-Textfield-label {
+  display: none;
+}
+
+.mdc-Textfield--nolabel .mdc-Textfield-input {
+  margin-top: $margin-top;
+}
+
+.mdc-Textfield-icon-wrapper {
+  display: flex;
+}
+
+.mdc-Textfield-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.mdc-Textfield-suffix {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  font-size: $font-big;
+  color: $color-textfield-suffix;
+}
+
+.mdc-Textfield-suffix--dense {
+  top: 30px;
+  font-size: 13px;
+}
+
+.mdc-Textfield-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16px;
+  margin-top: 22px;
+}
+
+.mdc-Textfield--nolabel .mdc-Textfield-icon {
+  margin-top: 0;
 }
 
 .mdc-Textfield-input[readonly] {
@@ -154,12 +160,6 @@ $error-color: $color-textfield-error;
 
 .mdc-Textfield-input:not([readonly]):focus ~ .mdc-Textfield-label:not(.mdc-Textfield-error) {
   color: $color-textfield-input--focus;
-}
-
-.mdc-Textfield-input:disabled {
-  background-color: transparent;
-  color: $color-textfield-input--disabled;
-  border-bottom: 1px dotted $color-textfield-border--disabled;
 }
 
 .mdc-Textfield-char-counter {

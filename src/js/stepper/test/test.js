@@ -7,18 +7,21 @@ import {mount} from 'enzyme'
 import {Stepper, StepperStepFooter} from '../'
 import Button from '../../button/'
 
+const first = () => <div>first</div>
+const second = () => <div>second</div>
+
 describe('Stepper', () => {
   it('should work', () => {
     const steps = [
       {
         title: 'first',
         href: '/first',
-        component: () => <div>first</div>
+        component: first
       },
       {
         title: 'second',
         href: '/second',
-        component: () => <div>second</div>
+        component: second
       }
     ]
     const wrapper = mount(
@@ -34,12 +37,12 @@ describe('Stepper', () => {
       {
         title: 'first',
         href: '/first',
-        component: () => <div>first</div>
+        component: first
       },
       {
         title: 'second',
         href: '/second',
-        component: () => <div>second</div>
+        component: second
       }
     ]
     const wrapper = mount(
@@ -57,12 +60,12 @@ describe('Stepper', () => {
         title: 'first',
         href: '/first',
         optional: optionalText,
-        component: () => <div>first</div>
+        component: first
       },
       {
         title: 'second',
         href: '/second',
-        component: () => <div>second</div>
+        component: second
       }
     ]
     const wrapper = mount(
@@ -81,12 +84,12 @@ describe('Stepper', () => {
         title: 'first',
         href: '/first',
         error: {message: errorText},
-        component: () => <div>first</div>
+        component: first
       },
       {
         title: 'second',
         href: '/second',
-        component: () => <div>second</div>
+        component: second
       }
     ]
     const wrapper = mount(
@@ -106,7 +109,7 @@ describe('Stepper', () => {
   })
 
   it('should work StepperStepFooter with labels and callbacks', () => {
-    const back = (index) => {}
+    const back = () => {}
     const cancel = () => {}
     const wrapper = mount(
       <StepperStepFooter
@@ -129,12 +132,12 @@ describe('Stepper', () => {
       {
         title: 'first',
         href: '/first',
-        component: () => <div>first</div>
+        component: first
       },
       {
         title: 'second',
         href: '/second',
-        component: () => <div>second</div>
+        component: second
       }
     ]
     const wrapper = mount(
@@ -146,7 +149,7 @@ describe('Stepper', () => {
   })
 
   it.skip('should apply active class name to currently active step and StepperStepFooter test next', () => {
-    const step = ({index, isLast, cancel, back, next, error}) => (
+    const step = ({cancel, back, next, error}) => (
       <div>
         <h3>step second</h3>
         <div className='button-setError'>
@@ -174,7 +177,7 @@ describe('Stepper', () => {
       {
         title: 'first',
         href: '/first',
-        component: () => <div>first</div>
+        component: first
       },
       {
         title: 'second',
@@ -184,16 +187,16 @@ describe('Stepper', () => {
       {
         title: 'third',
         href: '/third',
-        component: () => <div>third</div>
+        component: second
       }
     ]
 
-    const onCancel = (index) => {
+    const onCancel = () => {
       // let num = index + 1
       // console.log('canceled at step' + num)
     }
 
-    const onError = (index, message) => {
+    const onError = () => {
       // let steps = this.state.steps.slice()
       // if (index > 0 && index < steps.length) {
       //   steps[index].error = message

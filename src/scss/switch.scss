@@ -51,17 +51,6 @@ $transition-function: ease;
 }
 
 /**
- * focus
- */
-.mdc-Switch-input:checked.mdc-Switch-input:focus ~ .mdc-Switch-track .mdc-Switch-thumb {
-  box-shadow: 0 0 0 15px rgba($color-accent--light, 0.5);
-}
-
-.mdc-Switch-input:not(:checked).mdc-Switch-input:focus ~ .mdc-Switch-track .mdc-Switch-thumb {
-  box-shadow: 0 0 0 15px rgba(0, 0, 0, 0.12);
-}
-
-/**
  * checked
  */
 .mdc-Switch-input:checked ~ .mdc-Switch-track {
@@ -83,4 +72,15 @@ $transition-function: ease;
 
 .mdc-Switch-input:disabled ~ .mdc-Switch-track .mdc-Switch-thumb {
   background: $thumb-disabled;
+}
+
+/**
+ * focus
+ */
+.mdc-Switch-input:checked.mdc-Switch-input:focus ~ .mdc-Switch-track .mdc-Switch-thumb {
+  box-shadow: 0 0 0 15px rgba($color-accent--light, 0.5);
+}
+
+.mdc-Switch-input:not(:checked).mdc-Switch-input:focus ~ .mdc-Switch-track .mdc-Switch-thumb {
+  box-shadow: 0 0 0 15px rgba(0, 0, 0, 0.12);
 }

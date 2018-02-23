@@ -1,44 +1,50 @@
+// @flow
 
 import React from 'react'
 import {Button} from 'md-components'
 
-export default class ButtonRoute extends React.Component {
+export default class ButtonRoute extends React.Component<{}> {
+  onClick = (event: SyntheticEvent<HTMLButtonElement>) => {
+    console.log(event)
+    console.log(event.currentTarget.name)
+  }
+
   render () {
     return (
       <div>
         <section>
           <h2>Button Component</h2>
-          <Button name='ButtonComponent' onClick={e => console.log(e)}>
+          <Button name='ButtonComponent' onClick={this.onClick}>
             Button
           </Button>
         </section>
         <section>
           <h2>Filled Button</h2>
-          <Button name='FilledButton' filled onClick={e => console.log(e)}>
+          <Button name='FilledButton' filled onClick={this.onClick}>
             Button
           </Button>
         </section>
         <section>
           <h2>Raised Button</h2>
-          <Button name='RaisedButton' onClick={e => console.log(e)} raised>
+          <Button name='RaisedButton' onClick={this.onClick} raised>
             Button
           </Button>
         </section>
         <section>
           <h2>Raised & Filled Button</h2>
-          <Button name='RaisedFilledButton' onClick={e => console.log(e)} raised filled>
+          <Button name='RaisedFilledButton' onClick={this.onClick} raised filled>
             Button
           </Button>
         </section>
         <section>
           <h2>Dense & Filled Button</h2>
-          <Button name='DenseFilledButton' onClick={e => console.log(e)} dense filled>
+          <Button name='DenseFilledButton' onClick={this.onClick} dense filled>
             Button
           </Button>
         </section>
         <section>
           <h2>Disabled Button</h2>
-          <Button name='DisabledButton' onClick={e => console.log(e)} disabled>
+          <Button name='DisabledButton' onClick={this.onClick} disabled>
             Button
           </Button>
         </section>

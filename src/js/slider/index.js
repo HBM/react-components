@@ -94,7 +94,7 @@ export default class Slider extends React.Component {
     })
   }
 
-  onMouseUp = (event) => {
+  onMouseUp = () => {
     this.setState({
       mouseDown: false
     })

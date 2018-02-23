@@ -1,3 +1,5 @@
+// @flow
+
 import * as Icon from './js/icon/index.js'
 export {BottomNavigation, BottomNavigationText} from './js/bottomnavigation/index.js'
 export {default as Button} from './js/button/index.js'

@@ -92,8 +92,8 @@ describe('Tabs', () => {
     const wrapper = mount(
       <MemoryRouter initialEntries={['/one']}>
         <Tabs tabs={[
-          <NavLink to='/one' />,
-          <NavLink to='/two' />
+          <NavLink to='/one' key='one' />,
+          <NavLink to='/two' key='two' />
         ]} />
       </MemoryRouter>
     )

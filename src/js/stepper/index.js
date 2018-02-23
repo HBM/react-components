@@ -80,7 +80,7 @@ const StepLine = () => (
   </div>
 )
 
-const Step = ({index, step, isActive, isLast, onNext, onCancel, onError}) => (
+const Step = ({index, step, isLast, onNext, onCancel, onError}) => (
   <div className='Stepper-step'>
     <div className={classnames('Stepper-body', {
       'is-last': isLast

@@ -72,13 +72,13 @@
   opacity: 0;
 }
 
+.mdc-Snackbar.fade-exit .mdc-Snackbar-content {
+  opacity: 1;
+}
+
 .mdc-Snackbar.fade-enter.fade-enter-active .mdc-Snackbar-content {
   opacity: 1;
   transition: 350ms opacity 150ms ease-in-out;
-}
-
-.mdc-Snackbar.fade-exit .mdc-Snackbar-content {
-  opacity: 1;
 }
 
 .mdc-Snackbar.fade-exit.fade-exit-active .mdc-Snackbar-content {

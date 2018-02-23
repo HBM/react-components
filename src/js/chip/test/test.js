@@ -71,7 +71,7 @@ describe('Chip', () => {
   })
 
   it('should not add a chip when input field is empty', (done) => {
-    const onChange = (value) => {
+    const onChange = () => {
       // should not call onChange handler
       throw new Error('error')
     }

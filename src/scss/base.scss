@@ -15,17 +15,14 @@ $header-height: 64px;
 // Credit: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
 html {
   box-sizing: border-box;
+  // Changes the default tap highlight to be completely transparent in iOS.
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 *,
 *::before,
 *::after {
   box-sizing: inherit;
-}
-
-html {
-  // Changes the default tap highlight to be completely transparent in iOS.
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 body {

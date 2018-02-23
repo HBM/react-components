@@ -114,7 +114,7 @@ export default class Upload extends React.Component {
     this.props.onChange(files)
   }
 
-  onClick = (event) => {
+  onClick = () => {
     this.fileInput.click()
   }
 

@@ -59,13 +59,13 @@ export const Table = ({children, className, dense, ...rest}) => (
   </table>
 )
 
-export const TableResponsive = ({children, className, ...rest}) => (
+export const TableResponsive = ({children, ...rest}) => (
   <div className='mdc-Table-responsive' {...rest}>
     {children}
   </div>
 )
 
-export const TableHead = ({children, className, ...rest}) => (
+export const TableHead = ({children}) => (
   <thead className={classnames('mdc-Table-head')}>
     {children}
   </thead>

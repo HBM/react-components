@@ -1,32 +1,43 @@
+// @flow
 
-import React from 'react'
-import PropTypes from 'prop-types'
+import * as React from 'react'
 import classnames from 'classnames'
 
-const Button = ({children, className, filled, raised, dense, ...rest}) => (
+type Props = {
+  children: React.Node,
+  className: string,
+  dense: boolean,
+  disabled: boolean,
+  filled: boolean,
+  name: string,
+  onClick: (event: SyntheticEvent<HTMLButtonElement>) => void,
+  raised: boolean,
+  type: 'submit' | 'reset' | 'button'
+}
+
+const Button = (props: Props) => (
   <button
     className={classnames('mdc-Button', {
-      'mdc-Button--raised': raised,
-      'mdc-Button--filled': filled,
-      'mdc-Button--dense': dense
-    }, className)}
-    {...rest}
+      'mdc-Button--raised': props.raised,
+      'mdc-Button--filled': props.filled,
+      'mdc-Button--dense': props.dense
+    }, props.className)}
+    disabled={props.disabled}
+    name={props.name}
+    type={props.type}
+    onClick={props.onClick}
   >
-    {children}
+    {props.children}
   </button>
 )
 
-Button.propTypes = {
-  className: PropTypes.string,
-  dense: PropTypes.bool,
-  filled: PropTypes.bool,
-  raised: PropTypes.bool
-}
-
 Button.defaultProps = {
+  className: '',
   dense: false,
+  disabled: false,
   filled: false,
-  raised: false
+  raised: false,
+  type: 'button'
 }
 
 export default Button

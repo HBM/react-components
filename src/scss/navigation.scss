@@ -73,13 +73,13 @@ $nav-link-height: 44px;
   color: rgba(0, 0, 0, 0.87);
 }
 
-.mdc-Navigation-group--opened .mdc-Navigation-group-icon {
-  transform: rotate(-90deg);
-}
-
 .mdc-Navigation-group-icon {
   transform: rotate(90deg);
   transition: transform 0.15s ease-in-out;
+}
+
+.mdc-Navigation-group--opened .mdc-Navigation-group-icon {
+  transform: rotate(-90deg);
 }
 
 .mdc-Navigation-group-links {

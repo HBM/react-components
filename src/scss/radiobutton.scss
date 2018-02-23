@@ -36,11 +36,19 @@
   transition: all 0.15s ease;
 }
 
-.mdc-RadioButton--keyboard .mdc-RadioButton-input:checked ~ .mdc-RadioButton-icon,
 .mdc-RadioButton-item--keyboard .mdc-RadioButton-icon {
   box-shadow: 0 0 0 8px rgba(27, 50, 95, 0.12);
   border-radius: 100%;
   background-color: rgba(27, 50, 95, 0.12);
+}
+
+/**
+ * disabled
+ */
+.mdc-RadioButton-input:disabled ~ .mdc-RadioButton-icon,
+.mdc-RadioButton-input:disabled ~ .mdc-RadioButton-label {
+  fill: rgba(0, 0, 0, 0.26);
+  color: rgba(0, 0, 0, 0.26);
 }
 
 /**
@@ -52,11 +60,8 @@
   fill: $blue-dark;
 }
 
-/**
- * disabled
- */
-.mdc-RadioButton-input:disabled ~ .mdc-RadioButton-icon,
-.mdc-RadioButton-input:disabled ~ .mdc-RadioButton-label {
-  fill: rgba(0, 0, 0, 0.26);
-  color: rgba(0, 0, 0, 0.26);
+.mdc-RadioButton--keyboard .mdc-RadioButton-input:checked ~ .mdc-RadioButton-icon {
+  box-shadow: 0 0 0 8px rgba(27, 50, 95, 0.12);
+  border-radius: 100%;
+  background-color: rgba(27, 50, 95, 0.12);
 }

@@ -138,7 +138,6 @@ export default class Chip extends React.Component {
 }
 
 const Element = ({
-  autoFocus,
   icon,
   index,
   onBlur,

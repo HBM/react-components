@@ -10,6 +10,41 @@
   display: flex;
   align-items: center;
 
+  &-icon {
+    padding: 10px;
+    padding-left: 0;
+    line-height: 0;
+    outline: 0;
+    fill: rgba(0, 0, 0, 0.54);
+
+    @include medium {
+      padding: 5px;
+      padding-left: 0;
+    }
+  }
+
+  &-label {
+    color: rgba(0, 0, 0, 0.54);
+  }
+
+  /**
+   * focus
+   */
+  &-focus {
+    position: absolute;
+
+    /* 48px - 18px = 30px / 2 = 15px */
+    top: 15px;
+    left: 3px;
+
+    /* use the same width as svg path element for checkbox icon */
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: none;
+    transition: all 0.15s ease;
+  }
+
   &-input {
     position: absolute;
     left: 0;
@@ -49,40 +84,5 @@
         color: rgba(0, 0, 0, 0.26);
       }
     }
-  }
-
-  &-icon {
-    padding: 10px;
-    padding-left: 0;
-    line-height: 0;
-    outline: 0;
-    fill: rgba(0, 0, 0, 0.54);
-
-    @include medium {
-      padding: 5px;
-      padding-left: 0;
-    }
-  }
-
-  &-label {
-    color: rgba(0, 0, 0, 0.54);
-  }
-
-  /**
-   * focus
-   */
-  &-focus {
-    position: absolute;
-
-    /* 48px - 18px = 30px / 2 = 15px */
-    top: 15px;
-    left: 3px;
-
-    /* use the same width as svg path element for checkbox icon */
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    display: none;
-    transition: all 0.15s ease;
   }
 }

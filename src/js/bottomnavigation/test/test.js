@@ -43,8 +43,8 @@ describe('BottomNavigation', () => {
       <MemoryRouter initialEntries={['/one']}>
         <BottomNavigation
           links={[
-            <NavLink to='/one' />,
-            <NavLink to='/two' />
+            <NavLink to='/one' key='one' />,
+            <NavLink to='/two' key='two' />
           ]}
         >
           <Route path='/one' component={() => <h1>One</h1>} />
@@ -62,8 +62,8 @@ describe('BottomNavigation', () => {
         <BottomNavigation
           scrollDuration={30}
           links={[
-            <NavLink to='/one' />,
-            <NavLink to='/two' />
+            <NavLink to='/one' key='one' />,
+            <NavLink to='/two' key='two' />
           ]}
           window={_window}
         >
@@ -88,8 +88,8 @@ describe('BottomNavigation', () => {
         <BottomNavigation
           scrollDuration={30}
           links={[
-            <NavLink to='/one' />,
-            <NavLink to='/two' />
+            <NavLink to='/one' key='one' />,
+            <NavLink to='/two' key='two' />
           ]}
           window={_window}
         >
@@ -118,8 +118,8 @@ describe('BottomNavigation', () => {
         <BottomNavigation
           scrollDuration={30}
           links={[
-            <NavLink to='/one' />,
-            <NavLink to='/two' />
+            <NavLink to='/one' key='one' />,
+            <NavLink to='/two' key='two' />
           ]}
           window={_window}
         >
@@ -147,8 +147,8 @@ describe('BottomNavigation', () => {
       <MemoryRouter initialEntries={['/one']}>
         <BottomNavigation
           links={[
-            <NavLink to='/one' />,
-            <NavLink to='/two' />
+            <NavLink to='/one' key='one' />,
+            <NavLink to='/two' key='two' />
           ]}
           window={_window}
         >

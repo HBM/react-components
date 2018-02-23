@@ -44,14 +44,14 @@ $no-steps: 10;
     flex: 0;
   }
 
-  .Stepper--horizontal > .Stepper-step .Stepper-line-wrapper,
-  .Stepper--horizontal .Stepper-title:last-of-type .Stepper-line-wrapper {
-    display: none;
-  }
-
   .Stepper--horizontal > .Stepper-title .Stepper-line-wrapper {
     flex: 1;
     margin-left: 8px;
+  }
+
+  .Stepper--horizontal > .Stepper-step .Stepper-line-wrapper,
+  .Stepper--horizontal .Stepper-title:last-of-type .Stepper-line-wrapper {
+    display: none;
   }
 
   .Stepper--horizontal > .Stepper-title .Stepper-line {
@@ -91,6 +91,12 @@ $no-steps: 10;
   .Stepper-step-cancel {
     align-self: flex-end;
   }
+}
+
+.Stepper-line-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 24px;
 }
 
 .Stepper-circle-wrapper > .Stepper-circle ~ .Stepper-line-wrapper {
@@ -156,12 +162,6 @@ $no-steps: 10;
 
 .Stepper-body.is-last {
   min-height: 0;
-}
-
-.Stepper-line-wrapper {
-  display: flex;
-  justify-content: center;
-  width: 24px;
 }
 
 .Stepper-line {

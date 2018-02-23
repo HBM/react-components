@@ -9,7 +9,7 @@ export default class Checkbox extends React.Component {
     active: false
   }
 
-  onCleanUp = (e) => {
+  onCleanUp = () => {
     this.setState({
       active: false
     })

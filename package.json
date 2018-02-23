@@ -12,6 +12,10 @@
     "style.css"
   ],
   "scripts": {
+    "flow": "flow",
+    "flow-cp:es": "flow-copy-source src es",
+    "flow-cp:commonjs": "flow-copy-source src lib",
+    "flow-cp": "npm run flow-cp:es && npm run flow-cp:commonjs",
     "stylelint": "stylelint src/scss/*.scss",
     "build:css": "node-sass src/scss/index.scss style.css",
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
@@ -22,7 +26,7 @@
     "watch:commonjs": "cross-env BABEL_ENV=commonjs babel -w src --out-dir lib",
     "dev": "npm-run-all --parallel watch:*",
     "examples": "cd examples && npm run start",
-    "test": "standard && npm run stylelint && nyc mocha src/js/**/test/test.js",
+    "test": "eslint src && npm run stylelint && nyc mocha src/js/**/test/test.js",
     "prepublish": "npm run build && cpx './src/scss/*.*' ./scss"
   },
   "repository": {
@@ -39,8 +43,9 @@
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-eslint": "^8.0.0",
+    "babel-eslint": "^8.2.1",
     "babel-preset-es2015": "^6.24.1",
+    "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",
@@ -49,6 +54,11 @@
     "cross-env": "^5.0.5",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-15": "^1.0.1",
+    "eslint": "^4.17.0",
+    "eslint-plugin-flowtype": "^2.42.0",
+    "eslint-plugin-react": "^7.6.1",
+    "flow-bin": "^0.66.0",
+    "flow-copy-source": "^1.2.2",
     "jsdom": "11.6.2",
     "mocha": "^5.0.0",
     "node-sass": "^4.5.3",
@@ -58,11 +68,10 @@
     "react-dom": "^15.6.1",
     "react-router-dom": "^4.2.2",
     "react-test-renderer": "^15.6.1",
-    "standard": "^11.0.0-beta.0",
-    "stylelint": "^8.2.0",
-    "stylelint-config-recommended-scss": "^2.0.0",
-    "stylelint-config-standard": "^17.0.0",
-    "stylelint-scss": "^2.1.0",
+    "stylelint": "^9.0.0",
+    "stylelint-config-recommended-scss": "^3.0.0",
+    "stylelint-config-standard": "^18.1.0",
+    "stylelint-scss": "^2.3.0",
     "tarball-extract": "0.0.6"
   },
   "nyc": {
@@ -85,14 +94,5 @@
     "keycode": "^2.1.9",
     "prop-types": "^15.5.10",
     "react-transition-group": "^2.2.0"
-  },
-  "standard": {
-    "parser": "babel-eslint",
-    "ignore": [
-      "es/",
-      "src/js/icon/index.js",
-      "build/",
-      "bin/gen.js"
-    ]
   }
 }

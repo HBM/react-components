@@ -100,7 +100,7 @@ describe('Textfield', () => {
   })
 
   it('should onFocus', (done) => {
-    const onFocus = (event) => {
+    const onFocus = () => {
       done()
     }
     const wrapper = mount(<Textfield onFocus={onFocus} />)
@@ -108,7 +108,7 @@ describe('Textfield', () => {
   })
 
   it('should onBlur', (done) => {
-    const onBlur = (event) => {
+    const onBlur = () => {
       done()
     }
     const wrapper = mount(<Textfield onFocus={() => {}} onBlur={onBlur} />)
@@ -205,7 +205,7 @@ describe('Textarea', () => {
   })
 
   it('should onFocus', (done) => {
-    const onFocus = (event) => {
+    const onFocus = () => {
       done()
     }
     const wrapper = mount(<Textarea onFocus={onFocus} />)
@@ -213,7 +213,7 @@ describe('Textarea', () => {
   })
 
   it('should onBlur', (done) => {
-    const onBlur = (event) => {
+    const onBlur = () => {
       done()
     }
     const wrapper = mount(<Textarea onFocus={() => {}} onBlur={onBlur} />)
