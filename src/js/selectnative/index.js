@@ -28,13 +28,19 @@ export default class SelectNative extends React.Component {
           'is-focused': this.state.focus
         })}>
           <div className={classnames('mdc-SelectNative-label', {
+            'mdc-SelectNative-label--dense': this.props.dense,
             'is-focused': this.state.focus
           })}>
             {this.props.label}
           </div>
-          <div className='mdc-SelectNative-wrapper'>
+          <div className={classnames('mdc-SelectNative-wrapper', {
+            'mdc-SelectNative-wrapper--dense': this.props.dense
+          })}>
             <select
-              className='mdc-SelectNative-select'
+              className={classnames('mdc-SelectNative-select', {
+                'mdc-SelectNative-select--dense': this.props.dense
+              })}
+              name={this.props.name}
               onFocus={this.onFocus}
               onBlur={this.onBlur}
               onChange={this.props.onChange}
@@ -51,6 +57,7 @@ export default class SelectNative extends React.Component {
           </div>
         </label>
         <div className={classnames('mdc-SelectNative-helper', {
+          'mdc-SelectNative-helper--dense': this.props.dense,
           'mdc-SelectNative-helper--error': this.props.error
         })}>
           {this.props.error || this.props.helper}

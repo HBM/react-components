@@ -21,8 +21,13 @@
 .mdc-SelectNative-label {
   color: rgba(27, 50, 95, 0.6);
   font-size: 12px;
-  margin-top: 14px;
+  padding-top: 14px;
   margin-bottom: 6px;
+}
+
+.mdc-SelectNative-label--dense {
+  padding-top: 8px;
+  margin-bottom: 4px;
 }
 
 .mdc-SelectNative-label.is-focused {
@@ -36,15 +41,24 @@
   margin-bottom: 8px;
 }
 
+.mdc-SelectNative-wrapper--dense {
+  margin-bottom: 4px;
+}
+
 .mdc-SelectNative-select {
+  color: #333;
+  line-height: 1.5;
   border: none;
   outline: none;
   font-size: 16px;
   appearance: none;
   background: none;
   padding: 0;
-  height: 22px;
   padding-right: 22px;
+}
+
+.mdc-SelectNative-select--dense {
+  font-size: 13px;
 }
 
 .mdc-SelectNative-select::-ms-expand {
@@ -58,10 +72,14 @@
   pointer-events: none;
 }
 
-.mdc-SelectNative-helper,
-.mdc-SelectNative-error {
+.mdc-SelectNative-helper {
+  min-height: 18px;
   margin-top: 8px;
   font-size: 12px;
+}
+
+.mdc-SelectNative-helper--dense {
+  margin-top: 4px;
 }
 
 .mdc-SelectNative-helper--error {

@@ -140,6 +140,50 @@ export default class SelectRoute extends React.Component {
             />
           </div>
         </section>
+        <section>
+          <h2>Textfields and Select (dense)</h2>
+          <div style={{display: 'flex'}}>
+            <Textfield
+              dense
+              label='Name'
+              name='textfield'
+              value={this.state.textfield}
+              onChange={this.onChange}
+              error={this.state.textfield === 'aa' ? 'nope' : null}
+            />
+            <span style={{minWidth: 10}} />
+            <SelectNative
+              dense
+              label='Color'
+              name='select'
+              onChange={this.onChange}
+              value={this.state.select}
+            >
+              {[
+                {value: 'blue', label: 'Blue'},
+                {value: 'red', label: 'Red'},
+                {value: 'green', label: 'Green'}
+              ].map(o => (
+                <option key={o.value} value={o.value}>
+                  {o.label}
+                </option>
+              ))}
+            </SelectNative>
+            <span style={{minWidth: 10}} />
+            <Select
+              dense
+              label='Color'
+              name='select'
+              onChange={this.onChange}
+              options={[
+                {value: 'blue', label: 'Blue'},
+                {value: 'red', label: 'Red'},
+                {value: 'green', label: 'Green'}
+              ]}
+              value={this.state.select}
+            />
+          </div>
+        </section>
       </div>
     )
   }
