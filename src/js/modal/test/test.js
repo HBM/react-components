@@ -26,15 +26,6 @@ describe('Modal', () => {
     wrapper.find('.mdc-Modal-overlay').simulate('click')
   })
 
-  it('should callback when touching dark background', (done) => {
-    const callback = (visible) => {
-      assert.equal(visible, false)
-      done()
-    }
-    const wrapper = mount(<Modal visible toggle={callback} />)
-    wrapper.find('.mdc-Modal-overlay').simulate('touchend')
-  })
-
   it('should have a custom header', () => {
     const header = <p>my custom header</p>
     const wrapper = mount(<Modal visible header={header} />)
