@@ -19,7 +19,7 @@ const scrollKeys = [
   return scrollKeys
 }, {})
 
-const preventDefault = (e) => {
+export const preventDefault = (e) => {
   e.preventDefault()
   e.returnValue = false
 }
@@ -38,20 +38,17 @@ class Modal extends React.Component {
   }
 
   disableScroll () {
-    this.onwheel = window.onwheel
-    this.ontouchmove = window.ontouchmove
-    this.onkeydown = document.onkeydown
     window.addEventListener('DOMMouseScroll', preventDefault, false)
-    window.onwheel = preventDefault
-    window.ontouchmove = preventDefault
-    document.onkeydown = this.handleScrollAndEscKeys
+    window.addEventListener('wheel', preventDefault, false)
+    window.addEventListener('touchmove', preventDefault, false)
+    window.addEventListener('keydown', this.handleScrollAndEscKeys, false)
   }
 
   enableScroll () {
     window.removeEventListener('DOMMouseScroll', preventDefault, false)
-    window.onwheel = this.onwheel
-    window.ontouchmove = this.ontouchmove
-    document.onkeydown = this.onkeydown
+    window.removeEventListener('wheel', preventDefault, false)
+    window.removeEventListener('touchmove', preventDefault, false)
+    window.removeEventListener('keydown', this.handleScrollAndEscKeys, false)
   }
 
   componentWillReceiveProps (props) {
