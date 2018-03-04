@@ -17,12 +17,14 @@ export default class Header extends React.Component {
   componentDidMount () {
     if (this.props.shadowOnScroll) {
       window.addEventListener('scroll', this.onScroll)
+      window.addEventListener('touchmove', this.onScroll)
     }
   }
 
   componentWillUnmount () {
     if (this.props.shadowOnScroll) {
       window.removeEventListener('scroll', this.onScroll)
+      window.removeEventListener('touchmove', this.onScroll)
     }
   }
 
