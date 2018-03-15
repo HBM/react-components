@@ -4,7 +4,7 @@ import {Radiobutton} from 'md-components'
 
 export default class RadiobuttonRoute extends React.Component {
   state = {
-    selectedValue: 'Germany'
+    selectedValue: ''
   }
 
   onChange = (value) => {

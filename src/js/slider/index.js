@@ -17,19 +17,6 @@ const clip = (v, min, max) => {
 }
 
 export default class Slider extends React.Component {
-  static propTypes = {
-    value: PropTypes.number,
-    min: PropTypes.number.isRequired,
-    max: PropTypes.number.isRequired,
-    step: PropTypes.number,
-    onChange: PropTypes.func,
-    onMove: PropTypes.func
-  }
-
-  defaultProps = {
-    value: 0
-  }
-
   getSteppedValue = (value) => {
     if (this.props.step) {
       const steps = (value - this.state.prevValue) / this.props.step
@@ -174,4 +161,17 @@ export default class Slider extends React.Component {
       </label>
     )
   }
+}
+
+Slider.propTypes = {
+  value: PropTypes.number,
+  min: PropTypes.number.isRequired,
+  max: PropTypes.number.isRequired,
+  step: PropTypes.number,
+  onChange: PropTypes.func,
+  onMove: PropTypes.func
+}
+
+Slider.defaultProps = {
+  value: 0
 }

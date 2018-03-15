@@ -213,7 +213,7 @@ describe('Table', () => {
       <table>
         <tbody>
           <tr>
-            <TableBodyCell editable onChange={() => {}}>
+            <TableBodyCell onChange={() => {}}>
               hello world
             </TableBodyCell>
           </tr>

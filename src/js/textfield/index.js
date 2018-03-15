@@ -172,6 +172,8 @@ export class Textarea extends React.Component {
       resizable,
       value,
       htmlFor,
+      getComputedStyle,
+      maxRows,
       ...rest
     } = this.props
 

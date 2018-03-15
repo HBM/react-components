@@ -32,14 +32,35 @@
   margin-bottom: 0;
 }
 
+.mdc-List-row--selectable {
+  cursor: pointer;
+}
+
 .mdc-List-row--selectable:hover {
   background-color: #f5f5f5;
   transition: background-color 0.3s ease;
   outline: none;
 }
 
-.mdc-List-row--selectable {
-  cursor: pointer;
+.mdc-List-row {
+  transition: background-color 0.3s ease;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+  padding-right: 16px;
+
+  /** This article suggest to increase padding for table and above
+   * https://material.google.com/layout/metrics-keylines.html#metrics-keylines-keylines-spacing
+   */
+  @include medium {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  text-decoration: none;
+  width: 100%;
+  color: inherit;
 }
 
 .mdc-List-row:focus {
@@ -76,25 +97,24 @@
   }
 }
 
-.mdc-List-row {
-  transition: background-color 0.3s ease;
-  min-height: 48px;
+.mdc-List-row-icon-right {
+  margin-left: auto;
+
+  svg {
+    float: right;
+  }
+}
+
+.mdc-List-row-avatar {
+  height: 56px;
   display: flex;
   align-items: center;
-  padding-left: 16px;
-  padding-right: 16px;
 
-  /** This article suggest to increase padding for table and above
-   * https://material.google.com/layout/metrics-keylines.html#metrics-keylines-keylines-spacing
-   */
-  @include medium {
-    padding-left: 24px;
-    padding-right: 24px;
+  // use wildcard since element is user defined and can be anything
+  & > * {
+    border-radius: 100%;
+    width: 40px;
   }
-
-  text-decoration: none;
-  width: 100%;
-  color: inherit;
 }
 
 .mdc-List-row-icon-left,
@@ -117,25 +137,5 @@
 
   .mdc-List-row-avatar {
     align-items: flex-start;
-  }
-}
-
-.mdc-List-row-icon-right {
-  margin-left: auto;
-
-  svg {
-    float: right;
-  }
-}
-
-.mdc-List-row-avatar {
-  height: 56px;
-  display: flex;
-  align-items: center;
-
-  // use wildcard since element is user defined and can be anything
-  & > * {
-    border-radius: 100%;
-    width: 40px;
   }
 }

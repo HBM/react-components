@@ -12,7 +12,7 @@ describe('Navigation', () => {
     assert(wrapper.find('nav'))
   })
 
-  it.skip('should have state.visible === false initially', () => {
+  it('should have state.visible === false initially', () => {
     const wrapper = shallow(<Navigation links={[{link: 'one', text: 'one'}]} />)
     assert.equal(wrapper.state('visible'), false)
   })

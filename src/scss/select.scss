@@ -5,31 +5,10 @@
   position: relative;
 }
 
-// no label
-.mdc-Select-input + .mdc-Select-body {
-  margin-top: 40px;
-}
-
-// with label
-.mdc-Select-input + .mdc-Select-label {
-  margin-top: 14px;
-}
-
 .mdc-Select-label {
   font-size: 12px;
   padding: 0 0 8px;
   color: rgba($blue-dark, 0.6);
-}
-
-// with label
-.mdc-Select--dense > .mdc-Select-input + .mdc-Select-label {
-  margin-top: 8px;
-  padding-bottom: 4px;
-}
-
-// no label
-.mdc-Select--dense > .mdc-Select-input + .mdc-Select-body {
-  margin-top: 30px;
 }
 
 .mdc-Select-body {
@@ -40,8 +19,34 @@
   font-size: 16px;
 }
 
+// no label
+.mdc-Select-input + .mdc-Select-body {
+  margin-top: 40px;
+}
+
+// with label
+.mdc-Select-input + .mdc-Select-label {
+  margin-top: 14px;
+}
+
+// with label
+.mdc-Select--dense > .mdc-Select-input + .mdc-Select-label {
+  margin-top: 8px;
+  padding-bottom: 4px;
+}
+
 .mdc-Select--dense .mdc-Select-body {
   font-size: 13px;
+}
+
+// https://material.google.com/style/color.html#color-text-background-colors
+.mdc-Select-body:disabled {
+  color: rgba(0, 0, 0, 0.38);
+}
+
+// no label
+.mdc-Select--dense > .mdc-Select-input + .mdc-Select-body {
+  margin-top: 30px;
 }
 
 .mdc-Select-input {
@@ -57,11 +62,6 @@
 .mdc-Select-input:focus ~ .mdc-Select-body {
   border-bottom-color: $blue-dark;
   box-shadow: 0 1px 0 0 $blue-dark;
-}
-
-// https://material.google.com/style/color.html#color-text-background-colors
-.mdc-Select-body:disabled {
-  color: rgba(0, 0, 0, 0.38);
 }
 
 .mdc-Select-placeholder {
@@ -122,6 +122,12 @@
   padding-bottom: 0;
 }
 
+.mdc-Select.is-insideTable .mdc-Select-body {
+  border-bottom: none;
+  font-size: 13px;
+  padding-bottom: 0;
+}
+
 .mdc-Select.is-insideTable .mdc-Select-input + .mdc-Select-body {
   margin-top: 0;
 }
@@ -132,12 +138,6 @@
   border: 1px solid lightgray;
   box-shadow: 0 3px 2px -1px rgba(0, 0, 0, 0.3);
   background: #f9f9f9;
-}
-
-.mdc-Select.is-insideTable .mdc-Select-body {
-  border-bottom: none;
-  font-size: 13px;
-  padding-bottom: 0;
 }
 
 .mdc-Select.is-insideTable .mdc-Select-body:focus {

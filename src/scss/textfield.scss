@@ -13,8 +13,43 @@ $error-color: $color-textfield-error;
   display: block;
 }
 
+.mdc-Textfield-label {
+  order: 1;
+  display: block;
+  font-size: $font-big;
+  color: $color-textfield-label;
+  transform: translate3d(0, 24px, 0);
+  transform-origin: left top;
+  transition: $transition-function $transition-duration;
+  pointer-events: none;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-top: $margin-top;
+  margin-bottom: 6px;
+  height: 18px;
+}
+
 .mdc-Textfield--nolabel .mdc-Textfield-label {
   display: none;
+}
+
+.mdc-Textfield-input {
+  line-height: 1.5;
+  background: transparent;
+  order: 2;
+  color: $color-textfield-input;
+  width: 100%;
+  display: block;
+  border-radius: 0;
+  font-size: $font-big;
+  outline: 0;
+  border: none;
+  border-bottom: 1px solid $color-textfield-border;
+  transition: border-bottom-color $transition-duration;
+  padding: 0;
+  box-sizing: content-box;
+  padding-bottom: 4px;
+  margin-bottom: 8px;
 }
 
 .mdc-Textfield--nolabel .mdc-Textfield-input {
@@ -59,46 +94,11 @@ $error-color: $color-textfield-error;
   margin-top: 0;
 }
 
-.mdc-Textfield-label {
-  order: 1;
-  display: block;
-  font-size: $font-big;
-  color: $color-textfield-label;
-  transform: translate3d(0, 24px, 0);
-  transform-origin: left top;
-  transition: $transition-function $transition-duration;
-  pointer-events: none;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  margin-top: $margin-top;
-  margin-bottom: 6px;
-  height: 18px;
-}
-
 .mdc-Textfield-label--dense {
   margin-top: 8px;
   margin-bottom: 4px;
   font-size: 13px;
   transform: translate3d(0, 22px, 0);
-}
-
-.mdc-Textfield-input {
-  line-height: 1.5;
-  background: transparent;
-  order: 2;
-  color: $color-textfield-input;
-  width: 100%;
-  display: block;
-  border-radius: 0;
-  font-size: $font-big;
-  outline: 0;
-  border: none;
-  border-bottom: 1px solid $color-textfield-border;
-  transition: border-bottom-color $transition-duration;
-  padding: 0;
-  box-sizing: content-box;
-  padding-bottom: 4px;
-  margin-bottom: 8px;
 }
 
 .mdc-Textfield-input--dense {
@@ -116,9 +116,25 @@ $error-color: $color-textfield-error;
   color: rgba(0, 0, 0, 0.38);
 }
 
+.mdc-Textfield-input:disabled {
+  background-color: transparent;
+  color: $color-textfield-input--disabled;
+  border-bottom: 1px dotted $color-textfield-border--disabled;
+}
+
 .mdc-Textfield-input:not([readonly]):focus {
   border-bottom-color: $color-textfield-border--focus;
   box-shadow: 0 1px 0 0 $color-textfield-border--focus;
+}
+
+.mdc-Textfield-input:focus ~ .mdc-Textfield-label,
+.mdc-Textfield-label--floatup {
+  transform: translate3d(0, 0, 0);
+  font-size: $font-small;
+}
+
+.mdc-Textfield-input:not([readonly]):focus ~ .mdc-Textfield-label:not(.mdc-Textfield-error) {
+  color: $color-textfield-input--focus;
 }
 
 .mdc-Textfield:not(.mdc-Textfield--nolabel) .mdc-Textfield-input:not(:focus)::-webkit-input-placeholder {
@@ -142,24 +158,8 @@ $error-color: $color-textfield-error;
   box-shadow: 0 1px 0 0 $error-color;
 }
 
-.mdc-Textfield-input:focus ~ .mdc-Textfield-label,
-.mdc-Textfield-label--floatup {
-  transform: translate3d(0, 0, 0);
-  font-size: $font-small;
-}
-
 .mdc-Textfield-label--floatup {
   color: $color-textfield-label--floatup;
-}
-
-.mdc-Textfield-input:not([readonly]):focus ~ .mdc-Textfield-label:not(.mdc-Textfield-error) {
-  color: $color-textfield-input--focus;
-}
-
-.mdc-Textfield-input:disabled {
-  background-color: transparent;
-  color: $color-textfield-input--disabled;
-  border-bottom: 1px dotted $color-textfield-border--disabled;
 }
 
 .mdc-Textfield-char-counter {
