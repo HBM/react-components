@@ -7,6 +7,7 @@ npm-debug.log
 *.swp
 coverage/
 npm-debug.log*
+package-lock.json
 
 # ignore auto generated es5 directory
 lib/
