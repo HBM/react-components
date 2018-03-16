@@ -172,6 +172,7 @@ export class Textarea extends React.Component {
       resizable,
       value,
       htmlFor,
+      // Added getComputedStyle and maxRows to get rid of enzyme warnings during npm test run.
       getComputedStyle,
       maxRows,
       ...rest
