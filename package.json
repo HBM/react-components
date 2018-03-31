@@ -62,7 +62,7 @@
     "stylelint": "^9.0.0",
     "stylelint-config-recommended-scss": "^3.1.0",
     "stylelint-config-standard": "^18.2.0",
-    "stylelint-scss": "^2.1.0",
+    "stylelint-scss": "^3.0.0",
     "tarball-extract": "0.0.6"
   },
   "nyc": {
