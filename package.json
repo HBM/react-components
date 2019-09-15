@@ -61,7 +61,7 @@
     "standard": "^11.0.1",
     "stylelint": "^9.2.0",
     "stylelint-config-recommended-scss": "^3.2.0",
-    "stylelint-config-standard": "^18.2.0",
+    "stylelint-config-standard": "^19.0.0",
     "stylelint-scss": "^3.0.1",
     "tarball-extract": "0.0.6"
   },
